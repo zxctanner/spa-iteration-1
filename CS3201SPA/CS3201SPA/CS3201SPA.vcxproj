@@ -120,11 +120,15 @@
   <ItemGroup>
     <ClInclude Include="AST.h" />
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="QueryEvaluator.h" />
+    <ClInclude Include="QueryParser.h" />
     <ClInclude Include="TNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AST.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="QueryEvaluator.cpp" />
+    <ClCompile Include="QueryParser.cpp" />
     <ClCompile Include="TNode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
