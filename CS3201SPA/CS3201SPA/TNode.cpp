@@ -1,36 +1,106 @@
-#include "TNode.h"
 #include <string>
 
 using namespace std;
 
-TNode::TNode()
-{
+class TNode {
 	string name;
 	string nodeType;
 	int stmtNum;
-	TNode parent;
-	TNode leftSibling;
-	TNode rightSibling;
-	TNode leftChild;
-	TNode rightChild;
+	TNode* parent;
+	TNode* leftChild;
+	TNode* rightChild;
+	TNode* leftSib;
+	TNode* rightSib;
+
+public:
+	void setName(string name);
+	string getName();
+	void setNodeType(string nodeType);
+	string getNodeType();
+	void setStmtNum(int stmtNum);
+	int getStmtNum();
+	void setParent(TNode node);
+	TNode getParent();
+	void setLeftSibling(TNode node);
+	TNode getLeftSibling();
+	void setRightSibling(TNode node);
+	TNode getRightSibling();
+	void setLeftChild(TNode node);
+	TNode getLeftChild();
+	void setRightChild(TNode node);
+	TNode getRightChild();
+};
+
+void TNode::setName(string name) {
+	TNode::name = name;
 }
 
-void TNode::setParent(TNode parent) {
-
+string TNode::getName()
+{
+	return TNode::name;
 }
 
-void TNode::setLeftSibling(TNode leftBro) {
-
+void TNode::setNodeType(string nodeType) {
+	TNode::nodeType = nodeType;
 }
 
-void TNode::setRightSibling(TNode rightBro) {
-
+string TNode::getNodeType()
+{
+	return TNode::nodeType;
 }
 
-void TNode::setLeftChild(TNode leftChild) {
-
+void TNode::setStmtNum(int stmtNum) {
+	TNode::stmtNum = stmtNum;
 }
 
-void TNode::setRightChild(TNode rightChild) {
-
+int TNode::getStmtNum()
+{
+	return TNode::stmtNum;
 }
+
+void TNode::setParent(TNode node) {
+	parent = &node;
+}
+
+TNode TNode::getParent()
+{
+	return *TNode::parent;
+}
+
+void TNode::setLeftSibling(TNode node) {
+	leftSib = &node;
+}
+
+TNode TNode::getLeftSibling()
+{
+	return *TNode::leftSib;
+}
+
+void TNode::setRightSibling(TNode node) {
+	rightSib = &node;
+}
+
+TNode TNode::getRightSibling()
+{
+	return *TNode::rightSib;
+}
+
+void TNode::setLeftChild(TNode node) {
+	leftChild = &node;
+}
+
+TNode TNode::getLeftChild()
+{
+	return *TNode::leftChild;
+}
+
+void TNode::setRightChild(TNode node) {
+	rightChild = &node;
+}
+
+TNode TNode::getRightChild()
+{
+	return *TNode::rightChild;
+}
+
+

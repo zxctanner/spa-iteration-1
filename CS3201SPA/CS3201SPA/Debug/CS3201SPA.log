@@ -1,15 +1,15 @@
-﻿Build started 25/8/2015 8:49:53 PM.
-     1>Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
+﻿Build started 8/27/2015 11:54:22 AM.
+     1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp
-         Parser.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt TNode.cpp
+         TNode.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\Debug\CS3201SPA.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\Debug\CS3201SPA.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\Debug\CS3201SPA.lib" /MACHINE:X86 Debug\AST.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\Debug\CS3201SPA.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\Debug\CS3201SPA.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\Debug\CS3201SPA.lib" /MACHINE:X86 Debug\AST.obj
          Debug\Parser.obj
          Debug\TNode.obj
-         CS3201SPA.vcxproj -> C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\Debug\CS3201SPA.exe
-     1>Done Building Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)).
+         CS3201SPA.vcxproj -> C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\Debug\CS3201SPA.exe
+     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.67
+Time Elapsed 00:00:03.65

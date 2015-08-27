@@ -1,12 +1,22 @@
 #pragma once
-class TNode
-{
+class TNode {
 public:
-	TNode();
-	void setParent(TNode parent);
-	void setLeftSibling(TNode leftBro);
-	void setRightSibling(TNode rightBro);
-	void setLeftChild(TNode leftChild);
-	void setRightChild(TNode rightChild);
+	void setName(string name);
+	string getName();
+	void setNodeType(string nodeType);
+	string getNodeType();
+	void setStmtNum(int stmtNum);
+	int getStmtNum();
+	void setParent(TNode node);
+	TNode getParent();
+	void setLeftSibling(TNode node);
+	TNode getLeftSibling();
+	void setRightSibling(TNode node);
+	TNode getRightSibling();
+	void setLeftChild(TNode node);
+	TNode getLeftChild();
+	void setRightChild(TNode node);
+	TNode getRightChild();
+
 };
 
