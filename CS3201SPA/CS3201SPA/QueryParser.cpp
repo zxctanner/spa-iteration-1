@@ -1,4 +1,5 @@
 #include "QueryParser.h"
+#incluse "QueryEvaluator.h"
 #include <string>
 using namespace std;
 
