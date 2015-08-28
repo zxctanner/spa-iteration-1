@@ -1,4 +1,5 @@
 #pragma once
+
 class TNode {
 public:
 	void setName(string name);
@@ -13,10 +14,8 @@ public:
 	TNode getLeftSibling();
 	void setRightSibling(TNode node);
 	TNode getRightSibling();
-	void setLeftChild(TNode node);
-	TNode getLeftChild();
-	void setRightChild(TNode node);
-	TNode getRightChild();
-
+	void addChild(TNode node);
+	void insertChild(TNode node, int index);
+	TNode getChild(int index);
 };
 

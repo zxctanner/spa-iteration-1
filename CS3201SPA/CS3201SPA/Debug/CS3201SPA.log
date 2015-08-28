@@ -1,13 +1,148 @@
-﻿Build started 8/27/2015 8:06:52 PM.
-     1>Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
+﻿Build started 28/8/2015 2:23:41 PM.
+     1>Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp QueryParser.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AST.cpp Parser.cpp QueryEvaluator.cpp QueryParser.cpp TNode.cpp
+         TNode.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C3646: 'getNodeType': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(7): error C2011: 'TNode': 'class' type redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2079: 'string' uses undefined class 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'nodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2059: syntax error: ')'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2146: syntax error: missing ';' before identifier 'getName'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2146: syntax error: missing ')' before identifier 'nodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2146: syntax error: missing ';' before identifier 'getNodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(64): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(65): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(68): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2065: 'stmtNum': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(73): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(74): error C2065: 'parent': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(77): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(78): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2065: 'parent': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(82): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(83): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(86): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(87): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(91): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(92): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(95): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(96): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(100): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2228: left of '.push_back' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(104): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2228: left of '.begin' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2228: left of '.insert' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(110): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(111): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2228: left of '.at' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(115): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2228: left of '.size' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): note: type is 'unknown-type'
          QueryParser.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(8): error C2600: 'QueryParser::QueryParser': cannot define a compiler-generated special member function (must be declared in the class first)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(8): error C2600: 'QueryParser::QueryParser': cannot define a compiler-generated special member function (must be declared in the class first)
+         QueryEvaluator.cpp
          Parser.cpp
+         AST.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:03.24
+Time Elapsed 00:00:04.48

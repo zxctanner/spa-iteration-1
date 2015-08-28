@@ -1,4 +1,6 @@
+#include "TNode.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -7,12 +9,14 @@ class TNode {
 	string nodeType;
 	int stmtNum;
 	TNode* parent;
+	vector<TNode*> childrenNodes;
 	TNode* leftChild;
 	TNode* rightChild;
 	TNode* leftSib;
 	TNode* rightSib;
 
 public:
+	TNode(string name, string nodeType, int stmtNum);
 	void setName(string name);
 	string getName();
 	void setNodeType(string nodeType);
@@ -25,11 +29,19 @@ public:
 	TNode getLeftSibling();
 	void setRightSibling(TNode node);
 	TNode getRightSibling();
-	void setLeftChild(TNode node);
-	TNode getLeftChild();
-	void setRightChild(TNode node);
-	TNode getRightChild();
+	void addChild(TNode node);
+	void insertChild(TNode node, int index);
+	TNode getChild(int index);
+	int numChildren();
+	TNode(string name, string nodeType, int stmtNum);
 };
+
+TNode::TNode(string name, string nodeType, int stmtNum) {
+	TNode::name = name;
+	TNode::nodeType = nodeType;
+	TNode::stmtNum = stmtNum;
+	rightSib = NULL;
+}
 
 void TNode::setName(string name) {
 	TNode::name = name;
@@ -85,22 +97,23 @@ TNode TNode::getRightSibling()
 	return *TNode::rightSib;
 }
 
-void TNode::setLeftChild(TNode node) {
-	leftChild = &node;
+void TNode::addChild(TNode node) {
+	TNode::childrenNodes.push_back(&node);
 }
 
-TNode TNode::getLeftChild()
+void TNode::insertChild(TNode node, int index) {
+	vector<TNode*>::iterator iter;
+	iter = childrenNodes.begin();
+	TNode::childrenNodes.insert(iter+index, &node);
+}
+
+TNode TNode::getChild(int index)
 {
-	return *TNode::leftChild;
+	return *TNode::childrenNodes.at(index);
 }
 
-void TNode::setRightChild(TNode node) {
-	rightChild = &node;
-}
-
-TNode TNode::getRightChild()
-{
-	return *TNode::rightChild;
+int TNode::numChildren() {
+	return TNode::childrenNodes.size();
 }
 
 
