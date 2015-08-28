@@ -1,19 +1,21 @@
 #pragma once
+#include <string>
+
 class QueryEvaluator
 {
 public:
-	int Modifies(String, String);
-	String Modifies(int, String);
+	int Modifies(string first, string second);
+	string Modifies(int first, string second);
 
-	int Uses(String, String);
-	String Uses(int, String);
+	int Uses(string first, string second);
+	string Uses(int first, string second);
 
-	int Parent(int, int);
-	int ParentS(int, int);
+	int Parent(int first, int second);
+	int ParentS(int first, int second);
 
-	int Follows(String, int);
-	int Follows(int, String);
-	int FollowsS(String, int);
-	int FollowsS(int, String);
+	int Follows(string first, int second);
+	int Follows(int first, string second);
+	int FollowsS(string first, int second);
+	int FollowsS(int first, string second);
 };
 
