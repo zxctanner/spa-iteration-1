@@ -122,6 +122,7 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="QueryEvaluator.h" />
     <ClInclude Include="QueryParser.h" />
+    <ClInclude Include="SimpleParser.h" />
     <ClInclude Include="TNode.h" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,7 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="QueryEvaluator.cpp" />
     <ClCompile Include="QueryParser.cpp" />
+    <ClCompile Include="SimpleParser.cpp" />
     <ClCompile Include="TNode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
