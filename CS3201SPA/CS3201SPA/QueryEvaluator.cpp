@@ -15,4 +15,6 @@ QueryEvaluator::QueryEvaluator(String command) {
 
 int QueryEvaluator::Modifies(String, String) {
 
+
+
 }
