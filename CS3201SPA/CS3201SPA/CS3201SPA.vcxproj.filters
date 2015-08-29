@@ -33,6 +33,9 @@
     <ClInclude Include="SimpleParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QueryTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SimpleParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

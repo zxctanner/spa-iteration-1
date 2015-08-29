@@ -53,7 +53,17 @@ QueryParser::ParseField(string field) {
 	}
 }
 
-string QueryParser::ExtractPattern(string& str) {
+/* Work in progress
+multimap<string,string> QueryParser::createQTable(vector<string>& str) {
+	string designEntity;
+	vector<string> tokens;
+	for (auto i = str.begin(); i != str.end(); i++) {
+		designEntity = QueryParser::ExtractFirstWord(*i);
+		
+	}
+}*/
+
+string QueryParser::extractPattern(string& str) {
 	string pattern = "pattern";
 	size_t found = str.find(pattern);
 	size_t end = str.find_first_of(")");
@@ -66,7 +76,7 @@ string QueryParser::ExtractPattern(string& str) {
 	}
 }
 
-string QueryParser::ExtractST(string& str) {
+string QueryParser::extractST(string& str) {
 	string suchThat = "such that";
 	size_t found = str.find(suchThat);
 	size_t end = str.find_first_of(")");
@@ -79,7 +89,7 @@ string QueryParser::ExtractST(string& str) {
 	}
 }
 
-string QueryParser::Trim(const string& str, const string& trimmers) {
+string QueryParser::trim(const string& str, const string& trimmers) {
 	const auto strBegin = str.find_first_not_of(trimmers);
 	if (strBegin == string::npos) {
 		return "";
@@ -89,7 +99,8 @@ string QueryParser::Trim(const string& str, const string& trimmers) {
 	return str.substr(strBegin, strRange);
 }
 
-void QueryParser::Tokenize(const string& str, vector<string>& tokens, const string& delimiters) {
+vector<string> QueryParser::Tokenize(const string& str, const string& delimiters) {
+	vector<string> tokens;
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
 	string::size_type pos = str.find_first_of(delimiters, lastPos);
 	while (string::npos != pos || string::npos != lastPos) {
@@ -97,4 +108,30 @@ void QueryParser::Tokenize(const string& str, vector<string>& tokens, const stri
 		lastPos = str.find_first_not_of(delimiters, pos);
 		pos = str.find_first_of(delimiters, lastPos);
 	}
+	return tokens;
+}
+
+string QueryParser::extractFirstWord(string& str) {
+	int firstWhiteSpace = str.find_first_of(" ");
+	string word = "";
+	if (firstWhiteSpace != string::npos) {
+		word = str.substr(0, firstWhiteSpace);
+	}
+	return word;
+}
+
+vector<string> QueryParser::extractSynonyms(string& str) {
+	vector<string> synonyms;
+	string trimmed = trim(str, " ");
+	int findBeginning = trimmed.find_first_of(" ");
+	string essentials = removeCharsFromString(trimmed.substr(findBeginning), " ;");
+	synonyms = Tokenize(essentials, ",");
+	return synonyms;
+}
+
+string QueryParser::removeCharsFromString(string &str, char* charsToRemove) {
+	for (unsigned int i = 0; i < strlen(charsToRemove); ++i) {
+		str.erase(remove(str.begin(), str.end(), charsToRemove[i]), str.end());
+	}
+	return str;
 }
