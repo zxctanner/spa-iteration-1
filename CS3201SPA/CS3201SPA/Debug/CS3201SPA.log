@@ -1,7 +1,7 @@
-﻿Build started 8/28/2015 7:43:03 PM.
+﻿Build started 8/29/2015 7:42:12 PM.
      1>Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp QueryEvaluator.cpp QueryParser.cpp SimpleParser.cpp TNode.cpp
+         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt QueryEvaluator.cpp QueryParser.cpp SimpleParser.cpp TNode.cpp
          TNode.cpp
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
@@ -137,26 +137,100 @@
          c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): note: type is 'unknown-type'
          SimpleParser.cpp
          QueryParser.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(5): error C3646: 'ParseInput': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(5): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(5): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(6): error C3646: 'ParseField': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(6): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(6): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(2): fatal error C1021: invalid preprocessor command 'incluse'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2556: 'int QueryParser::ParseInput(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseInput(std::string)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(8): note: see declaration of 'QueryParser::ParseInput'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2371: 'QueryParser::ParseInput': redefinition; different basic types
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(8): note: see declaration of 'QueryParser::ParseInput'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2143: syntax error: missing ';' before '['
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C3409: empty attribute block is not allowed
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2059: syntax error: '<default int type>'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2065: 'parts': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2228: left of '.length' must have class/struct/union
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): note: type is 'unknown-type'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2556: 'int QueryParser::ParseField(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseField(std::string)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(9): note: see declaration of 'QueryParser::ParseField'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2371: 'QueryParser::ParseField': redefinition; different basic types
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(9): note: see declaration of 'QueryParser::ParseField'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2065: 'String': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2059: syntax error: ']'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(24): error C2065: 'split1': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2065: 'String': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2059: syntax error: ']'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2065: 'split2': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.erase' must have class/struct/union
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.begin' must have class/struct/union
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.end' must have class/struct/union
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2780: '_FwdIt std::remove_if(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 2 provided
+         c:\users\kerine\desktop\vc\include\algorithm(1820): note: see declaration of 'std::remove_if'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2065: 'split2': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2228: left of '.erase' must have class/struct/union
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::_String_iterator<std::_String_val<std::_Simple_types<char>>>' (or there is no acceptable conversion)
+         c:\users\kerine\desktop\vc\include\xstring(1032): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(_Elem)'
+                 with
+                 [
+                     _Elem=char
+                 ]
+         c:\users\kerine\desktop\vc\include\xstring(1027): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *)'
+                 with
+                 [
+                     _Elem=char
+                 ]
+         c:\users\kerine\desktop\vc\include\xstring(1011): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+         c:\users\kerine\desktop\vc\include\xstring(972): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
+                 with
+                 [
+                     _Elem=char
+                 ]
+         c:\users\kerine\desktop\vc\include\xstring(914): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): note: while trying to match the argument list '(std::string, std::_String_iterator<std::_String_val<std::_Simple_types<char>>>)'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2143: syntax error: missing ';' before 'QueryEvaluator::Modifies'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2352: 'QueryEvaluator::Modifies': illegal call of non-static member function
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): note: see declaration of 'QueryEvaluator::Modifies'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2143: syntax error: missing ';' before 'QueryEvaluator::Uses'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2352: 'QueryEvaluator::Uses': illegal call of non-static member function
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): note: see declaration of 'QueryEvaluator::Uses'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2143: syntax error: missing ';' before 'QueryEvaluator::Parent'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2664: 'int QueryEvaluator::Parent(int,int)': cannot convert argument 1 from 'std::string' to 'int'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2143: syntax error: missing ';' before 'QueryEvaluator::ParentS'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2664: 'int QueryEvaluator::ParentS(int,int)': cannot convert argument 1 from 'std::string' to 'int'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2143: syntax error: missing ';' before 'QueryEvaluator::Follows'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2665: 'QueryEvaluator::Follows': none of the 2 overloads could convert all the argument types
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): note: could be 'int QueryEvaluator::Follows(int,std::string)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): note: or       'int QueryEvaluator::Follows(std::string,int)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): note: while trying to match the argument list '(std::string, std::string)'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2143: syntax error: missing ';' before 'QueryEvaluator::FollowsS'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2665: 'QueryEvaluator::FollowsS': none of the 2 overloads could convert all the argument types
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): note: could be 'int QueryEvaluator::FollowsS(int,std::string)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): note: or       'int QueryEvaluator::FollowsS(std::string,int)'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): note: while trying to match the argument list '(std::string, std::string)'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2039: 'Pattern': is not a member of 'QueryEvaluator'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(5): note: see declaration of 'QueryEvaluator'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2065: 'call': undeclared identifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2146: syntax error: missing ';' before identifier 'Pattern'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C3861: 'Pattern': identifier not found
          QueryEvaluator.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(5): error C2061: syntax error: identifier 'String'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(6): error C3646: 'Modifies': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(6): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(6): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2061: syntax error: identifier 'String'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(9): error C3646: 'Uses': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(9): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(9): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(14): error C2061: syntax error: identifier 'String'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(15): error C2061: syntax error: identifier 'String'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): error C2061: syntax error: identifier 'String'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): error C2061: syntax error: identifier 'String'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C3646: 'Modifies': unknown override specifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2059: syntax error: '('
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): error C2061: syntax error: identifier 'string'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C3646: 'Uses': unknown override specifier
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2059: syntax error: '('
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): error C2061: syntax error: identifier 'string'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): error C2061: syntax error: identifier 'string'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): error C2061: syntax error: identifier 'string'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): error C2061: syntax error: identifier 'string'
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(6): error C2600: 'QueryEvaluator::QueryEvaluator': cannot define a compiler-generated special member function (must be declared in the class first)
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2065: 'String': undeclared identifier
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2146: syntax error: missing ')' before identifier 'command'
@@ -166,11 +240,8 @@
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2761: 'int QueryEvaluator::Modifies(void)': member function redeclaration not allowed
      1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2448: 'QueryEvaluator::Modifies': function-style initializer appears to be a function definition
          Generating Code...
-         Compiling...
-         Parser.cpp
-         Generating Code...
      1>Done Building Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.59
+Time Elapsed 00:00:02.90
