@@ -119,6 +119,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AST.h" />
+    <ClInclude Include="LineToken.h" />
+    <ClInclude Include="LineTokenizer.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="QueryEvaluator.h" />
     <ClInclude Include="QueryParser.h" />
@@ -129,6 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AST.cpp" />
+    <ClCompile Include="LineToken.cpp" />
+    <ClCompile Include="LineTokenizer.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="QueryEvaluator.cpp" />
     <ClCompile Include="QueryParser.cpp" />
