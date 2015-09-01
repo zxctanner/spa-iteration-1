@@ -6,14 +6,16 @@ LineToken::LineToken()
 {
 }
 
-LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number)
+LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number, string rhsexpr)
 {
 	type = tokType;
 	name = tokName;
 	level = nestLevel;
 	stmtNumber = number;
-
+	expr = rhsexpr;
 }
+
+
 
 
 LineToken::~LineToken()
@@ -38,4 +40,9 @@ int LineToken::getLevel()
 int LineToken::getStmtNumber()
 {
 	return stmtNumber;
+}
+
+string LineToken::getExpr()
+{
+	return expr;
 }
