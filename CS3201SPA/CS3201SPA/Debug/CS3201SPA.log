@@ -1,247 +1,300 @@
-﻿Build started 8/29/2015 7:42:12 PM.
-     1>Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
+﻿Build started 1/9/2015 7:46:28 PM.
+     1>Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt QueryEvaluator.cpp QueryParser.cpp SimpleParser.cpp TNode.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LineToken.cpp LineTokenizer.cpp ModUseTable.cpp QueryEvaluator.cpp QueryParser.cpp QueryTable.cpp SimpleParser.cpp StatementTable.cpp TNode.cpp
          TNode.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(7): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C3646: 'getNodeType': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(7): error C2011: 'TNode': 'class' type redefinition
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ')' before identifier 'name'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2079: 'string' uses undefined class 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'name'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2086: 'int string': redefinition
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'nodeType'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2059: syntax error: ')'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2872: 'string': ambiguous symbol
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
-         c:\users\kerine\desktop\vc\include\xstring(2603): note: or       'std::string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2146: syntax error: missing ')' before identifier 'name'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2872: 'string': ambiguous symbol
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
-         c:\users\kerine\desktop\vc\include\xstring(2603): note: or       'std::string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2086: 'int string': redefinition
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2146: syntax error: missing ';' before identifier 'getName'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2872: 'string': ambiguous symbol
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
-         c:\users\kerine\desktop\vc\include\xstring(2603): note: or       'std::string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2146: syntax error: missing ')' before identifier 'nodeType'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2872: 'string': ambiguous symbol
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
-         c:\users\kerine\desktop\vc\include\xstring(2603): note: or       'std::string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2086: 'int string': redefinition
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2146: syntax error: missing ';' before identifier 'getNodeType'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(64): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(65): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(68): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2065: 'stmtNum': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(73): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(74): error C2065: 'parent': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(77): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(78): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2065: 'parent': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(82): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(83): error C2065: 'leftSib': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(86): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(87): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2065: 'leftSib': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(91): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(92): error C2065: 'rightSib': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(95): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(96): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2065: 'rightSib': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(100): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2065: 'childrenNodes': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(104): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2065: 'childrenNodes': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2228: left of '.begin' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2065: 'childrenNodes': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2228: left of '.insert' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(110): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(111): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2065: 'childrenNodes': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2228: left of '.at' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(115): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2027: use of undefined type 'TNode'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2065: 'childrenNodes': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2228: left of '.size' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C3646: 'getNodeType': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(7): error C2011: 'TNode': 'class' type redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2079: 'string' uses undefined class 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'nodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2059: syntax error: ')'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2146: syntax error: missing ';' before identifier 'getName'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2146: syntax error: missing ')' before identifier 'nodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2872: 'string': ambiguous symbol
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2086: 'int string': redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2146: syntax error: missing ';' before identifier 'getNodeType'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(64): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(65): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(68): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2065: 'stmtNum': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(73): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(74): error C2065: 'parent': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(77): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(78): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2065: 'parent': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(82): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(83): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(86): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(87): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(91): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(92): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(95): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(96): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(100): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2228: left of '.push_back' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(104): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2228: left of '.begin' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2228: left of '.insert' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(110): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(111): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2228: left of '.at' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(115): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2027: use of undefined type 'TNode'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2228: left of '.size' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): note: type is 'unknown-type'
+         StatementTable.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(6): error C2061: syntax error: identifier 'LineToken'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C3646: 'getStmt': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(7): error C2011: 'StatementTable': 'class' type redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(15): error C2027: use of undefined type 'StatementTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(15): error C2059: syntax error: ')'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(16): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(16): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(20): error C2027: use of undefined type 'StatementTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(21): error C2027: use of undefined type 'StatementTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(21): error C2065: 'table': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(24): error C2027: use of undefined type 'StatementTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(26): error C2027: use of undefined type 'StatementTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\statementtable.cpp(26): error C2065: 'table': undeclared identifier
          SimpleParser.cpp
+         QueryTable.cpp
          QueryParser.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2556: 'int QueryParser::ParseInput(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseInput(std::string)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(8): note: see declaration of 'QueryParser::ParseInput'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2371: 'QueryParser::ParseInput': redefinition; different basic types
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(8): note: see declaration of 'QueryParser::ParseInput'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2143: syntax error: missing ';' before '['
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C3409: empty attribute block is not allowed
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2059: syntax error: '<default int type>'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2065: 'parts': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2228: left of '.length' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2556: 'int QueryParser::ParseField(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseField(std::string)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(9): note: see declaration of 'QueryParser::ParseField'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2371: 'QueryParser::ParseField': redefinition; different basic types
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(9): note: see declaration of 'QueryParser::ParseField'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2065: 'String': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2059: syntax error: ']'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(24): error C2065: 'split1': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2065: 'String': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2059: syntax error: ']'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2065: 'split2': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.erase' must have class/struct/union
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.begin' must have class/struct/union
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.end' must have class/struct/union
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2780: '_FwdIt std::remove_if(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 2 provided
-         c:\users\kerine\desktop\vc\include\algorithm(1820): note: see declaration of 'std::remove_if'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2065: 'split2': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2228: left of '.erase' must have class/struct/union
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::_String_iterator<std::_String_val<std::_Simple_types<char>>>' (or there is no acceptable conversion)
-         c:\users\kerine\desktop\vc\include\xstring(1032): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(_Elem)'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2556: 'int QueryParser::ParseInput(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseInput(std::string)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.h(13): note: see declaration of 'QueryParser::ParseInput'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2371: 'QueryParser::ParseInput': redefinition; different basic types
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.h(13): note: see declaration of 'QueryParser::ParseInput'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2143: syntax error: missing ';' before '['
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C3409: empty attribute block is not allowed
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2059: syntax error: '<default int type>'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2065: 'parts': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2228: left of '.length' must have class/struct/union
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): note: type is 'unknown-type'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2556: 'int QueryParser::ParseField(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseField(std::string)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.h(14): note: see declaration of 'QueryParser::ParseField'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2371: 'QueryParser::ParseField': redefinition; different basic types
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.h(14): note: see declaration of 'QueryParser::ParseField'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2065: 'String': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2059: syntax error: ']'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(24): error C2065: 'split1': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2065: 'String': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2059: syntax error: ']'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2065: 'split2': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.erase' must have class/struct/union
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.begin' must have class/struct/union
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.end' must have class/struct/union
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2780: '_FwdIt std::remove_if(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 2 provided
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\algorithm(1820): note: see declaration of 'std::remove_if'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2065: 'split2': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2228: left of '.erase' must have class/struct/union
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::_String_iterator<std::_String_val<std::_Simple_types<char>>>' (or there is no acceptable conversion)
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1032): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(_Elem)'
                  with
                  [
                      _Elem=char
                  ]
-         c:\users\kerine\desktop\vc\include\xstring(1027): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *)'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1027): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *)'
                  with
                  [
                      _Elem=char
                  ]
-         c:\users\kerine\desktop\vc\include\xstring(1011): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-         c:\users\kerine\desktop\vc\include\xstring(972): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1011): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(972): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
                  with
                  [
                      _Elem=char
                  ]
-         c:\users\kerine\desktop\vc\include\xstring(914): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): note: while trying to match the argument list '(std::string, std::_String_iterator<std::_String_val<std::_Simple_types<char>>>)'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2143: syntax error: missing ';' before 'QueryEvaluator::Modifies'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2352: 'QueryEvaluator::Modifies': illegal call of non-static member function
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): note: see declaration of 'QueryEvaluator::Modifies'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2143: syntax error: missing ';' before 'QueryEvaluator::Uses'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2352: 'QueryEvaluator::Uses': illegal call of non-static member function
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): note: see declaration of 'QueryEvaluator::Uses'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2143: syntax error: missing ';' before 'QueryEvaluator::Parent'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2664: 'int QueryEvaluator::Parent(int,int)': cannot convert argument 1 from 'std::string' to 'int'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2143: syntax error: missing ';' before 'QueryEvaluator::ParentS'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2664: 'int QueryEvaluator::ParentS(int,int)': cannot convert argument 1 from 'std::string' to 'int'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2143: syntax error: missing ';' before 'QueryEvaluator::Follows'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2665: 'QueryEvaluator::Follows': none of the 2 overloads could convert all the argument types
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): note: could be 'int QueryEvaluator::Follows(int,std::string)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): note: or       'int QueryEvaluator::Follows(std::string,int)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): note: while trying to match the argument list '(std::string, std::string)'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2143: syntax error: missing ';' before 'QueryEvaluator::FollowsS'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2665: 'QueryEvaluator::FollowsS': none of the 2 overloads could convert all the argument types
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): note: could be 'int QueryEvaluator::FollowsS(int,std::string)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): note: or       'int QueryEvaluator::FollowsS(std::string,int)'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): note: while trying to match the argument list '(std::string, std::string)'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2039: 'Pattern': is not a member of 'QueryEvaluator'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(5): note: see declaration of 'QueryEvaluator'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2065: 'call': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2146: syntax error: missing ';' before identifier 'Pattern'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C3861: 'Pattern': identifier not found
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(914): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): note: while trying to match the argument list '(std::string, std::_String_iterator<std::_String_val<std::_Simple_types<char>>>)'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2143: syntax error: missing ';' before 'QueryEvaluator::Modifies'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2352: 'QueryEvaluator::Modifies': illegal call of non-static member function
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): note: see declaration of 'QueryEvaluator::Modifies'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2143: syntax error: missing ';' before 'QueryEvaluator::Uses'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2352: 'QueryEvaluator::Uses': illegal call of non-static member function
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): note: see declaration of 'QueryEvaluator::Uses'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2143: syntax error: missing ';' before 'QueryEvaluator::Parent'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2664: 'int QueryEvaluator::Parent(int,int)': cannot convert argument 1 from 'std::string' to 'int'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2143: syntax error: missing ';' before 'QueryEvaluator::ParentS'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2664: 'int QueryEvaluator::ParentS(int,int)': cannot convert argument 1 from 'std::string' to 'int'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2143: syntax error: missing ';' before 'QueryEvaluator::Follows'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2665: 'QueryEvaluator::Follows': none of the 2 overloads could convert all the argument types
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): note: could be 'int QueryEvaluator::Follows(int,std::string)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): note: or       'int QueryEvaluator::Follows(std::string,int)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): note: while trying to match the argument list '(std::string, std::string)'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2143: syntax error: missing ';' before 'QueryEvaluator::FollowsS'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2665: 'QueryEvaluator::FollowsS': none of the 2 overloads could convert all the argument types
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): note: could be 'int QueryEvaluator::FollowsS(int,std::string)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): note: or       'int QueryEvaluator::FollowsS(std::string,int)'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): note: while trying to match the argument list '(std::string, std::string)'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2039: 'Pattern': is not a member of 'QueryEvaluator'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(5): note: see declaration of 'QueryEvaluator'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2065: 'call': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2146: syntax error: missing ';' before identifier 'Pattern'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C3861: 'Pattern': identifier not found
          QueryEvaluator.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C3646: 'Modifies': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C3646: 'Uses': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(6): error C2600: 'QueryEvaluator::QueryEvaluator': cannot define a compiler-generated special member function (must be declared in the class first)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2065: 'String': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2146: syntax error: missing ')' before identifier 'command'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2143: syntax error: missing ';' before '{'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2065: 'String': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2761: 'int QueryEvaluator::Modifies(void)': member function redeclaration not allowed
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2448: 'QueryEvaluator::Modifies': function-style initializer appears to be a function definition
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C3646: 'Modifies': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C3646: 'Uses': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(6): error C2600: 'QueryEvaluator::QueryEvaluator': cannot define a compiler-generated special member function (must be declared in the class first)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2065: 'String': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2146: syntax error: missing ')' before identifier 'command'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2065: 'String': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2761: 'int QueryEvaluator::Modifies(void)': member function redeclaration not allowed
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2448: 'QueryEvaluator::Modifies': function-style initializer appears to be a function definition
+         ModUseTable.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(6): error C2061: syntax error: identifier 'string'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C3646: 'getLHS': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C3646: 'getRHS': unknown override specifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C2059: syntax error: '('
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(7): error C2011: 'ModUseTable': 'class' type redefinition
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(16): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(16): error C2059: syntax error: ')'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(17): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(17): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(20): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(22): error C2065: 'table': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(25): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): error C2065: 'table': undeclared identifier
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(36): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(39): error C2027: use of undefined type 'ModUseTable'
+         c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\cs3201spa\cs3201spa\modusetable.cpp(39): error C2065: 'table': undeclared identifier
+         LineTokenizer.cpp
+         LineToken.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.90
+Time Elapsed 00:00:04.87

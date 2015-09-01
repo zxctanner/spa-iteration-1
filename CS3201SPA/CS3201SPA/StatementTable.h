@@ -1,10 +1,9 @@
 #pragma once
 class StatementTable
 {
-private:
-
 public:
 	StatementTable();
-	~StatementTable();
+	void insert(int stmtNum, LineToken);
+	LineToken getStmt(int stmtNum);
 };
 
