@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿Build started 2/9/2015 3:51:10 PM.
      1>Project "C:\Users\niggles\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
@@ -257,94 +258,20 @@ Build FAILED.
 Time Elapsed 00:00:03.47
 =======
 ﻿Build started 9/2/2015 5:04:29 PM.
+=======
+﻿Build started 9/2/2015 8:49:07 PM.
+>>>>>>> origin/master
      1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (ClCompile target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt QueryParser.cpp
-         QueryParser.cpp
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2556: 'int QueryParser::ParseInput(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseInput(std::string)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(13): note: see declaration of 'QueryParser::ParseInput'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(17): error C2371: 'QueryParser::ParseInput': redefinition; different basic types
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(13): note: see declaration of 'QueryParser::ParseInput'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2143: syntax error: missing ';' before '['
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C3409: empty attribute block is not allowed
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(18): error C2059: syntax error: '<default int type>'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2065: 'parts': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): error C2228: left of '.length' must have class/struct/union
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(19): note: type is 'unknown-type'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2556: 'int QueryParser::ParseField(std::string)': overloaded function differs only by return type from 'std::string QueryParser::ParseField(std::string)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(14): note: see declaration of 'QueryParser::ParseField'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(22): error C2371: 'QueryParser::ParseField': redefinition; different basic types
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.h(14): note: see declaration of 'QueryParser::ParseField'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2065: 'String': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(23): error C2059: syntax error: ']'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(24): error C2065: 'split1': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2065: 'String': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(25): error C2059: syntax error: ']'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2065: 'split2': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.erase' must have class/struct/union
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.begin' must have class/struct/union
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2228: left of '.end' must have class/struct/union
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(26): error C2780: '_FwdIt std::remove_if(_FwdIt,_FwdIt,_Pr)': expects 3 arguments - 2 provided
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\algorithm(1820): note: see declaration of 'std::remove_if'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2065: 'split2': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(27): error C2228: left of '.erase' must have class/struct/union
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::_String_iterator<std::_String_val<std::_Simple_types<char>>>' (or there is no acceptable conversion)
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1032): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(_Elem)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1027): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(1011): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(972): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(914): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(28): note: while trying to match the argument list '(std::string, std::_String_iterator<std::_String_val<std::_Simple_types<char>>>)'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2143: syntax error: missing ';' before 'QueryEvaluator::Modifies'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(31): error C2352: 'QueryEvaluator::Modifies': illegal call of non-static member function
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): note: see declaration of 'QueryEvaluator::Modifies'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2143: syntax error: missing ';' before 'QueryEvaluator::Uses'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(34): error C2352: 'QueryEvaluator::Uses': illegal call of non-static member function
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): note: see declaration of 'QueryEvaluator::Uses'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2143: syntax error: missing ';' before 'QueryEvaluator::Parent'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): error C2664: 'int QueryEvaluator::Parent(int,int)': cannot convert argument 1 from 'std::string' to 'int'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(37): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2143: syntax error: missing ';' before 'QueryEvaluator::ParentS'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): error C2664: 'int QueryEvaluator::ParentS(int,int)': cannot convert argument 1 from 'std::string' to 'int'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(40): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2143: syntax error: missing ';' before 'QueryEvaluator::Follows'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): error C2665: 'QueryEvaluator::Follows': none of the 2 overloads could convert all the argument types
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): note: could be 'int QueryEvaluator::Follows(int,std::string)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): note: or       'int QueryEvaluator::Follows(std::string,int)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(43): note: while trying to match the argument list '(std::string, std::string)'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2143: syntax error: missing ';' before 'QueryEvaluator::FollowsS'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): error C2665: 'QueryEvaluator::FollowsS': none of the 2 overloads could convert all the argument types
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): note: could be 'int QueryEvaluator::FollowsS(int,std::string)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): note: or       'int QueryEvaluator::FollowsS(std::string,int)'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(46): note: while trying to match the argument list '(std::string, std::string)'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2039: 'Pattern': is not a member of 'QueryEvaluator'
-         c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(5): note: see declaration of 'QueryEvaluator'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2065: 'call': undeclared identifier
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C2146: syntax error: missing ';' before identifier 'Pattern'
-     1>c:\users\lee hou yi\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(49): error C3861: 'Pattern': identifier not found
-     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt PKB.cpp
+         PKB.cpp
+     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)).
 
-Build FAILED.
+Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:00.61
+>>>>>>> origin/master
+=======
+Time Elapsed 00:00:01.66
 >>>>>>> origin/master
