@@ -48,6 +48,9 @@
     <ClInclude Include="ModUseTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ParentTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.cpp">
@@ -81,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ModUseTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParentTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

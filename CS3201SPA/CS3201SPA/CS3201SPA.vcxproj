@@ -122,6 +122,7 @@
     <ClInclude Include="LineToken.h" />
     <ClInclude Include="LineTokenizer.h" />
     <ClInclude Include="ModUseTable.h" />
+    <ClInclude Include="ParentTable.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="QueryEvaluator.h" />
     <ClInclude Include="QueryParser.h" />
@@ -135,6 +136,7 @@
     <ClCompile Include="LineToken.cpp" />
     <ClCompile Include="LineTokenizer.cpp" />
     <ClCompile Include="ModUseTable.cpp" />
+    <ClCompile Include="ParentTable.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="QueryEvaluator.cpp" />
     <ClCompile Include="QueryParser.cpp" />
