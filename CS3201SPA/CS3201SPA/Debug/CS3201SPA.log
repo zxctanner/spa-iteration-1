@@ -1,10 +1,10 @@
-﻿Build started 9/2/2015 8:13:37 PM.
+﻿Build started 9/2/2015 8:49:07 PM.
      1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (ClCompile target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp
-         Parser.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt PKB.cpp
+         PKB.cpp
      1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.19
+Time Elapsed 00:00:01.66

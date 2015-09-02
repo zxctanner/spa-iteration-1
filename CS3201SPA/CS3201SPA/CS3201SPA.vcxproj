@@ -124,6 +124,7 @@
     <ClInclude Include="ModUseTable.h" />
     <ClInclude Include="ParentTable.h" />
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="PKB.h" />
     <ClInclude Include="QueryEvaluator.h" />
     <ClInclude Include="QueryParser.h" />
     <ClInclude Include="QueryTable.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="ModUseTable.cpp" />
     <ClCompile Include="ParentTable.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="PKB.cpp" />
     <ClCompile Include="QueryEvaluator.cpp" />
     <ClCompile Include="QueryParser.cpp" />
     <ClCompile Include="QueryTable.cpp" />
