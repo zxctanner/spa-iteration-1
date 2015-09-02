@@ -1,4 +1,3 @@
-#include "ModUseTable.h"
 #include <unordered_map>
 #include <string>
 
@@ -12,10 +11,6 @@ public:
 	string getLHS(int stmtNum);
 	string getRHS(int stmtNum);
 };
-
-ModUseTable::ModUseTable()
-{
-}
 
 void ModUseTable::insert(int stmtNum, string modified, string used) {
 	pair<string, string> assignment(modified, used);

@@ -1,4 +1,7 @@
 #include "TNode.h"
+#include <string>
+
+using namespace std;
 
 class AST {
 private:
@@ -41,7 +44,7 @@ void AST::addParent(TNode parent) {
 }
 
 void AST::addChild(TNode child) {
-	currentNode->setChild(child);
+	//currentNode->setChild(child);
 }
 
 void AST::addLeftSibling(TNode leftSibling)
@@ -61,7 +64,7 @@ void AST::gotoParent()
 
 void AST::gotoChild()
 {
-	currentNode = &currentNode->getChild();
+	//currentNode = &currentNode->getChild(1);
 }
 
 void AST::gotoLeftSibling()
@@ -76,12 +79,12 @@ void AST::gotoRightSibling()
 
 string AST::getName()
 {
-	return currentNode->getName();
+	//return currentNode->getName();
 }
 
 string AST::getNodeType()
 {
-	return currentNode->getNodeType();
+	//return currentNode->getNodeType();
 }
 
 int AST::getStmtNum()

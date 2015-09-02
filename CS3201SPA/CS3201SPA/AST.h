@@ -1,4 +1,5 @@
 #include "TNode.h"
+#include <string>
 
 class AST {
 public:
