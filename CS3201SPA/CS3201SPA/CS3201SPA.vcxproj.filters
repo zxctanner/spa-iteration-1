@@ -24,12 +24,6 @@
     <ClInclude Include="AST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueryParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QueryEvaluator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SimpleParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,6 +45,12 @@
     <ClInclude Include="ParentTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.cpp">
@@ -60,12 +60,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AST.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryEvaluator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SimpleParser.cpp">
@@ -89,8 +83,15 @@
     <ClCompile Include="ParentTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

@@ -1,11 +1,256 @@
-﻿Build started 9/2/2015 12:27:08 AM.
-     1>Project "D:\GoogleDrive\Year4 Sem1\CS3201\Project\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (ClCompile target(s)).
+﻿Build started 2/9/2015 3:51:10 PM.
+     1>Project "C:\Users\niggles\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\VisualStudio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LineToken.cpp
-         Skipping... (no relevant changes detected)
+         D:\Visual Studio 2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AST.cpp LineToken.cpp LineTokenizer.cpp ModUseTable.cpp ParentTable.cpp Parser.cpp QueryEvaluator.cpp QueryParser.cpp QueryTable.cpp SimpleParser.cpp StatementTable.cpp TNode.cpp
+         TNode.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C3646: 'getNodeType': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(7): error C2011: 'TNode': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2079: 'string' uses undefined class 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'name'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2086: 'int string': redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2146: syntax error: missing ';' before identifier 'nodeType'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2059: syntax error: ')'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2872: 'string': ambiguous symbol
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         d:\visual studio 2015\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2146: syntax error: missing ')' before identifier 'name'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(46): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2872: 'string': ambiguous symbol
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         d:\visual studio 2015\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2086: 'int string': redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(50): error C2146: syntax error: missing ';' before identifier 'getName'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(51): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2872: 'string': ambiguous symbol
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         d:\visual studio 2015\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2146: syntax error: missing ')' before identifier 'nodeType'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(55): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2872: 'string': ambiguous symbol
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: could be 'int string'
+         d:\visual studio 2015\vc\include\xstring(2603): note: or       'std::string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2086: 'int string': redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(39): note: see declaration of 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(59): error C2146: syntax error: missing ';' before identifier 'getNodeType'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(60): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(64): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(65): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(68): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(70): error C2065: 'stmtNum': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(73): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(74): error C2065: 'parent': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(77): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(78): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(79): error C2065: 'parent': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(82): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(83): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(86): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(87): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(88): error C2065: 'leftSib': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(91): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(92): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(95): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(96): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(97): error C2065: 'rightSib': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(100): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): error C2228: left of '.push_back' must have class/struct/union
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(101): note: type is 'unknown-type'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(104): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): error C2228: left of '.begin' must have class/struct/union
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(106): note: type is 'unknown-type'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): error C2228: left of '.insert' must have class/struct/union
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(107): note: type is 'unknown-type'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(110): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(111): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): error C2228: left of '.at' must have class/struct/union
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(112): note: type is 'unknown-type'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(115): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2027: use of undefined type 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2065: 'childrenNodes': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): error C2228: left of '.size' must have class/struct/union
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.cpp(116): note: type is 'unknown-type'
+         StatementTable.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(6): error C2061: syntax error: identifier 'LineToken'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C3646: 'getStmt': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(7): error C2011: 'StatementTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(15): error C2027: use of undefined type 'StatementTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(15): error C2059: syntax error: ')'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(16): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(16): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(20): error C2027: use of undefined type 'StatementTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(21): error C2027: use of undefined type 'StatementTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(21): error C2065: 'table': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(24): error C2027: use of undefined type 'StatementTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(26): error C2027: use of undefined type 'StatementTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.cpp(26): error C2065: 'table': undeclared identifier
+         SimpleParser.cpp
+         QueryTable.cpp
+         QueryParser.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryparser.cpp(2): fatal error C1083: Cannot open include file: 'QE.h': No such file or directory
+         QueryEvaluator.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C3646: 'Modifies': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(10): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C3646: 'Uses': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(11): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(16): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(17): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(18): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.h(19): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(6): error C2600: 'QueryEvaluator::QueryEvaluator': cannot define a compiler-generated special member function (must be declared in the class first)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2065: 'String': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2146: syntax error: missing ')' before identifier 'command'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(9): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2065: 'String': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2761: 'int QueryEvaluator::Modifies(void)': member function redeclaration not allowed
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\queryevaluator.cpp(16): error C2448: 'QueryEvaluator::Modifies': function-style initializer appears to be a function definition
+         Parser.cpp
+         ParentTable.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.cpp(4): error C2011: 'ParentTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): note: see declaration of 'ParentTable'
+         ModUseTable.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(6): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C3646: 'getLHS': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C3646: 'getRHS': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(7): error C2011: 'ModUseTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(16): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(16): error C2059: syntax error: ')'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(17): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(17): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(20): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(22): error C2065: 'table': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(25): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): error C2065: 'table': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(36): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(39): error C2027: use of undefined type 'ModUseTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(39): error C2065: 'table': undeclared identifier
+         LineTokenizer.cpp
          LineToken.cpp
-     1>Done Building Project "D:\GoogleDrive\Year4 Sem1\CS3201\Project\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)).
+         AST.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(5): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C3646: 'getName': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(6): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(7): error C2061: syntax error: identifier 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C3646: 'getNodeType': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(22): error C3646: 'getName': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(22): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(22): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(23): error C3646: 'getNodeType': unknown override specifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(23): error C2059: syntax error: '('
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(23): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(44): error C2039: 'setChild': is not a member of 'TNode'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\tnode.h(3): note: see declaration of 'TNode'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(64): error C2660: 'TNode::getChild': function does not take 0 arguments
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(77): error C2039: 'getName': is not a member of 'AST'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(3): note: see declaration of 'AST'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(77): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(77): error C2146: syntax error: missing ';' before identifier 'getName'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(78): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(78): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(82): error C2039: 'getNodeType': is not a member of 'AST'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(3): note: see declaration of 'AST'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(82): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(82): error C2086: 'int string': redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(77): note: see declaration of 'string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(82): error C2146: syntax error: missing ';' before identifier 'getNodeType'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(83): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\ast.cpp(83): error C2447: '{': missing function header (old-style formal list?)
+         Generating Code...
+     1>Done Building Project "C:\Users\niggles\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.09
+Time Elapsed 00:00:03.47
