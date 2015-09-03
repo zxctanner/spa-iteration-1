@@ -1,7 +1,7 @@
 #pragma once
 
 #include "QP.h"
-#include "QueryEvaluator.h"
+#include "QE.h"
 #include <string>
 #include <iostream>
 #include <algorithm>
