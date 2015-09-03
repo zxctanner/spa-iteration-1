@@ -10,6 +10,7 @@
 #include <map>
 #include <regex>
 #include <string>
+#include <ctype.h>
 
 using namespace std;
 
@@ -104,41 +105,91 @@ designEntity = QueryParser::ExtractFirstWord(*i);
 
 
 //JEREMY'S FUNCTIONS:
-QP::ParseInput(string input) {
-	string parts[] = input.split(" ");
-	int num = parts.length;
-}
-
-QP::ParseField(string field) {
+void QP::ParseField(string field) {
 	string split1[] = field.split("(");
 	string command = split1[0];
 	string split2[] = split1[1].split(",");
-	string first = split2[0].erase(remove_if(split2[0].begin(), split2[0].end(), isspace), split2[0].end());
-	string second = split2[1].erase(second.end());
-	second = second.erase(remove_if(second.begin(), second.end(), isspace), second.end());
-
-	if (command.compare("Modifies") == 0) {
-		call QueryEvaluator::Modifies(first, second);
+	string first = split2[0].erase(remove(split2[0].begin(), split2[0].end(), '\"'), split2[0].end());
+	String second = split[1].erase(remove(split2[1].begin(), split2[1].end(), '\"'), split2[1].end());
+	second = second.erase(remove(second.begin(), second.end(), ')'), second.end());
+	bool isNum1 = QP::isInt(first);
+	bool isNum2 = QP::isInt(second);
+	if (isNum1) {
+		int a = atoi(first.c_str());
 	}
-	else if (command.compare("Uses") == 0) {
-		call QueryEvaluator::Uses(first, second);
+	if (isNum2) {
+		int b = atoi(second.c_str());
+	}
+
+	if (command.compare("ModifiesT") == 0) {
+		if (isNum1 && !isNum2) {
+			QE::ModifiesT(a, second);
+		}
+		else{
+			QE::ModifiesT(first, b);
+		}
+	}
+	else if (command.compare("UsesT") == 0) {
+		if (isNum1 && !isNum2) {
+			QE::UsesT(a, second);
+		}
+		else{
+			QE::UsesT(first, b);
+		}
 	}
 	else if (command.compare("Parent") == 0) {
-		call QueryEvaluator::Parent(first, second);
+		if (isNum1 && !isNum2) {
+			QE::Parent(a, second);
+		}
+		else if (!isNum1 && isNum2) {
+			QE::Parent(first, b);
+		}
+		else {
+			QE::Parent(first, second);
+		}
 	}
-	else if (command.compare("Parent*") == 0) {
-		call QueryEvaluator::ParentS(first, second);
+	else if (command.compare("ParentT") == 0) {
+		if (isNum1 && !isNum2) {
+			QE::ParentT(a, second);
+		}
+		else if (!isNum1 && isNum2) {
+			QE::ParentT(first, b);
+		}
+		else {
+			QE::ParentT(first, second);
+		}
 	}
 	else if (command.compare("Follows") == 0) {
-		call QueryEvaluator::Follows(first, second);
+		if (isNum1 && !isNum2) {
+			QE::Follows(a, second);
+		}
+		else if (!isNum1 && isNum2) {
+			QE::Follows(first, b);
+		}
+		else {
+			QE::Follows(first, second);
+		}
 	}
-	else if (command.compare("FollowsS") == 0) {
-		call QueryEvaluator::FollowsS(first, second);
+	else if (command.compare("FollowsT") == 0) {
+		if (isNum1 && !isNum2) {
+			QE::FollowsT(a, second);
+		}
+		else if (!isNum1 && isNum2) {
+			QE::FollowsT(first, b);
+		}
+		else {
+			QE::FollowsT(first, second);
+		}
 	}
-	else if (command.compare("a") == 0) {
-		call QueryEvaluator::Pattern(first, second);
+	else{
+		QE::pattern(first, second);
 	}
-	else {
-		cout << ("Invalid input");
+}
+
+bool QP::isInt(String input) {
+	bool isNumber = true;
+	for (string::const_iterator k = input.begin(); k != input.end(); ++k) {
+		isNumber && = isdigit(*k);
 	}
+	return isNumber;
 }
