@@ -10,9 +10,9 @@ class QP {
 public:
 
 	QP QueryParser();
-	string ParseInput(string);
-	string ParseField(string);
+	void ParseField(string field);
 	string trim(const string& str, const string& trimmers);
 	vector<string> separateDQ(string& str);
 	bool validNoSTPattern(string& str);
+	bool isInt(string input);
 };
