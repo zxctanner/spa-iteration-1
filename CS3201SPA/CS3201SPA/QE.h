@@ -4,28 +4,28 @@
 class QE
 {
 public:
-	int ModifiesS(string first, string second);
-	string ModifiesS(int first, string second);
+	vector<int> ModifiesS(string one, string two);
+	vector<string> ModifiesS(int one, string two);
 
-	int UsesS(string first, string second);
-	string UsesS(int first, string second);
+	vector<int> UsesS(string one, string two);
+	vector<string> UsesS(int one, string two);
 
-	int Parent(String first, string second);
-	int Parent(int first, string second);
-	int Parent(String first, int second);
+	vector<int> Parent(String one, string two);
+	vector<int> Parent(int one, string two);
+	vector<int> Parent(String one, int two);
 
-	int ParentT(String first, string second);
-	int ParentT(int first, string second);
-	int ParentT(String first, int second);
+	vector<int> ParentT(String one, string two);
+	vector<int> ParentT(int one, string two);
+	vector<int> ParentT(String one, int two);
 
-	int Follows(string first, string second);
-	int Follows(int first, string second);
-	int Follows(string first, int second);
+	vector<int> Follows(string one, string two);
+	vector<int> Follows(int one, string two);
+	vector<int> Follows(string one, int two);
 
-	int FollowsT(string first, int second);
-	int FollowsT(int first, string second);
-	int FollowsT(string first, int second);
+	vector<int> FollowsT(string one, int two);
+	vector<int> FollowsT(int one, string two);
+	vector<int> FollowsT(string one, int two);
 
-	int pattern(string first, string second);
+	vector<int> pattern(string one, string two);
 };
 

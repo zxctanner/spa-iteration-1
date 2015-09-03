@@ -2,7 +2,6 @@
 
 #include "QP.h"
 #include "QE.h"
-#include <string>
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -109,80 +108,80 @@ void QP::ParseField(string field) {
 	string split1[] = field.split("(");
 	string command = split1[0];
 	string split2[] = split1[1].split(",");
-	string first = split2[0].erase(remove(split2[0].begin(), split2[0].end(), '\"'), split2[0].end());
-	String second = split[1].erase(remove(split2[1].begin(), split2[1].end(), '\"'), split2[1].end());
-	second = second.erase(remove(second.begin(), second.end(), ')'), second.end());
-	bool isNum1 = QP::isInt(first);
-	bool isNum2 = QP::isInt(second);
+	string one = split2[0].erase(remove(split2[0].begin(), split2[0].end(), '\"'), split2[0].end());
+	String two = split[1].erase(remove(split2[1].begin(), split2[1].end(), '\"'), split2[1].end());
+	two = two.erase(remove(two.begin(), two.end(), ')'), two.end());
+	bool isNum1 = QP::isInt(one);
+	bool isNum2 = QP::isInt(two);
 	if (isNum1) {
-		int a = atoi(first.c_str());
+		int a = atoi(one.c_str());
 	}
 	if (isNum2) {
-		int b = atoi(second.c_str());
+		int b = atoi(two.c_str());
 	}
 
-	if (command.compare("ModifiesT") == 0) {
-		if (isNum1 && !isNum2) {
-			QE::ModifiesT(a, second);
+	if (command.compare("ModifiesS") == 0) {
+		if (!isNum1 && !isNum2) {
+			vector<int> ans1 = QE::ModifiesS(one, two);
 		}
 		else{
-			QE::ModifiesT(first, b);
+			vector<string> ans1 = QE::ModifiesS(one, b);
 		}
 	}
-	else if (command.compare("UsesT") == 0) {
+	else if (command.compare("UsesS") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::UsesT(a, second);
+			QE::UsesS(a, two);
 		}
 		else{
-			QE::UsesT(first, b);
+			QE::UsesS(one, b);
 		}
 	}
 	else if (command.compare("Parent") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::Parent(a, second);
+			QE::Parent(a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::Parent(first, b);
+			QE::Parent(one, b);
 		}
 		else {
-			QE::Parent(first, second);
+			QE::Parent(one, two);
 		}
 	}
 	else if (command.compare("ParentT") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::ParentT(a, second);
+			QE::ParentT(a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::ParentT(first, b);
+			QE::ParentT(one, b);
 		}
 		else {
-			QE::ParentT(first, second);
+			QE::ParentT(one, two);
 		}
 	}
 	else if (command.compare("Follows") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::Follows(a, second);
+			QE::Follows(a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::Follows(first, b);
+			QE::Follows(one, b);
 		}
 		else {
-			QE::Follows(first, second);
+			QE::Follows(one, two);
 		}
 	}
 	else if (command.compare("FollowsT") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::FollowsT(a, second);
+			QE::FollowsT(a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::FollowsT(first, b);
+			QE::FollowsT(one, b);
 		}
 		else {
-			QE::FollowsT(first, second);
+			QE::FollowsT(one, two);
 		}
 	}
 	else{
-		QE::pattern(first, second);
+		QE::pattern(one, two);
 	}
 }
 
