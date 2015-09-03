@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AST.h" />
+    <ClInclude Include="FollowTable.h" />
     <ClInclude Include="LineToken.h" />
     <ClInclude Include="LineTokenizer.h" />
     <ClInclude Include="ModUseTable.h" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AST.cpp" />
+    <ClCompile Include="FollowTable.cpp" />
     <ClCompile Include="LineToken.cpp" />
     <ClCompile Include="LineTokenizer.cpp" />
     <ClCompile Include="ModUseTable.cpp" />
