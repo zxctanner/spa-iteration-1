@@ -22,7 +22,7 @@ public:
 	vector<int> Follows(int one, string two);
 	vector<int> Follows(string one, int two);
 
-	vector<int> FollowsT(string one, int two);
+	vector<int> FollowsT(string one, string two);
 	vector<int> FollowsT(int one, string two);
 	vector<int> FollowsT(string one, int two);
 
