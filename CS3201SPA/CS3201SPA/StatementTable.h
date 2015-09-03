@@ -2,7 +2,7 @@
 class StatementTable
 {
 public:
-	StatementTable();
+	unordered_map<int, LineToken*> getStmtTable();
 	void insert(int stmtNum, LineToken);
 	LineToken getStmt(int stmtNum);
 };

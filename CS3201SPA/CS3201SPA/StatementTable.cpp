@@ -8,13 +8,14 @@ class StatementTable {
 	unordered_map<int, LineToken*> table;
 
 public:
+	unordered_map<int, LineToken*> getStmtTable();
 	void insert(int stmtNum, LineToken);
 	LineToken getStmt(int stmtNum);
 };
 
-StatementTable::StatementTable()
+unordered_map<int, LineToken*> StatementTable::getStmtTable()
 {
-
+	return table;
 }
 
 void StatementTable::insert(int stmtNum, LineToken lineToken) {

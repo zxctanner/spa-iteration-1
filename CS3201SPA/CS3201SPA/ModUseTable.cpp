@@ -7,10 +7,15 @@ class ModUseTable {
 	unordered_map<int, pair<string, string>> table;
 
 public:
+	unordered_map<int, pair<string, string>> getModUseTable();
 	void insert(int stmtNum, string modified, string used);
 	string getLHS(int stmtNum);
 	string getRHS(int stmtNum);
 };
+
+unordered_map<int, pair<string, string>> ModUseTable::getModUseTable() {
+	return table;
+}
 
 void ModUseTable::insert(int stmtNum, string modified, string used) {
 	pair<string, string> assignment(modified, used);

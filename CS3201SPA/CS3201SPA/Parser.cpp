@@ -62,8 +62,8 @@ void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentT
 
 		//before ending parser, return all tables
 		*parentTable = pt.getParentTable();
-		// *modUseTable = mut.getTable();                
-		// *statementTable = st.getTable();
+		*modUseTable = mut.getModUseTable();                
+		*statementTable = st.getStmtTable();
 		// *followTable = ft.getTable();
 
 		/*
