@@ -45,14 +45,13 @@
     <ClInclude Include="ParentTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="QP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QE.h">
-=======
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="PKB.h">
->>>>>>> origin/master
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -87,14 +86,13 @@
     <ClCompile Include="ParentTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="QP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QE.cpp">
-=======
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PKB.cpp">
->>>>>>> origin/master
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
