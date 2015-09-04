@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <sstream>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ void LineTokenizer::tokenize()
 	}
 
 	regex procedureRgx("Procedure\\s+([a-zA-Z][a-zA-Z0-9]*)");
-	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)\\s+=\\s+(.*);");
+	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)\\s+=\\s+(.*)\\s+;");
 	regex whileRgx("while\\s+([a-zA-Z][a-zA-Z0-9]*)");
 	regex openBracketRgx("\\{");
 	regex closeBracketRgx("\\}");
@@ -54,10 +55,22 @@ void LineTokenizer::tokenize()
 
 		if (regex_search(line, match, assignmentRgx)) {
 			string varName = match[1];
-			string rhsexpr = match[2];
-			cout << "[Variable Name]: " << varName << endl;
-			cout << "[RHS Exprssion]: " << rhsexpr << endl;
-			tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, rhsexpr));
+			string rhs = match[2];
+			//erase all whitespace from rhs
+			rhs.erase(remove_if(rhs.begin(), rhs.end(), isspace), rhs.end());
+			vector<string> strvec;
+			if (rhs.find("+") != string::npos) {
+				stringstream ss(rhs);
+				string tok;
+				while (getline(ss, tok, (char)"+")) {
+					strvec.push_back(tok);
+				}
+			}
+			else {
+				strvec.push_back(rhs);
+			}
+			
+			tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, strvec));
 		}
 
 		if (regex_search(line, match, whileRgx)) {

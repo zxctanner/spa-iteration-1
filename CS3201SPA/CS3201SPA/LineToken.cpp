@@ -6,7 +6,7 @@ LineToken::LineToken()
 {
 }
 
-LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number, string rhsexpr)
+LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number, vector<string> rhsexpr)
 {
 	type = tokType;
 	name = tokName;
@@ -42,7 +42,7 @@ int LineToken::getStmtNumber()
 	return stmtNumber;
 }
 
-string LineToken::getExpr()
+vector<string> LineToken::getExpr()
 {
 	return expr;
 }

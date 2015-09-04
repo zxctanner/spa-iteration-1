@@ -128,10 +128,7 @@
     <ClInclude Include="QP.h" />
     <ClInclude Include="QE.h" />
     <ClInclude Include="PKB.h" />
-    <ClInclude Include="QueryEvaluator.h" />
-    <ClInclude Include="QueryParser.h" />
     <ClInclude Include="QueryTable.h" />
-    <ClInclude Include="SimpleParser.h" />
     <ClInclude Include="StatementTable.h" />
     <ClInclude Include="TNode.h" />
   </ItemGroup>
@@ -146,10 +143,7 @@
     <ClCompile Include="QP.cpp" />
     <ClCompile Include="QE.cpp" />
     <ClCompile Include="PKB.cpp" />
-    <ClCompile Include="QueryEvaluator.cpp" />
-    <ClCompile Include="QueryParser.cpp" />
     <ClCompile Include="QueryTable.cpp" />
-    <ClCompile Include="SimpleParser.cpp" />
     <ClCompile Include="StatementTable.cpp" />
     <ClCompile Include="TNode.cpp" />
   </ItemGroup>

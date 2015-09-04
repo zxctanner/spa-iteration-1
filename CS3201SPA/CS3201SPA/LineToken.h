@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 enum stmtType{
@@ -16,17 +17,17 @@ private:
 	string name;
 	int level;
 	int stmtNumber;
-	string expr;
+	vector<string> expr;
 
 public:
 	LineToken();
-	LineToken(stmtType tokType, string tokName, int nestLevel, int number, string rhsepr = "");
+	LineToken(stmtType tokType, string tokName, int nestLevel, int number, vector<string> rhsepr = {});
 	~LineToken();
 	stmtType getType();
 	string getName();
 	int getLevel();
 	int getStmtNumber();
-	string getExpr();
+	vector<string> getExpr();
 	friend ostream& operator<<(ostream& os, LineToken& token);
 
 };

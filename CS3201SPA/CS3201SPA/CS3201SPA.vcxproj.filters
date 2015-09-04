@@ -24,9 +24,6 @@
     <ClInclude Include="AST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="QueryTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,12 +51,6 @@
     <ClInclude Include="PKB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueryEvaluator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QueryParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FollowTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -72,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AST.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QueryTable.cpp">
@@ -102,12 +90,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PKB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryEvaluator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FollowTable.cpp">
