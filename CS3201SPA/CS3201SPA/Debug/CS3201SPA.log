@@ -1,5 +1,11 @@
-﻿Build started 4/9/2015 2:55:25 PM.
+﻿Build started 9/4/2015 4:39:19 PM.
+     1>Project "C:\Users\HouYi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (ClCompile target(s)).
+     1>ClCompile:
+         D:\VisualStudio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LineTokenizer.cpp
+         Skipping... (no relevant changes detected)
+         LineTokenizer.cpp
+     1>Done Building Project "C:\Users\HouYi\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.01
+Time Elapsed 00:00:00.36

@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AST.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="FollowTable.cpp" />
     <ClCompile Include="LineToken.cpp" />
     <ClCompile Include="LineTokenizer.cpp" />
