@@ -122,6 +122,7 @@ Parser::Parser(string fileName, PKB * p)
 	pkb = p;
 	LineTokenizer tokenizer = LineTokenizer(fileName);
 	tokens = tokenizer.getTokenVector();
+	populateAllTables();
 }
 
 Parser::~Parser()
@@ -130,16 +131,17 @@ Parser::~Parser()
 
 void Parser::populateFollowTable()
 {
+	vector<LineToken> tokensCopy = tokens;
 	vector<pair<int,int>>* ft = new vector<pair<int, int>>();
 	
 	bool isWhile = false;
 	stack<LineToken> nestedStack;
 
-	int *nesting = new int[tokens.size()];
+	int *nesting = new int[tokensCopy.size()];
 
 	int counter = 0;
 
-	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+	for (auto it = tokensCopy.begin(); it != tokensCopy.end(); ++it) {
 		nesting[counter] = it->getLevel();
 		counter++;
 	}
@@ -186,4 +188,12 @@ void Parser::populateStatamentTable()
 
 void Parser::populateModUseTable()
 {
+}
+
+void Parser::populateAllTables()
+{
+	populateFollowTable();
+	populateModUseTable;
+	populateModUseTable();
+	populateParentTable();
 }

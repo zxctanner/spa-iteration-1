@@ -30,5 +30,6 @@ public:
 	void populateParentTable();
 	void populateStatamentTable();
 	void populateModUseTable();
+	void populateAllTables();
 
 };
