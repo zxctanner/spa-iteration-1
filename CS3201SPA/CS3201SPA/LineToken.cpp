@@ -46,3 +46,8 @@ string LineToken::getExpr()
 {
 	return expr;
 }
+
+ostream& operator<<(ostream& os, LineToken& token) {
+	return os << "LineToken" << " TYPE " << token.getType() 
+		<< " NAME " << token.getName() << " LEVEL" << token.getLevel() << " LineNumber " << token.getLevel() << " Expr " << token.getStmtNumber();
+}

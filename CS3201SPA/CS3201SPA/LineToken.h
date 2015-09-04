@@ -27,6 +27,7 @@ public:
 	int getLevel();
 	int getStmtNumber();
 	string getExpr();
+	friend ostream& operator<<(ostream& os, LineToken& token);
 
 };
 

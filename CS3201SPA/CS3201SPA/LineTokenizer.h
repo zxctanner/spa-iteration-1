@@ -17,6 +17,7 @@ public:
 	~LineTokenizer();
 	vector<LineToken> getTokenVector();
 	void tokenize();
+	void printTokenVector();
 };
 
 

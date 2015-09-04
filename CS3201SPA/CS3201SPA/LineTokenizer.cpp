@@ -81,6 +81,12 @@ void LineTokenizer::tokenize()
 		}
 		lineNumber++;
 	}
+}
 
+void LineTokenizer::printTokenVector()
+{
+	for (auto iter = tokVec.begin(); iter != tokVec.end(); ++iter) {
+		cout << *iter << endl;
+	}		
 }
 
