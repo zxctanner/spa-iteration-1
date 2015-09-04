@@ -2,6 +2,8 @@
 #include "ParentTable.h"
 #include "ModUseTable.h"
 #include "StatementTable.h"
+#include "FollowTable.h"
+
 #include <unordered_map>
 #include <stack>
 
@@ -13,6 +15,7 @@ public:
 	StatementTable st;
 	ModUseTable mut;
 	ParentTable pt;
+	FollowTable ft;
 
 	void runParser(vector<LineToken> tokens,vector<pair<int,int>>* parentTable, unordered_map<int,pair<string, string>>* modUseTable,
 		unordered_map<int, LineToken*>* statementTable, vector<pair<int,int>>* followTable);
@@ -23,6 +26,53 @@ void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentT
 	vector<LineToken>::iterator it;
 	bool isWhile = false;
 	stack<LineToken> nestedStack;
+
+	int *nesting = new int[tokens.size()];
+
+	int counter = 0;
+
+	for (it = tokens.begin(); it != tokens.end(); ++it) {
+		nesting[counter] = it->getLevel();
+		counter++;
+	}
+
+	//create followtable array here
+
+	// pass in a nesting table
+	// int nesting[] = { 0,1,2,3,3,2,0 };
+
+	// count the size of the nesting array;
+	int countSize = sizeof(nesting) / sizeof(*nesting);
+
+	// n for outer loop, n for inner loop
+	int n;
+
+	int m;
+
+	for (n = 0; n < countSize - 1; n++) {
+
+		// get the current nesting level
+		int currentNesting = nesting[n];
+
+		for (m = n + 1; m < countSize; m++) {
+
+			int nextNesting = nesting[m];
+
+			// if next nesting level drops below current level, no need to proceed
+			if (nextNesting < currentNesting) {
+				break;
+			}
+
+			// if same level means follow
+			if (nextNesting == currentNesting) {
+				//std::cout << (n + 1) << (m + 1) << "\n";
+
+				ft.addEntry(n + 1, m + 1);
+			}
+
+		}
+	}
+
 
 	for (it = tokens.begin(); it != tokens.end(); ++it) {
 		
@@ -64,7 +114,7 @@ void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentT
 		*parentTable = pt.getParentTable();
 		*modUseTable = mut.getModUseTable();                
 		*statementTable = st.getStmtTable();
-		// *followTable = ft.getTable();
+		*followTable = ft.getFollowTable();
 
 		/*
 		//THIS SWITCH CASE IS USE FOR MAKING AST

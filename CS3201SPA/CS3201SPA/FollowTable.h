@@ -8,6 +8,6 @@ private:
 public:
 	void addEntry(int parent, int child);
 	vector<pair<int, int>> getFollowTable();
-	vector<pair<int, int>> generateFollowTable();
+	vector<pair<int, int>> generateFollowTable(int nesting[]);
 };
 

@@ -5,28 +5,29 @@ using namespace std;
 
 class FollowTable {
 private:
-	vector<pair<int, int>> ParentT;
+	vector<pair<int, int>> FollowT;
 public:
 	void addEntry(int parent, int child);
 	vector<pair<int, int>> getFollowTable();
-	vector<pair<int, int>> generateFollowTable();
+	vector<pair<int, int>> generateFollowTable(int nesting[]);
 };
 
 void FollowTable::addEntry(int parent, int child)
 {
 	pair<int, int> entry(parent, child);
-	ParentT.push_back(entry);
+	FollowT.push_back(entry);
 }
 
 vector<pair<int, int>> FollowTable::getFollowTable()
 {
-	return ParentT;
+	return FollowT;
 }
 
-
-vector<pair<int, int>> FollowTable::generateFollowTable()
+/*
+vector<pair<int, int>> FollowTable::generateFollowTable(int nesting[])
 {
-	int nesting[] = { 0,1,2,3,3,2,0 };
+	// pass in a nesting table
+	// int nesting[] = { 0,1,2,3,3,2,0 };
 
 	// count the size of the nesting array;
 	int countSize = sizeof(nesting) / sizeof(*nesting);
@@ -54,11 +55,13 @@ vector<pair<int, int>> FollowTable::generateFollowTable()
 			if (nextNesting == currentNesting) {
 				//std::cout << (n + 1) << (m + 1) << "\n";
 
+				pair<int, int> entry(n+1, m+1);
+				FollowT.push_back(entry);
 			}
 
 		}
 	}
 
-	return ParentT;
+	return FollowT;
 }
-
+*/
