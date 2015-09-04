@@ -60,6 +60,7 @@ void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentT
 				//std::cout << (n + 1) << (m + 1) << "\n";
 
 				ft.addEntry(n + 1, m + 1);
+				break;
 			}
 
 		}

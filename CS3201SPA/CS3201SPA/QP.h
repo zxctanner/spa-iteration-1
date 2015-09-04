@@ -26,7 +26,7 @@ public:
 public:
 
 	QP QueryParser();
-	void ParseField(string field);
+	void selectField(vector<string>);
 	string trim(const string& str, const string& trimmers);
 	vector<string> separateDQ(string& str);
 	bool validNoSTPattern(string& str);

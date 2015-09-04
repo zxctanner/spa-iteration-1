@@ -472,13 +472,11 @@ designEntity = QueryParser::ExtractFirstWord(*i);
 
 
 //JEREMY'S FUNCTIONS:
-void QP::ParseField(string field) {
-	string split1[] = field.split("(");
-	string command = split1[0];
-	string split2[] = split1[1].split(",");
-	string one = split2[0].erase(remove(split2[0].begin(), split2[0].end(), '\"'), split2[0].end());
-	String two = split[1].erase(remove(split2[1].begin(), split2[1].end(), '\"'), split2[1].end());
-	two = two.erase(remove(two.begin(), two.end(), ')'), two.end());
+void QP::selectField(vector<string> fields) {
+	string select = fields[0];
+	string command = fields[1];
+	string one = fields[2];
+	string two = fields[3];
 	bool isNum1 = QP::isInt(one);
 	bool isNum2 = QP::isInt(two);
 	if (isNum1) {
