@@ -15,6 +15,7 @@ LineTokenizer::LineTokenizer()
 LineTokenizer::LineTokenizer(string fileName)
 {
 	filePath = fileName;
+	tokenize();
 }
 
 
@@ -72,7 +73,7 @@ void LineTokenizer::tokenize()
 		}
 		
 		if (regex_search(line, closeBracketRgx)) {
-			int match_count = distance(sregex_iterator(line.begin(), line.end(), openBracketRgx), sregex_iterator());
+			int match_count = distance(sregex_iterator(line.begin(), line.end(), closeBracketRgx), sregex_iterator());
 			nestingLevel -= match_count;
 			if (nestingLevel < 0) {
 				cerr << "Nesting Level Decreased to below zero." << endl;
@@ -82,6 +83,4 @@ void LineTokenizer::tokenize()
 	}
 
 }
-
-
 
