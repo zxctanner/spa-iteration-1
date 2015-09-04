@@ -1,22 +1,34 @@
+#include "ModUseTable.h"
 #include <unordered_map>
 #include <string>
 
 using namespace std;
 
-class ModUseTable {
-	unordered_map<int, pair<string, vector<string>>> table;
 
-public:
-	unordered_map<int, pair<string, vector<string>>> getModUseTable();
-	void insert(int stmtNum, string modified, vector<string> used);
-	string getLHS(int stmtNum);
-	string getRHS(int stmtNum);
-};
-
-unordered_map<int, pair<string, vector<string>>> ModUseTable::getModUseTable() {
-	return table;
+ModUseTable::ModUseTable()
+{
+	modUseTable = new unordered_map<int, pair<string, vector<string>>>();
 }
 
+ModUseTable::ModUseTable(unordered_map<int, pair<string, vector<string>>>* mUTable)
+{
+	modUseTable = mUTable;
+}
+
+ModUseTable::~ModUseTable()
+{
+}
+
+unordered_map<int, pair<string, vector<string>>>* ModUseTable::getModUseTable() {
+	return modUseTable;
+}
+
+void ModUseTable::setModUseTable(unordered_map<int, pair<string, vector<string>>>* mUTable)
+{
+	modUseTable = mUTable;
+}
+
+/*
 void ModUseTable::insert(int stmtNum, string modified, vector<string> used) {
 	pair<string, vector<string>> assignment(modified, used);
 	table[stmtNum] = assignment;
@@ -43,3 +55,4 @@ string ModUseTable::getRHS(int stmtNum) {
 	}
 	return assignment.second;
 }
+*/

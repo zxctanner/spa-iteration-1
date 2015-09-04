@@ -1,22 +1,34 @@
+#include "ParentTable.h"
 #include <vector>
 
 using namespace std;
 
-class ParentTable {
-private:
-	vector<pair<int,int>> ParentT;
-public:
-	void addEntry(int parent, int child);
-	vector<pair<int,int>> getParentTable();
-};
+ParentTable::ParentTable()
+{
+	parentTable = new vector<pair<int, int>>();
+}
+
+ParentTable::ParentTable(vector<pair<int, int>>* pTable)
+{
+	parentTable = pTable;
+}
+
+ParentTable::~ParentTable()
+{
+}
 
 void ParentTable::addEntry(int parent, int child)
 {
 	pair<int, int> entry(parent,child);
-	ParentT.push_back(entry);
+	parentTable->push_back(entry);
 }
 
-vector<pair<int,int>> ParentTable::getParentTable()
+vector<pair<int,int>>* ParentTable::getParentTable()
 {
-	return ParentT;
+	return parentTable;
+}
+
+void ParentTable::setParentTable(vector<pair<int, int>>* pTable)
+{
+	parentTable = pTable;
 }

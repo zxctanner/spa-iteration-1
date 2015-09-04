@@ -1,26 +1,18 @@
 #include "LineToken.h"
+#include "LineTokenizer.h"
 #include "ParentTable.h"
 #include "ModUseTable.h"
 #include "StatementTable.h"
 #include "FollowTable.h"
-
+#include "Parser.h"
 #include <unordered_map>
 #include <stack>
+#include <vector>
+
 
 using namespace std;
 
-class Parser {
-public:
-
-	StatementTable st;
-	ModUseTable mut;
-	ParentTable pt;
-	FollowTable ft;
-
-	void runParser(vector<LineToken> tokens,vector<pair<int,int>>* parentTable, unordered_map<int,pair<string, vector<string>>>* modUseTable,
-		unordered_map<int, LineToken*>* statementTable, vector<pair<int,int>>* followTable);
-};
-
+/*
 void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentTable, unordered_map<int, pair<string, vector<string>>>* modUseTable, unordered_map<int, LineToken*>* statementTable, vector<pair<int, int>>* followTable)
 {
 	vector<LineToken>::iterator it;
@@ -116,21 +108,81 @@ void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentT
 		*statementTable = st.getStmtTable();
 		*followTable = ft.getFollowTable();
 
-		/*
-		//THIS SWITCH CASE IS USE FOR MAKING AST
-		switch (it->getType()) {
-			case PROCEDURE:
-				//do prodcedure stuff
-				//create procedure node followed by stmtList node below
-				break;
-			case ASSIGN:
-				//do assign stuff
-				//create assign node followed by left variable node and right expression node
-				break;
-			case WHILE:
-				//do while stuff
-				//create while node followed by left vraiable and right stmtList
-				break;
-		} */
+		
 	}
+}
+*/
+Parser::Parser()
+{
+}
+
+Parser::Parser(string fileName, PKB * p)
+{
+	pkb = p;
+	LineTokenizer tokenizer = LineTokenizer(fileName);
+	tokens = tokenizer.getTokenVector();
+}
+
+Parser::~Parser()
+{
+}
+
+void Parser::populateFollowTable()
+{
+	vector<pair<int,int>>* ft = new vector<pair<int, int>>();
+	
+	bool isWhile = false;
+	stack<LineToken> nestedStack;
+
+	int *nesting = new int[tokens.size()];
+
+	int counter = 0;
+
+	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+		nesting[counter] = it->getLevel();
+		counter++;
+	}
+
+	//create followtable array here
+
+	// pass in a nesting table
+	// int nesting[] = { 0,1,2,3,3,2,0 };
+
+	// count the size of the nesting array;
+	int countSize = sizeof(nesting) / sizeof(*nesting);
+
+	// n for outer loop, n for inner loop
+	int n, m;
+	for (n = 0; n < countSize - 1; n++) {
+		// get the current nesting level
+		int currentNesting = nesting[n];
+		for (m = n + 1; m < countSize; m++) {
+			int nextNesting = nesting[m];
+
+			// if next nesting level drops below current level, no need to proceed
+			if (nextNesting < currentNesting) {
+				break;
+			}
+			// if same level means follow
+			if (nextNesting == currentNesting) {
+				//std::cout << (n + 1) << (m + 1) << "\n";
+				pair<int, int> entry(n+1, m+1);
+				ft->push_back(entry);
+				break;
+			}
+		}
+	}
+	pkb->setFollowTable(new FollowTable(ft));
+}
+
+void Parser::populateParentTable()
+{
+}
+
+void Parser::populateStatamentTable()
+{
+}
+
+void Parser::populateModUseTable()
+{
 }

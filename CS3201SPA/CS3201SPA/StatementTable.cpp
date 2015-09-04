@@ -1,22 +1,34 @@
 #include "LineToken.h"
+#include "StatementTable.h"
 #include <unordered_map>
 
 using namespace std;
 
-class StatementTable {
-	unordered_map<int, LineToken*> table;
-
-public:
-	unordered_map<int, LineToken*> getStmtTable();
-	void insert(int stmtNum, LineToken);
-	LineToken getStmt(int stmtNum);
-};
-
-unordered_map<int, LineToken*> StatementTable::getStmtTable()
+StatementTable::StatementTable()
 {
-	return table;
+	statementTable = new unordered_map<int, LineToken*> ();
 }
 
+StatementTable::StatementTable(unordered_map<int, LineToken*>* sTable)
+{
+	statementTable = sTable;
+}
+
+StatementTable::~StatementTable()
+{
+}
+
+unordered_map<int, LineToken*>* StatementTable::getStatementTable()
+{
+	return statementTable;
+}
+
+void StatementTable::setStatementTable(unordered_map<int, LineToken*>* sTable)
+{
+	statementTable = sTable;
+}
+
+/*
 void StatementTable::insert(int stmtNum, LineToken lineToken) {
 	StatementTable::table[stmtNum] = &lineToken;
 }
@@ -29,3 +41,4 @@ LineToken StatementTable::getStmt(int key) {
 		return LineToken();
 	}
 }
+*/

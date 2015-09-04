@@ -2,53 +2,68 @@
 #include <unordered_map>
 #include "LineToken.h"
 #include "Parser.h"
+#include "PKB.h"
 
 using namespace std;
 
-class PKB
-{
-private:
-	vector<pair<int, int>> parentTable;
-	vector<pair<int, int>> parentStarTable;
-	unordered_map<int, pair<string, string>> modUseTable;
-	unordered_map<int, LineToken*> statementTable;
-	vector<pair<int, int>> followTable;
-	Parser parse;
-public:
-	void constructAllTables(vector<LineToken> tokens);
-	vector<pair<int, int>> getParentTable();
-	vector<pair<int, int>> getParentStarTable();
-	unordered_map<int, pair<string, string>> getmodUseTable();
-	unordered_map<int, LineToken*> getStatementTable();
-	vector<pair<int, int>> getFollowTable();
-};
-
+/*
 void PKB::constructAllTables(vector<LineToken> tokens)
 {
 	parse.runParser(tokens, &parentTable, &modUseTable, &statementTable, &followTable);
 }
+*/
 
-vector<pair<int, int>> PKB::getParentTable()
+PKB::PKB()
+{
+	parentTable = new ParentTable();
+	modUseTable = new ModUseTable();
+	statementTable = new StatementTable();
+	followTable = new FollowTable();
+}
+
+PKB::~PKB()
+{
+}
+
+
+ParentTable* PKB::getParentTable()
 {
 	return parentTable;
 }
 
-vector<pair<int, int>> PKB::getParentStarTable()
-{
-	return parentStarTable;
-}
 
-unordered_map<int, pair<string, string>> PKB::getmodUseTable()
+ModUseTable* PKB::getmodUseTable()
 {
 	return modUseTable;
 }
 
-unordered_map<int, LineToken*> PKB::getStatementTable()
+StatementTable* PKB::getStatementTable()
 {
 	return statementTable;
 }
 
-vector<pair<int, int>> PKB::getFollowTable()
+FollowTable* PKB::getFollowTable()
 {
 	return followTable;
 }
+
+void PKB::setParentTable(ParentTable* pTable)
+{
+	parentTable = pTable;
+}
+
+void PKB::setModUseTable(ModUseTable* mUTable)
+{
+	modUseTable = mUTable;
+}
+
+void PKB::setStatementTable(StatementTable* stmtTable)
+{
+	statementTable = stmtTable;
+}
+
+void PKB::setFollowTable(FollowTable* fTable)
+{
+	followTable = fTable;
+}
+

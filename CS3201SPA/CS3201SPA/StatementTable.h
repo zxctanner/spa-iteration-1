@@ -5,9 +5,18 @@ using namespace std;
 
 class StatementTable
 {
+private:
+	unordered_map<int, LineToken*>* statementTable;
 public:
-	unordered_map<int, LineToken*> getStmtTable();
+	StatementTable();
+	StatementTable(unordered_map<int, LineToken*>* sTable);
+	~StatementTable();
+
+	unordered_map<int, LineToken*>* getStatementTable();
+	void setStatementTable(unordered_map<int, LineToken*>* sTable);
+	/*
 	void insert(int stmtNum, LineToken);
 	LineToken getStmt(int stmtNum);
+	*/
 };
 

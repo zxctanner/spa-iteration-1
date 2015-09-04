@@ -4,10 +4,15 @@ using namespace std;
 
 class FollowTable {
 private:
-	vector<pair<int, int>> FollowT;
+	vector<pair<int, int>>* followTable;
 public:
-	void addEntry(int parent, int child);
-	vector<pair<int, int>> getFollowTable();
-	vector<pair<int, int>> generateFollowTable(int nesting[]);
+	FollowTable();
+	~FollowTable();
+	FollowTable(vector<pair<int, int>>* fTable);
+
+	//void addEntry(int parent, int child);
+	vector<pair<int, int>>* getFollowTable();
+	void setFollowTable(vector<pair<int, int>>* fTable);
+	//vector<pair<int, int>> generateFollowTable(int nesting[]);
 };
 
