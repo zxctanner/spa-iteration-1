@@ -1,8 +1,4 @@
-#include <string>;
-#include <unordered_map>;
-
-using namespace std;
-
+#pragma once
 class StatementTable
 {
 public:

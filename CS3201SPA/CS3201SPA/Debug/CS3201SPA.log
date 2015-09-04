@@ -1,5 +1,20 @@
-﻿Build started 4/9/2015 2:30:37 PM.
+﻿Build started 9/4/2015 12:23:15 PM.
+     1>Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (ClCompile target(s)).
+     1>ClCompile:
+         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp
+         Parser.cpp
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(5): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(5): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(5): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(5): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\parser.cpp(115): error C2039: 'getModUseTable': is not a member of 'ModUseTable'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(3): note: see declaration of 'ModUseTable'
+     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\parser.cpp(116): error C2039: 'getStmtTable': is not a member of 'StatementTable'
+         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(3): note: see declaration of 'StatementTable'
+     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (ClCompile target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.05
+Time Elapsed 00:00:00.67
