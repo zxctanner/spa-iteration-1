@@ -1,4 +1,5 @@
 #pragma once
+#include "LineToken.h"
 #include <iostream>
 #include <fstream>
 #include <string>

@@ -16,8 +16,6 @@ LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number
 }
 
 
-
-
 LineToken::~LineToken()
 {
 }
