@@ -17,11 +17,11 @@ public:
 	ParentTable pt;
 	FollowTable ft;
 
-	void runParser(vector<LineToken> tokens,vector<pair<int,int>>* parentTable, unordered_map<int,pair<string, string>>* modUseTable,
+	void runParser(vector<LineToken> tokens,vector<pair<int,int>>* parentTable, unordered_map<int,pair<string, vector<string>>>* modUseTable,
 		unordered_map<int, LineToken*>* statementTable, vector<pair<int,int>>* followTable);
 };
 
-void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentTable, unordered_map<int, pair<string, string>>* modUseTable, unordered_map<int, LineToken*>* statementTable, vector<pair<int, int>>* followTable)
+void Parser::runParser(vector<LineToken> tokens, vector<pair<int, int>>* parentTable, unordered_map<int, pair<string, vector<string>>>* modUseTable, unordered_map<int, LineToken*>* statementTable, vector<pair<int, int>>* followTable)
 {
 	vector<LineToken>::iterator it;
 	bool isWhile = false;

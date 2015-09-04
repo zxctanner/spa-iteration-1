@@ -1,4 +1,8 @@
-#pragma once
+#include "LineToken.h"
+#include <unordered_map>
+
+using namespace std;
+
 class StatementTable
 {
 public:

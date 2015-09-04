@@ -1,4 +1,3 @@
-#include "TNode.h"
 #include <string>
 #include <vector>
 
@@ -33,7 +32,6 @@ public:
 	void insertChild(TNode node, int index);
 	TNode getChild(int index);
 	int numChildren();
-	TNode(string name, string nodeType, int stmtNum);
 };
 
 TNode::TNode(string name, string nodeType, int stmtNum) {

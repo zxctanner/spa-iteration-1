@@ -80,11 +80,13 @@ void AST::gotoRightSibling()
 string AST::getName()
 {
 	//return currentNode->getName();
+	return "";
 }
 
 string AST::getNodeType()
 {
 	//return currentNode->getNodeType();
+	return "";
 }
 
 int AST::getStmtNum()
