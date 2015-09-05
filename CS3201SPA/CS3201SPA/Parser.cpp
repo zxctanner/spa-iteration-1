@@ -121,6 +121,7 @@ Parser::Parser(string fileName, PKB * p)
 {
 	pkb = p;
 	LineTokenizer tokenizer = LineTokenizer(fileName);
+	tokenizer.tokenize();
 	tokens = tokenizer.getTokenVector();
 	populateAllTables();
 }
@@ -193,7 +194,7 @@ void Parser::populateModUseTable()
 void Parser::populateAllTables()
 {
 	populateFollowTable();
-	populateModUseTable;
+	populateModUseTable();
 	populateModUseTable();
 	populateParentTable();
 }
