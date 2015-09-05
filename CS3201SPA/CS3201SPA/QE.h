@@ -27,5 +27,7 @@ public:
 	vector<string> FollowsT(string select, string one, int two);
 
 	vector<string> pattern(string select, string one, string two);
+
+	vector<string> filter(vector<string> vec, string field);
 };
 

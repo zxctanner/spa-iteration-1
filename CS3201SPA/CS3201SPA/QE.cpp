@@ -234,3 +234,10 @@ vector<string> QE::pattern(string select, string one, string two); { //return th
 	vector<string> ans;
 	return ans;
 }
+
+vector<string> QE::filter(vector<string> vec, string field) {
+	vector<string> filAns;
+	string type = QP::checkSynType(field);
+
+	return filAns;
+}
