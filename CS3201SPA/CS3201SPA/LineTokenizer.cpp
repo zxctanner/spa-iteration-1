@@ -16,7 +16,6 @@ LineTokenizer::LineTokenizer()
 LineTokenizer::LineTokenizer(string fileName)
 {
 	filePath = fileName;
-	tokenize();
 }
 
 
