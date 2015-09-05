@@ -181,6 +181,37 @@ void Parser::populateFollowTable()
 
 void Parser::populateParentTable()
 {
+	vector<LineToken>::iterator it;
+	bool isWhile = false;
+	stack<LineToken> nestedStack;
+
+	for (it = tokens.begin(); it != tokens.end(); ++it) {
+
+		//populates ParentTable
+		if (isWhile) {
+			//current statement is still within the current nesting level
+			if (nestedStack.top().getLevel() == 1 + it->getLevel()) {
+				pkb->getParentTable->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+			}
+			else //current statement goes back to same nesting level as "while" or even lower
+			{
+				//pop out all while loops that has ended
+				while (nestedStack.top().getLevel() >= it->getLevel() || nestedStack.empty()) {
+					nestedStack.pop();
+				}
+				//if stack is still not empty, current statement is a child of the while loop in the stack
+				if (!nestedStack.empty()) {
+					pkb->getParentTable->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+				}
+				else //nestedStack is empty
+					isWhile = false;
+			}
+		}
+
+		if (it->getType() == WHILE) {
+			isWhile = true;
+			nestedStack.push(*it);
+		}
 }
 
 void Parser::populateStatementTable()
