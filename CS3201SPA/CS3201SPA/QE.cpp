@@ -199,6 +199,17 @@ vector<string> QE::Follows(string select, string one, int two); { //return the s
 vector<string> QE::FollowsT(string select, string one, string two); { //return all the statement lines base on condition
 	vector<pair<int, int>> folTable = PKB::getFollowTable();
 	vector<string> ans;
+
+	vector<pair<int, int>> folTable = PKB::getFollowTable();
+	vector<string> ans;
+	ostringstream convert;
+	for (int i = 0; i < folTable.size(); ++i) {
+		convert << folTable[i].second;
+		ans.push_back(convert.str());
+		convert << folTable[i].first;
+		ans.push_back(convert.str());
+	}
+
 	return ans;
 }
 vector<string> QE::FollowsT(string select, int one, string two); { //return all the statement lines that follows* statement line one
