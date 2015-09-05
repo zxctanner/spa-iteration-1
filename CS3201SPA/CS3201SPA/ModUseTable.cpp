@@ -7,10 +7,10 @@ using namespace std;
 
 ModUseTable::ModUseTable()
 {
-	modUseTable = new unordered_map<int, pair<string, vector<string>>>();
+	modUseTable = new unordered_map<int, pair<vector<string>, vector<string>>>();
 }
 
-ModUseTable::ModUseTable(unordered_map<int, pair<string, vector<string>>>* mUTable)
+ModUseTable::ModUseTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable)
 {
 	modUseTable = mUTable;
 }
@@ -19,11 +19,11 @@ ModUseTable::~ModUseTable()
 {
 }
 
-unordered_map<int, pair<string, vector<string>>>* ModUseTable::getModUseTable() {
+unordered_map<int, pair<vector<string>, vector<string>>>* ModUseTable::getModUseTable() {
 	return modUseTable;
 }
 
-void ModUseTable::setModUseTable(unordered_map<int, pair<string, vector<string>>>* mUTable)
+void ModUseTable::setModUseTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable)
 {
 	modUseTable = mUTable;
 }
