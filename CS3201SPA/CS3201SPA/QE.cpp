@@ -20,26 +20,34 @@ QE QE::QueryEvaluator(){
 }
 
 vector<string> QE::ModifiesS(string select, string one, string two); { //returns statement number that modifies variable two
-	unordered_map<int, pair<string, vector<string>>> modTable = PKB::getmodUseTable();
+	unordered_map<int, pair<vector<string>, vector<string>>> modTable = PKB::getmodUseTable();
 	vector<string> ans;
+	vector<string> check;
 	ostringstream convert;
 	if (two.compares("_") != 0) {
 		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
-			if (modTable.second.first.compares(two) == 0) {           
-				convert << modTable.first;      
-				ans.push_back(convert.str());
+			check = modTable.second.first;
+			for (int j = 0; j < check.size(); ++j) {
+				if (check[j].compares(two) == 0) {
+					convert << modTable.first;
+					ans.push_back(convert.str());
+				}
 			}
 		}
+		ans = filter(ans, one, two);
 	}
 	else {
 		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
 			convert << modTable.first;
 			ans.push_back(convert.str());
+		}
+		ans = filter(ans, one, two);
 	}
+
 	return ans;
 }
 vector<string> QE::ModifiesS(string select, int one, string two); { //returns variable that is modifies in statement line one
-	unordered_map<int, pair<string, vector<string>>> modTable = PKB::getmodUseTable();
+	unordered_map<int, pair<vector<string>, vector<string>>> modTable = PKB::getmodUseTable();
 	vector<string> ans;
 	ostringstream convert;
 	convert << modTable[one].first;
@@ -48,33 +56,36 @@ vector<string> QE::ModifiesS(string select, int one, string two); { //returns va
 }
 
 vector<string> QE::UsesS(string select, string one, string two); { //returns statment numbers that uses variable two
-	unordered_map<int, pair<string, vector<string>>> useTable = PKB::getmodUseTable();
+	unordered_map<int, pair<vector<string>, vector<string>>> useTable = PKB::getmodUseTable();
 	vector<string> ans;
 	vector<string> use;
 	ostringstream convert;
 	if (two.compares("_") != 0) {
 		for (auto i = useTable.begin(); i != useTable.end(); ++i) {
 			use = useTable.second.second;
-			for (int j = 0; i < use.size(); ++j){
+			for (int j = 0; i < use.size(); ++j) {
 				if (use[j].compares(two) == 0) {
-				convert << useTable.first;
-				ans.push_back(convert.str());
+					convert << useTable.first;
+					ans.push_back(convert.str());
+				}
 			}
 		}
+		ans = filter(ans, one, two);
 	}
 	else {
 		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
 			convert << useTable.first;
 			ans.push_back(convert.str());
 		}
+		ans = filter(ans, one, two);
 	}
 	return ans;
 }
 vector<string> QE::UsesS(string select, int one, string two); { //returns variables that are used in statement line one
-	unordered_map<int, pair<string, vector<string>>> modTable = PKB::getmodUseTable();
+	unordered_map<int, pair<vector<string>, vector<string>>> useTable = PKB::getmodUseTable();
 	vector<string> ans;
 	
-	vector<string> use = modTable[one].second;
+	vector<string> use = useTable[one].second;
 	for (int i = 0; i < use.size(); ++i) {
 		ans.push_back(use[i]);
 	}
@@ -96,6 +107,7 @@ vector<string> QE::Parent(string select, int one, string two); { //return all th
 			ans.push_back(convert.str());
 		}
 	}
+	ans = filter(ans, two);
 	return ans;
 }
 vector<string> QE::Parent(string select, string one, int two); { //return the parent statement line of the statement line two
@@ -109,6 +121,7 @@ vector<string> QE::Parent(string select, string one, int two); { //return the pa
 			break;
 		}
 	}
+	ans = filter(ans, one);
 	return ans;
 }
 
@@ -138,6 +151,7 @@ vector<string> QE::ParentT(string select, int one, string two); { //return all t
 			next = par.pop();
 		}
 	}
+	ans = filter(ans, two);
 	return ans;
 }
 vector<string> QE::ParentT(string select, string one, int two); { //return all the parent* of statement line two
@@ -161,6 +175,7 @@ vector<string> QE::ParentT(string select, string one, int two); { //return all t
 			previous = par.pop();
 		}
 	}
+	ans = filter(ans, one);
 	return ans;
 }
 
@@ -180,6 +195,7 @@ vector<string> QE::Follows(string select, int one, string two); { //return the s
 			break;
 		}
 	}
+	ans = filter(ans, two);
 	return ans;
 }
 vector<string> QE::Follows(string select, string one, int two); { //return the statement line that is before statement line two
@@ -193,13 +209,11 @@ vector<string> QE::Follows(string select, string one, int two); { //return the s
 			break;
 		}
 	}
+	ans = filter(ans, one);
 	return ans;
 }
 
 vector<string> QE::FollowsT(string select, string one, string two); { //return all the statement lines base on condition
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
-	vector<string> ans;
-
 	vector<pair<int, int>> folTable = PKB::getFollowTable();
 	vector<string> ans;
 	ostringstream convert;
@@ -225,6 +239,7 @@ vector<string> QE::FollowsT(string select, int one, string two); { //return all 
 			line = folTable[i].second;
 		}
 	}
+	ans = filter(ans, two);
 	return ans;
 }
 vector<string> QE::FollowsT(string select, string one, int two); { //return all the statements lines that come before statement line two and in the sames nesting level
@@ -239,6 +254,7 @@ vector<string> QE::FollowsT(string select, string one, int two); { //return all 
 			line = folTable[i].first;
 		}
 	}
+	ans = filter(ans, one);
 	return ans;
 }
 
@@ -247,58 +263,70 @@ vector<string> QE::pattern(string select, string one, string two); { //return th
 	return ans;
 }
 
-vector<string> QE::filter(vector<string> vec, string field) {
+vector<string> QE::filter(vector<string> vec, string one, string two) {
 	vector<string> filAns;
-	string type = QP::checkSynType(field);
+	string type1 = QP::checkSynType(one);
+	string type2 = QP::checkSynType(two);
+	unordered_map<int, LineToken*>* stmtTable = PKB::getStatementTable.getTable;
 	
-	if (one == "_" && two == "_") {
-		//no need to do any filtering
-	} else if (one == "_" || two == "") {
-		// would be e.g _,a or w,_
-		
-		if (one == "_") {
+	if (one.compare("_") == 0 && two.compare("_") == 0) {
+		return vec;
+	} else if (one.compare("_") == 0 || two.compare("_") == 0) {
+		// would be e.g _,a or w,_		
+		if (one.compare("_") == 0) {
 			//make sure two matches the type required e.g _,a or _,w
-
-			type = two.getType;
-
-			for (int i = 0; i < ans.size(); i++) {
-				if (vector.get(i).two.type == type){
+			for (int i = 0; i < vec.size(); ++i) {
+				//obtain token of the statement number and compare with the type in two
+				int value = atoi(vec[i].c_str());
+				int same = type2.compare(stmtTable[value].second.getType);
+				if (same == 0){
 					// add it to final answer
-					filAns.add(vector.get(i));
+					filAns.push_back(vec[i]));
 				}
 			}
 		}
-
-
-		if (one == "_") {
+		if (two.compare("_") == 0 ) {
 			//make sure one matches the type required e.g a,_ or w,_
-
-			type = one.getType;
-
-			for (int i = 0; i < ans.size(); i++) {
-				if (vector.get(i).one.type == type) {
+			for (int i = 0; i < vec.size(); ++i) {
+				//obtain token of the statement number and compare with the type in two
+				int value = atoi(vec[i].c_str());
+				int same = type1.compare(stmtTable[value].second.getType);
+				if (same == 0) {
 					// add it to final answer
-					filAns.add(vector.get(i));
+					filAns.push_back(vec[i]));
 				}
 			}
 		}
-
 	} else {
 		// must check both type e.g a,w or w,w
-
 			//make sure one matches the type required e.g a,_ or w,_
-
-			typeOne = one.getType;
-			typeTwo = two.getType;
-
-			for (int i = 0; i < ans.size(); i++) {
+			for (int i = 0; i < ans.size(); ++i) {
 				if (vector.get(i).one.type == typeOne && vector.get(i).two.type == typeTwo) {
 					// add it to final answer
 					filAns.add(vector.get(i));
 				}
 			}
 	}
+	return filAns;
+}
 
+vector<string> QE::filter(vector<string> vec, string field) {
+	vector<string> filAns;
+	string type = QP::checkSynType(field);
 
+	if (field.compare("_") == 0) {
+		return vec;
+	}
+	else {
+		for (int i = 0; i < vec.size(); ++i) {
+			//obtain token of the statement number and compare with the type in two
+			int value = atoi(vec[i].c_str());
+			int same = type.compare(stmtTable[value].second.getType);
+			if (same == 0) {
+				// add it to final answer
+				filAns.push_back(vec[i]));
+			}
+		}
+	}
 	return filAns;
 }

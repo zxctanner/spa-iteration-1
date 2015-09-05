@@ -28,6 +28,7 @@ public:
 
 	vector<string> pattern(string select, string one, string two);
 
+	vector<string> filter(vector<string> vec, string one, string two);
 	vector<string> filter(vector<string> vec, string field);
 };
 
