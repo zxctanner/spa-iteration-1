@@ -34,8 +34,7 @@ private:
 	bool valid; //if at anytime valid flag turns to false, return none
 
 public:
-
-	QP QueryParser();
+	QP(string fileName, PKB* pkb);
 	void startQP(string fileName, PKB pkb);
 	string checkSynType(string syn);
 

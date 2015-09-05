@@ -13,7 +13,8 @@ int main() {
 	Parser parser("code.txt",pkb);
 	
 	QP* qp;
-	
+	string query;
+	qp = new QP(string query, pkb);
 	
 	//Controller then calls QueryParser to analyse query and produce answers from the PKB tables
 	//Hence pkb is passed into QueryParse so that table can be accessed by them

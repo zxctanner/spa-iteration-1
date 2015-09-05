@@ -41,9 +41,10 @@ Validation will be conducted upon receiving query string, taking place in two se
 2. Semantic Validation (i.e. are the synonyms repeated, etc.)
 */
 
-QP QP::QueryParser() {
 
-}
+QP::QP(string fileName, PKB* pkb) {
+
+};
 
 void QP::startQP(string fileName, PKB pkb) {
 	ifstream qfile;
