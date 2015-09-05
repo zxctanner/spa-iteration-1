@@ -183,7 +183,7 @@ void Parser::populateParentTable()
 {
 }
 
-void Parser::populateStatamentTable()
+void Parser::populateStatementTable()
 {
 }
 
@@ -195,6 +195,6 @@ void Parser::populateAllTables()
 {
 	populateFollowTable();
 	populateModUseTable();
-	populateModUseTable();
+	populateStatementTable();
 	populateParentTable();
 }

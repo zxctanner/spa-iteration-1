@@ -28,7 +28,7 @@ public:
 	~Parser();
 	void populateFollowTable();
 	void populateParentTable();
-	void populateStatamentTable();
+	void populateStatementTable();
 	void populateModUseTable();
 	void populateAllTables();
 
