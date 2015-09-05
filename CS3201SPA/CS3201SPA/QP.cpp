@@ -4,6 +4,7 @@
 #include "QE.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
 #include <vector>
 #include <iterator>
@@ -53,6 +54,7 @@ void QP::startQP() {
 	string currentLine, declarations, queryString;
 	vector<string> separatedLine;
 	while (getline(qfile, currentLine)) {
+		this->ansF = "none";
 		if (isQueryLegit(currentLine)) {
 			separatedLine = separateDQ(trim(currentLine, " "));
 			declarations = trim(separatedLine.at(0), " ");
@@ -62,24 +64,26 @@ void QP::startQP() {
 					//HANDLING DECLARATIONS
 					valid = processingDeclarations(declarations);
 					if (!valid) {
-						ansF = "none";
+						this->ansF = "none";
 						break;
 					}
 					//HANDLING QUERY STRING
 					queryStringHandler(queryString);
+					//GOING INTO QE
+					passIntoQE();
 					//CLEAR EVERYTHING
 					clearMemory();
 				}
 				else {
-					ansF = "none";
+					this->ansF = "none";
 				}
 			}
 			else {
-				ansF = "none";
+				this->ansF = "none";
 			}
 		}
 		else {
-			ansF = "none";
+			this->ansF = "none";
 		}
 	}
 }
@@ -155,7 +159,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "stmt") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				stmtD.push_back(i);
+				this->stmtD.push_back(i);
 			}
 			else {
 				return false;
@@ -166,7 +170,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "assign") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				assignD.push_back(i);
+				this->assignD.push_back(i);
 			}
 			else {
 				return false;
@@ -177,7 +181,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "while") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				whileD.push_back(i);
+				this->whileD.push_back(i);
 			}
 			else {
 				return false;
@@ -188,7 +192,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "variable") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				variableD.push_back(i);
+				this->variableD.push_back(i);
 			}
 			else {
 				return false;
@@ -199,7 +203,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "constant") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				constantD.push_back(i);
+				this->constantD.push_back(i);
 			}
 			else {
 				return false;
@@ -210,7 +214,7 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 	if (type == "prog_line") {
 		for (auto i : synonyms) {
 			if (checkIfSynDontExist(i)) {
-				prog_lineD.push_back(i);
+				this->prog_lineD.push_back(i);
 			}
 			else {
 				return false;
@@ -222,12 +226,12 @@ bool QP::addSynonymsToCorrectType(string type, vector<string> synonyms) { //if s
 }
 
 bool QP::checkIfSynDontExist(string syn) { //checks through the declared design entity vectors if syn DOES NOT exist 
-	if ((std::find(stmtD.begin(), stmtD.end(), syn) == stmtD.end()) &&
-		(std::find(assignD.begin(), assignD.end(), syn) == assignD.end()) &&
-		(std::find(whileD.begin(), whileD.end(), syn) == whileD.end()) &&
-		(std::find(variableD.begin(), variableD.end(), syn) == variableD.end()) &&
-		(std::find(constantD.begin(), constantD.end(), syn) == constantD.end()) &&
-		(std::find(prog_lineD.begin(), prog_lineD.end(), syn) == prog_lineD.end())) {
+	if ((std::find(this->stmtD.begin(), this->stmtD.end(), syn) == this->stmtD.end()) &&
+		(std::find(this->assignD.begin(), this->assignD.end(), syn) == this->assignD.end()) &&
+		(std::find(this->whileD.begin(), this->whileD.end(), syn) == this->whileD.end()) &&
+		(std::find(this->variableD.begin(), this->variableD.end(), syn) == this->variableD.end()) &&
+		(std::find(this->constantD.begin(), this->constantD.end(), syn) == this->constantD.end()) &&
+		(std::find(this->prog_lineD.begin(), this->prog_lineD.end(), syn) == this->prog_lineD.end())) {
 		return true;
 	}
 	else {
@@ -236,14 +240,16 @@ bool QP::checkIfSynDontExist(string syn) { //checks through the declared design 
 }
 
 void QP::clearMemory() { //erases all stored values in tables
-	assignD.clear();
-	whileD.clear();
-	stmtD.clear();
-	variableD.clear();
-	constantD.clear();
-	prog_lineD.clear();
-	queryUsedSyns.clear();
-	queriesForQE.clear();
+	this->assignD.clear();
+	this->whileD.clear();
+	this->stmtD.clear();
+	this->variableD.clear();
+	this->constantD.clear();
+	this->prog_lineD.clear();
+	this->queryUsedSyns.clear();
+	this->queriesForQE.clear();
+	this->ansST.clear();
+	this->ansP.clear();
 	querySyn = "";
 }
 
@@ -436,7 +442,7 @@ void QP::queryStringHandler(string queryString) {
 			errorSyn = extractPatternSyns(pattern);
 			if (errorSyn) {
 				query = formattedSTQE(pattern, querySyn, "pattern");
-				queriesForQE.push_back(query);
+				this->queriesForQE.push_back(query);
 			}
 		}
 		else {
@@ -451,7 +457,7 @@ void QP::queryStringHandler(string queryString) {
 			errorSyn = extractSTSyn(suchthat);
 			if (errorSyn) {
 				query = formattedSTQE(suchthat, querySyn, "suchthat");
-				queriesForQE.push_back(query);
+				this->queriesForQE.push_back(query);
 			}
 		}
 		else {
@@ -468,8 +474,8 @@ void QP::queryStringHandler(string queryString) {
 				pattern = extractPattern(queryString);
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
-					queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
-					queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
+					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
 				}
 			}
 		}
@@ -487,8 +493,8 @@ void QP::queryStringHandler(string queryString) {
 				pattern = extractPattern(queryString);
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
-					queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
-					queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
+					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
 				}
 			}
 		}
@@ -500,22 +506,22 @@ void QP::queryStringHandler(string queryString) {
 
 string QP::checkSynType(string syn) { //syn is assumed to be valid (i.e. already declared)
 	string type;
-	if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
+	if (std::find(this->stmtD.begin(), this->stmtD.end(), syn) != this->stmtD.end()) {
 		type = "stmt";
 	}
-	if (std::find(assignD.begin(), assignD.end(), syn) != assignD.end()) {
+	if (std::find(this->assignD.begin(), this->assignD.end(), syn) != this->assignD.end()) {
 		type = "assign";
 	}
-	if (std::find(whileD.begin(), whileD.end(), syn) != whileD.end()) {
+	if (std::find(this->whileD.begin(), this->whileD.end(), syn) != this->whileD.end()) {
 		type = "while";
 	}
-	if (std::find(variableD.begin(), variableD.end(), syn) != variableD.end()) {
+	if (std::find(this->variableD.begin(), this->variableD.end(), syn) != this->variableD.end()) {
 		type = "variable";
 	}
-	if (std::find(prog_lineD.begin(), prog_lineD.end(), syn) != prog_lineD.end()) {
+	if (std::find(this->prog_lineD.begin(), this->prog_lineD.end(), syn) != this->prog_lineD.end()) {
 		type = "prog_line";
 	}
-	if (std::find(constantD.begin(), constantD.end(), syn) != constantD.end()) {
+	if (std::find(this->constantD.begin(), this->constantD.end(), syn) != this->constantD.end()) {
 		type = "constant";
 	}
 	return type;
@@ -579,6 +585,50 @@ string QP::trim(const string& str, const string& trimmers) {
 	return str.substr(strBegin, strRange);
 }
 
+void QP::passIntoQE() {
+	if ((this->queriesForQE.size() < 1) || (this->queriesForQE.size() > 2)) {
+		this->ansF = "none";
+	}
+	else {
+		if (this->queriesForQE.size() == 1) {
+			selectField(this->queriesForQE.at(0));
+			if (this->queriesForQE.at(0).at(1) == "pattern") {
+				ansF = vectorSToString(this->ansP);
+			}
+			else {
+				ansF = vectorSToString(this->ansST);
+			}
+		}
+		else {
+			selectField(this->queriesForQE.at(0));
+			selectField(this->queriesForQE.at(1));
+			ansF = vectorSToString(findCommonAnswer());
+		}
+	}
+}
+
+vector<string> QP::findCommonAnswer() {
+	vector<string> answer;
+	for (int a = 0; a < this->ansST.size(); a++) {
+		if (find(this->ansP.begin(), this->ansP.end(), this->ansST.at(a)) != this->ansP.end()) {
+			answer.push_back(this->ansST.at(a));
+		}
+	}
+	return answer;
+}
+
+string QP::vectorSToString(vector<string> vecString) {
+	string ans;
+	stringstream ss;
+	for (int i = 0; i < vecString.size(); ++i) {
+		if (i != 0) {
+			ss << ", ";
+		}
+		ss << vecString.at(i);
+	}
+	ans = ss.str();
+}
+
 
 //JEREMY'S FUNCTIONS:
 void QP::selectField(vector<string> fields) {
@@ -588,8 +638,6 @@ void QP::selectField(vector<string> fields) {
 	string two = fields[3];
 	bool isNum1 = QP::isInt(one);
 	bool isNum2 = QP::isInt(two);
-	vector<string> ans1;
-	vector<string> ans2;
 	if (isNum1) {
 		int a = atoi(one.c_str());
 	}
@@ -599,66 +647,66 @@ void QP::selectField(vector<string> fields) {
 
 	if (command.compare("ModifiesS") == 0) {
 		if (!isNum1 && !isNum2) {
-			ans1 = QE::ModifiesS(select, one, two);
+			this->ansST = QE::ModifiesS(select, one, two);
 		}
-		else{
-			ans1 = QE::ModifiesS(select, one, b);
+		else {
+			this->ansST = QE::ModifiesS(select, one, b);
 		}
 	}
 	else if (command.compare("UsesS") == 0) {
 		if (isNum1 && !isNum2) {
-			ans1 = QE::UsesS(select, a, two);
+			this->ansST = QE::UsesS(select, a, two);
 		}
-		else{
-			ans1 = QE::UsesS(select, one, b);
+		else {
+			this->ansST = QE::UsesS(select, one, b);
 		}
 	}
 	else if (command.compare("Parent") == 0) {
 		if (isNum1 && !isNum2) {
-			ans1 = QE::Parent(select, a, two);
+			this->ansST = QE::Parent(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			ans1 = QE::Parent(select, one, b);
+			this->ansST = QE::Parent(select, one, b);
 		}
 		else {
-			ans1 = QE::Parent(select, one, two);
+			this->ansST = QE::Parent(select, one, two);
 		}
 	}
 	else if (command.compare("ParentT") == 0) {
 		if (isNum1 && !isNum2) {
-			ans1 = QE::ParentT(select, a, two);
+			this->ansST = QE::ParentT(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			ans1 = QE::ParentT(select, one, b);
+			this->ansST = QE::ParentT(select, one, b);
 		}
 		else {
-			ans1 = QE::ParentT(select, one, two);
+			this->ansST = QE::ParentT(select, one, two);
 		}
 	}
 	else if (command.compare("Follows") == 0) {
 		if (isNum1 && !isNum2) {
-			ans1 = QE::Follows(select, a, two);
+			this->ansST = QE::Follows(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			ans1 = QE::Follows(select, one, b);
+			this->ansST = QE::Follows(select, one, b);
 		}
 		else {
-			ans1 = QE::Follows(select, one, two);
+			this->ansST = QE::Follows(select, one, two);
 		}
 	}
 	else if (command.compare("FollowsT") == 0) {
 		if (isNum1 && !isNum2) {
-			ans1 = QE::FollowsT(select, a, two);
+			this->ansST = QE::FollowsT(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			ans1 = QE::FollowsT(select, one, b);
+			this->ansST = QE::FollowsT(select, one, b);
 		}
 		else {
-			ans1 = QE::FollowsT(select, one, two);
+			this->ansST = QE::FollowsT(select, one, two);
 		}
 	}
-	else{
-		ans2 = QE::pattern(select, one, two);
+	else {
+		this->ansP = QE::pattern(select, one, two);
 	}
 }
 

@@ -26,10 +26,12 @@ private:
 
 	vector<vector<string>> queriesForQE;
 	vector<string> queryUsedSyns;
+	vector<string> ansST;
+	vector<string> ansP;
 	string querySyn;
-	string relQ;
-	string leftQ;
-	string rightQ;
+	//string relQ;
+	//string leftQ;
+	//string rightQ;
 	string ansF;
 	string inputFileName;
 	PKB* includePKBInstance;
@@ -42,7 +44,6 @@ public:
 	string checkSynType(string syn);
 
 private:
-	void selectField(vector<string>);
 	string trim(const string& str, const string& trimmers);
 	vector<string> separateDQ(string& str);
 	bool validNoSTPattern(string& str);
@@ -51,7 +52,7 @@ private:
 	bool checkIfSynDontExist(string syn);
 	bool processingDeclarations(string declarations);
 	void declarationPrinter();
-	
+
 	bool extractSTSyn(string& query);
 	bool extractPatternSyns(string& query);
 	string extractPattern(string& queryString);
@@ -61,5 +62,11 @@ private:
 	void clearMemory();
 	bool isQueryLegit(string rawQueryString);
 	vector<string> formattedSTQE(string st, string qSyn, string typeOfQuery);
+	void passIntoQE();
+
+	string QP::vectorSToString(vector<string> vecString);
+	vector<string> QP::findCommonAnswer();
+
+	void selectField(vector<string>);
 	bool isInt(string input);
 };
