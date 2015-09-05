@@ -238,6 +238,55 @@ vector<string> QE::pattern(string select, string one, string two); { //return th
 vector<string> QE::filter(vector<string> vec, string field) {
 	vector<string> filAns;
 	string type = QP::checkSynType(field);
+	
+	if (one == "_" && two == "_") {
+		//no need to do any filtering
+	} else if (one == "_" || two == "") {
+		// would be e.g _,a or w,_
+		
+		if (one == "_") {
+			//make sure two matches the type required e.g _,a or _,w
+
+			type = two.getType;
+
+			for (int i = 0; i < ans.size(); i++) {
+				if (vector.get(i).two.type == type){
+					// add it to final answer
+					filAns.add(vector.get(i));
+				}
+			}
+		}
+
+
+		if (one == "_") {
+			//make sure one matches the type required e.g a,_ or w,_
+
+			type = one.getType;
+
+			for (int i = 0; i < ans.size(); i++) {
+				if (vector.get(i).one.type == type) {
+					// add it to final answer
+					filAns.add(vector.get(i));
+				}
+			}
+		}
+
+	} else {
+		// must check both type e.g a,w or w,w
+
+			//make sure one matches the type required e.g a,_ or w,_
+
+			typeOne = one.getType;
+			typeTwo = two.getType;
+
+			for (int i = 0; i < ans.size(); i++) {
+				if (vector.get(i).one.type == typeOne && vector.get(i).two.type == typeTwo) {
+					// add it to final answer
+					filAns.add(vector.get(i));
+				}
+			}
+	}
+
 
 	return filAns;
 }
