@@ -31,11 +31,14 @@ private:
 	string leftQ;
 	string rightQ;
 	string ansF;
+	string inputFileName;
+	PKB* includePKBInstance;
 	bool valid; //if at anytime valid flag turns to false, return none
 
 public:
-	QP(string fileName, PKB* pkb);
-	void startQP(string fileName, PKB pkb);
+
+	QP(string fileName, PKB * pkb);
+	void startQP();
 	string checkSynType(string syn);
 
 private:

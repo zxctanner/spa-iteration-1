@@ -14,13 +14,11 @@ int main() {
 	
 	QP* qp;
 	string query;
-	qp = new QP(string query, pkb);
+	qp = new QP("query.txt", pkb);
 	
 	//Controller then calls QueryParser to analyse query and produce answers from the PKB tables
 	//Hence pkb is passed into QueryParse so that table can be accessed by them
-	/*
 	
-	qp.startQP("QUERY.txt", pkb);
+	qp->startQP();
 
-	*/
 }

@@ -1,275 +1,265 @@
-﻿Build started 9/4/2015 10:47:08 PM.
-     1>Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/9/2015 2:16:32 PM.
+     1>Project "C:\Users\niggles\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AST.cpp Controller.cpp FollowTable.cpp LineToken.cpp LineTokenizer.cpp ModUseTable.cpp ParentTable.cpp Parser.cpp QP.cpp QE.cpp PKB.cpp QueryTable.cpp StatementTable.cpp TNode.cpp
-         TNode.cpp
-         StatementTable.cpp
-         QueryTable.cpp
-         PKB.cpp
-         QE.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(10): error C2039: 'QueryEvaluator': is not a member of 'QE'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(13): error C2039: 'ModifiesS': is not a member of 'QE'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(13): error C2447: '{': missing function header (old-style formal list?)
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(231): fatal error C1004: unexpected end-of-file found
+         D:\Visual Studio 2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp PKB.cpp Parser.cpp QE.cpp QP.cpp
          QP.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(16): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(16): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(17): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(17): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(18): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(18): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(19): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(19): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(20): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(20): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(21): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(21): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(22): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(23): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(24): error C3646: 'querySyn': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(29): error C2061: syntax error: identifier 'vector'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(30): error C3646: 'trim': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(30): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(30): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(31): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(31): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(32): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(33): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(33): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(33): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(34): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(35): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(36): error C2061: syntax error: identifier 'vector'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(38): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(39): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(40): error C3646: 'extractPattern': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(40): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(40): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(41): error C3646: 'extractST': unknown override specifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(41): error C2059: syntax error: '('
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(41): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(42): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(45): error C2061: syntax error: identifier 'string'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(46): error C2143: syntax error: missing ';' before '}'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(45): error C2374: 'declaration_rgx': redefinition; multiple initialization
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(16): note: see declaration of 'declaration_rgx'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(46): error C2374: 'query_rgx': redefinition; multiple initialization
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(17): note: see declaration of 'query_rgx'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(52): error C2039: 'trim': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(62): error C2511: 'bool QP::validNoSTPattern(std::string &)': overloaded member function not found in 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(75): error C2039: 'separateDQ': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(103): error C2039: 'tokenize': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(108): error C2039: 'trim': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(115): error C2511: 'void QP::processingDeclarations(std::vector<std::string,std::allocator<_Ty>>)': overloaded member function not found in 'QP'
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(127): error C2039: 'tokenize': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(128): error C2660: 'QP::addSynonymsToCorrectType': function does not take 2 arguments
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(132): error C2511: 'void QP::addSynonymsToCorrectType(std::string,std::vector<std::string,std::allocator<_Ty>>)': overloaded member function not found in 'QP'
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(135): error C2660: 'QP::checkIfSynDontExist': function does not take 1 arguments
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(136): error C2039: 'stmtD': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(136): error C2065: 'stmtD': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(136): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(136): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(142): error C2660: 'QP::checkIfSynDontExist': function does not take 1 arguments
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(143): error C2039: 'assignD': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(143): error C2065: 'assignD': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(143): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(143): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(149): error C2660: 'QP::checkIfSynDontExist': function does not take 1 arguments
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(150): error C2039: 'whileD': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(150): error C2065: 'whileD': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(150): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(150): note: type is 'unknown-type'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(156): error C2660: 'QP::checkIfSynDontExist': function does not take 1 arguments
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(157): error C2039: 'variableD': is not a member of 'QP'
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(12): note: see declaration of 'QP'
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(157): error C2065: 'variableD': undeclared identifier
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(157): error C2228: left of '.push_back' must have class/struct/union
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(157): fatal error C1003: error count exceeds 100; stopping compilation
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(52): error C2039: 'inputfileName': is not a member of 'QP'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.h(14): note: see declaration of 'QP'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(602): error C2039: 'ModifiesS': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(602): error C3861: 'ModifiesS': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(605): error C2039: 'ModifiesS': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(605): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(605): error C3861: 'ModifiesS': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(610): error C2039: 'UsesS': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(610): error C2065: 'a': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(610): error C3861: 'UsesS': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(613): error C2039: 'UsesS': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(613): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(613): error C3861: 'UsesS': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(618): error C2039: 'Parent': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(618): error C2065: 'a': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(618): error C3861: 'Parent': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(621): error C2039: 'Parent': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(621): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(621): error C3861: 'Parent': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(624): error C2039: 'Parent': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(624): error C3861: 'Parent': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(629): error C2039: 'ParentT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(629): error C2065: 'a': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(629): error C3861: 'ParentT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(632): error C2039: 'ParentT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(632): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(632): error C3861: 'ParentT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(635): error C2039: 'ParentT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(635): error C3861: 'ParentT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(640): error C2039: 'Follows': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(640): error C2065: 'a': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(640): error C3861: 'Follows': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(643): error C2039: 'Follows': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(643): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(643): error C3861: 'Follows': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(646): error C2039: 'Follows': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(646): error C3861: 'Follows': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(651): error C2039: 'FollowsT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(651): error C2065: 'a': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(651): error C3861: 'FollowsT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(654): error C2039: 'FollowsT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(654): error C2065: 'b': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(654): error C3861: 'FollowsT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(657): error C2039: 'FollowsT': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(657): error C3861: 'FollowsT': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(661): error C2039: 'pattern': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(661): error C3861: 'pattern': identifier not found
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qp.cpp(668): error C2059: syntax error: '='
+         QE.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(7): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(8): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(10): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(11): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(13): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(14): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(15): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(17): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(18): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(19): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(21): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(22): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(23): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(25): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(26): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(27): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(29): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C2143: syntax error: missing ';' before '<'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(31): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(19): error C2039: 'QueryEvaluator': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(22): error C2039: 'ModifiesS': is not a member of 'QE'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.h(5): note: see declaration of 'QE'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(22): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\qe.cpp(244): fatal error C1004: unexpected end-of-file found
          Parser.cpp
-         ParentTable.cpp
-         ModUseTable.cpp
-     1>c:\users\kerine\desktop\vc\include\utility(114): error C2679: binary '=': no operator found which takes a right-hand operand of type 'const std::vector<std::string,std::allocator<_Ty>>' (or there is no acceptable conversion)
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         c:\users\kerine\desktop\vc\include\xstring(1032): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(_Elem)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\users\kerine\desktop\vc\include\xstring(1027): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\users\kerine\desktop\vc\include\xstring(1011): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-         c:\users\kerine\desktop\vc\include\xstring(972): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-                 with
-                 [
-                     _Elem=char
-                 ]
-         c:\users\kerine\desktop\vc\include\xstring(914): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
-         c:\users\kerine\desktop\vc\include\utility(114): note: while trying to match the argument list '(std::string, const std::vector<std::string,std::allocator<_Ty>>)'
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): note: see reference to function template instantiation 'std::pair<std::string,std::string> &std::pair<std::string,std::string>::operator =<std::string,std::vector<std::string,std::allocator<_Ty>>>(const std::pair<std::string,std::vector<_Ty,std::allocator<_Ty>>> &)' being compiled
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\modusetable.cpp(28): note: see reference to function template instantiation 'std::pair<std::string,std::string> &std::pair<std::string,std::string>::operator =<std::string,std::vector<std::string,std::allocator<_Ty>>>(const std::pair<std::string,std::vector<_Ty,std::allocator<_Ty>>> &)' being compiled
-                 with
-                 [
-                     _Ty=std::string
-                 ]
-         LineTokenizer.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\linetokenizer.cpp(65): warning C4302: 'type cast': truncation from 'const char *' to 'char'
-         LineToken.cpp
-         FollowTable.cpp
-         Controller.cpp
-     1>c:\users\kerine\desktop\cs3201\cs3201spa\cs3201spa\qp.h(46): error C2143: syntax error: missing ';' before '}'
-         AST.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): error C2011: 'ParentTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): note: see declaration of 'ParentTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2011: 'ModUseTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2011: 'StatementTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): error C2011: 'FollowTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): note: see declaration of 'FollowTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parser.cpp(178): error C2027: use of undefined type 'FollowTable'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): note: see declaration of 'FollowTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parser.cpp(178): error C2227: left of '->{ctor}' must point to class/struct/union/generic type
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parser.cpp(196): error C3867: 'Parser::populateModUseTable': non-standard syntax; use '&' to create a pointer to member
+         PKB.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): error C2011: 'ParentTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): note: see declaration of 'ParentTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2011: 'StatementTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2011: 'ModUseTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): error C2011: 'FollowTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): note: see declaration of 'FollowTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): error C2011: 'PKB': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(16): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(16): error C2059: syntax error: ')'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(17): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(17): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(24): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(24): error C2059: syntax error: ')'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(25): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(25): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(29): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(31): error C2065: 'parentTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(35): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(37): error C2065: 'modUseTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(40): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(42): error C2065: 'statementTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(45): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(47): error C2065: 'followTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(50): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(52): error C2065: 'parentTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(55): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(57): error C2065: 'modUseTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(60): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(62): error C2065: 'statementTable': undeclared identifier
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(65): error C2027: use of undefined type 'PKB'
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.cpp(67): error C2065: 'followTable': undeclared identifier
+         Main.cpp
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): error C2011: 'ParentTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\parenttable.h(5): note: see declaration of 'ParentTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): error C2011: 'StatementTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\statementtable.h(7): note: see declaration of 'StatementTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): error C2011: 'ModUseTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\modusetable.h(7): note: see declaration of 'ModUseTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): error C2011: 'FollowTable': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\followtable.h(5): note: see declaration of 'FollowTable'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): error C2011: 'PKB': 'class' type redefinition
+         c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\pkb.h(12): note: see declaration of 'PKB'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\main.cpp(17): error C2275: 'std::string': illegal use of this type as an expression
+         d:\visual studio 2015\vc\include\xstring(2603): note: see declaration of 'std::string'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\main.cpp(17): error C2146: syntax error: missing ')' before identifier 'query'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\main.cpp(17): error C2146: syntax error: missing ';' before identifier 'query'
+     1>c:\users\niggles\desktop\cs3201\cs3201spa\cs3201spa\main.cpp(17): error C2059: syntax error: ')'
          Generating Code...
-     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\niggles\Desktop\cs3201\CS3201SPA\CS3201SPA\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:12.81
+Time Elapsed 00:00:01.57

@@ -43,12 +43,13 @@ Validation will be conducted upon receiving query string, taking place in two se
 
 
 QP::QP(string fileName, PKB* pkb) {
-
+	inputFileName = fileName;
+	includePKBInstance = pkb;
 };
 
-void QP::startQP(string fileName, PKB pkb) {
+void QP::startQP() {
 	ifstream qfile;
-	qfile.open(fileName);
+	qfile.open(this->inputFileName);
 	string currentLine, declarations, queryString;
 	vector<string> separatedLine;
 	while (getline(qfile, currentLine)) {
