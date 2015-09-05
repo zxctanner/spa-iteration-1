@@ -25,13 +25,13 @@ void FollowTable::addEntry(int parent, int child)
 }
 */
 
-vector<pair<int, int>>* FollowTable::getFollowTable()
+vector<pair<int, int>>* FollowTable::getTable()
 {
 	return followTable;
 }
 
 
-void FollowTable::setFollowTable(vector<pair<int, int>>* fTable)
+void FollowTable::setTable(vector<pair<int, int>>* fTable)
 {
 	followTable = fTable;
 }

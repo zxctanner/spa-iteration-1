@@ -10,7 +10,7 @@ public:
 	ParentTable(vector<pair<int, int>>* pTable);
 	~ParentTable();
 	void addEntry(int parent, int child);
-	vector<pair<int, int>>* getParentTable();
-	void setParentTable(vector<pair<int, int>>* pTable);
+	vector<pair<int, int>>* getTable();
+	void setTable(vector<pair<int, int>>* pTable);
 };
 

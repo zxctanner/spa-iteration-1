@@ -18,12 +18,12 @@ StatementTable::~StatementTable()
 {
 }
 
-unordered_map<int, LineToken*>* StatementTable::getStatementTable()
+unordered_map<int, LineToken*>* StatementTable::getTable()
 {
 	return statementTable;
 }
 
-void StatementTable::setStatementTable(unordered_map<int, LineToken*>* sTable)
+void StatementTable::setTable(unordered_map<int, LineToken*>* sTable)
 {
 	statementTable = sTable;
 }

@@ -11,8 +11,8 @@ public:
 	FollowTable(vector<pair<int, int>>* fTable);
 
 	//void addEntry(int parent, int child);
-	vector<pair<int, int>>* getFollowTable();
-	void setFollowTable(vector<pair<int, int>>* fTable);
+	vector<pair<int, int>>* getTable();
+	void setTable(vector<pair<int, int>>* fTable);
 	//vector<pair<int, int>> generateFollowTable(int nesting[]);
 };
 

@@ -23,12 +23,12 @@ void ParentTable::addEntry(int parent, int child)
 	parentTable->push_back(entry);
 }
 
-vector<pair<int,int>>* ParentTable::getParentTable()
+vector<pair<int,int>>* ParentTable::getTable()
 {
 	return parentTable;
 }
 
-void ParentTable::setParentTable(vector<pair<int, int>>* pTable)
+void ParentTable::setTable(vector<pair<int, int>>* pTable)
 {
 	parentTable = pTable;
 }

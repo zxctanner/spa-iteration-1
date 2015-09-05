@@ -19,11 +19,11 @@ ModUseTable::~ModUseTable()
 {
 }
 
-unordered_map<int, pair<vector<string>, vector<string>>>* ModUseTable::getModUseTable() {
+unordered_map<int, pair<vector<string>, vector<string>>>* ModUseTable::getTable() {
 	return modUseTable;
 }
 
-void ModUseTable::setModUseTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable)
+void ModUseTable::setTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable)
 {
 	modUseTable = mUTable;
 }
