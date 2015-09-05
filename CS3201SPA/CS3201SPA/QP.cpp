@@ -586,6 +586,8 @@ void QP::selectField(vector<string> fields) {
 	string two = fields[3];
 	bool isNum1 = QP::isInt(one);
 	bool isNum2 = QP::isInt(two);
+	vector<string> ans1;
+	vector<string> ans2;
 	if (isNum1) {
 		int a = atoi(one.c_str());
 	}
@@ -595,66 +597,66 @@ void QP::selectField(vector<string> fields) {
 
 	if (command.compare("ModifiesS") == 0) {
 		if (!isNum1 && !isNum2) {
-			vector<int> ans1 = QE::ModifiesS(one, two);
+			ans1 = QE::ModifiesS(select, one, two);
 		}
 		else{
-			vector<string> ans1 = QE::ModifiesS(one, b);
+			ans1 = QE::ModifiesS(select, one, b);
 		}
 	}
 	else if (command.compare("UsesS") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::UsesS(a, two);
+			ans1 = QE::UsesS(select, a, two);
 		}
 		else{
-			QE::UsesS(one, b);
+			ans1 = QE::UsesS(select, one, b);
 		}
 	}
 	else if (command.compare("Parent") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::Parent(a, two);
+			ans1 = QE::Parent(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::Parent(one, b);
+			ans1 = QE::Parent(select, one, b);
 		}
 		else {
-			QE::Parent(one, two);
+			ans1 = QE::Parent(select, one, two);
 		}
 	}
 	else if (command.compare("ParentT") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::ParentT(a, two);
+			ans1 = QE::ParentT(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::ParentT(one, b);
+			ans1 = QE::ParentT(select, one, b);
 		}
 		else {
-			QE::ParentT(one, two);
+			ans1 = QE::ParentT(select, one, two);
 		}
 	}
 	else if (command.compare("Follows") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::Follows(a, two);
+			ans1 = QE::Follows(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::Follows(one, b);
+			ans1 = QE::Follows(select, one, b);
 		}
 		else {
-			QE::Follows(one, two);
+			ans1 = QE::Follows(select, one, two);
 		}
 	}
 	else if (command.compare("FollowsT") == 0) {
 		if (isNum1 && !isNum2) {
-			QE::FollowsT(a, two);
+			ans1 = QE::FollowsT(select, a, two);
 		}
 		else if (!isNum1 && isNum2) {
-			QE::FollowsT(one, b);
+			ans1 = QE::FollowsT(select, one, b);
 		}
 		else {
-			QE::FollowsT(one, two);
+			ans1 = QE::FollowsT(select, one, two);
 		}
 	}
 	else{
-		QE::pattern(one, two);
+		ans2 = QE::pattern(select, one, two);
 	}
 }
 
