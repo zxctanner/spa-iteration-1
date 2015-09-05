@@ -203,6 +203,7 @@ vector<string> QE::FollowsT(string select, string one, string two); { //return a
 	vector<pair<int, int>> folTable = PKB::getFollowTable();
 	vector<string> ans;
 	ostringstream convert;
+
 	for (int i = 0; i < folTable.size(); ++i) {
 		convert << folTable[i].second;
 		ans.push_back(convert.str());
