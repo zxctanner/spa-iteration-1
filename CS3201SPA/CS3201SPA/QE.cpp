@@ -5,6 +5,8 @@
 #include <string>
 #include <stack>
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 /* Query Evaluator
@@ -94,7 +96,48 @@ vector<string> QE::UsesS(string select, int one, string two); { //returns variab
 
 vector<string> QE::Parent(string select, string one, string two); { //return all the while statement base on condition
 	vector<pair<int, int>> parTable = PKB::getParentTable();
+	vector<string> sub;
 	vector<string> ans;
+	ostringstream convert;
+	if (select.compares(one) == 0) {
+		if (QP::checkSynType(one).compares("while") != 0) { //if one is not while, return none
+			return ans;
+		}
+		else {
+			for (int i = 0; i < parTable.size(); ++i) {	//select all the child statements of one	
+				convert << parTable[i].second;
+				sub.push_back(convert.str());
+			}
+			sub = filter(sub, two); // sub contains only the correct declaration of two
+
+		}
+		for (int j = 0; j < parTable.size(); ++j) { //comparing sub and child of parTable to obtain parent statement line
+			for (int k = 0; j < sub.size(); ++k) {
+				int value = atoi(sub[k].c_str()); //int of sub
+				if (parTable[j].second == value) {
+					convert << parTable[i].first;
+					if (find(ans.begin(), ans.end(), convert.str()) != ans.end()) {
+						continue; //parent statement line already exist in ans
+					}
+					else {
+						ans.push_back(convert.str()); //adding parent statement line that does not exist in ans
+					}
+				}
+			}
+		}
+	}
+	else {
+		if (QP::checkSynType(one).compares("while") != 0 || one.compares("_") != 0) { //if one is not while, return none
+			return ans;
+		}
+		else {
+			for (int i = 0; i < parTable.size(); ++i) {
+				convert << parTable[i].second;
+				ans.push_back(convert.str());
+			}
+		}
+		ans = filter(ans, two);
+	}
 	return ans;
 }
 vector<string> QE::Parent(string select, int one, string two); { //return all the child of statement line one
