@@ -49,7 +49,8 @@ void LineTokenizer::tokenize()
 		if (regex_search(line, match, procedureRgx)) {
 			string procName = match[1];
 			cout << "[Procedure Name]: " << procName << endl;
-			tokVec.push_back(LineToken(PROCEDURE, procName, nestingLevel, lineNumber));
+			//tokVec.push_back(LineToken(PROCEDURE, procName, nestingLevel, lineNumber));
+			tokVec.push_back(LineToken("PROCEDURE", procName, nestingLevel, lineNumber));
 		}
 
 		if (regex_search(line, match, assignmentRgx)) {
@@ -69,13 +70,15 @@ void LineTokenizer::tokenize()
 			}
 			strvec.push_back(rhs);
 
-			tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, strvec));
+			//tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, strvec));
+			tokVec.push_back(LineToken("ASSIGN", varName, nestingLevel, lineNumber, strvec));
 		}
 
 		if (regex_search(line, match, whileRgx)) {
 			string var = match[1];
 			cout << "[While Variable Name]: " << var << endl;
-			tokVec.push_back(LineToken(WHILE, var, nestingLevel, lineNumber));
+			//tokVec.push_back(LineToken(WHILE, var, nestingLevel, lineNumber));
+			tokVec.push_back(LineToken("WHILE", var, nestingLevel, lineNumber));
 		}
 
 		if (regex_search(line, openBracketRgx)) {

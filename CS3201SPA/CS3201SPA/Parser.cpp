@@ -216,7 +216,7 @@ void Parser::populateParentTable()
 			}
 		}
 
-		if (it->getType() == WHILE) {
+		if (it->getType() == "WHILE") {
 			isWhile = true;
 			nestedStack.push(*it);
 		}
@@ -278,7 +278,7 @@ void Parser::populateModUseTable() {
 		int thisLevel = it->getLevel();
 		// current level is initialized to 1 so that the following stmts will not be seen as nested in the procedure
 		// this will be modified after iteration 1, where procedure level is important.
-		if (it->getType() == PROCEDURE) {
+		if (it->getType() == "PROCEDURE") {
 			currentLevel = 1;
 		}
 		else if (thisLevel >= currentLevel) {
@@ -293,7 +293,7 @@ void Parser::populateModUseTable() {
 			currentLevel = thisLevel;
 		}
 
-		if (it->getType() == ASSIGN) {
+		if (it->getType() == "ASSIGN") {
 			string modVar = it->getName();
 			vector<string> modified(1, modVar);
 			vector<string> used = it->getExpr();
@@ -307,7 +307,7 @@ void Parser::populateModUseTable() {
 			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
 		}
 
-		if (it->getType() == WHILE) {
+		if (it->getType() == "WHILE") {
 			vector<string> modified;
 			vector<string> used(1, it->getName());
 
