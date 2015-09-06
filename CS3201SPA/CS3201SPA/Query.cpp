@@ -2,6 +2,7 @@
 
 using namespace std;
 
+Query::Query(){}
 
 Query::Query(vector<string> stmtd, vector<string> assignd, vector<string> variabled, vector<string> constantd, vector<string> whiled, vector<string> prog_lined, vector<string> queryfield)
 {
@@ -14,17 +15,17 @@ Query::Query(vector<string> stmtd, vector<string> assignd, vector<string> variab
 	queryFields = queryfield;
 }
 
-string Query::getSynType(string syn) {
-	string type;
-	if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
+stmtType Query::checkSynType(string syn) {
+	/*if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
 		type = "stmt";
-	}
+	}*/
+	stmtType type;
 	if (std::find(assignD.begin(), assignD.end(), syn) != assignD.end()) {
-		type = "assign";
+		type = ASSIGN;
 	}
 	if (std::find(whileD.begin(), whileD.end(), syn) != whileD.end()) {
-		type = "while";
-	}
+		type = WHILE;
+	}/*
 	if (std::find(variableD.begin(), variableD.end(), syn) != variableD.end()) {
 		type = "variable";
 	}
@@ -33,7 +34,7 @@ string Query::getSynType(string syn) {
 	}
 	if (std::find(constantD.begin(), constantD.end(), syn) != constantD.end()) {
 		type = "constant";
-	}
+	}*/
 	return type;
 }
 

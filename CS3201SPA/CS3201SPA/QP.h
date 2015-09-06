@@ -1,4 +1,6 @@
 #pragma once
+#ifndef QP_H
+#define QP_H
 #include "QE.h"
 #include "Query.h"
 #include <iostream>
@@ -54,3 +56,5 @@ private:
 	vector<string> formattedSTQE(string st, string qSyn, string typeOfQuery);
 
 };
+
+#endif
