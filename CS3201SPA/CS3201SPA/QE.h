@@ -16,6 +16,7 @@ class QE
 private:
 	string filePath;
 	PKB* pkb;
+	vector<Query> queryVector;
 public:
 	QE();
 	QE(string fileName, PKB* p);

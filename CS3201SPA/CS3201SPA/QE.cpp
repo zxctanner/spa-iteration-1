@@ -25,6 +25,8 @@ QE::QE()
 QE::QE(string fileName, PKB * p)
 {
 	filePath = fileName;
+	QP qp(fileName);
+	queryVector = qp.getVectorQuery();
 	pkb = p;
 }
 
@@ -86,7 +88,7 @@ vector<string> QE::UsesS(string select, string one, string two) { //returns stat
 	}
 	else {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			convert << i.first;
+			convert << i->first;
 			ans.push_back(convert.str());
 		}
 		ans = filter(ans, one, two);
