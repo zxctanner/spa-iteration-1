@@ -24,9 +24,6 @@
     <ClInclude Include="AST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueryTable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StatementTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AST.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueryTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StatementTable.cpp">

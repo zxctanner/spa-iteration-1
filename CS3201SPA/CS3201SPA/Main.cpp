@@ -7,7 +7,7 @@ using namespace std;
 
 // starting point of SPA application
 int main() {
-	PKB* pkb;
+	PKB*  pkb = new PKB();
 
 	//tokenizes and parses program, then populates tables in PKB.
 	Parser parser("code.txt",pkb);

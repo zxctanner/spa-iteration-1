@@ -1,3 +1,6 @@
+#ifndef PKB_H
+#define PKB_H
+
 #include <vector>
 #include <unordered_map>
 #include "LineToken.h"
@@ -30,3 +33,5 @@ public:
 	void setStatementTable(StatementTable* stmtTable);
 	void setFollowTable(FollowTable* fTable);
 };
+
+#endif

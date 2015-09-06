@@ -1,3 +1,6 @@
+#ifndef ModUseTable_H
+#define ModUseTable_H
+
 #include <unordered_map>
 #include <string>
 
@@ -19,3 +22,4 @@ public:
 	*/
 };
 
+#endif

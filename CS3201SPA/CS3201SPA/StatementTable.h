@@ -1,3 +1,5 @@
+#ifndef StatementTable_H
+#define StatementTable_H
 #include "LineToken.h"
 #include <unordered_map>
 
@@ -20,3 +22,4 @@ public:
 	*/
 };
 
+#endif

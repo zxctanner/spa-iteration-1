@@ -1,3 +1,5 @@
+#ifndef FollowTable_H
+#define FollowTable_H
 #include <vector>
 
 using namespace std;
@@ -16,3 +18,4 @@ public:
 	//vector<pair<int, int>> generateFollowTable(int nesting[]);
 };
 
+#endif

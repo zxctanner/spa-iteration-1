@@ -1,3 +1,5 @@
+#ifndef ParentTable_H
+#define ParentTable_H
 #include <vector>
 
 using namespace std;
@@ -14,3 +16,4 @@ public:
 	void setTable(vector<pair<int, int>>* pTable);
 };
 
+#endif

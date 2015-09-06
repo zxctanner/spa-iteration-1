@@ -191,7 +191,7 @@ void Parser::populateParentTable()
 		if (isWhile) {
 			//current statement is still within the current nesting level
 			if (nestedStack.top().getLevel() == 1 + it->getLevel()) {
-				pkb->getParentTable->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+				pkb->getParentTable()->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
 			}
 			else //current statement goes back to same nesting level as "while" or even lower
 			{
@@ -201,7 +201,7 @@ void Parser::populateParentTable()
 				}
 				//if stack is still not empty, current statement is a child of the while loop in the stack
 				if (!nestedStack.empty()) {
-					pkb->getParentTable->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+					pkb->getParentTable()->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
 				}
 				else //nestedStack is empty
 					isWhile = false;
