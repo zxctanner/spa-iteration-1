@@ -192,7 +192,7 @@ void Parser::populateParentTable()
 		//populates ParentTable
 		if (isWhile) {
 			//current statement is still within the current nesting level
-			if (nestedStack.top().getLevel() == 1 + it->getLevel()) {
+			if (nestedStack.top().getLevel() == it->getLevel()-1) {
 				int parent = nestedStack.top().getStmtNumber();
 				int child = it->getStmtNumber();
 				pair<int, int> entry(parent, child);
@@ -201,7 +201,7 @@ void Parser::populateParentTable()
 			else //current statement goes back to same nesting level as "while" or even lower
 			{
 				//pop out all while loops that has ended
-				while (nestedStack.top().getLevel() >= it->getLevel() || nestedStack.empty()) {
+				while (nestedStack.top().getLevel() >= it->getLevel() && !nestedStack.empty()) {
 					nestedStack.pop();
 				}
 				//if stack is still not empty, current statement is a child of the while loop in the stack
@@ -235,28 +235,28 @@ void Parser::populateStatementTable()
 	}
 }
 
-void Parser::appendToParents(unordered_map<int, pair<vector<string>, vector<string>>> table, vector<int> stack, string mod, vector<string> used) {
+void Parser::appendToParents(unordered_map<int, pair<vector<string>, vector<string>>>* table, vector<int> stack, string mod, vector<string> used) {
 	for (int i = 0; i < stack.size(); ++i) {
 		appendModVar(table, stack.at(i), mod);
 		appendUsedVar(table, stack.at(i), used);
 	}
 }
 
-void Parser::appendModVar(unordered_map<int, pair<vector<string>, vector<string>>> table, int stmtNum, string newVar) {
-	vector<string> currentModVar = table[stmtNum].first;
-	vector<string> second = table[stmtNum].second;
+void Parser::appendModVar(unordered_map<int, pair<vector<string>, vector<string>>> *table, int stmtNum, string newVar) {
+	vector<string> currentModVar = table->at(stmtNum).first;
+	vector<string> second = table->at(stmtNum).second;
 	//check if table already contains that variable (if the variable is not "")
 	if (newVar != "") {
 		if (find(currentModVar.begin(), currentModVar.end(), newVar) == currentModVar.end()) {
 			currentModVar.push_back(newVar);
-			table[stmtNum] = pair<vector<string>, vector<string>>(currentModVar, second);
+			table->at(stmtNum) = pair<vector<string>, vector<string>>(currentModVar, second);
 		}
 	}
 }
 
-void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string>>> table, int stmtNum, vector<string> newVar) {
-	vector<string> first = table[stmtNum].first;
-	vector<string> currentUsedVar = table[stmtNum].second;
+void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string>>>* table, int stmtNum, vector<string> newVar) {
+	vector<string> first = table->at(stmtNum).first;
+	vector<string> currentUsedVar = table->at(stmtNum).second;
 	//check if table already contains each variable
 	for (int i = 0; i < newVar.size(); ++i) {
 		string theVar = newVar.at(i);
@@ -264,7 +264,7 @@ void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string
 			currentUsedVar.push_back(theVar);
 		}
 	}
-	table[stmtNum] = pair<vector<string>, vector<string>>(first, currentUsedVar);
+	table->at(stmtNum) = pair<vector<string>, vector<string>>(first, currentUsedVar);
 }
 
 void Parser::populateModUseTable() {
@@ -299,7 +299,7 @@ void Parser::populateModUseTable() {
 
 			//if this stmt is a child of other stmts, update all parents' modified and uses table
 			if (!whileStack.empty()) {
-				appendToParents(table, whileStack, modVar, used);
+				appendToParents(&table, whileStack, modVar, used);
 			}
 
 			//add this stmt into the table
@@ -312,7 +312,7 @@ void Parser::populateModUseTable() {
 
 			//if this stmt is a child of other stmts, update all parents' modified and uses table
 			if (!whileStack.empty()) {
-				appendToParents(table, whileStack, "", used);
+				appendToParents(&table, whileStack, "", used);
 			}
 
 			//add this while statement into the table
