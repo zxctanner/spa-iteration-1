@@ -28,6 +28,7 @@ public:
 	int getLevel();
 	int getStmtNumber();
 	vector<string> getExpr();
+	string rhsToStr();
 	friend ostream& operator<<(ostream& os, LineToken& token);
 
 };

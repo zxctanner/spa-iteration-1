@@ -153,7 +153,7 @@ void Parser::populateFollowTable()
 	// int nesting[] = { 0,1,2,3,3,2,0 };
 
 	// count the size of the nesting array;
-	int countSize = sizeof(nesting) / sizeof(*nesting);
+	int countSize = tokensCopy.size();
 
 	// n for outer loop, n for inner loop
 	int n, m;
