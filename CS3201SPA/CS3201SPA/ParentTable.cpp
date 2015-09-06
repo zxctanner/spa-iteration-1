@@ -16,13 +16,13 @@ ParentTable::ParentTable(vector<pair<int, int>>* pTable)
 ParentTable::~ParentTable()
 {
 }
-
+/*
 void ParentTable::addEntry(int parent, int child)
 {
 	pair<int, int> entry(parent,child);
 	parentTable->push_back(entry);
 }
-
+*/
 vector<pair<int,int>>* ParentTable::getTable()
 {
 	return parentTable;

@@ -181,17 +181,22 @@ void Parser::populateFollowTable()
 
 void Parser::populateParentTable()
 {
-	vector<LineToken>::iterator it;
+	vector<LineToken> tokensCopy = tokens;
+	vector<pair<int, int>>* pt;
+	
 	bool isWhile = false;
 	stack<LineToken> nestedStack;
 
-	for (it = tokens.begin(); it != tokens.end(); ++it) {
+	for (auto it = tokensCopy.begin(); it != tokensCopy.end(); ++it) {
 
 		//populates ParentTable
 		if (isWhile) {
 			//current statement is still within the current nesting level
 			if (nestedStack.top().getLevel() == 1 + it->getLevel()) {
-				pkb->getParentTable()->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+				int parent = nestedStack.top().getStmtNumber();
+				int child = it->getStmtNumber();
+				pair<int, int> entry(parent, child);
+				pt->push_back(entry);
 			}
 			else //current statement goes back to same nesting level as "while" or even lower
 			{
@@ -201,7 +206,10 @@ void Parser::populateParentTable()
 				}
 				//if stack is still not empty, current statement is a child of the while loop in the stack
 				if (!nestedStack.empty()) {
-					pkb->getParentTable()->addEntry(nestedStack.top().getStmtNumber(), it->getStmtNumber());
+					int parent = nestedStack.top().getStmtNumber();
+					int child = it->getStmtNumber();
+					pair<int, int> entry(parent, child);
+					pt->push_back(entry);
 				}
 				else //nestedStack is empty
 					isWhile = false;
@@ -213,6 +221,7 @@ void Parser::populateParentTable()
 			nestedStack.push(*it);
 		}
 	}
+	pkb->setParentTable(new ParentTable(pt));
 }
 
 void Parser::populateStatementTable()
