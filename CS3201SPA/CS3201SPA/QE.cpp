@@ -35,10 +35,10 @@ vector<string> QE::ModifiesS(string select, string one, string two) { //returns 
 	ostringstream convert;
 	if (two.compare("_") != 0) {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			check = modUseTable.second.first;
+			check = i->second.first;
 			for (int j = 0; j < check.size(); ++j) {
 				if (check[j].compare(two) == 0) {
-					convert << modTable.first;
+					convert << i->first;
 					ans.push_back(convert.str());
 				}
 			}
@@ -47,7 +47,7 @@ vector<string> QE::ModifiesS(string select, string one, string two) { //returns 
 	}
 	else {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			convert << modUseTable.first;
+			convert << i->first;
 			ans.push_back(convert.str());
 		}
 		ans = filter(ans, one, two);
@@ -59,8 +59,11 @@ vector<string> QE::ModifiesS(string select, int one, string two) { //returns var
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
-	convert << modUseTable[one].first;
-	ans.push_back(convert.str());
+	vector<string> modify = modUseTable[one].first;
+	for (int i = 0; i < modify.size(); ++i){
+		convert << modify[i];
+		ans.push_back(convert.str());
+	}
 	return ans;
 }
 
@@ -71,10 +74,10 @@ vector<string> QE::UsesS(string select, string one, string two) { //returns stat
 	ostringstream convert;
 	if (two.compare("_") != 0) {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			use = modUseTable.second.second;
-			for (int j = 0; i < use.size(); ++j) {
+			use = i->second.second;
+			for (int j = 0; j < use.size(); ++j) {
 				if (use[j].compare(two) == 0) {
-					convert << modUseTable.first;
+					convert << i->first;
 					ans.push_back(convert.str());
 				}
 			}
@@ -83,7 +86,7 @@ vector<string> QE::UsesS(string select, string one, string two) { //returns stat
 	}
 	else {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			convert << ModuseTable.first;
+			convert << i.first;
 			ans.push_back(convert.str());
 		}
 		ans = filter(ans, one, two);
