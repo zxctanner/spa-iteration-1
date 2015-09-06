@@ -228,11 +228,12 @@ void Parser::populateStatementTable()
 {
 	vector<LineToken> tokensCopy = tokens;
 	vector<LineToken>::iterator it;
-	unordered_map<int, LineToken>* table = new unordered_map<int, LineToken>();
+	unordered_map<int, LineToken> st;
 
 	for (it = tokens.begin(); it != tokens.end(); ++it) {
-		table->insert({ it->getStmtNumber(), *it });
+		st.insert({ it->getStmtNumber(), *it });
 	}
+	pkb->setStatementTable(new StatementTable(st));
 }
 
 void Parser::appendToParents(unordered_map<int, pair<vector<string>, vector<string>>>* table, vector<int> stack, string mod, vector<string> used) {
