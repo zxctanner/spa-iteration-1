@@ -15,26 +15,27 @@ Query::Query(vector<string> stmtd, vector<string> assignd, vector<string> variab
 	queryFields = queryfield;
 }
 
-stmtType Query::checkSynType(string syn) {
-	/*if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
-		type = "stmt";
-	}*/
+string Query::checkSynType(string syn) {
+	string type;
+	if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
+		type = "STATEMENT";
+	}
 	stmtType type;
 	if (std::find(assignD.begin(), assignD.end(), syn) != assignD.end()) {
-		type = ASSIGN;
+		type = "ASSIGN";
 	}
 	if (std::find(whileD.begin(), whileD.end(), syn) != whileD.end()) {
-		type = WHILE;
-	}/*
+		type = "WHILE";
+	}
 	if (std::find(variableD.begin(), variableD.end(), syn) != variableD.end()) {
-		type = "variable";
+		type = "VARIABLE";
 	}
 	if (std::find(prog_lineD.begin(), prog_lineD.end(), syn) != prog_lineD.end()) {
-		type = "prog_line";
+		type = "PROG_LINE";
 	}
 	if (std::find(constantD.begin(), constantD.end(), syn) != constantD.end()) {
-		type = "constant";
-	}*/
+		type = "CONSTANT";
+	}
 	return type;
 }
 

@@ -48,15 +48,15 @@ QP::QP(string fileName) {
 }
 
 void QP::process() {
-	ifstream qfile;
-	qfile.open(this->inputFileName);
+	ifstream qfile(inputFileName);
 	string currentLine, declarations, queryString;
 	vector<string> separatedLine;
+	int lineNumber = 1;
 	while (getline(qfile, currentLine)) {
 		if (isQueryLegit(currentLine)) {
+			cout << currentLine << endl;
 			separatedLine = separateDQ(trim(currentLine, " "));
 			if (separatedLine.empty()) {
-				break;
 			}
 			else {
 				declarations = trim(separatedLine.at(0), " ");
@@ -66,23 +66,22 @@ void QP::process() {
 						//HANDLING DECLARATIONS
 						valid = processingDeclarations(declarations);
 						if (!valid) {
-							break;
 						}
-						//HANDLING QUERY STRING
-						valid = queryStringHandler(queryString);
-						if (valid) {
-							break;
+						else {
+							//HANDLING QUERY STRING
+							valid = queryStringHandler(queryString);
+							//GOING INTO QE
+							//passIntoQE();
+							//CLEAR EVERYTHING
+							clearMemory();
 						}
-						//GOING INTO QE
-						//passIntoQE();
-						//CLEAR EVERYTHING
-						clearMemory();
 					}
 				}
 			}
 		}
 	}
 }
+
 bool QP::isQueryLegit(string rawQueryString) { //checks if the query string follows format: <declarationsstring><SINGLE SPACE><querystring>
 	if (rawQueryString.find("Select") == string::npos || rawQueryString.find(";") == string::npos) {
 		return false;

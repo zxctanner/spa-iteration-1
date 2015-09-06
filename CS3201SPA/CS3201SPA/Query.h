@@ -21,7 +21,7 @@ private:
 public:
 	Query();
 	Query(vector<string> stmtd, vector<string> assignd, vector<string> variabled, vector<string> constantd, vector<string> whiled, vector<string> prog_lined, vector<string> queryfield);
-	stmtType checkSynType(string syn);
+	string checkSynType(string syn);
 	vector<string> getQueryFields();
 	~Query();
 };

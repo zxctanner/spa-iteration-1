@@ -2,8 +2,8 @@ Procedure Second {
 	x = 0;
 	i = 5;
 	while i {
-		x = x + 2;
-		i = i + 1;
-			while p {
-				x = x + 1;}}
+		x = u + 2;
+		i = b + 1;
+		while p {
+			x = x + 1;}}
 	z = z + 1;}

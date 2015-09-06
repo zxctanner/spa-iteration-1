@@ -289,9 +289,12 @@ vector<string> QE::Parent(string select, int one, string two, Query q) { //retur
 			ans.push_back(convert.str());
 		}
 	}
+	cout << ans.size() << endl;
 	ans = filter(ans, two, q);
+	cout << ans.size() << endl;
 	return ans;
 }
+
 vector<string> QE::Parent(string select, string one, int two, Query q) { //return the parent statement line of the statement line two
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
 	vector<string> ans;
@@ -467,13 +470,10 @@ vector<string> QE::Follows(string select, int one, string two, Query q) { //retu
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
-	cout << folTable.size() << endl;
 	for (int i = 0; i < folTable.size(); ++i) {
-		cout << folTable[i].first << one << endl;
 		if (folTable[i].first == one) {
 			convert << folTable[i].second;
 			ans.push_back(convert.str());
-			cout << ans.size() << endl;
 			break;
 		}
 	}
@@ -671,7 +671,6 @@ string QE::vectorSToString(vector<string> vecString) {
 }
 
 void QE::displayAllAnswers() {
-	cout << answers.size() << endl;
 	for (int i = 0; i < answers.size(); ++i) {
 		cout << "Statement number is: " << answers.at(i) << endl;
 	}

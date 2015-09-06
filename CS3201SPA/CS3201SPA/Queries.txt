@@ -1,1 +1,1 @@
-assign a; Select a such that Follows(2,a)
+statement s; Select s such that Parent(4,s)
