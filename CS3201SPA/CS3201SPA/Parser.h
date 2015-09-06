@@ -14,6 +14,9 @@ class Parser {
 private:
 	PKB* pkb;
 	vector<LineToken> tokens;
+	void appendToParents(unordered_map<int, pair<vector<string>, vector<string>>>* table, vector<int> stack, string mod, vector<string> used);
+	void appendModVar(unordered_map<int, pair<vector<string>, vector<string>>>* table, int stmtNum, string newVar);
+	void appendUsedVar(unordered_map<int, pair<vector<string>, vector<string>>>* table, int stmtNum, vector<string> newVar);
 public:
 	/*
 	StatementTable st;

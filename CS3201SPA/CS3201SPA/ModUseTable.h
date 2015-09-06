@@ -12,12 +12,10 @@ public:
 	ModUseTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable);
 	~ModUseTable();
 	unordered_map<int, pair<vector<string>, vector<string>>>* getTable();
-	void setTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable);
+	void setModUseTable(unordered_map<int, pair<vector<string>, vector<string>>>* mUTable);
 	
 	/*
 	void insert(int stmtNum, string modified, vector<string> used);
-	string getLHS(int stmtNum);
-	string getRHS(int stmtNum);
 	*/
 };
 
