@@ -6,10 +6,10 @@ using namespace std;
 
 StatementTable::StatementTable()
 {
-	statementTable = new unordered_map<int, LineToken*> ();
+	statementTable = unordered_map<int, LineToken*> ();
 }
 
-StatementTable::StatementTable(unordered_map<int, LineToken*>* sTable)
+StatementTable::StatementTable(unordered_map<int, LineToken*> sTable)
 {
 	statementTable = sTable;
 }
@@ -18,12 +18,12 @@ StatementTable::~StatementTable()
 {
 }
 
-unordered_map<int, LineToken*>* StatementTable::getTable()
+unordered_map<int, LineToken*> StatementTable::getTable()
 {
 	return statementTable;
 }
 
-void StatementTable::setTable(unordered_map<int, LineToken*>* sTable)
+void StatementTable::setTable(unordered_map<int, LineToken*> sTable)
 {
 	statementTable = sTable;
 }

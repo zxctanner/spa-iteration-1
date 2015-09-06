@@ -133,7 +133,7 @@ Parser::~Parser()
 void Parser::populateFollowTable()
 {
 	vector<LineToken> tokensCopy = tokens;
-	vector<pair<int,int>>* ft = new vector<pair<int, int>>();
+	vector<pair<int,int>> ft;
 	
 	bool isWhile = false;
 	stack<LineToken> nestedStack;
@@ -171,7 +171,7 @@ void Parser::populateFollowTable()
 			if (nextNesting == currentNesting) {
 				//std::cout << (n + 1) << (m + 1) << "\n";
 				pair<int, int> entry(n+1, m+1);
-				ft->push_back(entry);
+				ft.push_back(entry);
 				break;
 			}
 		}
@@ -182,7 +182,7 @@ void Parser::populateFollowTable()
 void Parser::populateParentTable()
 {
 	vector<LineToken> tokensCopy = tokens;
-	vector<pair<int, int>>* pt;
+	vector<pair<int, int>> pt;
 	
 	bool isWhile = false;
 	stack<LineToken> nestedStack;
@@ -196,7 +196,7 @@ void Parser::populateParentTable()
 				int parent = nestedStack.top().getStmtNumber();
 				int child = it->getStmtNumber();
 				pair<int, int> entry(parent, child);
-				pt->push_back(entry);
+				pt.push_back(entry);
 			}
 			else //current statement goes back to same nesting level as "while" or even lower
 			{
@@ -209,7 +209,7 @@ void Parser::populateParentTable()
 					int parent = nestedStack.top().getStmtNumber();
 					int child = it->getStmtNumber();
 					pair<int, int> entry(parent, child);
-					pt->push_back(entry);
+					pt.push_back(entry);
 				}
 				else //nestedStack is empty
 					isWhile = false;
@@ -235,28 +235,28 @@ void Parser::populateStatementTable()
 	}
 }
 
-void Parser::appendToParents(unordered_map<int, pair<vector<string>, vector<string>>>* table, vector<int> stack, string mod, vector<string> used) {
+void Parser::appendToParents(unordered_map<int, pair<vector<string>, vector<string>>> table, vector<int> stack, string mod, vector<string> used) {
 	for (int i = 0; i < stack.size(); ++i) {
 		appendModVar(table, stack.at(i), mod);
 		appendUsedVar(table, stack.at(i), used);
 	}
 }
 
-void Parser::appendModVar(unordered_map<int, pair<vector<string>, vector<string>>>* table, int stmtNum, string newVar) {
-	vector<string> currentModVar = table->at(stmtNum).first;
-	vector<string> second = table->at(stmtNum).second;
+void Parser::appendModVar(unordered_map<int, pair<vector<string>, vector<string>>> table, int stmtNum, string newVar) {
+	vector<string> currentModVar = table[stmtNum].first;
+	vector<string> second = table[stmtNum].second;
 	//check if table already contains that variable (if the variable is not "")
 	if (newVar != "") {
 		if (find(currentModVar.begin(), currentModVar.end(), newVar) == currentModVar.end()) {
 			currentModVar.push_back(newVar);
-			table->at(stmtNum) = pair<vector<string>, vector<string>>(currentModVar, second);
+			table[stmtNum] = pair<vector<string>, vector<string>>(currentModVar, second);
 		}
 	}
 }
 
-void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string>>>* table, int stmtNum, vector<string> newVar) {
-	vector<string> first = table->at(stmtNum).first;
-	vector<string> currentUsedVar = table->at(stmtNum).second;
+void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string>>> table, int stmtNum, vector<string> newVar) {
+	vector<string> first = table[stmtNum].first;
+	vector<string> currentUsedVar = table[stmtNum].second;
 	//check if table already contains each variable
 	for (int i = 0; i < newVar.size(); ++i) {
 		string theVar = newVar.at(i);
@@ -264,17 +264,16 @@ void Parser::appendUsedVar(unordered_map<int, pair<vector<string>, vector<string
 			currentUsedVar.push_back(theVar);
 		}
 	}
-	table->at(stmtNum) = pair<vector<string>, vector<string>>(first, currentUsedVar);
+	table[stmtNum] = pair<vector<string>, vector<string>>(first, currentUsedVar);
 }
 
 void Parser::populateModUseTable() {
 	vector<LineToken> tokensCopy = tokens;
-	vector<LineToken>::iterator it;
 	vector<int> whileStack;
-	unordered_map<int, pair<vector<string>, vector<string>>>* table = new unordered_map<int, pair<vector<string>, vector<string>>>();
+	unordered_map<int, pair<vector<string>, vector<string>>> table;
 
 	int currentLevel;
-	for (it = tokens.begin(); it != tokens.end(); ++it) {
+	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
 		int thisLevel = it->getLevel();
 		// current level is initialized to 1 so that the following stmts will not be seen as nested in the procedure
 		// this will be modified after iteration 1, where procedure level is important.
@@ -304,7 +303,7 @@ void Parser::populateModUseTable() {
 			}
 
 			//add this stmt into the table
-			table->insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
+			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
 		}
 
 		if (it->getType() == WHILE) {
@@ -317,7 +316,7 @@ void Parser::populateModUseTable() {
 			}
 
 			//add this while statement into the table
-			table->insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
+			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
 
 			//add the stmt number into the stack
 			whileStack.push_back(it->getStmtNumber());

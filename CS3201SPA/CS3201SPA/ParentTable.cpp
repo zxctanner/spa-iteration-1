@@ -5,10 +5,10 @@ using namespace std;
 
 ParentTable::ParentTable()
 {
-	parentTable = new vector<pair<int, int>>();
+	parentTable = vector<pair<int, int>>();
 }
 
-ParentTable::ParentTable(vector<pair<int, int>>* pTable)
+ParentTable::ParentTable(vector<pair<int, int>> pTable)
 {
 	parentTable = pTable;
 }
@@ -23,12 +23,12 @@ void ParentTable::addEntry(int parent, int child)
 	parentTable->push_back(entry);
 }
 */
-vector<pair<int,int>>* ParentTable::getTable()
+vector<pair<int,int>> ParentTable::getTable()
 {
 	return parentTable;
 }
 
-void ParentTable::setTable(vector<pair<int, int>>* pTable)
+void ParentTable::setTable(vector<pair<int, int>> pTable)
 {
 	parentTable = pTable;
 }

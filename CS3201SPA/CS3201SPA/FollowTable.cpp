@@ -5,14 +5,14 @@ using namespace std;
 
 FollowTable::FollowTable()
 {
-	followTable = new vector<pair<int, int>>();
+	followTable = vector<pair<int, int>>();
 }
 
 FollowTable::~FollowTable()
 {
 }
 
-FollowTable::FollowTable(vector<pair<int, int>>* fTable)
+FollowTable::FollowTable(vector<pair<int, int>> fTable)
 {
 	followTable = fTable;
 }
@@ -25,13 +25,13 @@ void FollowTable::addEntry(int parent, int child)
 }
 */
 
-vector<pair<int, int>>* FollowTable::getTable()
+vector<pair<int, int>> FollowTable::getTable()
 {
 	return followTable;
 }
 
 
-void FollowTable::setTable(vector<pair<int, int>>* fTable)
+void FollowTable::setTable(vector<pair<int, int>> fTable)
 {
 	followTable = fTable;
 }
