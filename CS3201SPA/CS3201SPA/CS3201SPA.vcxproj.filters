@@ -51,6 +51,9 @@
     <ClInclude Include="FollowTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Query.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.cpp">
@@ -90,6 +93,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Query.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

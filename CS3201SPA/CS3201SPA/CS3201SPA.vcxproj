@@ -128,6 +128,7 @@
     <ClInclude Include="QP.h" />
     <ClInclude Include="QE.h" />
     <ClInclude Include="PKB.h" />
+    <ClInclude Include="Query.h" />
     <ClInclude Include="StatementTable.h" />
     <ClInclude Include="TNode.h" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClCompile Include="QP.cpp" />
     <ClCompile Include="QE.cpp" />
     <ClCompile Include="PKB.cpp" />
+    <ClCompile Include="Query.cpp" />
     <ClCompile Include="StatementTable.cpp" />
     <ClCompile Include="TNode.cpp" />
   </ItemGroup>

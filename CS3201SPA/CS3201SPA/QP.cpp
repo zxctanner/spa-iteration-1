@@ -43,56 +43,46 @@ Validation will be conducted upon receiving query string, taking place in two se
 */
 
 
-QP::QP(string fileName, PKB* pkb) {
+QP::QP(string fileName) {
 	inputFileName = fileName;
-	includePKBInstance = pkb;
-};
+}
 
-void QP::startQP() {
+void QP::process() {
 	ifstream qfile;
 	qfile.open(this->inputFileName);
 	string currentLine, declarations, queryString;
 	vector<string> separatedLine;
 	while (getline(qfile, currentLine)) {
-		this->ansF = "none";
 		if (isQueryLegit(currentLine)) {
 			separatedLine = separateDQ(trim(currentLine, " "));
-			declarations = trim(separatedLine.at(0), " ");
-			queryString = trim(separatedLine.at(1), " ");
-			if (validNoSTPattern(queryString)) { //checks if number of ST and Pattern -> 1 each at most
-				if (regex_match(declarations, declaration_rgx) && regex_match(queryString, query_rgx)) {
-					//HANDLING DECLARATIONS
-					valid = processingDeclarations(declarations);
-					if (!valid) {
-						this->ansF = "none";
-						break;
-					}
-					//HANDLING QUERY STRING
-					valid = queryStringHandler(queryString);
-					if (valid) {
-						this->ansF = "none";
-						break;
-					}
-					//GOING INTO QE
-					passIntoQE();
-					//CLEAR EVERYTHING
-					clearMemory();
-				}
-				else {
-					this->ansF = "none";
-				}
+			if (separatedLine.empty()) {
+				break;
 			}
 			else {
-				this->ansF = "none";
+				declarations = trim(separatedLine.at(0), " ");
+				queryString = trim(separatedLine.at(1), " ");
+				if (validNoSTPattern(queryString)) { //checks if number of ST and Pattern -> 1 each at most
+					if (regex_match(declarations, declaration_rgx) && regex_match(queryString, query_rgx)) {
+						//HANDLING DECLARATIONS
+						valid = processingDeclarations(declarations);
+						if (!valid) {
+							break;
+						}
+						//HANDLING QUERY STRING
+						valid = queryStringHandler(queryString);
+						if (valid) {
+							break;
+						}
+						//GOING INTO QE
+						//passIntoQE();
+						//CLEAR EVERYTHING
+						clearMemory();
+					}
+				}
 			}
 		}
-		else {
-			this->ansF = "none";
-		}
-		cout << this->ansF << endl;
 	}
 }
-
 bool QP::isQueryLegit(string rawQueryString) { //checks if the query string follows format: <declarationsstring><SINGLE SPACE><querystring>
 	if (rawQueryString.find("Select") == string::npos || rawQueryString.find(";") == string::npos) {
 		return false;
@@ -121,7 +111,7 @@ vector<string> QP::separateDQ(string& str) { //separates declaration string from
 	int lastSemi = str.find_last_of(";");
 	int selectIndex = str.find("Select");
 	if (lastSemi == string::npos || selectIndex == string::npos) {
-		cout << "Invalid query!" << endl;
+		//cout << "Invalid query!" << endl;
 		return processedStr;
 	}
 	declarations = str.substr(0, lastSemi + 1);
@@ -245,16 +235,13 @@ bool QP::checkIfSynDontExist(string syn) { //checks through the declared design 
 }
 
 void QP::clearMemory() { //erases all stored values in tables
-	this->assignD.clear();
-	this->whileD.clear();
-	this->stmtD.clear();
-	this->variableD.clear();
-	this->constantD.clear();
-	this->prog_lineD.clear();
-	this->queryUsedSyns.clear();
-	this->queriesForQE.clear();
-	this->ansST.clear();
-	this->ansP.clear();
+	assignD.clear();
+	whileD.clear();
+	stmtD.clear();
+	variableD.clear();
+	constantD.clear();
+	prog_lineD.clear();
+	queryUsedSyns.clear();
 	querySyn = "";
 }
 
@@ -294,7 +281,7 @@ bool QP::extractSTSyn(string& query) { //Expected input: Modifies|Uses|Parent*|P
 			return true;
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
@@ -304,7 +291,7 @@ bool QP::extractSTSyn(string& query) { //Expected input: Modifies|Uses|Parent*|P
 			return true;
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
@@ -314,7 +301,7 @@ bool QP::extractSTSyn(string& query) { //Expected input: Modifies|Uses|Parent*|P
 			return true;
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
@@ -336,7 +323,7 @@ bool QP::extractPatternSyns(string& query) { //Expect input: patternblah(blah,bl
 			}
 			queryUsedSyns.push_back(first);
 			if ((std::find(queryUsedSyns.begin(), queryUsedSyns.end(), second) != queryUsedSyns.end()) && count == 1) {
-				cout << "Repeated Synonym detected in query!" << endl;
+				//cout << "Repeated Synonym detected in query!" << endl;
 				return false;
 			}
 			else {
@@ -345,7 +332,7 @@ bool QP::extractPatternSyns(string& query) { //Expect input: patternblah(blah,bl
 			}
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
@@ -355,7 +342,7 @@ bool QP::extractPatternSyns(string& query) { //Expect input: patternblah(blah,bl
 			return true;
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
@@ -365,10 +352,14 @@ bool QP::extractPatternSyns(string& query) { //Expect input: patternblah(blah,bl
 			return true;
 		}
 		else {
-			cout << "One or more of the synonyms used in query was not declared!" << endl;
+			//cout << "One or more of the synonyms used in query was not declared!" << endl;
 			return false;
 		}
 	}
+}
+
+vector<Query> QP::getVectorQuery() {
+	return queriesForQE;
 }
 
 string QP::extractPattern(string& queryString) {
@@ -435,6 +426,8 @@ bool QP::queryStringHandler(string queryString) {
 	int indexOfST = queryString.find("such");
 	int indexOfPattern = queryString.find("pattern");
 	vector<string> query;
+	vector<string> suchthatVS;
+	vector<string> patternVS;
 	bool errorSyn;
 	string pattern;
 	string suchthat;
@@ -447,7 +440,8 @@ bool QP::queryStringHandler(string queryString) {
 			errorSyn = extractPatternSyns(pattern);
 			if (errorSyn) {
 				query = formattedSTQE(pattern, querySyn, "pattern");
-				this->queriesForQE.push_back(query);
+				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+				queriesForQE.push_back(currentQuery);
 				return true;
 			}
 		}
@@ -464,7 +458,8 @@ bool QP::queryStringHandler(string queryString) {
 			errorSyn = extractSTSyn(suchthat);
 			if (errorSyn) {
 				query = formattedSTQE(suchthat, querySyn, "suchthat");
-				this->queriesForQE.push_back(query);
+				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+				queriesForQE.push_back(currentQuery);
 				return true;
 			}
 		}
@@ -483,8 +478,11 @@ bool QP::queryStringHandler(string queryString) {
 				pattern = extractPattern(queryString);
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
-					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
-					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					patternVS = formattedSTQE(pattern, querySyn, "pattern");
+					query = combineVector(suchthatVS, patternVS);
+					Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+					queriesForQE.push_back(currentQuery);
 					return true;
 				}
 				else {
@@ -509,8 +507,11 @@ bool QP::queryStringHandler(string queryString) {
 				pattern = extractPattern(queryString);
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
-					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
-					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					patternVS = formattedSTQE(pattern, querySyn, "pattern");
+					query = combineVector(suchthatVS, patternVS);
+					Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+					queriesForQE.push_back(currentQuery);
 					return true;
 				}
 				else {
@@ -527,27 +528,15 @@ bool QP::queryStringHandler(string queryString) {
 	}
 }
 
-string QP::checkSynType(string syn) { //syn is assumed to be valid (i.e. already declared)
-	string type;
-	if (std::find(this->stmtD.begin(), this->stmtD.end(), syn) != this->stmtD.end()) {
-		type = "stmt";
+vector<string> QP::combineVector(vector<string> first, vector<string> second) {
+	vector<string> temp;
+	for (auto i : first) {
+		temp.push_back(i);
 	}
-	if (std::find(this->assignD.begin(), this->assignD.end(), syn) != this->assignD.end()) {
-		type = "assign";
+	for (auto i : second) {
+		temp.push_back(i);
 	}
-	if (std::find(this->whileD.begin(), this->whileD.end(), syn) != this->whileD.end()) {
-		type = "while";
-	}
-	if (std::find(this->variableD.begin(), this->variableD.end(), syn) != this->variableD.end()) {
-		type = "variable";
-	}
-	if (std::find(this->prog_lineD.begin(), this->prog_lineD.end(), syn) != this->prog_lineD.end()) {
-		type = "prog_line";
-	}
-	if (std::find(this->constantD.begin(), this->constantD.end(), syn) != this->constantD.end()) {
-		type = "constant";
-	}
-	return type;
+	return temp;
 }
 
 vector<string> QP::formattedSTQE(string st, string qSyn, string typeOfQuery) { //formatting ST query && pattern specifically for QE
@@ -573,19 +562,6 @@ vector<string> QP::formattedSTQE(string st, string qSyn, string typeOfQuery) { /
 	return query;
 }
 
-void QP::queryPrinter() {
-	cout << "Queries to be passed to QE: " << endl;
-	for (auto i : queriesForQE) {
-		copy(i.begin(), i.end(), ostream_iterator<string>(cout, " "));
-		cout << endl;
-	}
-	cout << endl;
-	cout << "Queried synonym: " << endl;
-	cout << querySyn << endl;
-	cout << "Synonyms used in query: " << endl;
-	copy(queryUsedSyns.begin(), queryUsedSyns.end(), ostream_iterator<string>(cout, " "));
-}
-
 vector<string> QP::tokenize(const string& str, const string& delimiters) { //general tokenizer function with customized delimiters allowed
 	vector<string> tokens;
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
@@ -606,137 +582,4 @@ string QP::trim(const string& str, const string& trimmers) {
 	const auto strEnd = str.find_last_not_of(trimmers);
 	const auto strRange = strEnd - strBegin + 1;
 	return str.substr(strBegin, strRange);
-}
-
-void QP::passIntoQE() {
-	if ((this->queriesForQE.size() < 1) || (this->queriesForQE.size() > 2)) {
-		this->ansF = "none";
-	}
-	else {
-		if (this->queriesForQE.size() == 1) {
-			selectField(this->queriesForQE.at(0));
-			if (this->queriesForQE.at(0).at(1) == "pattern") {
-				ansF = vectorSToString(this->ansP);
-			}
-			else {
-				ansF = vectorSToString(this->ansST);
-			}
-		}
-		else {
-			selectField(this->queriesForQE.at(0));
-			selectField(this->queriesForQE.at(1));
-			ansF = vectorSToString(findCommonAnswer());
-		}
-	}
-}
-
-vector<string> QP::findCommonAnswer() {
-	vector<string> answer;
-	for (int a = 0; a < this->ansST.size(); a++) {
-		if (find(this->ansP.begin(), this->ansP.end(), this->ansST.at(a)) != this->ansP.end()) {
-			answer.push_back(this->ansST.at(a));
-		}
-	}
-	return answer;
-}
-
-string QP::vectorSToString(vector<string> vecString) {
-	string ans;
-	stringstream ss;
-	for (int i = 0; i < vecString.size(); ++i) {
-		if (i != 0) {
-			ss << ", ";
-		}
-		ss << vecString.at(i);
-	}
-	ans = ss.str();
-}
-
-
-//JEREMY'S FUNCTIONS:
-void QP::selectField(vector<string> fields) {
-	string select = fields[0];
-	string command = fields[1];
-	string one = fields[2];
-	string two = fields[3];
-	bool isNum1 = QP::isInt(one);
-	bool isNum2 = QP::isInt(two);
-	if (isNum1) {
-		int a = atoi(one.c_str());
-	}
-	if (isNum2) {
-		int b = atoi(two.c_str());
-	}
-
-	if (command.compare("ModifiesS") == 0) {
-		if (!isNum1 && !isNum2) {
-			this->ansST = QE::ModifiesS(select, one, two);
-		}
-		else {
-			this->ansST = QE::ModifiesS(select, one, b);
-		}
-	}
-	else if (command.compare("UsesS") == 0) {
-		if (isNum1 && !isNum2) {
-			this->ansST = QE::UsesS(select, a, two);
-		}
-		else {
-			this->ansST = QE::UsesS(select, one, b);
-		}
-	}
-	else if (command.compare("Parent") == 0) {
-		if (isNum1 && !isNum2) {
-			this->ansST = QE::Parent(select, a, two);
-		}
-		else if (!isNum1 && isNum2) {
-			this->ansST = QE::Parent(select, one, b);
-		}
-		else {
-			this->ansST = QE::Parent(select, one, two);
-		}
-	}
-	else if (command.compare("ParentT") == 0) {
-		if (isNum1 && !isNum2) {
-			this->ansST = QE::ParentT(select, a, two);
-		}
-		else if (!isNum1 && isNum2) {
-			this->ansST = QE::ParentT(select, one, b);
-		}
-		else {
-			this->ansST = QE::ParentT(select, one, two);
-		}
-	}
-	else if (command.compare("Follows") == 0) {
-		if (isNum1 && !isNum2) {
-			this->ansST = QE::Follows(select, a, two);
-		}
-		else if (!isNum1 && isNum2) {
-			this->ansST = QE::Follows(select, one, b);
-		}
-		else {
-			this->ansST = QE::Follows(select, one, two);
-		}
-	}
-	else if (command.compare("FollowsT") == 0) {
-		if (isNum1 && !isNum2) {
-			this->ansST = QE::FollowsT(select, a, two);
-		}
-		else if (!isNum1 && isNum2) {
-			this->ansST = QE::FollowsT(select, one, b);
-		}
-		else {
-			this->ansST = QE::FollowsT(select, one, two);
-		}
-	}
-	else {
-		this->ansP = QE::pattern(select, one, two);
-	}
-}
-
-bool QP::isInt(string input) {
-	bool isNumber = true;
-	for (string::const_iterator k = input.begin(); k != input.end(); ++k) {
-		isNumber && = isdigit(*k);
-	}
-	return isNumber;
 }
