@@ -68,7 +68,11 @@ void QP::startQP() {
 						break;
 					}
 					//HANDLING QUERY STRING
-					queryStringHandler(queryString);
+					valid = queryStringHandler(queryString);
+					if (valid) {
+						this->ansF = "none";
+						break;
+					}
 					//GOING INTO QE
 					passIntoQE();
 					//CLEAR EVERYTHING
@@ -425,7 +429,7 @@ string QP::extractST(string& queryString) {
 	return query;
 }
 
-void QP::queryStringHandler(string queryString) {
+bool QP::queryStringHandler(string queryString) {
 	queryString.erase(remove_if(queryString.begin(), queryString.end(), isspace), queryString.end());
 	int indexOfST = queryString.find("such");
 	int indexOfPattern = queryString.find("pattern");
@@ -443,10 +447,12 @@ void QP::queryStringHandler(string queryString) {
 			if (errorSyn) {
 				query = formattedSTQE(pattern, querySyn, "pattern");
 				this->queriesForQE.push_back(query);
+				return true;
 			}
 		}
 		else {
-			cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+			return false;
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
 		}
 	}
 	//b. only have such that
@@ -458,10 +464,12 @@ void QP::queryStringHandler(string queryString) {
 			if (errorSyn) {
 				query = formattedSTQE(suchthat, querySyn, "suchthat");
 				this->queriesForQE.push_back(query);
+				return true;
 			}
 		}
 		else {
-			cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+			return false;
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
 		}
 	}
 	//c. such that before pattern
@@ -476,11 +484,18 @@ void QP::queryStringHandler(string queryString) {
 				if (errorSyn) {
 					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
 					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					return true;
 				}
+				else {
+					return false;
+				}
+			}
+			else {
+				return false;
 			}
 		}
 		else {
-			cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+			return false;
 		}
 	}
 	//d. pattern before such that
@@ -495,11 +510,18 @@ void QP::queryStringHandler(string queryString) {
 				if (errorSyn) {
 					this->queriesForQE.push_back(formattedSTQE(suchthat, querySyn, "suchthat"));
 					this->queriesForQE.push_back(formattedSTQE(pattern, querySyn, "pattern"));
+					return true;
 				}
+				else {
+					return false;
+				}
+			}
+			else {
+				return false;
 			}
 		}
 		else {
-			cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+			return false;
 		}
 	}
 }

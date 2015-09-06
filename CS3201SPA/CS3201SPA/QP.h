@@ -57,7 +57,7 @@ private:
 	bool extractPatternSyns(string& query);
 	string extractPattern(string& queryString);
 	string extractST(string& queryString);
-	void queryStringHandler(string queryString);
+	bool queryStringHandler(string queryString);
 	void queryPrinter();
 	void clearMemory();
 	bool isQueryLegit(string rawQueryString);
