@@ -5,7 +5,7 @@ using namespace std;
 LineToken::LineToken()
 {
 }
-
+/*
 LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number, vector<string> rhsexpr)
 {
 	type = tokType;
@@ -14,17 +14,31 @@ LineToken::LineToken(stmtType tokType, string tokName, int nestLevel, int number
 	stmtNumber = number;
 	expr = rhsexpr;
 }
+*/
 
+LineToken::LineToken(string tokType, string tokName, int nestLevel, int number, vector<string> rhsexpr)
+{
+	type = tokType;
+	name = tokName;
+	level = nestLevel;
+	stmtNumber = number;
+	expr = rhsexpr;
+}
 
 LineToken::~LineToken()
 {
 }
 
+/*
 stmtType LineToken::getType()
 {
 	return type;
 }
-
+*/
+string LineToken::getType()
+{
+	return type;
+}
 string LineToken::getName()
 {
 	return name;
