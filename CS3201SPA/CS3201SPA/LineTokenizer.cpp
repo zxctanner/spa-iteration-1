@@ -57,18 +57,18 @@ void LineTokenizer::tokenize()
 			string rhs = match[4];
 			//erase all whitespace from rhs
 			rhs.erase(remove_if(rhs.begin(), rhs.end(), isspace), rhs.end());
-			
-			//split rhs string with + as delimiter
 			vector<string> strvec;
-			size_t pos = 0;
-			string tok;
-			string delimiter = "+";
-			while ((pos = rhs.find(delimiter)) != string::npos) {
-				strvec.push_back(tok);
-				rhs.erase(0, pos + delimiter.length());
+			if (rhs.find("+") != string::npos) {
+				stringstream ss(rhs);
+				string tok;
+				while (getline(ss, tok, (char)"+")) {
+					strvec.push_back(tok);
+				}
 			}
-			strvec.push_back(rhs);
-
+			else {
+				strvec.push_back(rhs);
+			}
+			
 			tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, strvec));
 		}
 
