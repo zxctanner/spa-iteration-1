@@ -1,11 +1,11 @@
 #include "QE.h"
-#include "PKB.h"
 #include <vector>
 #include <unordered_map>
 #include <string>
 #include <stack>
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
@@ -18,19 +18,26 @@ using namespace std;
 6. The query answers will be placed in vector<string> ans1 for all commands and ans2 for pattern command
 7. If there are only 1 command, the respective vector will be printed else AND the two vectors before printing*/
 
-QE QE::QueryEvaluator(){
+QE::QE()
+{
 }
 
-vector<string> QE::ModifiesS(string select, string one, string two); { //returns statement number that modifies variable two
-	unordered_map<int, pair<vector<string>, vector<string>>> modTable = PKB::getmodUseTable();
+QE::QE(string fileName, PKB * p)
+{
+	filePath = fileName;
+	pkb = p;
+}
+
+vector<string> QE::ModifiesS(string select, string one, string two) { //returns statement number that modifies variable two
+	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	vector<string> check;
 	ostringstream convert;
-	if (two.compares("_") != 0) {
-		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
-			check = modTable.second.first;
+	if (two.compare("_") != 0) {
+		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+			check = modUseTable.second.first;
 			for (int j = 0; j < check.size(); ++j) {
-				if (check[j].compares(two) == 0) {
+				if (check[j].compare(two) == 0) {
 					convert << modTable.first;
 					ans.push_back(convert.str());
 				}
@@ -39,8 +46,8 @@ vector<string> QE::ModifiesS(string select, string one, string two); { //returns
 		ans = filter(ans, one, two);
 	}
 	else {
-		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
-			convert << modTable.first;
+		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+			convert << modUseTable.first;
 			ans.push_back(convert.str());
 		}
 		ans = filter(ans, one, two);
@@ -48,26 +55,26 @@ vector<string> QE::ModifiesS(string select, string one, string two); { //returns
 
 	return ans;
 }
-vector<string> QE::ModifiesS(string select, int one, string two); { //returns variable that is modifies in statement line one
-	unordered_map<int, pair<vector<string>, vector<string>>> modTable = PKB::getmodUseTable();
+vector<string> QE::ModifiesS(string select, int one, string two) { //returns variable that is modifies in statement line one
+	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
-	convert << modTable[one].first;
+	convert << modUseTable[one].first;
 	ans.push_back(convert.str());
 	return ans;
 }
 
-vector<string> QE::UsesS(string select, string one, string two); { //returns statment numbers that uses variable two
-	unordered_map<int, pair<vector<string>, vector<string>>> useTable = PKB::getmodUseTable();
+vector<string> QE::UsesS(string select, string one, string two) { //returns statment numbers that uses variable two
+	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	vector<string> use;
 	ostringstream convert;
-	if (two.compares("_") != 0) {
-		for (auto i = useTable.begin(); i != useTable.end(); ++i) {
-			use = useTable.second.second;
+	if (two.compare("_") != 0) {
+		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+			use = modUseTable.second.second;
 			for (int j = 0; i < use.size(); ++j) {
-				if (use[j].compares(two) == 0) {
-					convert << useTable.first;
+				if (use[j].compare(two) == 0) {
+					convert << modUseTable.first;
 					ans.push_back(convert.str());
 				}
 			}
@@ -75,32 +82,32 @@ vector<string> QE::UsesS(string select, string one, string two); { //returns sta
 		ans = filter(ans, one, two);
 	}
 	else {
-		for (auto i = modTable.begin(); i != modTable.end(); ++i) {
-			convert << useTable.first;
+		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+			convert << ModuseTable.first;
 			ans.push_back(convert.str());
 		}
 		ans = filter(ans, one, two);
 	}
 	return ans;
 }
-vector<string> QE::UsesS(string select, int one, string two); { //returns variables that are used in statement line one
-	unordered_map<int, pair<vector<string>, vector<string>>> useTable = PKB::getmodUseTable();
+vector<string> QE::UsesS(string select, int one, string two) { //returns variables that are used in statement line one
+	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	
-	vector<string> use = useTable[one].second;
+	vector<string> use = modUseTable[one].second;
 	for (int i = 0; i < use.size(); ++i) {
 		ans.push_back(use[i]);
 	}
 	return ans;
 }
 
-vector<string> QE::Parent(string select, string one, string two); { //return all the while statement base on condition
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::Parent(string select, string one, string two) { //return all the while statement base on condition
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	vector<string> sub;
 	vector<string> ans;
 	ostringstream convert;
-	if (select.compares(one) == 0) {
-		if (QP::checkSynType(one).compares("while") != 0) { //if one is not while, return none
+	if (select.compare(one) == 0) {
+		if (QP->checkSynType(one).compare("while") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -127,7 +134,7 @@ vector<string> QE::Parent(string select, string one, string two); { //return all
 		}
 	}
 	else {
-		if (QP::checkSynType(one).compares("while") != 0 || one.compares("_") != 0) { //if one is not while, return none
+		if (QP->checkSynType(one).compare("while") != 0 || one.compare("_") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -140,8 +147,8 @@ vector<string> QE::Parent(string select, string one, string two); { //return all
 	}
 	return ans;
 }
-vector<string> QE::Parent(string select, int one, string two); { //return all the child of statement line one
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::Parent(string select, int one, string two) { //return all the child of statement line one
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
 	vector<string> ans;
 	ostringstream convert;
 	for (int i = 0; i < parTable.size(); ++i) {
@@ -153,8 +160,8 @@ vector<string> QE::Parent(string select, int one, string two); { //return all th
 	ans = filter(ans, two);
 	return ans;
 }
-vector<string> QE::Parent(string select, string one, int two); { //return the parent statement line of the statement line two
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::Parent(string select, string one, int two) { //return the parent statement line of the statement line two
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
 	vector<string> ans;
 	ostringstream convert;
 	for (int i = 0; i < parTable.size(); i++) {
@@ -168,13 +175,13 @@ vector<string> QE::Parent(string select, string one, int two); { //return the pa
 	return ans;
 }
 
-vector<string> QE::ParentT(string select, string one, string two); { //return all the while statment base on condition
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::ParentT(string select, string one, string two) { //return all the while statment base on condition
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	vector<string> sub;
 	vector<string> ans;
 	ostringstream convert;
-	if (select.compares(one) == 0) {
-		if (QP::checkSynType(one).compares("while") != 0) { //if one is not while, return none
+	if (select.compare(one) == 0) {
+		if (QP::checkSynType(one).compare("while") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -200,7 +207,7 @@ vector<string> QE::ParentT(string select, string one, string two); { //return al
 		}
 	}
 	else {
-		if (QP::checkSynType(one).compares("while") != 0 || one.compares("_") != 0) { //if one is not while, return none
+		if (QP->checkSynType(one).compare("while") != 0 || one.compare("_") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -213,8 +220,8 @@ vector<string> QE::ParentT(string select, string one, string two); { //return al
 	}
 	return ans;
 }
-vector<string> QE::ParentT(string select, int one, string two); { //return all the child* of statement line one
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::ParentT(string select, int one, string two){ //return all the child* of statement line one
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	vector<string> ans;
 	stack<int> par;
 	ostringstream convert;
@@ -237,8 +244,8 @@ vector<string> QE::ParentT(string select, int one, string two); { //return all t
 	ans = filter(ans, two);
 	return ans;
 }
-vector<string> QE::ParentT(string select, string one, int two); { //return all the parent* of statement line two
-	vector<pair<int, int>> parTable = PKB::getParentTable();
+vector<string> QE::ParentT(string select, string one, int two) { //return all the parent* of statement line two
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	vector<string> ans;
 	stack<int> par;
 	ostringstream convert;
@@ -262,18 +269,18 @@ vector<string> QE::ParentT(string select, string one, int two); { //return all t
 	return ans;
 }
 
-vector<string> QE::Follows(string select, string one, string two); { //return statement line of follow base on condition
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
+vector<string> QE::Follows(string select, string one, string two) { //return statement line of follow base on condition
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> sub;
 	vector<string> sub2;
 	vector<string> ans;
 	ostringstream convert;
-	if (select.compares(one) == 0) {
+	if (select.compare(one) == 0) {
 		for (int i = 0; i < folTable.size(); ++i) {	
 			convert << folTable[i].first;
 			sub.push_back(convert.str());
 		}
-		sub = filter(sub, first); // sub contains only the correct declaration of one
+		sub = filter(sub, one); // sub contains only the correct declaration of one
 		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and second of parTable to obtain follow statement line
 			for (int k = 0; k < sub.size(); ++k) {
 				int value = atoi(sub[k].c_str()); //int of sub
@@ -299,7 +306,7 @@ vector<string> QE::Follows(string select, string one, string two); { //return st
 			convert << folTable[i].second;
 			sub.push_back(convert.str());
 		}
-		sub = filter(sub, second); // sub contains only the correct declaration of second
+		sub = filter(sub, two); // sub contains only the correct declaration of second
 		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and first of parTable to obtain follow statement line
 			for (int k = 0; k < sub.size(); ++k) {
 				int value = atoi(sub[k].c_str()); //int of sub
@@ -322,8 +329,8 @@ vector<string> QE::Follows(string select, string one, string two); { //return st
 	}
 	return ans;
 }
-vector<string> QE::Follows(string select, int one, string two); { //return the statement line that follows statement line one
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
+vector<string> QE::Follows(string select, int one, string two) { //return the statement line that follows statement line one
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
 	for (int i = 0; i < folTable.size(); ++i) {
@@ -336,9 +343,9 @@ vector<string> QE::Follows(string select, int one, string two); { //return the s
 	ans = filter(ans, two);
 	return ans;
 }
-vector<string> QE::Follows(string select, string one, int two); { //return the statement line that is before statement line two
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
-	ventor<string> ans;
+vector<string> QE::Follows(string select, string one, int two) { //return the statement line that is before statement line two
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
+	vector<string> ans;
 	ostringstream convert;
 	for (int i = 0; i < folTable.size(); i++) {
 		if (folTable[i].second == two) {
@@ -351,18 +358,18 @@ vector<string> QE::Follows(string select, string one, int two); { //return the s
 	return ans;
 }
 
-vector<string> QE::FollowsT(string select, string one, string two); { //return all the statement lines base on condition
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
+vector<string> QE::FollowsT(string select, string one, string two) { //return all the statement lines base on condition
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> sub;
 	vector<string> sub2;
 	vector<string> ans;
 	ostringstream convert;
-	if (select.compares(one) == 0) {
+	if (select.compare(one) == 0) {
 		for (int i = 0; i < folTable.size(); ++i) {
 			convert << folTable[i].first;
 			sub.push_back(convert.str());
 		}
-		sub = filter(sub, first); // sub contains only the correct declaration of one
+		sub = filter(sub, one); // sub contains only the correct declaration of one
 		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and second of parTable to obtain follow statement line
 			for (int k = 0; k < sub.size(); ++k) {
 				int value = atoi(sub[k].c_str()); //int of sub
@@ -388,7 +395,7 @@ vector<string> QE::FollowsT(string select, string one, string two); { //return a
 			convert << folTable[i].second;
 			sub.push_back(convert.str());
 		}
-		sub = filter(sub, second); // sub contains only the correct declaration of second
+		sub = filter(sub, two); // sub contains only the correct declaration of second
 		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and first of parTable to obtain follow statement line
 			for (int k = 0; k < sub.size(); ++k) {
 				int value = atoi(sub[k].c_str()); //int of sub
@@ -411,8 +418,8 @@ vector<string> QE::FollowsT(string select, string one, string two); { //return a
 	}
 	return ans;
 }
-vector<string> QE::FollowsT(string select, int one, string two); { //return all the statement lines that follows* statement line one
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
+vector<string> QE::FollowsT(string select, int one, string two) { //return all the statement lines that follows* statement line one
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
 	int line = one;
@@ -426,8 +433,8 @@ vector<string> QE::FollowsT(string select, int one, string two); { //return all 
 	ans = filter(ans, two);
 	return ans;
 }
-vector<string> QE::FollowsT(string select, string one, int two); { //return all the statements lines that come before statement line two and in the sames nesting level
-	vector<pair<int, int>> folTable = PKB::getFollowTable();
+vector<string> QE::FollowsT(string select, string one, int two) { //return all the statements lines that come before statement line two and in the sames nesting level
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 	ostringstream convert;
 	int line = two;
@@ -442,16 +449,16 @@ vector<string> QE::FollowsT(string select, string one, int two); { //return all 
 	return ans;
 }
 
-vector<string> QE::pattern(string select, string one, string two); { //return the statement lines that has this pattern
+vector<string> QE::pattern(string select, string one, string two) { //return the statement lines that has this pattern
 	vector<string> ans;
 	return ans;
 }
 
 vector<string> QE::filter(vector<string> vec, string one, string two) {
 	vector<string> filAns;
-	string type1 = QP::checkSynType(one);
-	string type2 = QP::checkSynType(two);
-	unordered_map<int, LineToken*>* stmtTable = PKB::getStatementTable.getTable;
+	string type1 = QP->checkSynType(one);
+	string type2 = QP->checkSynType(two);
+	unordered_map<int, LineToken*> stmtTable = pkb->getStatementTable()->getTable();
 	
 	if (one.compare("_") == 0 && two.compare("_") == 0) {
 		return vec;
@@ -484,10 +491,10 @@ vector<string> QE::filter(vector<string> vec, string one, string two) {
 	} else {
 		// must check both type e.g a,w or w,w
 			//make sure one matches the type required e.g a,_ or w,_
-			for (int i = 0; i < ans.size(); ++i) {
-				if (vector.get(i).one.type == typeOne && vector.get(i).two.type == typeTwo) {
+			for (int i = 0; i < vec.size(); ++i) {
+				if (vec[i].one.type == type1 && vec[i].two.type == type2) {
 					// add it to final answer
-					filAns.add(vector.get(i));
+					filAns.push_back(vec[i]);
 				}
 			}
 	}
@@ -496,7 +503,7 @@ vector<string> QE::filter(vector<string> vec, string one, string two) {
 
 vector<string> QE::filter(vector<string> vec, string field) {
 	vector<string> filAns;
-	string type = QP::checkSynType(field);
+	string type = QP->checkSynType(field);
 
 	if (field.compare("_") == 0) {
 		return vec;
@@ -508,7 +515,7 @@ vector<string> QE::filter(vector<string> vec, string field) {
 			int same = type.compare(stmtTable[value].second.getType);
 			if (same == 0) {
 				// add it to final answer
-				filAns.push_back(vec[i]));
+				filAns.push_back(vec[i]);
 			}
 		}
 	}
