@@ -89,6 +89,7 @@ void QP::startQP() {
 		else {
 			this->ansF = "none";
 		}
+		cout << this->ansF << endl;
 	}
 }
 
