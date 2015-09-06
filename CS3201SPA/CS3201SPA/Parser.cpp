@@ -201,7 +201,7 @@ void Parser::populateParentTable()
 			else //current statement goes back to same nesting level as "while" or even lower
 			{
 				//pop out all while loops that has ended
-				while (nestedStack.top().getLevel() >= it->getLevel() && !nestedStack.empty()) {
+				while (!nestedStack.empty() && nestedStack.top().getLevel() >= it->getLevel()) {
 					nestedStack.pop();
 				}
 				//if stack is still not empty, current statement is a child of the while loop in the stack
