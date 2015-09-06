@@ -2,6 +2,7 @@
 #define Query_H
 #pragma once
 #include <string>
+#include "LineToken.h"
 #include <vector>
 
 using namespace std;
@@ -18,9 +19,9 @@ private:
 	vector<string> queryFields;
 
 public:
-
+	Query();
 	Query(vector<string> stmtd, vector<string> assignd, vector<string> variabled, vector<string> constantd, vector<string> whiled, vector<string> prog_lined, vector<string> queryfield);
-	string getSynType(string syn);
+	stmtType checkSynType(string syn);
 	vector<string> getQueryFields();
 	~Query();
 };

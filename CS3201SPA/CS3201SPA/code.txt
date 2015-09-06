@@ -1,17 +1,9 @@
-Procedure First {
-	x = 2;
-	z = 3;}
 Procedure Second {
 	x = 0;
 	i = 5;
 	while i {
-		x = x + 2 * y;
-		i = i - 1;}
-	if x then {
-		x = x + 1;}
-	else {
-		z = 1;}
-	z = z - 1;}
-Procedure Third {
-	z = 5;
-	v = z;}
+		x = x + 2;
+		i = i + 1;
+			while p {
+				x = x + 1;}}
+	z = z + 1;}
