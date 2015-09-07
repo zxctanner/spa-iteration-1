@@ -18,7 +18,7 @@ public:
 	unordered_map<string, int> getTable();
 	void setTable(unordered_map<string, int> vList);
 	bool isInList(string var);
-	void insert(string var);
+	//void insert(string var);
 	vector<string> getAllVar();
 };
 

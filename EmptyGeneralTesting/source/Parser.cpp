@@ -273,6 +273,7 @@ void Parser::populateModUseTable() {
 	vector<LineToken> tokensCopy = tokens;
 	vector<int> whileStack;
 	unordered_map<int, pair<vector<string>, vector<string>>> table;
+	unordered_map<string, int> list;
 
 	int currentLevel;
 	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
@@ -304,6 +305,16 @@ void Parser::populateModUseTable() {
 				appendToParents(&table, whileStack, modVar, used);
 			}
 
+			//add new variables to VarList, while checking for no constant values
+			list.insert(pair<string, int>(modVar, list.size() + 1));
+			for (int i = 0; i < used.size(); ++i) {
+				char* isInt;
+				int converted = strtol(used[i].c_str(), &isInt, 10);
+				if (!isInt) {
+					list.insert(pair<string, int>(used[i], list.size() + 1));
+				}
+			}
+
 			//add this stmt into the table
 			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
 		}
@@ -319,12 +330,16 @@ void Parser::populateModUseTable() {
 
 			//add this while statement into the table
 			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
+			
+			//add new variables to VarList
+			list.insert(pair<string, int>(it->getName(), list.size() + 1));
 
 			//add the stmt number into the stack
 			whileStack.push_back(it->getStmtNumber());
 		}
 	}
 	pkb->setModUseTable(new ModUseTable(table));
+	pkb->setVarList(new VarList(list));
 }
 
 
