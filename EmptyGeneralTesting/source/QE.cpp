@@ -830,7 +830,7 @@ vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 
 vector<string> QE::pattern(string select, string one, string two) { //return the statement lines that has this pattern
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
-	bool isUnderscore;
+	bool isUnderscore = false;
 	vector<string> ans;
 	//check if LHS is '_'
 	if (one == "_") {
@@ -839,8 +839,10 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	// "one" is a variable
 	else {
 		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+			// strip the apostophes from one, assuming var is surrounded by " and "
+			string var = one.substr(1, one.size() - 2);
 			vector<string> modEntry = it->second.first;
-			if (find(modEntry.begin(), modEntry.end(), one) != modEntry.end()) {
+			if (find(modEntry.begin(), modEntry.end(), var) != modEntry.end()) {
 				ans.push_back(to_string(it->first));
 			}
 		}
@@ -860,15 +862,16 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	}
 	//if RHS is a subexpression and LHS was not "_"
 	else if ((two.find("_", 0) != string::npos) && (two.find("_", 1) != string::npos) && (!isUnderscore)) {
-		//take out the var in the middle
-		string var = two;
+		//take out the var in the middle, assuming it is surrounded by _" and "_
+		string var = two.substr(2, two.size() - 4);
 		for (int i = 0; i < ans.size(); ++i) {
 			char* num;
 			int stmtNum = strtol(ans[i].c_str(), &num, 10);
-			vector<string> useEntry = modUseTable[stmtNum].first;
+			vector<string> useEntry = modUseTable[stmtNum].second;
 			//if the current stmts in ans do not satisfy RHS pattern, erase them
 			if (find(useEntry.begin(), useEntry.end(), var) == useEntry.end()) {
 				ans.erase(ans.begin() + i);
+				--i;
 			}
 		}
 	}
@@ -876,6 +879,7 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	else {
 
 	}
+	//need to filter
 	return ans;
 }
 
