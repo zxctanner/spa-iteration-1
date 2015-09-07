@@ -36,7 +36,7 @@ void LineTokenizer::tokenize()
 	}
 
 	regex procedureRgx("Procedure\\s+([a-zA-Z][a-zA-Z0-9]*)");
-	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)(\\s)*=(\\s)*(.*)(\\s)*;");
+	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)(\\s)*=(\\s)*(.+)(\\s)*;");
 	regex whileRgx("while\\s+([a-zA-Z][a-zA-Z0-9]*)");
 	regex openBracketRgx("\\{");
 	regex closeBracketRgx("\\}");
