@@ -301,7 +301,7 @@ void Parser::populateModUseTable() {
 			
 			varList.insert(modVar);
 			for (auto it = used.begin(); it != used.end(); it++) {
-				varList.insert(modVar);
+				varList.insert(*it);
 			}
 			//if this stmt is a child of other stmts, update all parents' modified and uses table
 			if (!whileStack.empty()) {
