@@ -52,10 +52,10 @@ private:
 	bool extractPatternSyns(string& query);
 	string extractPattern(string& queryString);
 	string extractST(string& queryString);
-	bool queryStringHandler(string queryString);
+	void queryStringHandler(string queryString);
 	void clearMemory();
 	bool isQueryLegit(string rawQueryString);
-	bool checkValidQuery(vector<string> query);
+	bool checkValidQuery(Query query);
 	vector<string> formattedSTQE(string st, string qSyn, string typeOfQuery);
 
 };

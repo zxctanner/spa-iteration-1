@@ -1,7 +1,6 @@
 #pragma once
 
 #include "QP.h"
-#include "QE.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -20,7 +19,8 @@ regex declaration_rgx("^((stmt|assign|while|variable|constant|prog_line)\\s+[a-z
 regex query_rgx("^Select\\s+[a-zA-Z][a-zA-Z0-9#]*(\\s+(((such that)\\s+(((Parent|Parent[*]|Follows|Follows[*])\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[)]\\s*)|((Modifies|Uses)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|\"[a-zA-Z][a-zA-Z0-9#]*\")\\s*[)]\\s*)))|((pattern)\\s+(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|(\"[a-zA-Z][a-zA-Z0-9#]*\"))\\s*,\\s*((_\\s*\"(([a-zA-Z][a-zA-Z0-9#]*)|([0-9]+))\"\\s*_)|_)\\s*[)]))){1,2}$");
 regex synonym_rgx("^[a-zA-Z][a-zA-Z0-9#]*$");
 regex integer_rgx("^[0-9]+$");
-regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]\"&");
+regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]*\"$");
+regex factor_rgx("^[_]\"[a-zA-Z][a-zA-Z0-9#]*\"[_]$");
 
 //Functions:
 
@@ -58,7 +58,8 @@ void QP::process() {
 		if (isQueryLegit(currentLine)) {
 			separatedLine = separateDQ(trim(currentLine, " "));
 			if (separatedLine.empty()) {
-				break;
+				Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				queriesForQE.push_back(empty);
 			}
 			else {
 				declarations = trim(separatedLine.at(0), " ");
@@ -68,22 +69,36 @@ void QP::process() {
 						//HANDLING DECLARATIONS
 						valid = processingDeclarations(declarations);
 						if (!valid) {
-							break;
+							Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+							queriesForQE.push_back(empty);
 						}
 						//HANDLING QUERY STRING
-						valid = queryStringHandler(queryString);
-						if (valid) {
-							break;
-						}
+						queryStringHandler(queryString);
 						//GOING INTO QE
 						//passIntoQE();
 						//CLEAR EVERYTHING
-						clearMemory();
+					}
+					else {
+						Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+						queriesForQE.push_back(empty);
 					}
 				}
+				else {
+					Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					queriesForQE.push_back(empty);
+				}
 			}
+			clearMemory();
+		}
+		else {
+			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			queriesForQE.push_back(empty);
 		}
 	}
+	//do not include
+	/*for (int i = 0; i < queriesForQE.size(); ++i) {
+		queriesForQE.at(i).printQuery();
+	}*/
 }
 bool QP::isQueryLegit(string rawQueryString) { //checks if the query string follows format: <declarationsstring><SINGLE SPACE><querystring>
 	if (rawQueryString.find("Select") == string::npos || rawQueryString.find(";") == string::npos) {
@@ -423,7 +438,7 @@ string QP::extractST(string& queryString) {
 	return query;
 }
 
-bool QP::queryStringHandler(string queryString) {
+void QP::queryStringHandler(string queryString) {
 	queryString.erase(remove_if(queryString.begin(), queryString.end(), isspace), queryString.end());
 	int indexOfST = queryString.find("such");
 	int indexOfPattern = queryString.find("pattern");
@@ -443,12 +458,22 @@ bool QP::queryStringHandler(string queryString) {
 			if (errorSyn) {
 				query = formattedSTQE(pattern, querySyn, "pattern");
 				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
-				queriesForQE.push_back(currentQuery);
-				return true;
+				if (!checkValidQuery(currentQuery)) {
+					Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					queriesForQE.push_back(empty);
+				}
+				else {
+					queriesForQE.push_back(currentQuery);
+				}
+			}
+			else {
+				Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				queriesForQE.push_back(empty);
 			}
 		}
 		else {
-			return false;
+			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			queriesForQE.push_back(empty);
 			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
 		}
 	}
@@ -461,12 +486,22 @@ bool QP::queryStringHandler(string queryString) {
 			if (errorSyn) {
 				query = formattedSTQE(suchthat, querySyn, "suchthat");
 				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
-				queriesForQE.push_back(currentQuery);
-				return true;
+				if (!checkValidQuery(currentQuery)) {
+					Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					queriesForQE.push_back(empty);
+				}
+				else {
+					queriesForQE.push_back(currentQuery);
+				}
+			}
+			else {
+				Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				queriesForQE.push_back(empty);
 			}
 		}
 		else {
-			return false;
+			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			queriesForQE.push_back(empty);
 			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
 		}
 	}
@@ -481,22 +516,33 @@ bool QP::queryStringHandler(string queryString) {
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
 					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					Query st(stmtD, assignD, variableD, constantD, whileD, prog_lineD, suchthatVS);
 					patternVS = formattedSTQE(pattern, querySyn, "pattern");
-					query = combineVector(suchthatVS, patternVS);
-					Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
-					queriesForQE.push_back(currentQuery);
-					return true;
+					Query p(stmtD, assignD, variableD, constantD, whileD, prog_lineD, patternVS);
+					if (!checkValidQuery(st) || !checkValidQuery(p)) {
+						Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+						queriesForQE.push_back(empty);
+					}
+					else {
+						query = combineVector(suchthatVS, patternVS);
+						Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+						queriesForQE.push_back(currentQuery);
+					}
 				}
 				else {
-					return false;
+					Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					queriesForQE.push_back(empty);
 				}
 			}
 			else {
-				return false;
+				Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				queriesForQE.push_back(empty);
 			}
 		}
 		else {
-			return false;
+			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			queriesForQE.push_back(empty);
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
 		}
 	}
 	//d. pattern before such that
@@ -510,22 +556,30 @@ bool QP::queryStringHandler(string queryString) {
 				errorSyn = extractPatternSyns(pattern);
 				if (errorSyn) {
 					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					Query st(stmtD, assignD, variableD, constantD, whileD, prog_lineD, suchthatVS);
 					patternVS = formattedSTQE(pattern, querySyn, "pattern");
+					Query p(stmtD, assignD, variableD, constantD, whileD, prog_lineD, patternVS);
+					if (!checkValidQuery(st) || !checkValidQuery(p)) {
+						Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+						queriesForQE.push_back(empty);
+					}
 					query = combineVector(suchthatVS, patternVS);
 					Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
 					queriesForQE.push_back(currentQuery);
-					return true;
 				}
 				else {
-					return false;
+					Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					queriesForQE.push_back(empty);
 				}
 			}
 			else {
-				return false;
+				Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				queriesForQE.push_back(empty);
 			}
 		}
 		else {
-			return false;
+			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			queriesForQE.push_back(empty);
 		}
 	}
 }
@@ -609,16 +663,28 @@ string QP::checkSynType(string syn) {
 	return type;
 }
 
-bool QP::checkValidQuery(vector<string> query) {
-	string qSyn = query.at(0);
-	string rel = query.at(1);
-	string left = query.at(2);
-	string right = query.at(3);
+bool QP::checkValidQuery(Query query) {
+	vector<string> queryFields = query.getQueryFields();
+	string qSyn = queryFields.at(0);
+	string rel = queryFields.at(1);
+	string left = queryFields.at(2);
+	string right = queryFields.at(3);
 	if (rel.compare("Modifies") == 0) {
 		if (regex_match(left, synonym_rgx)) {
 			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
 				return false;
 			}
+			else { //LHS OF MODIFIES OKAY!
+				if (regex_match(right, synonym_rgx)) {
+					if (checkSynType(right).compare("ASSIGN") == 0 || checkSynType(right).compare("STMT") == 0 || checkSynType(right).compare("PROG_LINE") == 0 || checkSynType(right).compare("CONSTANT") == 0 || checkSynType(right).compare("WHILE") == 0) {
+						return false;
+					}
+				}
+				else if (regex_match(right, integer_rgx)) {
+					return false;
+				}
+			}
+			return true;
 		}
 		else if (regex_match(left, string_rgx)) { // specified variable i.e. "x"
 			return false;
@@ -632,8 +698,8 @@ bool QP::checkValidQuery(vector<string> query) {
 			else if (regex_match(right, integer_rgx)) {
 				return false;
 			}
+			return true;
 		}
-		return true; //BOTH SIDES OKAY!
 	}
 	else if (rel.compare("Uses") == 0) {
 		if (regex_match(left, synonym_rgx)) {
@@ -658,6 +724,17 @@ bool QP::checkValidQuery(vector<string> query) {
 			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT")) {
 				return false;
 			}
+			else { //LHS of Follows/Follows* OKAY
+				if (regex_match(right, synonym_rgx)) {
+					if (checkSynType(right).compare("VARIABLE") == 0 || checkSynType(right).compare("CONSTANT") == 0) {
+						return false;
+					}
+				}
+				else if (regex_match(right, string_rgx)) {
+					return false;
+				}
+			}
+			return true;
 		}
 		else if (regex_match(left, string_rgx)) {
 			return false;
@@ -671,14 +748,25 @@ bool QP::checkValidQuery(vector<string> query) {
 			else if (regex_match(right, string_rgx)) {
 				return false;
 			}
+			return true;
 		}
-		return true;
 	}
 	else if (rel.compare("Parent") == 0 || rel.compare("Parent*") == 0) {
 		if (regex_match(left, synonym_rgx)) {
 			if (checkSynType(left).compare("ASSIGN") == 0 || checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
 				return false;
 			}
+			else {
+				if (regex_match(right, synonym_rgx)) {
+					if (checkSynType(right).compare("VARIABLE") == 0 || checkSynType(right).compare("CONSTANT") == 0) {
+						return false;
+					}
+				}
+				else if (regex_match(right, string_rgx)) {
+					return false;
+				}
+			}
+			return true;
 		}
 		else if (regex_match(left, string_rgx)) {
 			return false;
@@ -692,10 +780,29 @@ bool QP::checkValidQuery(vector<string> query) {
 			else if (regex_match(right, string_rgx)) {
 				return false;
 			}
+			return true;
 		}
-		return true;
 	}
-	else {
-		return false;
+	else { //patterns
+		if (regex_match(left, synonym_rgx)) {
+			if (checkSynType(left).compare("ASSIGN") == 0 || checkSynType(left).compare("STATEMENT") == 0 || checkSynType(left).compare("CONSTANT") == 0 || checkSynType(left).compare("PROG_LINE") == 0 || checkSynType(left).compare("WHILE") == 0) {
+				return false;
+			}
+			else {
+				if (!regex_match(right, factor_rgx) && right.compare("_") != 0) {
+					return false;
+				}
+				return true;
+			}
+		}
+		else if (!regex_match(left, string_rgx) && left.compare("_") != 0) {
+			return false;
+		}
+		else {
+			if (!regex_match(right, factor_rgx) && right.compare("_") != 0) {
+				return false;
+			}
+			return true;
+		}
 	}
 }
