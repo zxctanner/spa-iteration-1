@@ -2,6 +2,7 @@
 #include "LineTokenizer.h"
 #include "ParentTable.h"
 #include "ModUseTable.h"
+#include "VarList.h"
 #include "StatementTable.h"
 #include "FollowTable.h"
 #include "Parser.h"

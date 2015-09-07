@@ -22,6 +22,7 @@
     <ClInclude Include="..\source\QP.h" />
     <ClInclude Include="..\source\Query.h" />
     <ClInclude Include="..\source\StatementTable.h" />
+    <ClInclude Include="..\source\VarList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\FollowTable.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="..\source\QP.cpp" />
     <ClCompile Include="..\source\Query.cpp" />
     <ClCompile Include="..\source\StatementTable.cpp" />
+    <ClCompile Include="..\source\VarList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\code.txt" />

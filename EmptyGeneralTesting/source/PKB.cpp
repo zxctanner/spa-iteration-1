@@ -17,6 +17,7 @@ PKB::PKB()
 {
 	parentTable = new ParentTable();
 	modUseTable = new ModUseTable();
+	varList = new VarList();
 	statementTable = new StatementTable();
 	followTable = new FollowTable();
 }
@@ -37,6 +38,11 @@ ModUseTable* PKB::getmodUseTable()
 	return modUseTable;
 }
 
+VarList* PKB::getVarList() 
+{
+	return varList;
+}
+
 StatementTable* PKB::getStatementTable()
 {
 	return statementTable;
@@ -55,6 +61,11 @@ void PKB::setParentTable(ParentTable* pTable)
 void PKB::setModUseTable(ModUseTable* mUTable)
 {
 	modUseTable = mUTable;
+}
+
+void PKB::setVarList(VarList* vList)
+{
+	varList = vList;
 }
 
 void PKB::setStatementTable(StatementTable* stmtTable)

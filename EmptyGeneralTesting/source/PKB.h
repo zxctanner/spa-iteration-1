@@ -7,6 +7,8 @@
 #include "ParentTable.h"
 #include "StatementTable.h"
 #include "ModUseTable.h"
+#include "VarList.h"
+#include "VarList.h"
 #include "FollowTable.h"
 
 using namespace std;
@@ -16,6 +18,7 @@ class PKB
 private:
 	ParentTable* parentTable;
 	ModUseTable* modUseTable;
+	VarList* varList;
 	StatementTable* statementTable;
 	FollowTable* followTable;
 	//Parser parse;
@@ -26,10 +29,12 @@ public:
 
 	ParentTable* getParentTable();
 	ModUseTable* getmodUseTable();
+	VarList* getVarList();
 	StatementTable* getStatementTable();
 	FollowTable* getFollowTable();
 	void setParentTable(ParentTable* pTable);
 	void setModUseTable(ModUseTable* mUTable);
+	void setVarList(VarList* vList);
 	void setStatementTable(StatementTable* stmtTable);
 	void setFollowTable(FollowTable* fTable);
 };
