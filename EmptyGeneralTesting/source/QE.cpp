@@ -654,11 +654,6 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 	return ans;
 }
 
-vector<string> QE::pattern(string select, string one, string two) { //return the statement lines that has this pattern
-	vector<string> ans;
-	return ans;
-}
-
 vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 	vector<string> filAns;
 	string type1 = q.checkSynType(one);
@@ -694,6 +689,57 @@ vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 	}
 
 	*/
+	return ans;
+}
+
+vector<string> QE::pattern(string select, string one, string two) { //return the statement lines that has this pattern
+	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+	bool isUnderscore;
+	vector<string> ans;
+	//check if LHS is '_'
+	if (one == "_") {
+		isUnderscore = true;
+	}
+	// "one" is a variable
+	else {
+		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+			vector<string> modEntry = it->second.first;
+			if (find(modEntry.begin(), modEntry.end(), one) != modEntry.end()) {
+				ans.push_back(to_string(it->first));
+			}
+		}
+	}
+	//check if RHS is "_"
+	if (two == "_") {
+
+	}
+	// if LHS was "_", and RHS is a sub expression
+	else if (isUnderscore) {
+		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+			vector<string> useEntry = it->second.second;
+			if (find(useEntry.begin(), useEntry.end(), two) != useEntry.end()) {
+				ans.push_back(to_string(it->first));
+			}
+		}
+	}
+	//if RHS is a subexpression and LHS was not "_"
+	else if ((two.find("_", 0) != string::npos) && (two.find("_", 1) != string::npos) && (!isUnderscore)) {
+		//take out the var in the middle
+		string var = two;
+		for (int i = 0; i < ans.size(); ++i) {
+			char* num;
+			int stmtNum = strtol(ans[i].c_str(), &num, 10);
+			vector<string> useEntry = modUseTable[stmtNum].first;
+			//if the current stmts in ans do not satisfy RHS pattern, erase them
+			if (find(useEntry.begin(), useEntry.end(), var) == useEntry.end()) {
+				ans.erase(ans.begin() + i);
+			}
+		}
+	}
+	//if RHS is an expression (1st iteration doesn't have this)
+	else {
+
+	}
 	return ans;
 }
 
