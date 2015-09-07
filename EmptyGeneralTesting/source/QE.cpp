@@ -91,12 +91,12 @@ vector<string> QE::selectField(string select, string command, string one, string
 				ansST = ModifiesS(select, one, two, q);
 			}
 			else {
-				ansST = ModifiesS(select, a, two);
+				ansST = ModifiesS(select, a, two, q);
 			}
 		}
 		else if (command.compare("Uses") == 0) {
 			if (isNum1 && !isNum2) {
-				ansST = UsesS(select, a, two);
+				ansST = UsesS(select, a, two, q);
 			}
 			else {
 				ansST = UsesS(select, one, two, q);
@@ -159,38 +159,174 @@ bool QE::isInt(string input) {
 
 vector<string> QE::ModifiesS(string select, string one, string two, Query q) { //returns statement number that modifies variable two
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	vector<string> check;
-	if (two.compare("_") != 0) {
-		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			check = i->second.first;
-			for (int j = 0; j < check.size(); ++j) {
-				if (check[j].compare(two) == 0) {
-					string str = to_string(i->first);
-					ans.push_back(str);
+	int relate = relation(select, one, two);
+	if (relate == 1) {
+		if (two == "_") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+				string str = to_string(i->first);
+				ans.push_back(str);
+			}
+			ans = filter(ans, one, q);
+			return ans;
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+					check = i->second.first;
+					for (int j = 0; j < check.size(); ++j) {
+						if (check[j].compare(two) == 0) {
+							string str = to_string(i->first);
+							ans.push_back(str);
+						}
+					}
 				}
 			}
+			return ans;
 		}
-		//ans = filter(ans, one, two, q);
 	}
-	else {
+	else if (relate == 2) {
+		vector<string> modify;
+		vector<string> variables;
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 			string str = to_string(i->first);
 			ans.push_back(str);
 		}
-		ans = filter(ans, one, two, q);
+		ans = filter(ans, one, q);
+		for (int j = 0; j < ans.size(); ++j) {
+			int value = atoi(ans[j].c_str());
+			modify = modUseTable[value].first;
+			for (int k = 0; k < modify.size(); ++k) {
+				if (find(variables.begin(), variables.end(), modify[k]) != variables.end())
+					continue;
+				else {
+					variables.push_back(modify[k]);
+				}
+			}
+		}
+		return variables;
 	}
+	else {
+		bool status;
+		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+				string str = to_string(i->first);
+				ans.push_back(str);
+			}
+			ans = filter(ans, one, q);
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+					check = i->second.first;
+					for (int j = 0; j < check.size(); ++j) {
+						if (check[j].compare(two) == 0) {
+							string str = to_string(i->first);
+							ans.push_back(str);
+						}
+					}
+				}
+				ans = filter(ans, one, q);
+			}
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+		}
+		string choice = q.checkSynType(select);
+		vector<string> finAns;
+		if (status == true) {
+			if (choice == "ASSIGN" || choice == "WHILE") {
+				for (auto i = 0; i < stmtTable.size(); ++i)
+					if (choice == stmtTable[i].getType()) {
+						// add it to final answer
+						finAns.push_back(to_string(i));
+					}
+				return finAns;
+			}
 
-	return ans;
+			else if (choice == "STMT") {
+				for (auto i = 1; i < stmtTable.size(); ++i) {
+					finAns.push_back(to_string(i));
+				}
+			}
+			else if (choice == "VARIABLE") {
+				return finAns;
+			}
+		}
+		else {
+			return finAns;
+		}
+	}
 }
-vector<string> QE::ModifiesS(string select, int one, string two) { //returns variable that is modifies in statement line one
+vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //returns variable that is modifies in statement line one
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	vector<string> modify = modUseTable[one].first;
-	for (int i = 0; i < modify.size(); ++i){
-		ans.push_back(modify[i]);
+	int relate = relation(select, to_string(one), two);
+	if (relate == 2) {
+		for (int i = 0; i < modify.size(); ++i) {
+			ans.push_back(modify[i]);
+		}
+		return ans;
 	}
-	return ans;
+	else {
+		bool status = false;
+		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+			status = true;
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+			}
+			for (int i = 0; i < modify.size(); ++i) {
+				if (modify[i] == two) {
+					status = true;
+					break;
+				}
+			}
+		}
+		string choice = q.checkSynType(select);
+		vector<string> finAns;
+		if (status == true) {
+			if (choice == "ASSIGN" || choice == "WHILE") {
+				for (auto i = 0; i < stmtTable.size(); ++i)
+					if (choice == stmtTable[i].getType()) {
+						// add it to final answer
+						finAns.push_back(to_string(i));
+					}
+				return finAns;
+			}
+
+			else if (choice == "STMT") {
+				for (auto i = 1; i < stmtTable.size(); ++i) {
+					finAns.push_back(to_string(i));
+				}
+			}
+			else if (choice == "VARIABLE") {
+				return finAns;
+			}
+		}
+		else {
+			return finAns;
+		}
+	}
 }
 
 vector<string> QE::UsesS(string select, string one, string two, Query q) { //returns statment numbers that uses variable two
@@ -207,18 +343,18 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 				}
 			}
 		}
-		ans = filter(ans, one, two, q);
+		ans = filter(ans, one, q);
 	}
 	else {
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 			string str = to_string(i->first);
 			ans.push_back(str);
 		}
-		ans = filter(ans, one, two, q);
+		ans = filter(ans, one, q);
 	}
 	return ans;
 }
-vector<string> QE::UsesS(string select, int one, string two) { //returns variables that are used in statement line one
+vector<string> QE::UsesS(string select, int one, string two, Query q) { //returns variables that are used in statement line one
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	vector<string> ans;
 	
@@ -743,14 +879,31 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	return ans;
 }
 
+int QE::relation(string select, string one, string two) {
+	if (select == one) {
+		return 1;
+	}
+	else if (select == two) {
+		return 2;
+	}
+	else {
+		return 0;
+	}
+}
+
 vector<string> QE::filter(vector<string> vec, string field, Query q) {
 	vector<string> filAns;
 	string type = q.checkSynType(field);
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
-	if (field.compare("_") == 0) {
-		return vec;
+	if (type == "WHILE") {
+		for (int i = 0; i < vec.size(); ++i) {
+			int value = atoi(vec[i].c_str());
+			if (type == stmtTable[value].getType()) {
+				filAns.push_back(vec[i]);
+			}
+		}
 	}
-	else {
+	else  if (type == "ASSIGN") {
 		for (int i = 0; i < vec.size(); ++i) {
 			//obtain token of the statement number and compare with the type in two
 			int value = atoi(vec[i].c_str());
@@ -759,6 +912,9 @@ vector<string> QE::filter(vector<string> vec, string field, Query q) {
 				filAns.push_back(vec[i]);
 			}
 		}
+	}
+	else {
+		return vec;
 	}
 	return filAns;
 }
