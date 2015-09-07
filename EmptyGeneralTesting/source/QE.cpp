@@ -265,6 +265,7 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 				}
 			}
 			else if (choice == "VARIABLE") {
+				finAns = pkb->getVarList()->getAllVar();
 				return finAns;
 			}
 		}
@@ -320,6 +321,7 @@ vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //re
 				}
 			}
 			else if (choice == "VARIABLE") {
+				finAns = pkb->getVarList()->getAllVar();
 				return finAns;
 			}
 		}
