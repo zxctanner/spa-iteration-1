@@ -1,0 +1,87 @@
+﻿Build started 9/7/2015 11:43:01 AM.
+     1>Project "C:\Users\Lee Hou Yi\Desktop\AutomaticProjectTesting_Aug2015_VS2015\AutomaticProjectTesting_Aug2015_VS2015\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\SPA.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\FollowTable.cpp ..\source\LineToken.cpp ..\source\LineTokenizer.cpp ..\source\Main.cpp ..\source\ModUseTable.cpp ..\source\ParentTable.cpp ..\source\Parser.cpp ..\source\PKB.cpp ..\source\QE.cpp ..\source\QP.cpp ..\source\Query.cpp ..\source\StatementTable.cpp
+         StatementTable.cpp
+         Query.cpp
+         QP.cpp
+         QE.cpp
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(38): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(167): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(190): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(203): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(226): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(241): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(248): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(249): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(268): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(280): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(292): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(312): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(318): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(319): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(338): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(353): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(377): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(402): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(407): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(408): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(417): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(418): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(428): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(433): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(434): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(443): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(444): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(459): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(474): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(491): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(496): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(497): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(506): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(507): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(517): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(522): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(523): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(532): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(533): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(548): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(590): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(601): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(622): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(636): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(647): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qe.cpp(659): warning C4018: '<': signed/unsigned mismatch
+         PKB.cpp
+         Parser.cpp
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\parser.cpp(240): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\parser.cpp(262): warning C4018: '<': signed/unsigned mismatch
+         ParentTable.cpp
+         ModUseTable.cpp
+         Main.cpp
+         LineTokenizer.cpp
+         LineToken.cpp
+         FollowTable.cpp
+         Generating Code...
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qp.cpp(310): warning C4715: 'QP::extractSTSyn': not all control paths return a value
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qp.cpp(361): warning C4715: 'QP::extractPatternSyns': not all control paths return a value
+     1>c:\users\lee hou yi\desktop\automaticprojecttesting_aug2015_vs2015\automaticprojecttesting_aug2015_vs2015\emptygeneraltesting\source\qp.cpp(531): warning C4715: 'QP::queryStringHandler': not all control paths return a value
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"C:\Users\Lee Hou Yi\Desktop\AutomaticProjectTesting_Aug2015_VS2015\AutomaticProjectTesting_Aug2015_VS2015\EmptyGeneralTesting\Debug\SPA.lib" /NOLOGO Debug\FollowTable.obj
+         Debug\LineToken.obj
+         Debug\LineTokenizer.obj
+         Debug\Main.obj
+         Debug\ModUseTable.obj
+         Debug\ParentTable.obj
+         Debug\Parser.obj
+         Debug\PKB.obj
+         Debug\QE.obj
+         Debug\QP.obj
+         Debug\Query.obj
+         Debug\StatementTable.obj
+         SPA.vcxproj -> C:\Users\Lee Hou Yi\Desktop\AutomaticProjectTesting_Aug2015_VS2015\AutomaticProjectTesting_Aug2015_VS2015\EmptyGeneralTesting\Debug\SPA.lib
+     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\AutomaticProjectTesting_Aug2015_VS2015\AutomaticProjectTesting_Aug2015_VS2015\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.73
