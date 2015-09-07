@@ -31,12 +31,10 @@ bool VarList::isInList(string var) {
 	return search != varList.end();
 }
 
-void VarList::insert(string var) {
-	int index = varList.size();
-	if (!this->isInList(var)) {
-		varList[var] = index;
-	}
-}
+/*void VarList::insert(string var) {
+	int index = varList.size() + 1;
+	varList.insert(pair<string, int>(var, index));
+}*/
 
 vector<string> VarList::getAllVar() {
 	vector<string> allVar;
