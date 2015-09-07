@@ -32,7 +32,7 @@ QE::QE(string fileName, PKB * p)
 	queryVector = qp.getVectorQuery();
 	pkb = p;
 	vector<Query> query = qp.getVectorQuery();
-	cout << query.size() << endl;
+	//cout << query.size() << endl;
 	vector<string> ansST;
 	vector<string> ansP;
 	for (int i = 0; i < query.size(); i++) {
@@ -43,15 +43,15 @@ QE::QE(string fileName, PKB * p)
 			answers.push_back("none");
 		}
 		else if (size == 4) {
-			cout << "Currently in size = 4" << endl;
+			//cout << "Currently in size = 4" << endl;
 			string select = fields[0];
 			string command = fields[1];	
 			string one = fields[2];
 			string two = fields[3];
-			cout << select << endl;
-			cout << command << endl;
-			cout << one << endl;
-			cout << two << endl;
+			//cout << select << endl;
+			//cout << command << endl;
+			//cout << one << endl;
+			//cout << two << endl;
 			answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
 		}
 		else if(size == 8) {
@@ -85,7 +85,7 @@ vector<string> QE::selectField(string select, string command, string one, string
 		return ansP;
 	}
 	else {
-		cout << "Such that detected!" << endl;
+		//cout << "Such that detected!" << endl;
 		if (command.compare("Modifies") == 0) {
 			if (!isNum1 && !isNum2) {
 				ansST = ModifiesS(select, one, two, q);
@@ -125,9 +125,9 @@ vector<string> QE::selectField(string select, string command, string one, string
 			}
 		}
 		else if (command.compare("Follows") == 0) {
-			cout << "Follows detected!" << endl;
+			//cout << "Follows detected!" << endl;
 			if (isNum1 && !isNum2) {
-				cout << "Hello" << endl;
+				//cout << "Hello" << endl;
 				ansST = Follows(select, a, two, q);
 			}
 			else if (!isNum1 && isNum2) {
@@ -234,7 +234,7 @@ vector<string> QE::Parent(string select, string one, string two, Query q) { //re
 	vector<string> sub;
 	vector<string> ans;
 	if (select.compare(one) == 0) {
-		if (q.checkSynType(one) != WHILE) { //if one is not while, return none
+		if (q.checkSynType(one) != "WHILE") { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -261,7 +261,7 @@ vector<string> QE::Parent(string select, string one, string two, Query q) { //re
 		}
 	}
 	else {
-		if (q.checkSynType(one) != WHILE || one.compare("_") != 0) { //if one is not while, return none
+		if (q.checkSynType(one) != "WHILE" || one.compare("_") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -305,7 +305,7 @@ vector<string> QE::ParentT(string select, string one, string two, Query q) { //r
 	vector<string> sub;
 	vector<string> ans;
 	if (select.compare(one) == 0) {
-		if (q.checkSynType(one) != WHILE) { //if one is not while, return none
+		if (q.checkSynType(one) != "WHILE") { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -331,7 +331,7 @@ vector<string> QE::ParentT(string select, string one, string two, Query q) { //r
 		}
 	}
 	else {
-		if (q.checkSynType(one) != WHILE || one.compare("_") != 0) { //if one is not while, return none
+		if (q.checkSynType(one) != "WHILE" || one.compare("_") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
@@ -577,8 +577,8 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 
 vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 	vector<string> filAns;
-	stmtType type1 = q.checkSynType(one);
-	stmtType type2 = q.checkSynType(two);
+	string type1 = q.checkSynType(one);
+	string type2 = q.checkSynType(two);
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	
 	if (one.compare("_") == 0 && two.compare("_") == 0) {
@@ -613,7 +613,7 @@ vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 
 vector<string> QE::filter(vector<string> vec, string field, Query q) {
 	vector<string> filAns;
-	stmtType type = q.checkSynType(field);
+	string type = q.checkSynType(field);
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	if (field.compare("_") == 0) {
 		return vec;

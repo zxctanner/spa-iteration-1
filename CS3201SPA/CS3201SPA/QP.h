@@ -3,6 +3,7 @@
 #define QP_H
 #include "QE.h"
 #include "Query.h"
+#include "PKB.h"
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -12,7 +13,7 @@
 #include <fstream>
 #include <string>
 #include <ctype.h>
-#include "PKB.h"
+
 
 class QP {
 
@@ -37,6 +38,7 @@ public:
 
 private:
 
+	string checkSynType(string syn);
 	string trim(const string& str, const string& trimmers);
 	vector<string> separateDQ(string& str);
 	bool validNoSTPattern(string& str);
@@ -53,6 +55,7 @@ private:
 	bool queryStringHandler(string queryString);
 	void clearMemory();
 	bool isQueryLegit(string rawQueryString);
+	bool checkValidQuery(vector<string> query);
 	vector<string> formattedSTQE(string st, string qSyn, string typeOfQuery);
 
 };

@@ -19,6 +19,8 @@ using namespace std;
 regex declaration_rgx("^((stmt|assign|while|variable|constant|prog_line)\\s+[a-zA-Z][a-zA-Z0-9#]*\\s*(,\\s*[a-zA-Z][a-zA-Z0-9#]*\\s*)*;\\s*)+$");
 regex query_rgx("^Select\\s+[a-zA-Z][a-zA-Z0-9#]*(\\s+(((such that)\\s+(((Parent|Parent[*]|Follows|Follows[*])\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[)]\\s*)|((Modifies|Uses)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|\"[a-zA-Z][a-zA-Z0-9#]*\")\\s*[)]\\s*)))|((pattern)\\s+(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|(\"[a-zA-Z][a-zA-Z0-9#]*\"))\\s*,\\s*((_\\s*\"(([a-zA-Z][a-zA-Z0-9#]*)|([0-9]+))\"\\s*_)|_)\\s*[)]))){1,2}$");
 regex synonym_rgx("^[a-zA-Z][a-zA-Z0-9#]*$");
+regex integer_rgx("^[0-9]+$");
+regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]\"&");
 
 //Functions:
 
@@ -582,4 +584,119 @@ string QP::trim(const string& str, const string& trimmers) {
 	const auto strEnd = str.find_last_not_of(trimmers);
 	const auto strRange = strEnd - strBegin + 1;
 	return str.substr(strBegin, strRange);
+}
+
+string QP::checkSynType(string syn) {
+	string type;
+	if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
+		type = "STATEMENT";
+	}
+	string type;
+	if (std::find(assignD.begin(), assignD.end(), syn) != assignD.end()) {
+		type = "ASSIGN";
+	}
+	if (std::find(whileD.begin(), whileD.end(), syn) != whileD.end()) {
+		type = "WHILE";
+	}
+	if (std::find(variableD.begin(), variableD.end(), syn) != variableD.end()) {
+		type = "VARIABLE";
+	}
+	if (std::find(prog_lineD.begin(), prog_lineD.end(), syn) != prog_lineD.end()) {
+		type = "PROG_LINE";
+	}
+	if (std::find(constantD.begin(), constantD.end(), syn) != constantD.end()) {
+		type = "CONSTANT";
+	}
+	return type;
+}
+
+bool QP::checkValidQuery(vector<string> query) {
+	string qSyn = query.at(0);
+	string rel = query.at(1);
+	string left = query.at(2);
+	string right = query.at(3);
+	if (rel.compare("Modifies") == 0) {
+		if (regex_match(left, synonym_rgx)) {
+			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
+				return false;
+			}
+		}
+		else if (regex_match(left, string_rgx)) { // specified variable i.e. "x"
+			return false;
+		}
+		else { //LHS OF MODIFIES OKAY!
+			if (regex_match(right, synonym_rgx)) {
+				if (checkSynType(right).compare("ASSIGN") == 0 || checkSynType(right).compare("STMT") == 0 || checkSynType(right).compare("PROG_LINE") == 0 || checkSynType(right).compare("CONSTANT") == 0 || checkSynType(right).compare("WHILE") == 0) {
+					return false;
+				}
+			}
+			else if (regex_match(right, integer_rgx)) {
+				return false;
+			}
+		}
+		return true; //BOTH SIDES OKAY!
+	}
+	else if (rel.compare("Uses") == 0) {
+		if (regex_match(left, synonym_rgx)) {
+			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
+				return false;
+			}
+		}
+		else if (regex_match(left, string_rgx)) { // specified variable i.e. "x"
+			return false;
+		}
+		else { //LHS of USES OKAY!
+			if (regex_match(right, synonym_rgx)) { //RHS IS A SYN
+				if (checkSynType(right).compare("ASSIGN") == 0 || checkSynType(right).compare("STATEMENT") == 0 || checkSynType(right).compare("WHILE") == 0 || checkSynType(right).compare("PROG_LINE") == 0) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	else if (rel.compare("Follows") == 0 || rel.compare("Follows*") == 0) {
+		if (regex_match(left, synonym_rgx)) {
+			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT")) {
+				return false;
+			}
+		}
+		else if (regex_match(left, string_rgx)) {
+			return false;
+		}
+		else { //LHS of Follows/Follows* OKAY
+			if (regex_match(right, synonym_rgx)) {
+				if (checkSynType(right).compare("VARIABLE") == 0 || checkSynType(right).compare("CONSTANT") == 0) {
+					return false;
+				}
+			}
+			else if (regex_match(right, string_rgx)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	else if (rel.compare("Parent") == 0 || rel.compare("Parent*") == 0) {
+		if (regex_match(left, synonym_rgx)) {
+			if (checkSynType(left).compare("ASSIGN") == 0 || checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
+				return false;
+			}
+		}
+		else if (regex_match(left, string_rgx)) {
+			return false;
+		}
+		else {
+			if (regex_match(right, synonym_rgx)) {
+				if (checkSynType(right).compare("VARIABLE") == 0 || checkSynType(right).compare("CONSTANT") == 0) {
+					return false;
+				}
+			}
+			else if (regex_match(right, string_rgx)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	else {
+		return false;
+	}
 }

@@ -20,7 +20,7 @@ string Query::checkSynType(string syn) {
 	if (std::find(stmtD.begin(), stmtD.end(), syn) != stmtD.end()) {
 		type = "STATEMENT";
 	}
-	stmtType type;
+	string type;
 	if (std::find(assignD.begin(), assignD.end(), syn) != assignD.end()) {
 		type = "ASSIGN";
 	}
