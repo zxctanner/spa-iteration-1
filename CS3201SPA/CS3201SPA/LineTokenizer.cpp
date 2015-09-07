@@ -44,7 +44,7 @@ void LineTokenizer::tokenize()
 	smatch match;
 	string line;
 	int nestingLevel = 0;
-	int lineNumber = 1;
+	int lineNumber = 0;
 	while (getline(inFile, line)) {
 		if (regex_search(line, match, procedureRgx)) {
 			string procName = match[1];
