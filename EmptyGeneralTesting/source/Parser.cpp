@@ -272,6 +272,7 @@ void Parser::populateModUseTable() {
 	vector<LineToken> tokensCopy = tokens;
 	vector<int> whileStack;
 	unordered_map<int, pair<vector<string>, vector<string>>> table;
+	set<string> varList;
 
 	int currentLevel;
 	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
@@ -297,7 +298,11 @@ void Parser::populateModUseTable() {
 			string modVar = it->getName();
 			vector<string> modified(1, modVar);
 			vector<string> used = it->getExpr();
-
+			
+			varList.insert(modVar);
+			for (auto it = used.begin(); it != used.end(); it++) {
+				varList.insert(modVar);
+			}
 			//if this stmt is a child of other stmts, update all parents' modified and uses table
 			if (!whileStack.empty()) {
 				appendToParents(&table, whileStack, modVar, used);
@@ -310,6 +315,8 @@ void Parser::populateModUseTable() {
 		if (it->getType() == "WHILE") {
 			vector<string> modified;
 			vector<string> used(1, it->getName());
+			
+			varList.insert(it->getName());
 
 			//if this stmt is a child of other stmts, update all parents' modified and uses table
 			if (!whileStack.empty()) {
@@ -323,7 +330,7 @@ void Parser::populateModUseTable() {
 			whileStack.push_back(it->getStmtNumber());
 		}
 	}
-	pkb->setModUseTable(new ModUseTable(table));
+	pkb->setModUseTable(new ModUseTable(table, varList));
 }
 
 
