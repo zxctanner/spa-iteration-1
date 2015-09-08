@@ -70,6 +70,11 @@ string LineToken::rhsToStr() {
 }
 ostream& operator<<(ostream& os, LineToken& token) {
 	return os << "LineToken" << " TYPE " << token.getType() 
-		<< " NAME " << token.getName() << " LEVEL" << token.getLevel() << " LineNumber " << token.getStmtNumber() << " RHS " << token.rhsToStr() <<endl;
+		<< " NAME " << token.getName() << " LEVEL" << token.getLevel() << " LineNumber " << token.getStmtNumber() << " RHS " << token.rhsToStr();
 	
+}
+
+string LineToken::getTokenInfo() {
+	//return type + " " + name + " " + level + " " + stmtNumber + " " + rhsToStr();
+	return "sasd";
 }
