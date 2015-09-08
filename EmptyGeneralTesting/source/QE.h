@@ -29,6 +29,7 @@ public:
 	
 	vector<string> selectField(string select, string command, string one, string two, Query q);
 	bool isInt(string input);
+	vector<string> Choices(string choice, bool status);
 	vector<string> ModifiesS(string select, string one, string two, Query q);
 	vector<string> ModifiesS(string select, int one, string two, Query q);
 
@@ -38,6 +39,7 @@ public:
 	vector<string> Parent(string select, string one, string two, Query q);
 	vector<string> Parent(string select, int one, string two, Query q);
 	vector<string> Parent(string select, string one, int two, Query q);
+	vector<string> Parent(string select, int one, int two, Query q);
 
 	vector<string> ParentT(string select, string one, string two, Query q);
 	vector<string> ParentT(string select, int one, string two, Query q);

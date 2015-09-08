@@ -108,6 +108,9 @@ vector<string> QE::selectField(string select, string command, string one, string
 			else if (!isNum1 && isNum2) {
 				ansST = Parent(select, one, b, q);
 			}
+			else if(isNum1 && isNum2){
+				ansST = Parent(select, a, b, q);
+			}
 			else {
 				ansST = Parent(select, one, two, q);
 			}
@@ -185,6 +188,7 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 					}
 				}
 			}
+			ans = filter(ans, one, q);
 			return ans;
 		}
 	}
@@ -247,30 +251,8 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 			}
 		}
 		string choice = q.checkSynType(select);
-		vector<string> finAns;
-		if (status == true) {
-			if (choice == "ASSIGN" || choice == "WHILE") {
-				for (auto i = 0; i < stmtTable.size(); ++i)
-					if (choice == stmtTable[i].getType()) {
-						// add it to final answer
-						finAns.push_back(to_string(i));
-					}
-				return finAns;
-			}
-
-			else if (choice == "STATEMENT") {
-				for (auto i = 1; i < stmtTable.size(); ++i) {
-					finAns.push_back(to_string(i));
-				}
-			}
-			else if (choice == "VARIABLE") {
-				finAns = pkb->getVarList()->getAllVar();
-				return finAns;
-			}
-		}
-		else {
-			return finAns;
-		}
+		ans = Choices(choice, status);
+		return ans;
 	}
 }
 vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //returns variable that is modifies in statement line one
@@ -303,129 +285,249 @@ vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //re
 			}
 		}
 		string choice = q.checkSynType(select);
-		vector<string> finAns;
-		if (status == true) {
-			if (choice == "ASSIGN" || choice == "WHILE") {
-				for (auto i = 0; i < stmtTable.size(); ++i)
-					if (choice == stmtTable[i].getType()) {
-						// add it to final answer
-						finAns.push_back(to_string(i));
-					}
-				return finAns;
-			}
-
-			else if (choice == "STATEMENT") {
-				for (auto i = 1; i < stmtTable.size(); ++i) {
-					finAns.push_back(to_string(i));
-				}
-			}
-			else if (choice == "VARIABLE") {
-				finAns = pkb->getVarList()->getAllVar();
-				return finAns;
-			}
-		}
-		else {
-			return finAns;
-		}
+		ans = Choices(choice, status);
+		return ans;
 	}
 }
 
 vector<string> QE::UsesS(string select, string one, string two, Query q) { //returns statment numbers that uses variable two
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	vector<string> use;
-	if (two.compare("_") != 0) {
-		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
-			use = i->second.second;
-			for (int j = 0; j < use.size(); ++j) {
-				if (use[j].compare(two) == 0) {
-					string str = to_string(i->first);
-					ans.push_back(str);
+	vector<string> check;
+	int relate = relation(select, one, two);
+	if (relate == 1) {
+		if (two == "_") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+				string str = to_string(i->first);
+				ans.push_back(str);
+			}
+			ans = filter(ans, one, q);
+			return ans;
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
+				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+					check = i->second.second;
+					for (int j = 0; j < check.size(); ++j) {
+						if (check[j].compare(two) == 0) {
+							string str = to_string(i->first);
+							ans.push_back(str);
+						}
+					}
 				}
 			}
+			ans = filter(ans, one, q);
+			return ans;
 		}
-		ans = filter(ans, one, q);
 	}
-	else {
+	else if (relate == 2) {
+		vector<string> variables;
 		for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 			string str = to_string(i->first);
 			ans.push_back(str);
 		}
 		ans = filter(ans, one, q);
+		for (int j = 0; j < ans.size(); ++j) {
+			int value = atoi(ans[j].c_str());
+			use = modUseTable[value].second;
+			for (int k = 0; k < use.size(); ++k) {
+				if (find(variables.begin(), variables.end(), use[k]) != variables.end())
+					continue;
+				else {
+					variables.push_back(use[k]);
+				}
+			}
+		}
+		return variables;
 	}
-	return ans;
+	else {
+		bool status;
+		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+				string str = to_string(i->first);
+				ans.push_back(str);
+			}
+			ans = filter(ans, one, q);
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
+				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
+					check = i->second.second;
+					for (int j = 0; j < check.size(); ++j) {
+						if (check[j].compare(two) == 0) {
+							string str = to_string(i->first);
+							ans.push_back(str);
+						}
+					}
+				}
+				ans = filter(ans, one, q);
+			}
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 vector<string> QE::UsesS(string select, int one, string two, Query q) { //returns variables that are used in statement line one
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
-	
 	vector<string> use = modUseTable[one].second;
-	for (int i = 0; i < use.size(); ++i) {
-		ans.push_back(use[i]);
+	int relate = relation(select, to_string(one), two);
+	if (relate == 2) {
+		for (int i = 0; i < use.size(); ++i) {
+			ans.push_back(use[i]);
+		}
+		return ans;
 	}
-	return ans;
+	else {
+		bool status = false;
+		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+			status = true;
+		}
+		else {
+			size_t found = two.find("\"");
+			if (found != std::string::npos) {
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
+			}
+			for (int i = 0; i < use.size(); ++i) {
+				if (use[i] == two) {
+					status = true;
+					break;
+				}
+			}
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 
 vector<string> QE::Parent(string select, string one, string two, Query q) { //return all the while statement base on condition
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> sub;
 	vector<string> ans;
-	if (select.compare(one) == 0) {
-		if (q.checkSynType(one) != "WHILE") { //if one is not while, return none
-			return ans;
-		}
-		else {
+	bool status = false;
+	int relate = relation(select, one, two);
+	if (relate == 1) {
+		if (q.checkSynType(one) == "WHILE" || one == "_" || q.checkSynType(one) == "STATEMENT") { //if one is not while, return none
 			for (int i = 0; i < parTable.size(); ++i) {	//select all the child statements of one	
 				string str = to_string(parTable[i].second);
 				sub.push_back(str);
 			}
 			sub = filter(sub, two, q); // sub contains only the correct declaration of two
-
-		}
-		for (int j = 0; j < parTable.size(); ++j) { //comparing sub and child of parTable to obtain parent statement line
-			for (int k = 0; k < sub.size(); ++k) {
-				int value = atoi(sub[k].c_str()); //int of sub
-				if (parTable[j].second == value) {
-					string str = to_string(parTable[j].first);
-					if (find(ans.begin(), ans.end(), str) != ans.end()) {
-						continue; //parent statement line already exist in ans
-					}
-					else {
-						ans.push_back(str); //adding parent statement line that does not exist in ans
+			for (int j = 0; j < parTable.size(); ++j) { //comparing sub and child of parTable to obtain parent statement line
+				for (int k = 0; k < sub.size(); ++k) {
+					int value = atoi(sub[k].c_str()); //int of sub
+					if (parTable[j].second == value) {
+						string str = to_string(parTable[j].first);
+						if (find(ans.begin(), ans.end(), str) != ans.end()) {
+							continue; //parent statement line already exist in ans
+						}
+						else {
+							ans.push_back(str); //adding parent statement line that does not exist in ans
+						}
 					}
 				}
 			}
+			return ans;
+		}
+		else{ //if one is not while or _, return none
+			return ans;
 		}
 	}
 	else {
-		if (q.checkSynType(one) != "WHILE" || one.compare("_") != 0) { //if one is not while, return none
-			return ans;
+		if (q.checkSynType(one) == "WHILE" || one == "_" || q.checkSynType(one) == "STATEMENT") {
+			for (int i = 0; i < parTable.size(); ++i) {
+				string str = to_string(parTable[i].second);
+				ans.push_back(str);
+			}
+			ans = filter(ans, two, q);
 		}
 		else {
-			for (int i = 0; i < parTable.size(); ++i) {
+			return ans;
+		}
+	}
+	if (relate == 2) {
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
+}
+vector<string> QE::Parent(string select, int one, string two, Query q) { //return all the child of statement line one
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
+	vector<string> ans;
+	int relate = relation(select, to_string(one), two);
+	if(relate == 2){
+		for (int i = 0; i < parTable.size(); ++i) {
+			if (parTable[i].first == one) {
 				string str = to_string(parTable[i].second);
 				ans.push_back(str);
 			}
 		}
 		ans = filter(ans, two, q);
+		return ans;
 	}
-	return ans;
-}
-vector<string> QE::Parent(string select, int one, string two, Query q) { //return all the child of statement line one
-	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
-	vector<string> ans;
-	for (int i = 0; i < parTable.size(); ++i) {
-		if (parTable[i].first == one) {
-			string str = to_string(parTable[i].second);
-			ans.push_back(str);
+	else {
+		bool status = false;
+		if (two == "_") {
+			status = true;
 		}
+		else {
+			for (int i = 0; i < parTable.size(); ++i) {
+				if (parTable[i].first == one) {
+					string str = to_string(parTable[i].second);
+					ans.push_back(str);
+				}
+			}
+			ans = filter(ans, two, q);
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
 	}
-	ans = filter(ans, two, q);
-	return ans;
 }
 vector<string> QE::Parent(string select, string one, int two, Query q) { //return the parent statement line of the statement line two
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
+	bool status = false;
+	int relate = relation(select, one, to_string(two));
 	for (int i = 0; i < parTable.size(); i++) {
 		if (parTable[i].second == two) {
 			string str = to_string(parTable[i].first);
@@ -434,57 +536,106 @@ vector<string> QE::Parent(string select, string one, int two, Query q) { //retur
 		}
 	}
 	ans = filter(ans, one, q);
+	if(relate == 1){
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
+}
+
+vector<string> QE::Parent(string select, int one, int two, Query q) {
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
+	vector<string> ans;
+	bool status = false;
+	for (int i = 0; i < parTable.size(); i++) {
+		if (parTable[i].first == one && parTable[i].second == two) {
+			status = true;
+			break;
+		}
+	}
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
 	return ans;
 }
 
 vector<string> QE::ParentT(string select, string one, string two, Query q) { //return all the while statment base on condition
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> sub;
 	vector<string> ans;
-	if (select.compare(one) == 0) {
-		if (q.checkSynType(one) != "WHILE") { //if one is not while, return none
-			return ans;
-		}
-		else {
+	bool status = false;
+	int relate = relation(select, one, two);
+	if (relate == 1) {
+		if (q.checkSynType(one) == "WHILE" || one == "_" || q.checkSynType(one) == "STATEMENT") {
 			for (int i = 0; i < parTable.size(); ++i) {	//select all the child statements of one	
 				string str = to_string(parTable[i].second);
 				sub.push_back(str);
 			}
 			sub = filter(sub, two, q); // sub contains only the correct declaration of two
-		}
-		for (int j = 0; j < parTable.size(); ++j) { //comparing sub and child of parTable to obtain parent statement line
-			for (int k = 0; k < sub.size(); ++k) {
-				int value = atoi(sub[k].c_str()); //int of sub
-				if (parTable[j].second == value) {
-					string str = to_string(parTable[j].first);
-					if (find(ans.begin(), ans.end(), str) != ans.end()) {
-						continue; //parent statement line already exist in ans
-					}
-					else {
-						ans.push_back(str); //adding parent statement line that does not exist in ans
+			for (int j = 0; j < parTable.size(); ++j) { //comparing sub and child of parTable to obtain parent statement line
+				for (int k = 0; k < sub.size(); ++k) {
+					int value = atoi(sub[k].c_str()); //int of sub
+					if (parTable[j].second == value) {
+						string str = to_string(parTable[j].first);
+						if (find(ans.begin(), ans.end(), str) != ans.end()) {
+							continue; //parent statement line already exist in ans
+						}
+						else {
+							ans.push_back(str); //adding parent statement line that does not exist in ans
+						}
 					}
 				}
 			}
-		}
-	}
-	else {
-		if (q.checkSynType(one) != "WHILE" || one.compare("_") != 0) { //if one is not while, return none
 			return ans;
 		}
 		else {
+			return ans;
+		}
+	}
+	else {
+		if (q.checkSynType(one) == "WHILE" || one == "_" || q.checkSynType(one) == "STATEMENT") {
 			for (int i = 0; i < parTable.size(); ++i) {
 				string str = to_string(parTable[i].second);
 				ans.push_back(str);
 			}
+			ans = filter(ans, two, q);
 		}
-		ans = filter(ans, two, q);
+		else {
+			return ans;
+		}
+		if (relate == 2) {
+			return ans;
+		}
+		else {
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+			string choice = q.checkSynType(select);
+			ans = Choices(choice, status);
+			return ans;
+		}
 	}
-	return ans;
 }
-vector<string> QE::ParentT(string select, int one, string two, Query q){ //return all the child* of statement line one
+vector<string> QE::ParentT(string select, int one, string two, Query q) { //return all the child* of statement line one
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
+	bool status = false;
 	vector<string> ans;
 	stack<int> par;
+	int relate = relation(select, to_string(one), two);
 	int next = one;
 	while (true) {
 		for (int i = 0; i < parTable.size(); ++i) {
@@ -503,12 +654,28 @@ vector<string> QE::ParentT(string select, int one, string two, Query q){ //retur
 		}
 	}
 	ans = filter(ans, two, q);
-	return ans;
+	if (relate == 2) {
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 vector<string> QE::ParentT(string select, string one, int two, Query q) { //return all the parent* of statement line two
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	stack<int> par;
+	bool status = false;
+	int relate = relation(select, one, to_string(two));
 	int previous = two;
 	while (true) {
 		for (int i = 0; i < parTable.size(); ++i) {
@@ -527,7 +694,20 @@ vector<string> QE::ParentT(string select, string one, int two, Query q) { //retu
 		}
 	}
 	ans = filter(ans, one, q);
-	return ans;
+	if (relate == 1) {
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 
 vector<string> QE::Follows(string select, string one, string two, Query q) { //return statement line of follow base on condition
@@ -1053,5 +1233,34 @@ void QE::displayAllAnswers() {
 	cout << answers.size() << endl;
 	for (int i = 0; i < answers.size(); ++i) {
 		cout << "Statement number is: " << answers.at(i) << endl;
+	}
+}
+
+vector<string> QE::Choices(string choice, bool status){
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable(); 
+	vector<string> finAns;
+	if (status == true) {
+		if (choice == "ASSIGN" || choice == "WHILE") {
+			for (auto i = 0; i < stmtTable.size(); ++i)
+				if (choice == stmtTable[i].getType()) {
+					// add it to final answer
+					finAns.push_back(to_string(i));
+				}
+			return finAns;
+		}
+
+		else if (choice == "STATEMENT") {
+			for (auto i = 1; i < stmtTable.size(); ++i) {
+				finAns.push_back(to_string(i));
+				return finAns;
+			}
+		}
+		else if (choice == "VARIABLE") {
+			finAns = pkb->getVarList()->getAllVar();
+			return finAns;
+		}
+	}
+	else {
+		return finAns;
 	}
 }
