@@ -1,4 +1,4 @@
-﻿Build started 9/8/2015 1:19:45 PM.
+﻿Build started 9/8/2015 1:21:20 PM.
      1>Project "C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\source\CS3201SPA.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AST.cpp QE.cpp TNode.cpp
@@ -73,4 +73,4 @@
 
 Build FAILED.
 
-Time Elapsed 00:00:01.46
+Time Elapsed 00:00:01.44
