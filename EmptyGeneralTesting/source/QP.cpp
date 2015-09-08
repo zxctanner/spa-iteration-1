@@ -21,6 +21,7 @@ regex synonym_rgx("^[a-zA-Z][a-zA-Z0-9#]*$");
 regex integer_rgx("^[0-9]+$");
 regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]*\"$");
 regex factor_rgx("^[_]\"[a-zA-Z][a-zA-Z0-9#]*\"[_]$");
+regex factorInt_rgx("^[_]\"[0-9]+\"[_]$");
 
 //Functions:
 
@@ -723,7 +724,7 @@ bool QP::checkValidQuery(Query query) {
 	}
 	else if (rel.compare("Follows") == 0 || rel.compare("Follows*") == 0) {
 		if (regex_match(left, synonym_rgx)) {
-			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT")) {
+			if (checkSynType(left).compare("VARIABLE") == 0 || checkSynType(left).compare("CONSTANT") == 0) {
 				return false;
 			}
 			else { //LHS of Follows/Follows* OKAY
@@ -791,7 +792,7 @@ bool QP::checkValidQuery(Query query) {
 				return false;
 			}
 			else {
-				if (!regex_match(right, factor_rgx) && right.compare("_") != 0) {
+				if (!regex_match(right, factor_rgx) && right.compare("_") != 0 && !regex_match(right, factorInt_rgx)) {
 					return false;
 				}
 				return true;
@@ -801,7 +802,7 @@ bool QP::checkValidQuery(Query query) {
 			return false;
 		}
 		else {
-			if (!regex_match(right, factor_rgx) && right.compare("_") != 0) {
+			if (!regex_match(right, factor_rgx) && right.compare("_") != 0 && !regex_match(right, factorInt_rgx)) {
 				return false;
 			}
 			return true;
