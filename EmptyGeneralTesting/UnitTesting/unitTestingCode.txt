@@ -1,3 +1,9 @@
-	x = 1 + y + 2;
-	z = u;
-	b=33 + a ;
+Procedure Second {
+	x = 0;
+	i = 5;
+	while i {
+		x = u + 2;
+		i = b + 1;
+		while p {
+			x = x + 1;}}
+	z = z + 1;}

@@ -1,10 +1,9 @@
-﻿Build started 9/8/2015 5:18:06 PM.
-Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" on node 2 (Build target(s)).
-Link:
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe" /INCREMENTAL /NOLOGO "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\lib\AutoTester_debug.lib" "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\SPA.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.lib" /MACHINE:X86 Debug\TestWrapper.obj
-  AutoTester.vcxproj -> C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe
-Done Building Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" (Build target(s)).
+﻿Build started 9/8/2015 6:15:14 PM.
+     1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         AutoTester.vcxproj -> C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe
+     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.47
+Time Elapsed 00:00:00.22

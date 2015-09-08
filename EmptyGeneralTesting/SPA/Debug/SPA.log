@@ -1,25 +1,9 @@
-﻿Build started 9/8/2015 5:17:55 PM.
-Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
-ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\SPA.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\LineTokenizer.cpp
-  LineTokenizer.cpp
-Lib:
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\SPA.lib" /NOLOGO Debug\FollowTable.obj
-  Debug\LineToken.obj
-  Debug\LineTokenizer.obj
-  Debug\Main.obj
-  Debug\ModUseTable.obj
-  Debug\ParentTable.obj
-  Debug\Parser.obj
-  Debug\PKB.obj
-  Debug\QE.obj
-  Debug\QP.obj
-  Debug\Query.obj
-  Debug\StatementTable.obj
-  Debug\VarList.obj
-  SPA.vcxproj -> C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\SPA.lib
-Done Building Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
+﻿Build started 9/8/2015 6:16:19 PM.
+     1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         SPA.vcxproj -> C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\SPA.lib
+     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:10.87
+Time Elapsed 00:00:00.22
