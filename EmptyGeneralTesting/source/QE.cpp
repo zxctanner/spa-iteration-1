@@ -175,7 +175,7 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 		else {
 			size_t found = two.find("\"");
 			if (found != std::string::npos) {
-				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
 				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 					check = i->second.first;
 					for (int j = 0; j < check.size(); ++j) {
@@ -228,7 +228,7 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 		else {
 			size_t found = two.find("\"");
 			if (found != std::string::npos) {
-				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
 				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 					check = i->second.first;
 					for (int j = 0; j < check.size(); ++j) {
@@ -259,7 +259,7 @@ vector<string> QE::ModifiesS(string select, string one, string two, Query q) { /
 				return finAns;
 			}
 
-			else if (choice == "STMT") {
+			else if (choice == "STATEMENT") {
 				for (auto i = 1; i < stmtTable.size(); ++i) {
 					finAns.push_back(to_string(i));
 				}
@@ -294,7 +294,7 @@ vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //re
 		else {
 			size_t found = two.find("\"");
 			if (found != std::string::npos) {
-				two.erase(remove(two.begin(), two.end(), "\""), two.end());
+				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
 			}
 			for (int i = 0; i < modify.size(); ++i) {
 				if (modify[i] == two) {
@@ -315,7 +315,7 @@ vector<string> QE::ModifiesS(string select, int one, string two, Query q) { //re
 				return finAns;
 			}
 
-			else if (choice == "STMT") {
+			else if (choice == "STATEMENT") {
 				for (auto i = 1; i < stmtTable.size(); ++i) {
 					finAns.push_back(to_string(i));
 				}
