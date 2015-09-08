@@ -609,7 +609,7 @@ vector<string> QP::formattedSTQE(string st, string qSyn, string typeOfQuery) { /
 		rel = st.substr(0, indexOfFirstB);
 	}
 	else {
-		rel = st.substr(0, 7);
+		rel = st.substr(0, indexOfFirstB);
 	}
 	first = st.substr(indexOfFirstB + 1, indexOfSep - indexOfFirstB - 1);
 	second = st.substr(indexOfSep + 1, indexOfSecondB - indexOfSep - 1);
