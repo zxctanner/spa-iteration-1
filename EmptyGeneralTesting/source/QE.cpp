@@ -79,7 +79,7 @@ vector<string> QE::selectField(string select, string command, string one, string
 	if (isNum2) {
 		b = atoi(two.c_str());
 	}
-	if (command.compare("pattern") == 0) {
+	if (command.substr(0,7).compare("pattern") == 0) {
 		ansP = pattern(select, command, one, two, q);
 		return ansP;
 	}
@@ -935,14 +935,13 @@ vector<string> QE::pattern(string select, string command, string one, string two
 
 	}
 	//keep only stmts of the assignment type
-	ans = filter(ans, "ASSIGN", q);
+	ans = filter(ans, "a", q);
 
 	//check if var to select matches variables in condition
-	int relate = relation(select, command, "");
+	int relate = relation(select, command.substr(7, command.size()-7), "");
 	//cout << "Relate = " << relate << ", select = " << select << ", command = " << endl;
 	// if not related and conditionals are satisfied, or pattern a(_,_), return all of type 'select'
 	if (relate == 0 && ans.size() != 0 || returnAllFlag) {
-		cout << "check3" << endl;
 		string type = q.checkSynType(select);
 		ans = getAllType(type);
 	}
