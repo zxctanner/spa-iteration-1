@@ -1,0 +1,76 @@
+﻿Build started 9/8/2015 1:19:45 PM.
+     1>Project "C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\source\CS3201SPA.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AST.cpp QE.cpp TNode.cpp
+         TNode.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: 'TNode.cpp': No such file or directory
+         QE.cpp
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(38): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(181): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(200): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(203): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(234): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(254): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(263): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(284): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(299): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(310): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(319): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(341): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(364): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(379): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(386): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(387): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(406): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(418): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(430): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(450): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(456): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(457): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(476): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(491): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(515): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(540): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(545): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(546): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(555): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(556): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(566): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(571): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(572): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(581): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(582): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(597): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(612): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(636): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(647): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(749): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(916): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(952): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(960): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(977): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(988): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(1000): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\vc\include\algorithm(1789): error C2446: '==': no conversion from 'const char *' to 'int'
+         c:\users\kerine\desktop\vc\include\algorithm(1789): note: There is no context in which this conversion is possible
+         c:\users\kerine\desktop\vc\include\algorithm(1803): note: see reference to function template instantiation '_FwdIt std::_Remove<char*,char[2]>(_FwdIt,_FwdIt,const _Ty (&))' being compiled
+                 with
+                 [
+                     _FwdIt=char *,
+                     _Ty=char [2]
+                 ]
+         c:\users\kerine\desktop\cs3201\emptygeneraltesting\source\qe.cpp(178): note: see reference to function template instantiation '_FwdIt std::remove<std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,char[2]>(_FwdIt,_FwdIt,const _Ty (&))' being compiled
+                 with
+                 [
+                     _FwdIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+                     _Ty=char [2]
+                 ]
+     1>c:\users\kerine\desktop\vc\include\algorithm(1789): error C2040: '==': 'int' differs in levels of indirection from 'const char [2]'
+         AST.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: 'AST.cpp': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\source\CS3201SPA.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.46
