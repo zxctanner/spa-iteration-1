@@ -294,7 +294,9 @@ bool QP::extractSTSyn(string& query) { //Expected input: Modifies|Uses|Parent*|P
 	if (regex_match(first, synonym_rgx) && regex_match(second, synonym_rgx)) {
 		if (!checkIfSynDontExist(first) && !checkIfSynDontExist(second)) {
 			queryUsedSyns.push_back(first);
-			queryUsedSyns.push_back(second);
+			if (first != second) {
+				queryUsedSyns.push_back(second);
+			}
 			return true;
 		}
 		else {
