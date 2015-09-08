@@ -32,7 +32,6 @@ QE::QE(string fileName, PKB * p)
 	queryVector = qp.getVectorQuery();
 	pkb = p;
 	vector<Query> query = qp.getVectorQuery();
-	//cout << query.size() << endl;
 	vector<string> ansST;
 	vector<string> ansP;
 	for (int i = 0; i < query.size(); i++) {
@@ -81,7 +80,7 @@ vector<string> QE::selectField(string select, string command, string one, string
 		b = atoi(two.c_str());
 	}
 	if (command.compare("pattern") == 0) {
-		ansP = pattern(select, one, two);
+		ansP = pattern(select, command, one, two, q);
 		return ansP;
 	}
 	else {
@@ -877,12 +876,16 @@ vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 	return ans;
 }
 
-vector<string> QE::pattern(string select, string one, string two) { //return the statement lines that has this pattern
+vector<string> QE::pattern(string select, string command, string one, string two, Query q) { //return the statement lines that has this pattern
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	bool isUnderscore = false;
+	bool returnAllFlag = false;
+	// check if the synonym to return, matches the conditions
+
 	vector<string> ans;
-	//check if LHS is '_'
-	if (one == "_") {
+	//check if LHS is '_' or variable synonym v, which have the same meaning
+	string type = q.checkSynType(one);
+	if (one == "_" || type == "VARIABLE") {
 		isUnderscore = true;
 	}
 	// "one" is a variable
@@ -896,15 +899,17 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 			}
 		}
 	}
-	//check if RHS is "_"
-	if (two == "_") {
-
+	//check if both sides are "_"
+	if (two == "_" && isUnderscore) {
+		returnAllFlag = true;
 	}
 	// if LHS was "_", and RHS is a sub expression
 	else if (isUnderscore) {
+		//take out the var in the middle, assuming it is surrounded by _" and "_
+		string var = two.substr(2, two.size() - 4);
 		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
 			vector<string> useEntry = it->second.second;
-			if (find(useEntry.begin(), useEntry.end(), two) != useEntry.end()) {
+			if (find(useEntry.begin(), useEntry.end(), var) != useEntry.end()) {
 				ans.push_back(to_string(it->first));
 			}
 		}
@@ -912,6 +917,7 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	//if RHS is a subexpression and LHS was not "_"
 	else if ((two.find("_", 0) != string::npos) && (two.find("_", 1) != string::npos) && (!isUnderscore)) {
 		//take out the var in the middle, assuming it is surrounded by _" and "_
+		cout << "check" << endl;
 		string var = two.substr(2, two.size() - 4);
 		for (int i = 0; i < ans.size(); ++i) {
 			char* num;
@@ -928,8 +934,57 @@ vector<string> QE::pattern(string select, string one, string two) { //return the
 	else {
 
 	}
-	//need to filter
+	//keep only stmts of the assignment type
+	ans = filter(ans, "ASSIGN", q);
+
+	//check if var to select matches variables in condition
+	int relate = relation(select, command, "");
+	//cout << "Relate = " << relate << ", select = " << select << ", command = " << endl;
+	// if not related and conditionals are satisfied, or pattern a(_,_), return all of type 'select'
+	if (relate == 0 && ans.size() != 0 || returnAllFlag) {
+		cout << "check3" << endl;
+		string type = q.checkSynType(select);
+		ans = getAllType(type);
+	}
 	return ans;
+}
+
+vector<string> QE::getAllType(string type) {
+	vector<string> all;
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
+	if (type == "STATEMENT" || type == "PROG_LINE") {
+		for (auto it = stmtTable.begin(); it != stmtTable.end(); ++it) {
+			if (it->first != 0) {
+				all.push_back(to_string(it->first));
+			}
+		}
+	}
+	else if (type == "ASSIGN" || type == "WHILE") {
+		for (auto it = stmtTable.begin(); it != stmtTable.end(); ++it) {
+			if (it->second.getType() == type) {
+				all.push_back(to_string(it->first));
+			}
+		}
+	}
+	else if (type == "VARIABLE") {
+		all = pkb->getVarList()->getAllVar();
+	}
+	else if (type == "CONSTANT") {
+		unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+		set<string> constantSet;
+		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+			vector<string> used = it->second.second;
+			for (int i = 0; i < used.size(); ++i) {
+				char* isInt;
+				int converted = strtol(used[i].c_str(), &isInt, 10);
+				if (isInt) {
+					constantSet.insert(used[i]);
+				}
+			}
+		}
+		all = vector<string>(constantSet.begin(), constantSet.end());
+	}
+	return all;
 }
 
 int QE::relation(string select, string one, string two) {

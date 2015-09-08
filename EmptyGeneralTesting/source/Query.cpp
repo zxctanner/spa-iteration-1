@@ -63,6 +63,38 @@ void Query::printQuery() {
 	}
 }
 
+//converts the query components to a continuous string, for testing
+string Query::toString() {
+	string str;
+	if (queryFields.size() == 0) {
+		str.append("Empty query");
+	}
+	else {
+		for (int i = 0; i < stmtD.size(); ++i) {
+			str.append("stmt:" + stmtD[i] + " ");
+		}
+		for (int i = 0; i < assignD.size(); ++i) {
+			str.append("assign:" + assignD[i] + " ");
+		}
+		for (int i = 0; i < variableD.size(); ++i) {
+			str.append("var:" + variableD[i] + " ");
+		}
+		for (int i = 0; i < constantD.size(); ++i) {
+			str.append("const:" + constantD[i] + " ");
+		}
+		for (int i = 0; i < whileD.size(); ++i) {
+			str.append("while:" + whileD[i] + " ");
+		}
+		for (int i = 0; i < prog_lineD.size(); ++i) {
+			str.append("progL:" + prog_lineD[i] + " ");
+		}
+		str.append(". Query fields:");
+		for (int i = 0; i < queryFields.size(); ++i) {
+			str.append(queryFields[i] + " ");
+		}
+	}
+	return str;
+}
 
 Query::~Query()
 {

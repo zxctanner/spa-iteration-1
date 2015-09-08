@@ -51,8 +51,9 @@ public:
 	vector<string> FollowsT(string select, int one, string two, Query q);
 	vector<string> FollowsT(string select, string one, int two, Query q);
 
-	vector<string> pattern(string select, string one, string two);
+	vector<string> pattern(string select, string command, string one, string two, Query q);
 
+	vector<string> getAllType(string type);
 	int relation(string select, string one, string two);
 	vector<string> filter(vector<string> vec, string field, Query q);
 	vector<string> findCommonAnswer(vector<string> ansST, vector<string> ansP);

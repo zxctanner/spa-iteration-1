@@ -170,6 +170,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestLineTokenizer.cpp" />
+    <ClCompile Include="TestQE.cpp" />
+    <ClCompile Include="TestQP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unitTestingCode.txt" />

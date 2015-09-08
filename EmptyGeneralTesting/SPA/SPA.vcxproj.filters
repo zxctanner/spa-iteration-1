@@ -100,5 +100,8 @@
     <Text Include="..\source\code.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\source\testquery.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

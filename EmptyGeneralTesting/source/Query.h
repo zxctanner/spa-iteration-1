@@ -20,6 +20,7 @@ private:
 
 public:
 	Query();
+	string toString();
 	void printQuery();
 	Query(vector<string> stmtd, vector<string> assignd, vector<string> variabled, vector<string> constantd, vector<string> whiled, vector<string> prog_lined, vector<string> queryfield);
 	string checkSynType(string syn);

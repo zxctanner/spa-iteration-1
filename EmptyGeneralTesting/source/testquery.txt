@@ -1,0 +1,8 @@
+assign a; Select a such that Modifies(a, "x")
+while w; assign a; Select w such that Parent(w, a)
+while w1, w2; Select w1 such that Follows*(w1, w2)
+assign a; while w; Select a such that Parent*(w, a)
+assign a; Select a pattern a (_,_)
+assign a; Select a pattern a ("x", _"x"_)
+assign a; Select a pattern a (_, _"z"_)
+assign a; Select a pattern a (_, _"1"_)

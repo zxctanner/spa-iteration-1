@@ -1,9 +1,99 @@
-﻿Build started 9/8/2015 6:16:19 PM.
-     1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
-         SPA.vcxproj -> C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\SPA.lib
-     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
+﻿Build started 8/9/2015 8:17:52 PM.
+     1>Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\SPA.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\FollowTable.cpp ..\source\LineToken.cpp ..\source\LineTokenizer.cpp ..\source\Main.cpp ..\source\ModUseTable.cpp ..\source\ParentTable.cpp ..\source\Parser.cpp ..\source\PKB.cpp ..\source\QE.cpp ..\source\QP.cpp ..\source\Query.cpp ..\source\StatementTable.cpp ..\source\VarList.cpp
+         VarList.cpp
+         StatementTable.cpp
+         Query.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(73): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(76): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(79): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(82): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(85): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(88): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\query.cpp(92): warning C4018: '<': signed/unsigned mismatch
+         QP.cpp
+         QE.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(37): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(180): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(199): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(202): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(233): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(253): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(262): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(283): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(298): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(309): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(318): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(340): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(363): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(378): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(385): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(386): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(405): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(417): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(429): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(449): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(455): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(456): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(475): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(490): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(514): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(539): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(544): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(545): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(554): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(555): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(565): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(570): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(571): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(580): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(581): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(596): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(611): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(635): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(646): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(748): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(922): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(977): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(1007): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(1015): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(1032): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(1043): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(1055): warning C4018: '<': signed/unsigned mismatch
+         PKB.cpp
+         Parser.cpp
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\parser.cpp(241): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\parser.cpp(263): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\parser.cpp(310): warning C4018: '<': signed/unsigned mismatch
+         ParentTable.cpp
+         ModUseTable.cpp
+         Main.cpp
+         LineTokenizer.cpp
+         LineToken.cpp
+         FollowTable.cpp
+         Generating Code...
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(331): warning C4715: 'QE::ModifiesS': not all control paths return a value
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qe.cpp(275): warning C4715: 'QE::ModifiesS': not all control paths return a value
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qp.cpp(327): warning C4715: 'QP::extractSTSyn': not all control paths return a value
+     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\source\qp.cpp(378): warning C4715: 'QP::extractPatternSyns': not all control paths return a value
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\SPA.lib" /NOLOGO Debug\FollowTable.obj
+         Debug\LineToken.obj
+         Debug\LineTokenizer.obj
+         Debug\Main.obj
+         Debug\ModUseTable.obj
+         Debug\ParentTable.obj
+         Debug\Parser.obj
+         Debug\PKB.obj
+         Debug\QE.obj
+         Debug\QP.obj
+         Debug\Query.obj
+         Debug\StatementTable.obj
+         Debug\VarList.obj
+         SPA.vcxproj -> C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\SPA.lib
+     1>Done Building Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.22
+Time Elapsed 00:00:09.37
