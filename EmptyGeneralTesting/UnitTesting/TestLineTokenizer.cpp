@@ -13,25 +13,13 @@ namespace TestLineTokenizer
 
 		TEST_METHOD(TestingTonkenize)
 		{
-			stringstream buffer;
-			int counter = 0;
-			//string expectedTokens[] = {"LineToken TYPE ASSIGN NAME x LEVEL0 LineNumber 0 RHS 1 y 2 ","LineToken TYPE ASSIGN NAME z LEVEL0 LineNumber 1 RHS u ","LineToken TYPE ASSIGN NAME b LEVEL0 LineNumber 2 RHS 33 a " };
-			string expected = "LineToken TYPE ASSIGN NAME x LEVEL0 LineNumber 0 RHS 1 y 2 ,LineToken TYPE ASSIGN NAME z LEVEL0 LineNumber 1 RHS u ,LineToken TYPE ASSIGN NAME b LEVEL0 LineNumber 2 RHS 33 a ,";
+			string expected = "LineToken TYPE PROCEDURE NAME Second LEVEL0 LineNumber 0 RHS ,LineToken TYPE ASSIGN NAME x LEVEL1 LineNumber 1 RHS 0 ,LineToken TYPE ASSIGN NAME i LEVEL1 LineNumber 2 RHS 5 ,LineToken TYPE WHILE NAME i LEVEL1 LineNumber 3 RHS ,LineToken TYPE ASSIGN NAME x LEVEL2 LineNumber 4 RHS u 2 ,LineToken TYPE ASSIGN NAME i LEVEL2 LineNumber 5 RHS b 1 ,LineToken TYPE WHILE NAME p LEVEL2 LineNumber 6 RHS ,LineToken TYPE ASSIGN NAME x LEVEL3 LineNumber 7 RHS x 1 ,LineToken TYPE ASSIGN NAME z LEVEL1 LineNumber 8 RHS z 1 ,";
 			//Sample tokens to be parsed in
 			LineTokenizer tokenizer = LineTokenizer("..\\UnitTesting\\unitTestingCode.txt");
 			tokenizer.tokenize();
 			vector<LineToken> tokVect = tokenizer.getTokenVector();
 			Assert::AreEqual(expected, tokenizer.toString());
-			
-			/*
-			for (auto iter = tokVect.begin(); iter != tokVect.end(); ++iter) {
-				buffer << *iter;
-				Assert::AreEqual(expectedTokens[counter], buffer.str());
-				counter++;
-			}
-			*/
-			
-			
+
 			return;
 		}
 
