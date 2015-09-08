@@ -1,14 +1,15 @@
-﻿Build started 9/8/2015 3:03:45 PM.
-     1>Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\include" /I"C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\source" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\UnitTesting.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt TestLineTokenizer.cpp
-         TestLineTokenizer.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\lib" "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\SPA.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
-         Debug\TestLineTokenizer.obj
-         UnitTesting.vcxproj -> C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll
-     1>Done Building Project "C:\Users\Lee Hou Yi\Desktop\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" (Build target(s)).
+﻿Build started 9/8/2015 5:21:58 PM.
+Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" on node 2 (Build target(s)).
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\include" /I"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\source" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\UnitTesting.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt TestLineTokenizer.cpp
+  TestLineTokenizer.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\lib" "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\SPA.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
+  Debug\TestLineTokenizer.obj
+     Creating library C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib and object C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.exp
+  UnitTesting.vcxproj -> C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll
+Done Building Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:15.73

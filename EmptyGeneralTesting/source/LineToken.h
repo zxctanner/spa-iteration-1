@@ -32,7 +32,6 @@ public:
 	int getStmtNumber();
 	vector<string> getExpr();
 	string rhsToStr();
-	string getTokenInfo();
 	friend ostream& operator<<(ostream& os, LineToken& token);
 
 };

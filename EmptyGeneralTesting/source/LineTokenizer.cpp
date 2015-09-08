@@ -36,7 +36,8 @@ void LineTokenizer::tokenize()
 	}
 
 	regex procedureRgx("Procedure\\s+([a-zA-Z][a-zA-Z0-9]*)");
-	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)(\\s)*=(\\s)*(.+)(\\s)*;");
+	regex assignmentRgx("([a-zA-Z][a-zA-Z0-9]*)\\s*=\\s*(.+);");
+	
 	regex whileRgx("while\\s+([a-zA-Z][a-zA-Z0-9]*)");
 	regex openBracketRgx("\\{");
 	regex closeBracketRgx("\\}");
@@ -55,21 +56,19 @@ void LineTokenizer::tokenize()
 
 		if (regex_search(line, match, assignmentRgx)) {
 			string varName = match[1];
-			string rhs = match[4];
+			string rhs = match[2];
 			//erase all whitespace from rhs
 			rhs.erase(remove_if(rhs.begin(), rhs.end(), isspace), rhs.end());
 			
 			//split rhs string with + as delimiter
 			vector<string> strvec;
-			size_t pos = 0;
-			string tok;
-			string delimiter = "+";
-			while ((pos = rhs.find(delimiter)) != string::npos) {
-				strvec.push_back(tok);
-				rhs.erase(0, pos + delimiter.length());
+			int start = 0, end = 0;
+			while ((end = rhs.find('+', start)) != string::npos) {
+				strvec.push_back(rhs.substr(start, end - start));
+				start = end + 1;
 			}
-			strvec.push_back(rhs);
-
+			strvec.push_back(rhs.substr(start));
+		
 			//tokVec.push_back(LineToken(ASSIGN, varName, nestingLevel, lineNumber, strvec));
 			tokVec.push_back(LineToken("ASSIGN", varName, nestingLevel, lineNumber, strvec));
 		}
@@ -98,10 +97,20 @@ void LineTokenizer::tokenize()
 	}
 }
 
+
 void LineTokenizer::printTokenVector()
 {
 	for (auto iter = tokVec.begin(); iter != tokVec.end(); ++iter) {
 		cout << *iter << endl;
 	}		
+}
+
+string LineTokenizer::toString() {
+	ostringstream output;
+	for (auto iter = tokVec.begin(); iter != tokVec.end(); ++iter) {
+		output << *iter;
+		output << ",";
+	}
+	return output.str();
 }
 

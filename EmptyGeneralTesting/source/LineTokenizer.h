@@ -19,6 +19,7 @@ public:
 	vector<LineToken> getTokenVector();
 	void tokenize();
 	void printTokenVector();
+	string toString();
 };
 
 

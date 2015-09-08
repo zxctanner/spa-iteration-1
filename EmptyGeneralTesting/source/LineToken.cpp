@@ -1,5 +1,7 @@
 #include "LineToken.h"
 #include <string>
+#include <sstream>
+#include <iterator>
 using namespace std;
 
 LineToken::LineToken()
@@ -61,20 +63,16 @@ vector<string> LineToken::getExpr()
 
 
 string LineToken::rhsToStr() {
-	string str;
+	ostringstream imploded;
 	for (auto iter = expr.begin(); iter != expr.end(); iter++) {
-		str += *iter;
-		str += " ";
+		imploded << *iter;
+		imploded << " ";
 	}
-	return str;
+	return imploded.str();
 }
 ostream& operator<<(ostream& os, LineToken& token) {
-	return os << "LineToken" << " TYPE " << token.getType() 
+	return os << "LineToken" << " TYPE " << token.getType()
 		<< " NAME " << token.getName() << " LEVEL" << token.getLevel() << " LineNumber " << token.getStmtNumber() << " RHS " << token.rhsToStr();
 	
 }
 
-string LineToken::getTokenInfo() {
-	//return type + " " + name + " " + level + " " + stmtNumber + " " + rhsToStr();
-	return "sasd";
-}
