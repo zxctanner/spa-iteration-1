@@ -67,8 +67,16 @@ QE::QE(string fileName, PKB * p)
 			string command2 = fields[5];
 			string one2 = fields[6];
 			string two2 = fields[7];
-			int relate1 = relation(select, one, two);
-			int relate2 = relation(select2, one2, two2);
+			int relate1;
+			int relate2;
+			if (command.substr(0, 7).compare("pattern") == 0) {
+				relate1 = relation(select, command.substr(7, command.size() - 7), "");
+				relate2 = relation(select2, one2, two2);
+			}
+			else {
+				relate1 = relation(select, one, two);
+				relate2 = relation(select2, command2.substr(7, command2.size() - 7), "");
+			}
 			if (relate1 == 0 && relate2 != 0) {
 				if (checkAnswerSize(selectField(select, command, one, two, q))) {
 					if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
