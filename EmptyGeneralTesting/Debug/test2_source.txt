@@ -1,0 +1,12 @@
+procedure p {
+   while i {
+      x = z + 3 + 2 + y;
+      i = i + 1; }
+    x = x + 1;
+    z = x + z;
+    z = 1; 
+    z = z + x + i; 
+  while x {
+	x =0;
+	while y {
+		y = a + b;}}}

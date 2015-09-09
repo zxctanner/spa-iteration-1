@@ -1,0 +1,14 @@
+procedure Test1 {
+	z = 10;
+	x = z + 5;
+	y=24;
+	d = x + y + 12;
+	d= d + z + x;
+	e =5;
+	while i {
+		e = x + y;
+		while z {
+			y = y + z;
+			i = y + 1; }
+		x = y + z; }
+	x = 14+ u+ b+ 11 ; }

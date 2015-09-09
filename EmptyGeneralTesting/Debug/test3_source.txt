@@ -1,0 +1,12 @@
+procedure Example {
+  x = 2;
+  z = 3;
+  i = 5;
+  while i {
+    x = x + 1;
+    y = z + x; 
+    while z {
+	a = x + 3;
+	b = a;}
+    z = z + x + i;
+    i = i + 1; }}
