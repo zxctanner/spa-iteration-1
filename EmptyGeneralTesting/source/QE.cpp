@@ -132,6 +132,9 @@ vector<string> QE::selectField(string select, string command, string one, string
 			else if (!isNum1 && isNum2) {
 				ansST = ParentT(select, one, b, q);
 			}
+			else if (isNum1 && isNum2) {
+				ansST = ParentT(select, a, b, q);
+			}
 			else {
 				ansST = ParentT(select, one, two, q);
 			}
@@ -144,6 +147,9 @@ vector<string> QE::selectField(string select, string command, string one, string
 			}
 			else if (!isNum1 && isNum2) {
 				ansST = Follows(select, one, b, q);
+			}
+			else if (isNum1 && isNum2) {
+				ansST = Follows(select, a, b, q);
 			}
 			else {
 				ansST = Follows(select, one, two, q);
@@ -760,7 +766,9 @@ vector<string> QE::Follows(string select, string one, string two, Query q) { //r
 	vector<string> sub;
 	vector<string> sub2;
 	vector<string> ans;
-	if (select.compare(one) == 0) {
+	int relate = relation(select, one, two);
+	bool status = false;
+	if (relate == 1) {
 		for (int i = 0; i < folTable.size(); ++i) {
 			string str = to_string(folTable[i].first);
 			sub.push_back(str);
@@ -785,6 +793,7 @@ vector<string> QE::Follows(string select, string one, string two, Query q) { //r
 				}
 			}
 		}
+		return ans;
 	}
 	else {
 		for (int i = 0; i < folTable.size(); ++i) {
@@ -811,28 +820,56 @@ vector<string> QE::Follows(string select, string one, string two, Query q) { //r
 				}
 			}
 		}
+		if (relate == 2) {
+			return ans;
+		}
+		else {
+			if (ans.size() > 0) {
+				status = true;
+			}
+			else {
+				status = false;
+			}
+			string choice = q.checkSynType(select);
+			ans = Choices(choice, status);
+			return ans;
+		}
 	}
-	return ans;
 }
 vector<string> QE::Follows(string select, int one, string two, Query q) { //return the statement line that follows statement line one
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
-	cout << folTable.size() << endl;
+	int relate = relation(select, to_string(one), two);
+	bool status = false;
+
 	for (int i = 0; i < folTable.size(); ++i) {
-		cout << folTable[i].first << one << endl;
 		if (folTable[i].first == one) {
 			string str = to_string(folTable[i].second);
 			ans.push_back(str);
-			cout << ans.size() << endl;
 			break;
 		}
 	}
 	ans = filter(ans, two, q);
-	return ans;
+	if(relate == 2){
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 vector<string> QE::Follows(string select, string one, int two, Query q) { //return the statement line that is before statement line two
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
+	bool status = false;
+	int relate = relation(select, one, to_string(two));
 	for (int i = 0; i < folTable.size(); i++) {
 		if (folTable[i].second == two) {
 			string str = to_string(folTable[i].first);
@@ -841,6 +878,36 @@ vector<string> QE::Follows(string select, string one, int two, Query q) { //retu
 		}
 	}
 	ans = filter(ans, one, q);
+	if (relate == 1) {
+		return ans;
+	}
+	else {
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
+}
+vector<string> QE::Follows(string select, int one, int two, Query q) {
+	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
+	vector<string> ans;
+	bool status = false;
+
+	for (int i = 0; i < folTable.size(); ++i) {
+		if (folTable[i].first == one) {
+			if (folTable[i].second == two) {
+				status = true;
+				break;
+			}
+		}
+	}
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
 	return ans;
 }
 

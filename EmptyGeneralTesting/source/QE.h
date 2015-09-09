@@ -49,6 +49,7 @@ public:
 	vector<string> Follows(string select, string one, string two, Query q);
 	vector<string> Follows(string select, int one, string two, Query q);
 	vector<string> Follows(string select, string one, int two, Query q);
+	vector<string> Follows(string select, int one, int two, Query q);
 
 	vector<string> FollowsT(string select, string one, string two, Query q);
 	vector<string> FollowsT(string select, int one, string two, Query q);
