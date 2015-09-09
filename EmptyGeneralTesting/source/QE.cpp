@@ -1561,8 +1561,7 @@ vector<string> QE::pattern(string select, string command, string one, string two
 		cout << "check" << endl;
 		string var = two.substr(2, two.size() - 4);
 		for (int i = 0; i < ans.size(); ++i) {
-			char* num;
-			int stmtNum = strtol(ans[i].c_str(), &num, 10);
+			int stmtNum = stoi(ans[i]);
 			vector<string> useEntry = modUseTable[stmtNum].second;
 			//if the current stmts in ans do not satisfy RHS pattern, erase them
 			if (find(useEntry.begin(), useEntry.end(), var) == useEntry.end()) {
@@ -1576,13 +1575,31 @@ vector<string> QE::pattern(string select, string command, string one, string two
 
 	}
 	//keep only stmts of the assignment type
-	ans = filter(ans, "a", q);
+	ans = findCommonAnswer(ans, getAllType("ASSIGN"));
 
 	//check if var to select matches variables in condition
-	int relate = relation(select, command.substr(7, command.size() - 7), "");
-	//cout << "Relate = " << relate << ", select = " << select << ", command = " << endl;
+	int relate = relation(select, command.substr(7, command.size() - 7), one);
+
+	//special case where "Select v pattern a(v, <anything>)"
+	if (relate == 2) {
+		set<string> varBag;
+		//get all variables from the LHS of all assignment stmts matching the LHS conditions
+		if (returnAllFlag) {
+			//get all var on LHS of all assign stmts
+			ans = getAllType("ASSIGN");
+		}
+		//get all var on LHS of the marked stmts
+		for (int i = 0; i < ans.size(); ++i) {
+			int stmtNum = stoi(ans[i]);
+			vector<string> modEntry = modUseTable[stmtNum].first;
+			for (int j = 0; j < modEntry.size(); ++j) {
+				varBag.insert(modEntry[j]);
+			}
+		}
+		ans = vector<string>(varBag.begin(), varBag.end());
+	}
 	// if not related and conditionals are satisfied, or pattern a(_,_), return all of type 'select'
-	if (relate == 0 && ans.size() != 0 || returnAllFlag) {
+	else if (relate == 0 && ans.size() != 0 || returnAllFlag) {
 		string type = q.checkSynType(select);
 		ans = getAllType(type);
 	}
