@@ -67,11 +67,41 @@ QE::QE(string fileName, PKB * p)
 			string command2 = fields[5];
 			string one2 = fields[6];
 			string two2 = fields[7];
-			if (checkAnswerSize(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)))) {
-				answers.push_back(vectorSToString(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q))));
+			int relate1 = relation(select, one, two);
+			int relate2 = relation(select2, one2, two2);
+			if (relate1 == 0 && relate2 != 0) {
+				if (checkAnswerSize(selectField(select, command, one, two, q))) {
+					if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+						answers.push_back(vectorSToString(selectField(select2, command2, one2, two2, q)));
+					}
+					else {
+						answers.push_back("none");
+					}
+				}
+				else {
+					answers.push_back("none");
+				}
+			}
+			else if (relate1 != 0 && relate2 == 0) {
+				if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+					if (checkAnswerSize(selectField(select, command, one, two, q))) {
+						answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+					}
+					else {
+						answers.push_back("none");
+					}
+				}
+				else {
+					answers.push_back("none");
+				}
 			}
 			else {
-				answers.push_back("none");
+				if (checkAnswerSize(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)))) {
+					answers.push_back(vectorSToString(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q))));
+				}
+				else {
+					answers.push_back("none");
+				}
 			}
 		}
 	}
@@ -407,16 +437,33 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	vector<string> use = modUseTable[one].second;
+	vector<string> varList = pkb->getVarList()->getAllVar();
 	int relate = relation(select, to_string(one), two);
 	if (relate == 2) {
 		for (int i = 0; i < use.size(); ++i) {
-			ans.push_back(use[i]);
+			if (q.checkSynType(two) == "VARIABLE") {
+				for (int j = 0; i < varList.size(); ++j) {
+					if (varList[j] == use[i]) {
+						ans.push_back(use[i]);
+					}
+				}
+			}
+			else if (q.checkSynType(two) == "CONSTANT") {
+				for (int k = 0; k < varList.size(); ++k) {
+					if (varList[k] == use[i]) {
+						break;
+					}
+					if (k == varList.size() - 1) {
+						ans.push_back(use[i]);
+					}
+				}
+			}
 		}
 		return ans;
 	}
 	else {
 		bool status = false;
-		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+		if (two == "_" || q.checkSynType(two) == "VARIABLE" || q.checkSynType(two) == "CONSTANT") {
 			status = true;
 		}
 		else {
