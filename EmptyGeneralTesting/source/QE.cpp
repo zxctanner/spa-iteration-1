@@ -928,7 +928,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 		int current = folTable[i].first;
 
-		if (one.compare("_") == 0) {
+		if (one.compare("_") != 0) {
 
 			if (type1.compare(stmtTable[current].getType()) != 0) {
 				continue;
@@ -941,25 +941,32 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 			// check type of current and skip ahead if fail
 
-			if (folTable[i].first == current) {
 
-				// check for a and w on the right
-				// ignore for _
+			// check for a and w on the right
+			// ignore for _
 
-				int next = folTable[i].second;
-				// make sure not _
-				if (two.compare("_") == 0) {
+			// make sure not _
+			if (two.compare("_") != 0) {
 
-					// we get a match so we move on instead of adding to our answer
-					if (type2.compare(stmtTable[next].getType()) != 0) {
-						continue;
+				// we get a match so we move on instead of adding to our answer
+				if (type2.compare(stmtTable[next].getType()) == 0) {
+
+					string str;
+
+					cout << select << " ; " << one << " ";
+					if (select.compare(one) == 0) {
+
+						str = to_string(current);
 					}
-				}
+					else {
+						str = to_string(folTable[i].second);
+					}
 
-				string str = to_string(folTable[i].second);
-				ans.push_back(str);
-				current = folTable[i].second;
+					ans.push_back(str);
+				}
 			}
+
+
 		}
 	}
 
@@ -1039,18 +1046,22 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 
 	for (int i = 0; i < folTable.size(); ++i) {
 
+		cout << folTable[i].first << "//" << folTable[i].second << "   ";
+
 		if (folTable[i].first == current) {
 
 			// check for a and w on the right
 			// ignore for _
 
 			int next = folTable[i].second;
+
 			// make sure not _
-			if (two.compare("_") == 0) {
+			if (two.compare("_") != 0) {
 
 				// we didn't get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) != 0) {
-					
+				if (type.compare(stmtTable[next].getType()) == 0) {
+
+
 					string str = to_string(folTable[i].second);
 					ans.push_back(str);
 				}
@@ -1094,20 +1105,22 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 
 	// a,2 _,3 w,4 so we do from the back instead
 
+
 	for (int i = folTable.size() - 1; i >= 0; --i) {
 
 		if (folTable[i].second == current) {
 
+			int next = folTable[i].first;
+
 			// check for a and w on the right
 			// ignore for _
 
-			int next = folTable[i].first;
 			// make sure not _
-			if (one.compare("_") == 0) {
+			if (one.compare("_") != 0) {
 
 				// we get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) != 0) {
-					
+				if (type.compare(stmtTable[next].getType()) == 0) {
+
 					string str = to_string(folTable[i].first);
 					ans.push_back(str);
 				}
