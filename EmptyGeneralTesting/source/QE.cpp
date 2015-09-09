@@ -44,16 +44,21 @@ QE::QE(string fileName, PKB * p)
 		else if (size == 4) {
 			//cout << "Currently in size = 4" << endl;
 			string select = fields[0];
-			string command = fields[1];	
+			string command = fields[1];
 			string one = fields[2];
 			string two = fields[3];
 			//cout << select << endl;
 			//cout << command << endl;
 			//cout << one << endl;
 			//cout << two << endl;
-			answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+			if (checkAnswerSize(selectField(select, command, one, two, q))) {
+				answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+			}
+			else {
+				answers.push_back("none");
+			}
 		}
-		else if(size == 8) {
+		else if (size == 8) {
 			string select = fields[0];
 			string command = fields[1];
 			string one = fields[2];
@@ -62,7 +67,12 @@ QE::QE(string fileName, PKB * p)
 			string command2 = fields[5];
 			string one2 = fields[6];
 			string two2 = fields[7];
-			answers.push_back(vectorSToString(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q))));
+			if (checkAnswerSize(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)))) {
+				answers.push_back(vectorSToString(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q))));
+			}
+			else {
+				answers.push_back("none");
+			}
 		}
 	}
 }
@@ -79,7 +89,7 @@ vector<string> QE::selectField(string select, string command, string one, string
 	if (isNum2) {
 		b = atoi(two.c_str());
 	}
-	if (command.substr(0,7).compare("pattern") == 0) {
+	if (command.substr(0, 7).compare("pattern") == 0) {
 		ansP = pattern(select, command, one, two, q);
 		return ansP;
 	}
@@ -108,14 +118,14 @@ vector<string> QE::selectField(string select, string command, string one, string
 			else if (!isNum1 && isNum2) {
 				ansST = Parent(select, one, b, q);
 			}
-			else if(isNum1 && isNum2){
+			else if (isNum1 && isNum2) {
 				ansST = Parent(select, a, b, q);
 			}
 			else {
 				ansST = Parent(select, one, two, q);
 			}
 		}
-		else if (command.compare("ParentT") == 0) {
+		else if (command.compare("Parent*") == 0) {
 			if (isNum1 && !isNum2) {
 				ansST = ParentT(select, a, two, q);
 			}
@@ -139,7 +149,7 @@ vector<string> QE::selectField(string select, string command, string one, string
 				ansST = Follows(select, one, two, q);
 			}
 		}
-		else if (command.compare("FollowsT") == 0) {
+		else if (command.compare("Follows*") == 0) {
 			if (isNum1 && !isNum2) {
 				ansST = FollowsT(select, a, two, q);
 			}
@@ -451,7 +461,7 @@ vector<string> QE::Parent(string select, string one, string two, Query q) { //re
 			}
 			return ans;
 		}
-		else{ //if one is not while or _, return none
+		else { //if one is not while or _, return none
 			return ans;
 		}
 	}
@@ -482,12 +492,13 @@ vector<string> QE::Parent(string select, string one, string two, Query q) { //re
 		return ans;
 	}
 }
+
 vector<string> QE::Parent(string select, int one, string two, Query q) { //return all the child of statement line one
-	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	int relate = relation(select, to_string(one), two);
-	if(relate == 2){
+	if (relate == 2) {
 		for (int i = 0; i < parTable.size(); ++i) {
 			if (parTable[i].first == one) {
 				string str = to_string(parTable[i].second);
@@ -523,7 +534,7 @@ vector<string> QE::Parent(string select, int one, string two, Query q) { //retur
 	}
 }
 vector<string> QE::Parent(string select, string one, int two, Query q) { //return the parent statement line of the statement line two
-	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();	
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
 	bool status = false;
@@ -536,7 +547,7 @@ vector<string> QE::Parent(string select, string one, int two, Query q) { //retur
 		}
 	}
 	ans = filter(ans, one, q);
-	if(relate == 1){
+	if (relate == 1) {
 		return ans;
 	}
 	else {
@@ -716,7 +727,7 @@ vector<string> QE::Follows(string select, string one, string two, Query q) { //r
 	vector<string> sub2;
 	vector<string> ans;
 	if (select.compare(one) == 0) {
-		for (int i = 0; i < folTable.size(); ++i) {	
+		for (int i = 0; i < folTable.size(); ++i) {
 			string str = to_string(folTable[i].first);
 			sub.push_back(str);
 		}
@@ -800,8 +811,8 @@ vector<string> QE::Follows(string select, string one, int two, Query q) { //retu
 }
 
 vector<string> QE::FollowsT(string select, string one, string two, Query q) { //return all the statement lines base on condition
-	
-	// e.g Follows* _,_ a,w and 
+
+																			  // e.g Follows* _,_ a,w and 
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 
@@ -857,56 +868,56 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 	vector<string> sub2;
 	vector<string> ans;
 	if (select.compare(one) == 0) {
-		for (int i = 0; i < folTable.size(); ++i) {
-			string str = to_string(folTable[i].first);
-			sub.push_back(str);
-		}
-		sub = filter(sub, one, q); // sub contains only the correct declaration of one
-		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and second of parTable to obtain follow statement line
-			for (int k = 0; k < sub.size(); ++k) {
-				int value = atoi(sub[k].c_str()); //int of sub
-				if (folTable[j].first == value) {
-					string str = to_string(folTable[j].second);
-					sub2.push_back(str);
-				}
-			}
-		}
-		sub2 = filter(sub2, two, q);
-		for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and first of parTable to obtain follow statement line
-			for (int b = 0; b < sub2.size(); ++b) {
-				int value = atoi(sub2[b].c_str()); //int of sub2
-				if (folTable[a].second == value) {
-					string str = to_string(folTable[a].first);
-					ans.push_back(str);
-				}
-			}
-		}
+	for (int i = 0; i < folTable.size(); ++i) {
+	string str = to_string(folTable[i].first);
+	sub.push_back(str);
+	}
+	sub = filter(sub, one, q); // sub contains only the correct declaration of one
+	for (int j = 0; j < folTable.size(); ++j) { //comparing sub and second of parTable to obtain follow statement line
+	for (int k = 0; k < sub.size(); ++k) {
+	int value = atoi(sub[k].c_str()); //int of sub
+	if (folTable[j].first == value) {
+	string str = to_string(folTable[j].second);
+	sub2.push_back(str);
+	}
+	}
+	}
+	sub2 = filter(sub2, two, q);
+	for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and first of parTable to obtain follow statement line
+	for (int b = 0; b < sub2.size(); ++b) {
+	int value = atoi(sub2[b].c_str()); //int of sub2
+	if (folTable[a].second == value) {
+	string str = to_string(folTable[a].first);
+	ans.push_back(str);
+	}
+	}
+	}
 	}
 	else {
-		for (int i = 0; i < folTable.size(); ++i) {
-			string str = to_string(folTable[i].second);
-			sub.push_back(str);
-		}
-		sub = filter(sub, two, q); // sub contains only the correct declaration of second
-		for (int j = 0; j < folTable.size(); ++j) { //comparing sub and first of parTable to obtain follow statement line
-			for (int k = 0; k < sub.size(); ++k) {
-				int value = atoi(sub[k].c_str()); //int of sub
-				if (folTable[j].second == value) {
-					string str = to_string(folTable[j].first);
-					sub2.push_back(str);
-				}
-			}
-		}
-		sub2 = filter(sub2, one, q);
-		for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and second of parTable to obtain follow statement line
-			for (int b = 0; b < sub2.size(); ++b) {
-				int value = atoi(sub2[b].c_str()); //int of sub
-				if (folTable[a].first == value) {
-					string str = to_string(folTable[a].second);
-					ans.push_back(str);
-				}
-			}
-		}
+	for (int i = 0; i < folTable.size(); ++i) {
+	string str = to_string(folTable[i].second);
+	sub.push_back(str);
+	}
+	sub = filter(sub, two, q); // sub contains only the correct declaration of second
+	for (int j = 0; j < folTable.size(); ++j) { //comparing sub and first of parTable to obtain follow statement line
+	for (int k = 0; k < sub.size(); ++k) {
+	int value = atoi(sub[k].c_str()); //int of sub
+	if (folTable[j].second == value) {
+	string str = to_string(folTable[j].first);
+	sub2.push_back(str);
+	}
+	}
+	}
+	sub2 = filter(sub2, one, q);
+	for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and second of parTable to obtain follow statement line
+	for (int b = 0; b < sub2.size(); ++b) {
+	int value = atoi(sub2[b].c_str()); //int of sub
+	if (folTable[a].first == value) {
+	string str = to_string(folTable[a].second);
+	ans.push_back(str);
+	}
+	}
+	}
 	}
 
 	*/
@@ -914,8 +925,8 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 	return ans;
 }
 vector<string> QE::FollowsT(string select, int one, string two, Query q) { //return all the statement lines that follows* statement line one
-	
-	// e.g Follows* 2,_ and 3,a and 4,w 
+
+																		   // e.g Follows* 2,_ and 3,a and 4,w 
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 
@@ -955,11 +966,11 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 	vector<string> ans;
 	int line = one;
 	for (int i = 0; i < folTable.size(); ++i) {
-		if (folTable[i].first == line) {
-			string str = to_string(folTable[i].second);
-			ans.push_back(str);
-			line = folTable[i].second;
-		}
+	if (folTable[i].first == line) {
+	string str = to_string(folTable[i].second);
+	ans.push_back(str);
+	line = folTable[i].second;
+	}
 	}
 	ans = filter(ans, two, q);
 	return ans;
@@ -970,7 +981,7 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 }
 vector<string> QE::FollowsT(string select, string one, int two, Query q) { //return all the statements lines that come before statement line two and in the sames nesting level
 
-	// e.g Follows* 2,_ and 3,a and 4,w 
+																		   // e.g Follows* 2,_ and 3,a and 4,w 
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 
@@ -1013,48 +1024,48 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 	vector<string> ans;
 	int line = two;
 	for (int i = folTable.size() - 1; i >= 0; ++i) {
-		if (folTable[i].second == line) {
-			string str = to_string(folTable[i].first);
-			ans.push_back(str);
-			line = folTable[i].first;
-		}
+	if (folTable[i].second == line) {
+	string str = to_string(folTable[i].first);
+	ans.push_back(str);
+	line = folTable[i].first;
+	}
 	}
 	ans = filter(ans, one, q);
 	return ans;
-}
+	}
 
-vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
+	vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
 	vector<string> filAns;
 	string type1 = q.checkSynType(one);
 	string type2 = q.checkSynType(two);
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
-	
+
 	if (one.compare("_") == 0 && two.compare("_") == 0) {
-		return vec;
+	return vec;
 	} else if (one.compare("_") == 0 || two.compare("_") == 0) {
-		// would be e.g _,a or w,_		
-		if (one.compare("_") == 0) {
-			//make sure two matches the type required e.g _,a or _,w
-			for (int i = 0; i < vec.size(); ++i) {
-				//obtain token of the statement number and compare with the type in two
-				int value = atoi(vec[i].c_str());
-				if (type2 == (stmtTable[value].getType())){
-					// add it to final answer
-					filAns.push_back(vec[i]);
-				}
-			}
-		}
-		if (two.compare("_") == 0 ) {
-			//make sure one matches the type required e.g a,_ or w,_
-			for (int i = 0; i < vec.size(); ++i) {
-				//obtain token of the statement number and compare with the type in two
-				int value = atoi(vec[i].c_str());
-				if (type1 == (stmtTable[value].getType())) {
-					// add it to final answer
-					filAns.push_back(vec[i]);
-				}
-			}
-		}
+	// would be e.g _,a or w,_
+	if (one.compare("_") == 0) {
+	//make sure two matches the type required e.g _,a or _,w
+	for (int i = 0; i < vec.size(); ++i) {
+	//obtain token of the statement number and compare with the type in two
+	int value = atoi(vec[i].c_str());
+	if (type2 == (stmtTable[value].getType())){
+	// add it to final answer
+	filAns.push_back(vec[i]);
+	}
+	}
+	}
+	if (two.compare("_") == 0 ) {
+	//make sure one matches the type required e.g a,_ or w,_
+	for (int i = 0; i < vec.size(); ++i) {
+	//obtain token of the statement number and compare with the type in two
+	int value = atoi(vec[i].c_str());
+	if (type1 == (stmtTable[value].getType())) {
+	// add it to final answer
+	filAns.push_back(vec[i]);
+	}
+	}
+	}
 	}
 
 	*/
@@ -1123,7 +1134,7 @@ vector<string> QE::pattern(string select, string command, string one, string two
 	ans = filter(ans, "a", q);
 
 	//check if var to select matches variables in condition
-	int relate = relation(select, command.substr(7, command.size()-7), "");
+	int relate = relation(select, command.substr(7, command.size() - 7), "");
 	//cout << "Relate = " << relate << ", select = " << select << ", command = " << endl;
 	// if not related and conditionals are satisfied, or pattern a(_,_), return all of type 'select'
 	if (relate == 0 && ans.size() != 0 || returnAllFlag) {
@@ -1241,8 +1252,8 @@ void QE::displayAllAnswers() {
 	}
 }
 
-vector<string> QE::Choices(string choice, bool status){
-	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable(); 
+vector<string> QE::Choices(string choice, bool status) {
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> finAns;
 	if (status == true) {
 		if (choice == "ASSIGN" || choice == "WHILE") {
@@ -1267,5 +1278,14 @@ vector<string> QE::Choices(string choice, bool status){
 	}
 	else {
 		return finAns;
+	}
+}
+
+bool QE::checkAnswerSize(vector<string> answerVector) {
+	if (answerVector.size() == 0) {
+		return false;
+	}
+	else {
+		return true;
 	}
 }

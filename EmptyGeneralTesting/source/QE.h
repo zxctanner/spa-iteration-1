@@ -61,6 +61,7 @@ public:
 	vector<string> findCommonAnswer(vector<string> ansST, vector<string> ansP);
 	string vectorSToString(vector<string> vecString);
 	void displayAllAnswers();
+	bool checkAnswerSize(vector<string> answerVector);
 };
 
 #endif
