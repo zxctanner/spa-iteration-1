@@ -1133,6 +1133,7 @@ vector<string> QE::Follows(string select, int one, int two, Query q) {
 }
 
 
+
 vector<string> QE::FollowsT(string select, string one, string two, Query q) { //return all the statement lines base on condition
 	int relate = relation(select, one, two);
 	set<int> set;
@@ -1152,97 +1153,160 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 	// inner loop same as e.g 2,a
 
 
-	if (select.compare(two) == 0) {
+	if (select.compare(two) == 0 || two.compare("_") == 0) {
 		for (int i = 0; i < folTable.size(); ++i) {
 
 			int current = folTable[i].first;
 
-			if (one.compare("_") != 0) {
 
-				// only go ahead if same type	
-				if (type1.compare(stmtTable[current].getType()) == 0) {
+			// only go ahead if same type	
+			if (type1.compare(stmtTable[current].getType()) == 0) {
 
-					for (int j = i; j < folTable.size(); ++j) {
+				for (int j = i; j < folTable.size(); ++j) {
 
-						//cout << folTable[j].first << "//" << folTable[j].second << "   ";
+					//cout << folTable[j].first << "//" << folTable[j].second << "   ";
 
 
-						// check for a and w on the right
-						// ignore for _
+					// check for a and w on the right
+					// ignore for _
 
-						int next = folTable[j].second;
+					int next = folTable[j].second;
 
-						// make sure not _
-						if (two.compare("_") != 0) {
+					// make sure not _
+					if (two.compare("_") != 0) {
 
-							// we didn't get a match so we move on instead of adding to our answer
-							if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+						// we didn't get a match so we move on instead of adding to our answer
+						if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
 
-								//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
+							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
-								set.insert(folTable[j].second);
+							set.insert(folTable[j].second);
 
-								current = folTable[j].second;
-							}
-
+							current = folTable[j].second;
 						}
+
+					}
+					else {
+						set.insert(folTable[j].second);
 
 					}
 
 				}
 
-
 			}
+
+
 		}
 
 	}
 
 
 	// e.g a,6 same as select a such that a,w
-	if (select.compare(one) == 0) {
+	// or _,w
+	if (select.compare(one) == 0 || one.compare("_") == 0) {
+
 		for (int i = folTable.size() - 1; i >= 0; --i) {
 
 			int current = folTable[i].second;
 
-			if (one.compare("_") != 0) {
 
-				// only go ahead if same type	
-				if (type2.compare(stmtTable[current].getType()) == 0) {
+			// only go ahead if same type	
+			if (type2.compare(stmtTable[current].getType()) == 0) {
 
-					for (int j = i; j >= 0; --j) {
+				for (int j = i; j >= 0; --j) {
 
-						//cout << folTable[j].first << "//" << folTable[j].second << "   ";
+					//cout << folTable[j].first << "//" << folTable[j].second << "   ";
 
 
-						// check for a and w on the right
-						// ignore for _
+					// check for a and w on the right
+					// ignore for _
 
-						int next = folTable[j].first;
+					int next = folTable[j].first;
 
-						// make sure not _
-						if (one.compare("_") != 0) {
+					// make sure not _
+					if (one.compare("_") != 0) {
 
-							// we didn't get a match so we move on instead of adding to our answer
-							if (type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) {
+						// we didn't get a match so we move on instead of adding to our answer
+						if (type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) {
 
-								//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
+							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
-								set.insert(folTable[j].first);
+							set.insert(folTable[j].first);
 
-								current = folTable[j].first;
+							current = folTable[j].first;
+						}
+
+					}
+					else {
+						set.insert(folTable[j].first);
+
+					}
+
+				}
+
+			}
+
+
+		}
+
+	}
+
+
+	cout << one << select << two;
+
+	if (one.compare("_") == 0 && two.compare("_") == 0) {
+
+		set.insert(1);
+	}
+	else {
+		if (select.compare(one) != 0 && select.compare(two) != 0) {
+
+			//cout << "HELLO";
+			for (int i = 0; i < folTable.size(); ++i) {
+
+				int current = folTable[i].first;
+
+				if (one.compare("_") != 0) {
+
+					// only go ahead if same type	
+					if (type1.compare(stmtTable[current].getType()) == 0) {
+
+						for (int j = i; j < folTable.size(); ++j) {
+
+							//cout << folTable[j].first << "//" << folTable[j].second << "   ";
+
+
+							// check for a and w on the right
+							// ignore for _
+
+							int next = folTable[j].second;
+
+							// make sure not _
+							if (two.compare("_") != 0) {
+
+								// we didn't get a match so we move on instead of adding to our answer
+								if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+
+									//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
+
+									set.insert(folTable[j].second);
+
+									current = folTable[j].second;
+								}
+
 							}
 
 						}
 
 					}
 
+
 				}
-
-
 			}
-		}
 
+		}
 	}
+
 
 	while (!set.empty()) {
 		string str = to_string(*set.begin());
@@ -1281,7 +1345,7 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 
 	for (int i = 0; i < folTable.size(); ++i) {
 
-		//cout << folTable[i].first << "//" << folTable[i].second << "   ";
+		cout << folTable[i].first << "//" << folTable[i].second << "   ";
 
 		if (folTable[i].first == current) {
 
@@ -1300,6 +1364,11 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 					set.insert(folTable[i].second);
 
 				}
+
+			}
+			else {
+				// just add since _
+				set.insert(folTable[i].second);
 
 			}
 
@@ -1368,6 +1437,10 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 				}
 
 			}
+			else {
+				// just add since _
+				set.insert(folTable[i].first);
+			}
 
 
 			current = folTable[i].first;
@@ -1435,6 +1508,7 @@ vector<string> QE::FollowsT(string select, int one, int two, Query q) { //return
 	return ans;
 
 }
+
 
 
 vector<string> QE::pattern(string select, string command, string one, string two, Query q) { //return the statement lines that has this pattern
