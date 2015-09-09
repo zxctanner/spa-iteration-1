@@ -21,7 +21,7 @@ regex query_rgx("^Select\\s+[a-zA-Z][a-zA-Z0-9#]*(\\s+(((such that)\\s+(((Parent
 regex synonym_rgx("^[a-zA-Z][a-zA-Z0-9#]*$");
 regex integer_rgx("^[0-9]+$");
 regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]*\"$");
-regex factor_rgx("^[_]\"[a-zA-Z][a-zA-Z0-9#]*\"[_]$");
+regex factor_rgx("^[_]\"[a-zA-Z][a-zA-Z0-9]*\"[_]$");
 regex factorInt_rgx("^[_]\"[0-9]+\"[_]$");
 
 //Functions:

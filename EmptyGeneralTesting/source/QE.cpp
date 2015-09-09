@@ -35,7 +35,7 @@ void QE::evaluateSingleQuery(string queryString) {
 	vector<string> fields = q.getQueryFields();
 	int size = fields.size();
 	if (size == 0) {
-		answerForSingleQuery.push_back("none");
+		answerForSingleQuery = list<string>();
 	}
 	else if (size == 4) {
 		//cout << "Currently in size = 4" << endl;
@@ -51,7 +51,8 @@ void QE::evaluateSingleQuery(string queryString) {
 			answerForSingleQuery = convertVectorToList(selectField(select, command, one, two, q));
 		}
 		else {
-			answerForSingleQuery.push_back("none");
+			answerForSingleQuery = list<string>();
+			//answerForSingleQuery.push_back("none");
 		}
 	}
 	else if (size == 8) {
@@ -79,11 +80,13 @@ void QE::evaluateSingleQuery(string queryString) {
 					answerForSingleQuery = convertVectorToList(selectField(select2, command2, one2, two2, q));
 				}
 				else {
-					answerForSingleQuery.push_back("none");
+					answerForSingleQuery = list<string>();
+					//answerForSingleQuery.push_back("none");
 				}
 			}
 			else {
-				answerForSingleQuery.push_back("none");
+				answerForSingleQuery = list<string>();
+				//answerForSingleQuery.push_back("none");
 			}
 		}
 		else if (relate1 != 0 && relate2 == 0) {
@@ -92,11 +95,13 @@ void QE::evaluateSingleQuery(string queryString) {
 					answerForSingleQuery = convertVectorToList(selectField(select, command, one, two, q));
 				}
 				else {
-					answerForSingleQuery.push_back("none");
+					answerForSingleQuery = list<string>();
+					//answerForSingleQuery.push_back("none");
 				}
 			}
 			else {
-				answerForSingleQuery.push_back("none");
+				answerForSingleQuery = list<string>();
+				//answerForSingleQuery.push_back("none");
 			}
 		}
 		else {
@@ -104,7 +109,8 @@ void QE::evaluateSingleQuery(string queryString) {
 				answerForSingleQuery = convertVectorToList(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)));
 			}
 			else {
-				answerForSingleQuery.push_back("none");
+				answerForSingleQuery = list<string>();
+				//answerForSingleQuery.push_back("none");
 			}
 		}
 	}
