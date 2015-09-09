@@ -1,5 +1,9 @@
-﻿AutoTester_debug.lib(AutoTester.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(AutoTester.obj)' or at 'C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
-AutoTester_debug.lib(Query.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(Query.obj)' or at 'C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
-AutoTester_debug.lib(QueryManager.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(QueryManager.obj)' or at 'C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
-AutoTester_debug.lib(Tokenizer.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(Tokenizer.obj)' or at 'C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
-  AutoTester.vcxproj -> C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe
+﻿Build started 9/10/2015 1:04:29 AM.
+Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" on node 2 (Build target(s)).
+Link:
+  AutoTester.vcxproj -> C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe
+Done Building Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.07

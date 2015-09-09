@@ -9,8 +9,8 @@ Select a such that Parent(9, a)
 10, 11
 5000
 3 - Parent 3
-assign a;
-Select a such that Parent*(7, a)
+stmt s;
+Select s such that Parent*(7, s)
 8, 9, 10, 11, 12
 5000
 4 - Follows 1
@@ -24,14 +24,14 @@ Select s such that Follows*(8, s)
 9, 12
 5000
 6 - Follows3
-assign a, while w;
+assign a; while w;
 Select a such that Follows(w, a)
 8, 10
 5000
 7 - Modifies 1
 variable v;
 Select v such that Modifies(5, v)
-d, z, x
+d
 5000
 8 - Modifies 2
 stmt s;
@@ -39,14 +39,14 @@ Select s such that Modifies(s, "x")
 2, 7, 12, 13
 5000
 9 - Modifies 3 Condition True, return all assigments
-assign a, while w;
-Select a such that Modifies()
+assign a, a1; while w;
+Select a1 such that Modifies(a,"x")
 1, 2, 3, 4, 5, 6, 8, 10, 11, 12, 13 
 5000
 10 - Uses 1
 stmt s;
 Select s such that Uses(s, "z")
-2, 5, 9, 10, 12
+2, 5, 7, 9, 10, 12
 5000
 11 - Uses 2 return none
 assign a;
@@ -65,61 +65,61 @@ Select a pattern a("z", _)
 5000
 14 - Pattern 2
 assign a;
-Select a pattern a(_, _"y + z"_)
-10, 12
+Select a pattern a(_, _"5"_)
+2, 6
 5000
 15 - Pattern 3 Return all variables
-variable v;
-Select v pattern a(_, "z+5")
+assign a;variable v;
+Select v pattern a(_, _"5"_)
 z, x, y, d, e, i, u, b
 5000
 16 - Parent + Pattern 1
-while w, assign a;
-Select a such that Parent(w, a) pattern a (_, "y+1")
-9
+while w; assign a;
+Select a such that Parent(w, a) pattern a (_, _"y"_)
+8,10,11,12
 5000
 17 - Parent + Pattern 2
-while w, assign a;
+while w; assign a;
 Select a such that Parent*(w, a) pattern a ("i", _)
 11
 5000
 18 - Follows + Pattern 1
-while w, assign a;
+while w; assign a;
 Select a such that Follows*(w, a) pattern a ("x", _)
 12, 13
 5000
 19 - Follows + Pattern 2
-while w, assign a;
-Select a such that Follows(a,w) pattern a(_ ,"y+z")
-none
+while w; assign a;
+Select a such that Follows(a,w) pattern a("e" ,_)
+6, 8
 5000
-20 - Follows+ Pattern 3 
-assign a, while w;
-Select a such that Follows(w,a) pattern w("i", _)
-6
+20 - Follows + Pattern 3 
+assign a, a1;
+Select a1 such that Follows*(a,a1) pattern a("y", _)
+4, 5, 6, 7, 11, 13
 5000
 21 - Uses + Pattern 1
 assign a;
-Select a such that Uses(a, "d") Pattern a(_, _"d + z"_)
+Select a such that Uses(a, "d") Pattern a(_, _)
 5
 5000
 22 - Uses + Pattern 2
-while w, assignmnet a;
-Select a that Parent(w, a) pattern w("z", _)
-10, 11
+assign a; variable v;
+Select v that Uses(a, v) pattern a("d", _)
+x, y, d, z
 5000
 23 - Modifies + Pattern 1
 assign a;
-Select a such that Modifies(a, d) pattern a(_,_"x+y"_)
+Select a such that Modifies(a, "d") pattern a(_,_"y"_)
 4
 5000
 24 - Modifies + Pattern 2
-while w, assign a;
-Select w such that Modifes(w, y) pattern a(_,"y+1")
-none
+while w; assign a;
+Select w such that Modifes(w, "y") pattern a(_,_)
+7, 9
 5000
 25 - Invalid Query
-assign a, while w;
+assign a; while w;
 Select w such that w*a
 none
 5000
