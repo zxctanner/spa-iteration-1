@@ -196,6 +196,89 @@ QE::QE(string fileName, PKB * p)
 	}
 }
 
+//constructor for unit testing QE, bypasses query tokenizing
+QE::QE(vector<Query> qVector, PKB * p) {
+	queryVector = qVector;
+	pkb = p;
+	vector<Query> query = qVector;
+	vector<string> ansST;
+	vector<string> ansP;
+	for (int i = 0; i < query.size(); i++) {
+		Query q = query[i];
+		vector<string> fields = q.getQueryFields();
+		int size = fields.size();
+		if (size == 0) {
+			answers.push_back("none");
+		}
+		else if (size == 4) {
+			string select = fields[0];
+			string command = fields[1];
+			string one = fields[2];
+			string two = fields[3];
+			if (checkAnswerSize(selectField(select, command, one, two, q))) {
+				answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+			}
+			else {
+				answers.push_back("none");
+			}
+		}
+		else if (size == 8) {
+			string select = fields[0];
+			string command = fields[1];
+			string one = fields[2];
+			string two = fields[3];
+			string select2 = fields[4];
+			string command2 = fields[5];
+			string one2 = fields[6];
+			string two2 = fields[7];
+			int relate1;
+			int relate2;
+			if (command.substr(0, 7).compare("pattern") == 0) {
+				relate1 = relation(select, command.substr(7, command.size() - 7), "");
+				relate2 = relation(select2, one2, two2);
+			}
+			else {
+				relate1 = relation(select, one, two);
+				relate2 = relation(select2, command2.substr(7, command2.size() - 7), "");
+			}
+			if (relate1 == 0 && relate2 != 0) {
+				if (checkAnswerSize(selectField(select, command, one, two, q))) {
+					if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+						answers.push_back(vectorSToString(selectField(select2, command2, one2, two2, q)));
+					}
+					else {
+						answers.push_back("none");
+					}
+				}
+				else {
+					answers.push_back("none");
+				}
+			}
+			else if (relate1 != 0 && relate2 == 0) {
+				if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+					if (checkAnswerSize(selectField(select, command, one, two, q))) {
+						answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+					}
+					else {
+						answers.push_back("none");
+					}
+				}
+				else {
+					answers.push_back("none");
+				}
+			}
+			else {
+				if (checkAnswerSize(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)))) {
+					answers.push_back(vectorSToString(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q))));
+				}
+				else {
+					answers.push_back("none");
+				}
+			}
+		}
+	}
+}
+
 vector<string> QE::selectField(string select, string command, string one, string two, Query q) {
 	bool isNum1 = isInt(one);
 	bool isNum2 = isInt(two);
@@ -1526,6 +1609,11 @@ string QE::vectorSToString(vector<string> vecString) {
 	}
 	ans = ss.str();
 	return ans;
+}
+
+//getter for the answers for unit testing QE
+vector<string> QE::getAnswers() {
+	return answers;
 }
 
 void QE::displayAllAnswers() {

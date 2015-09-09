@@ -29,6 +29,7 @@ private:
 public:
 	QE(PKB* p);
 	QE(string fileName, PKB* p);
+	QE(vector<Query> vQ, PKB* p);
 	
 	void getQSForQP(string queryString);
 	void evaluateSingleQuery(string queryString);
@@ -70,6 +71,7 @@ public:
 	vector<string> filter(vector<string> vec, string field, Query q);
 	vector<string> findCommonAnswer(vector<string> ansST, vector<string> ansP);
 	string vectorSToString(vector<string> vecString);
+	vector<string> getAnswers();
 	void displayAllAnswers();
 	bool checkAnswerSize(vector<string> answerVector);
 };
