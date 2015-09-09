@@ -1049,133 +1049,147 @@ vector<string> QE::Follows(string select, int one, int two, Query q) {
 	return ans;
 }
 
-vector<string> QE::FollowsT(string select, string one, string two, Query q) { //return all the statement lines base on condition
 
-																			  // e.g Follows* _,_ a,w and 
+vector<string> QE::FollowsT(string select, string one, string two, Query q) { //return all the statement lines base on condition
+	int relate = relation(select, one, two);
+	set<int> set;
+
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 
 	string type1 = q.checkSynType(one);
-
 	string type2 = q.checkSynType(two);
 
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 
-
-	for (int i = 0; i < folTable.size(); ++i) {
-
-		int current = folTable[i].first;
-
-		if (one.compare("_") != 0) {
-
-			if (type1.compare(stmtTable[current].getType()) != 0) {
-				continue;
-			}
-		}
-
-		for (int j = i + 1; j < folTable.size(); ++j) {
-
-			int next = folTable[j].second;
-
-			// check type of current and skip ahead if fail
+	// e.g Select a Follows(w,a)
+	// follow same format as e,g 2,a
+	// double for looops
+	// outer loop to loop each possible left statement and skip those that are not the same type as type 1
+	// inner loop same as e.g 2,a
 
 
-			// check for a and w on the right
-			// ignore for _
+	if (select.compare(two) == 0) {
+		for (int i = 0; i < folTable.size(); ++i) {
 
-			// make sure not _
-			if (two.compare("_") != 0) {
+			int current = folTable[i].first;
 
-				// we get a match so we move on instead of adding to our answer
-				if (type2.compare(stmtTable[next].getType()) == 0) {
+			if (one.compare("_") != 0) {
 
-					string str;
+				// only go ahead if same type	
+				if (type1.compare(stmtTable[current].getType()) == 0) {
 
-					cout << select << " ; " << one << " ";
-					if (select.compare(one) == 0) {
+					for (int j = i; j < folTable.size(); ++j) {
 
-						str = to_string(current);
+						//cout << folTable[j].first << "//" << folTable[j].second << "   ";
+
+
+						// check for a and w on the right
+						// ignore for _
+
+						int next = folTable[j].second;
+
+						// make sure not _
+						if (two.compare("_") != 0) {
+
+							// we didn't get a match so we move on instead of adding to our answer
+							if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+
+								//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
+
+								set.insert(folTable[j].second);
+
+								current = folTable[j].second;
+							}
+
+						}
+
 					}
-					else {
-						str = to_string(folTable[i].second);
-					}
 
-					ans.push_back(str);
 				}
+
+
 			}
-
-
 		}
+
 	}
 
-	/*
-	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
-	vector<string> sub;
-	vector<string> sub2;
-	vector<string> ans;
+
+	// e.g a,6 same as select a such that a,w
 	if (select.compare(one) == 0) {
-	for (int i = 0; i < folTable.size(); ++i) {
-	string str = to_string(folTable[i].first);
-	sub.push_back(str);
+		for (int i = folTable.size() - 1; i >= 0; --i) {
+
+			int current = folTable[i].second;
+
+			if (one.compare("_") != 0) {
+
+				// only go ahead if same type	
+				if (type2.compare(stmtTable[current].getType()) == 0) {
+
+					for (int j = i; j >= 0; --j) {
+
+						//cout << folTable[j].first << "//" << folTable[j].second << "   ";
+
+
+						// check for a and w on the right
+						// ignore for _
+
+						int next = folTable[j].first;
+
+						// make sure not _
+						if (one.compare("_") != 0) {
+
+							// we didn't get a match so we move on instead of adding to our answer
+							if (type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) {
+
+								//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
+
+								set.insert(folTable[j].first);
+
+								current = folTable[j].first;
+							}
+
+						}
+
+					}
+
+				}
+
+
+			}
+		}
+
 	}
-	sub = filter(sub, one, q); // sub contains only the correct declaration of one
-	for (int j = 0; j < folTable.size(); ++j) { //comparing sub and second of parTable to obtain follow statement line
-	for (int k = 0; k < sub.size(); ++k) {
-	int value = atoi(sub[k].c_str()); //int of sub
-	if (folTable[j].first == value) {
-	string str = to_string(folTable[j].second);
-	sub2.push_back(str);
+
+	while (!set.empty()) {
+		string str = to_string(*set.begin());
+
+		ans.push_back(str);
+		set.erase(set.begin());
 	}
-	}
-	}
-	sub2 = filter(sub2, two, q);
-	for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and first of parTable to obtain follow statement line
-	for (int b = 0; b < sub2.size(); ++b) {
-	int value = atoi(sub2[b].c_str()); //int of sub2
-	if (folTable[a].second == value) {
-	string str = to_string(folTable[a].first);
-	ans.push_back(str);
-	}
-	}
-	}
+	if (relate != 0) {
+		return ans;
 	}
 	else {
-	for (int i = 0; i < folTable.size(); ++i) {
-	string str = to_string(folTable[i].second);
-	sub.push_back(str);
+		bool status;
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
 	}
-	sub = filter(sub, two, q); // sub contains only the correct declaration of second
-	for (int j = 0; j < folTable.size(); ++j) { //comparing sub and first of parTable to obtain follow statement line
-	for (int k = 0; k < sub.size(); ++k) {
-	int value = atoi(sub[k].c_str()); //int of sub
-	if (folTable[j].second == value) {
-	string str = to_string(folTable[j].first);
-	sub2.push_back(str);
-	}
-	}
-	}
-	sub2 = filter(sub2, one, q);
-	for (int a = 0; a < folTable.size(); ++a) { //comparing sub2 and second of parTable to obtain follow statement line
-	for (int b = 0; b < sub2.size(); ++b) {
-	int value = atoi(sub2[b].c_str()); //int of sub
-	if (folTable[a].first == value) {
-	string str = to_string(folTable[a].second);
-	ans.push_back(str);
-	}
-	}
-	}
-	}
-
-	*/
-
-	return ans;
 }
 vector<string> QE::FollowsT(string select, int one, string two, Query q) { //return all the statement lines that follows* statement line one
 
-																		   // e.g Follows* 2,_ and 3,a and 4,w 
+	set<int> set;
+	// e.g Follows* 2,_ and 3,a and 4,w 
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
-
+	int relate = relation(select, to_string(one), two);
 	int current = one;
 
 	string type = q.checkSynType(two);
@@ -1184,7 +1198,7 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 
 	for (int i = 0; i < folTable.size(); ++i) {
 
-		cout << folTable[i].first << "//" << folTable[i].second << "   ";
+		//cout << folTable[i].first << "//" << folTable[i].second << "   ";
 
 		if (folTable[i].first == current) {
 
@@ -1199,9 +1213,9 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 				// we didn't get a match so we move on instead of adding to our answer
 				if (type.compare(stmtTable[next].getType()) == 0) {
 
+					//ans.push_back(str);
+					set.insert(folTable[i].second);
 
-					string str = to_string(folTable[i].second);
-					ans.push_back(str);
 				}
 
 			}
@@ -1211,27 +1225,34 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 		}
 	}
 
-	/*
-	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
-	vector<string> ans;
-	int line = one;
-	for (int i = 0; i < folTable.size(); ++i) {
-	if (folTable[i].first == line) {
-	string str = to_string(folTable[i].second);
-	ans.push_back(str);
-	line = folTable[i].second;
-	}
-	}
-	ans = filter(ans, two, q);
-	return ans;
+	while (!set.empty()) {
+		string str = to_string(*set.begin());
 
-	*/
+		ans.push_back(str);
+		set.erase(set.begin());
+	}
 
-	return ans;
+
+	if (relate != 0) {
+		return ans;
+	}
+	else {
+		bool status;
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
 }
 vector<string> QE::FollowsT(string select, string one, int two, Query q) { //return all the statements lines that come before statement line two and in the sames nesting level
-
-																		   // e.g Follows* 2,_ and 3,a and 4,w 
+	int relate = relation(select, one, to_string(two));
+	set<int> set;
+	// e.g Follows* 2,_ and 3,a and 4,w 
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 
@@ -1259,8 +1280,8 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 				// we get a match so we move on instead of adding to our answer
 				if (type.compare(stmtTable[next].getType()) == 0) {
 
-					string str = to_string(folTable[i].first);
-					ans.push_back(str);
+					//ans.push_back(str);
+					set.insert(folTable[i].first);
 				}
 
 			}
@@ -1271,63 +1292,67 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 		}
 	}
 
-	/*
+	while (!set.empty()) {
+		string str = to_string(*set.begin());
+
+		ans.push_back(str);
+		set.erase(set.begin());
+	}
+
+
+	if (relate != 0) {
+		return ans;
+	}
+	else {
+		bool status;
+		if (ans.size() > 0) {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
+	}
+}
+
+vector<string> QE::FollowsT(string select, int one, int two, Query q) { //return all the statements lines that come before statement line two and in the sames nesting level
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
-	int line = two;
-	for (int i = folTable.size() - 1; i >= 0; ++i) {
-	if (folTable[i].second == line) {
-	string str = to_string(folTable[i].first);
-	ans.push_back(str);
-	line = folTable[i].first;
+
+	int current = one;
+
+	bool status = false;
+
+	for (int i = 0; i < folTable.size(); ++i) {
+
+		//cout << folTable[i].first << "//" << folTable[i].second << "   ";
+
+		if (folTable[i].first == current) {
+
+			// check for a and w on the right
+			// ignore for _
+
+			int next = folTable[i].second;
+
+
+			// we didn't get a match so we move on instead of adding to our answer
+			if (next == two) {
+				status = true;
+			}
+
+			current = folTable[i].second;
+
+		}
 	}
-	}
-	ans = filter(ans, one, q);
+
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
 	return ans;
-	}
 
-	vector<string> QE::filter(vector<string> vec, string one, string two, Query q) {
-	vector<string> filAns;
-	string type1 = q.checkSynType(one);
-	string type2 = q.checkSynType(two);
-	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
-
-	if (one.compare("_") == 0 && two.compare("_") == 0) {
-	return vec;
-	} else if (one.compare("_") == 0 || two.compare("_") == 0) {
-	// would be e.g _,a or w,_
-	if (one.compare("_") == 0) {
-	//make sure two matches the type required e.g _,a or _,w
-	for (int i = 0; i < vec.size(); ++i) {
-	//obtain token of the statement number and compare with the type in two
-	int value = atoi(vec[i].c_str());
-	if (type2 == (stmtTable[value].getType())){
-	// add it to final answer
-	filAns.push_back(vec[i]);
-	}
-	}
-	}
-	if (two.compare("_") == 0 ) {
-	//make sure one matches the type required e.g a,_ or w,_
-	for (int i = 0; i < vec.size(); ++i) {
-	//obtain token of the statement number and compare with the type in two
-	int value = atoi(vec[i].c_str());
-	if (type1 == (stmtTable[value].getType())) {
-	// add it to final answer
-	filAns.push_back(vec[i]);
-	}
-	}
-	}
-	}
-
-	*/
-	return ans;
 }
 
-vector<string> QE::FollowsT(string select, int one, int two, Query q) {
-	vector<string> ans;
-	return ans;
-}
 
 vector<string> QE::pattern(string select, string command, string one, string two, Query q) { //return the statement lines that has this pattern
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
