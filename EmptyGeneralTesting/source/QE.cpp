@@ -1331,9 +1331,10 @@ vector<string> QE::getAllType(string type) {
 		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
 			vector<string> used = it->second.second;
 			for (int i = 0; i < used.size(); ++i) {
-				char* isInt;
-				int converted = strtol(used[i].c_str(), &isInt, 10);
-				if (isInt) {
+				try {
+					int converted = stoi(used[i]);
+				}
+				catch (exception e) {
 					constantSet.insert(used[i]);
 				}
 			}

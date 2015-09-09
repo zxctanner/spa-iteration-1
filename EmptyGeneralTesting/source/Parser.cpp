@@ -306,12 +306,13 @@ void Parser::populateModUseTable() {
 			}
 
 			//add new variables to VarList, while checking for no constant values
-			list.insert(pair<string, int>(modVar, list.size() + 1));
+			list.insert(pair<string, int>(modVar, list.size()));
 			for (int i = 0; i < used.size(); ++i) {
-				char* isInt;
-				int converted = strtol(used[i].c_str(), &isInt, 10);
-				if (!isInt) {
-					list.insert(pair<string, int>(used[i], list.size() + 1));
+				try {
+					int converted = stoi(used[i]);
+				}
+				catch (exception e) {
+					list.insert(pair<string, int>(used[i], list.size()));
 				}
 			}
 
@@ -332,7 +333,7 @@ void Parser::populateModUseTable() {
 			table.insert({ it->getStmtNumber(), pair<vector<string>, vector<string>>(modified, used) });
 			
 			//add new variables to VarList
-			list.insert(pair<string, int>(it->getName(), list.size() + 1));
+			list.insert(pair<string, int>(it->getName(), list.size()));
 
 			//add the stmt number into the stack
 			whileStack.push_back(it->getStmtNumber());

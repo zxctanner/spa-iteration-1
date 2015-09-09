@@ -20,6 +20,7 @@ public:
 	bool isInList(string var);
 	//void insert(string var);
 	vector<string> getAllVar();
+	vector<pair<string, int>> getAllPair();
 };
 
 #endif

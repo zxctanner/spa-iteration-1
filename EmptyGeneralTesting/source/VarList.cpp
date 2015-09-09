@@ -43,3 +43,11 @@ vector<string> VarList::getAllVar() {
 	}
 	return allVar;
 }
+
+vector<pair<string, int>> VarList::getAllPair() {
+	vector<pair<string, int>> allPair;
+	for (auto it = varList.begin(); it != varList.end(); ++it) {
+		allPair.push_back({ it->first, it->second });
+	}
+	return allPair;
+}
