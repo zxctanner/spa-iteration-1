@@ -44,6 +44,7 @@ public:
 	vector<string> ParentT(string select, string one, string two, Query q);
 	vector<string> ParentT(string select, int one, string two, Query q);
 	vector<string> ParentT(string select, string one, int two, Query q);
+	vector<string> ParentT(string select, int one, int two, Query q);
 
 	vector<string> Follows(string select, string one, string two, Query q);
 	vector<string> Follows(string select, int one, string two, Query q);

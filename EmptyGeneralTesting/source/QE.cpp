@@ -720,6 +720,40 @@ vector<string> QE::ParentT(string select, string one, int two, Query q) { //retu
 		return ans;
 	}
 }
+vector<string> QE::ParentT(string select, int one, int two, Query q) {
+	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
+	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
+	vector<string> ans;
+	stack<int> par; 
+	bool status = false;
+	int next = one;
+	while (true) {
+		for (int i = 0; i < parTable.size(); ++i) {
+			if (parTable[i].first == next) {
+				par.push(parTable[i].second);
+				string str = to_string(parTable[i].second);
+				ans.push_back(str);
+			}
+		}
+		if (par.empty()) {
+			break;
+		}
+		else {
+			next = par.top();
+			par.pop();
+		}
+	}
+	for (int j = 0; j < ans.size(); ++j) {
+		int value = atoi(ans[j].c_str());
+		if (value == two) {
+			status = true;
+			break;
+		}
+	}
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
+	return ans;	
+}
 
 vector<string> QE::Follows(string select, string one, string two, Query q) { //return statement line of follow base on condition
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
