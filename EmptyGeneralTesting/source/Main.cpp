@@ -7,6 +7,7 @@
 using namespace std;
 
 // starting point of SPA application
+/*
 int main() {
 	PKB*  pkb = new PKB();
 
@@ -21,3 +22,4 @@ int main() {
 	cin.get();
 
 }
+*/

@@ -275,7 +275,7 @@ void Parser::populateModUseTable() {
 	unordered_map<int, pair<vector<string>, vector<string>>> table;
 	unordered_map<string, int> list;
 
-	int currentLevel;
+	int currentLevel = 0;
 	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
 		int thisLevel = it->getLevel();
 		// current level is initialized to 1 so that the following stmts will not be seen as nested in the procedure

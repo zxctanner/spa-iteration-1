@@ -13,12 +13,14 @@ volatile bool TestWrapper::GlobalStop = false;
 TestWrapper::TestWrapper() {
   // create any objects here as instance variables of this class
   // as well as any initialization required for your spa program
+	pkb = new PKB();
 }
 
 // method for parsing the SIMPLE source
 void TestWrapper::parse(std::string filename) {
 	// call your parser to do the parsing
   // ...rest of your code...
+	Parser parser = Parser(filename, pkb); 
 }
 
 // method to evaluating a query
@@ -28,4 +30,7 @@ void TestWrapper::evaluate(std::string query, std::list<std::string>& results){
 	//results = std::list<std::string>("asda", "asda");
   // store the answers to the query in the results list (it is initially empty)
   // each result must be a string.
+	QE* qe = new QE(pkb);
+	qe->evaluateSingleQuery(query);
+	results = qe->getAnswerForSingleQuery();
 }

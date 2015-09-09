@@ -1,0 +1,25 @@
+﻿Build started 9/9/2015 8:00:29 PM.
+     1>Project "C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\VisualStudio\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\SPA.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\LineTokenizer.cpp
+         LineTokenizer.cpp
+       Lib:
+         D:\VisualStudio\VC\bin\Lib.exe /OUT:"C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Release\SPA.lib" /NOLOGO /LTCG Release\FollowTable.obj
+         Release\LineToken.obj
+         Release\LineTokenizer.obj
+         Release\Main.obj
+         Release\ModUseTable.obj
+         Release\ParentTable.obj
+         Release\Parser.obj
+         Release\PKB.obj
+         Release\QE.obj
+         Release\QP.obj
+         Release\Query.obj
+         Release\StatementTable.obj
+         Release\VarList.obj
+         SPA.vcxproj -> C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\Release\SPA.lib
+     1>Done Building Project "C:\Users\HouYi\Desktop\cs3201\EmptyGeneralTesting\SPA\SPA.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.76
