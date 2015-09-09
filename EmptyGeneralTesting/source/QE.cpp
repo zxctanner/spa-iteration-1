@@ -128,15 +128,10 @@ QE::QE(string fileName, PKB * p)
 			answers.push_back("none");
 		}
 		else if (size == 4) {
-			//cout << "Currently in size = 4" << endl;
 			string select = fields[0];
 			string command = fields[1];
 			string one = fields[2];
 			string two = fields[3];
-			//cout << select << endl;
-			//cout << command << endl;
-			//cout << one << endl;
-			//cout << two << endl;
 			if (checkAnswerSize(selectField(select, command, one, two, q))) {
 				answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
 			}
@@ -218,7 +213,6 @@ vector<string> QE::selectField(string select, string command, string one, string
 		return ansP;
 	}
 	else {
-		//cout << "Such that detected!" << endl;
 		if (command.compare("Modifies") == 0) {
 			if (!isNum1 && !isNum2) {
 				ansST = ModifiesS(select, one, two, q);
@@ -285,6 +279,9 @@ vector<string> QE::selectField(string select, string command, string one, string
 			}
 			else if (!isNum1 && isNum2) {
 				ansST = FollowsT(select, one, b, q);
+			}
+			else if (isNum1 && isNum2) {
+				ansST = FollowsT(select, a, b, q);
 			}
 			else {
 				ansST = FollowsT(select, one, two, q);
@@ -1324,6 +1321,11 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 	}
 
 	*/
+	return ans;
+}
+
+vector<string> QE::FollowsT(string select, int one, int two, Query q) {
+	vector<string> ans;
 	return ans;
 }
 
