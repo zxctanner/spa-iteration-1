@@ -27,14 +27,19 @@ private:
 	vector<string> prog_lineD;
 	vector<Query> queriesForQE;
 	vector<string> queryUsedSyns;
+	Query queryForQE;
 	string querySyn;
 	string inputFileName;
+	string queryStr;
 	bool valid; //if at anytime valid flag turns to false, return none
 
 public:
+	QP();
 	QP(string fileName);
 	void process();
+	void processSingleQuery(string query);
 	vector<Query> getVectorQuery();
+	Query getQuery();
 
 private:
 
@@ -53,6 +58,7 @@ private:
 	string extractPattern(string& queryString);
 	string extractST(string& queryString);
 	void queryStringHandler(string queryString);
+	void singleQueryStringHandler(string queryString);
 	void clearMemory();
 	bool isQueryLegit(string rawQueryString);
 	bool checkValidQuery(Query query);

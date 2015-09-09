@@ -20,8 +20,94 @@ using namespace std;
 6. The query answers will be placed in vector<string> ans1 for all commands and ans2 for pattern command
 7. If there are only 1 command, the respective vector will be printed else AND the two vectors before printing*/
 
-QE::QE()
+QE::QE(PKB * p)
 {
+	pkb = p;
+}
+
+void QE::evaluateSingleQuery(string queryString) {
+	queryStringForQP = queryString;
+	QP queryParser = QP();
+	queryParser.processSingleQuery(queryStringForQP);
+	vector<string> ansST;
+	vector<string> ansP;
+	Query q = queryParser.getQuery();
+	vector<string> fields = q.getQueryFields();
+	int size = fields.size();
+	if (size == 0) {
+		answerForSingleQuery.push_back("none");
+	}
+	else if (size == 4) {
+		//cout << "Currently in size = 4" << endl;
+		string select = fields[0];
+		string command = fields[1];
+		string one = fields[2];
+		string two = fields[3];
+		//cout << select << endl;
+		//cout << command << endl;
+		//cout << one << endl;
+		//cout << two << endl;
+		if (checkAnswerSize(selectField(select, command, one, two, q))) {
+			answerForSingleQuery = convertVectorToList(selectField(select, command, one, two, q));
+		}
+		else {
+			answerForSingleQuery.push_back("none");
+		}
+	}
+	else if (size == 8) {
+		string select = fields[0];
+		string command = fields[1];
+		string one = fields[2];
+		string two = fields[3];
+		string select2 = fields[4];
+		string command2 = fields[5];
+		string one2 = fields[6];
+		string two2 = fields[7];
+		int relate1;
+		int relate2;
+		if (command.substr(0, 7).compare("pattern") == 0) {
+			relate1 = relation(select, command.substr(7, command.size() - 7), "");
+			relate2 = relation(select2, one2, two2);
+		}
+		else {
+			relate1 = relation(select, one, two);
+			relate2 = relation(select2, command2.substr(7, command2.size() - 7), "");
+		}
+		if (relate1 == 0 && relate2 != 0) {
+			if (checkAnswerSize(selectField(select, command, one, two, q))) {
+				if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+					answerForSingleQuery = convertVectorToList(selectField(select2, command2, one2, two2, q));
+				}
+				else {
+					answerForSingleQuery.push_back("none");
+				}
+			}
+			else {
+				answerForSingleQuery.push_back("none");
+			}
+		}
+		else if (relate1 != 0 && relate2 == 0) {
+			if (checkAnswerSize(selectField(select2, command2, one2, two2, q))) {
+				if (checkAnswerSize(selectField(select, command, one, two, q))) {
+					answerForSingleQuery = convertVectorToList(selectField(select, command, one, two, q));
+				}
+				else {
+					answerForSingleQuery.push_back("none");
+				}
+			}
+			else {
+				answerForSingleQuery.push_back("none");
+			}
+		}
+		else {
+			if (checkAnswerSize(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)))) {
+				answerForSingleQuery = convertVectorToList(findCommonAnswer(selectField(select, command, one, two, q), selectField(select2, command2, one2, two2, q)));
+			}
+			else {
+				answerForSingleQuery.push_back("none");
+			}
+		}
+	}
 }
 
 QE::QE(string fileName, PKB * p)
@@ -1458,4 +1544,20 @@ bool QE::checkAnswerSize(vector<string> answerVector) {
 	else {
 		return true;
 	}
+}
+
+void QE::getQSForQP(string queryString) {
+	queryStringForQP = queryString;
+}
+
+list<string> QE::convertVectorToList(vector<string> answerVec) {
+	list<string> answerList;
+	for (int a = 0; a < answerVec.size(); ++a) {
+		answerList.push_back(answerVec.at(a));
+	}
+	return answerList;
+}
+
+list<string> QE::getAnswerForSingleQuery() {
+	return answerForSingleQuery;
 }

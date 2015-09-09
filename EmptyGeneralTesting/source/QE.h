@@ -2,6 +2,7 @@
 #define QE_H
 #include <vector>
 #include <string>
+#include <list>
 #include "ModUseTable.h"
 #include "ParentTable.h"
 #include "StatementTable.h"
@@ -19,14 +20,20 @@ class QE
 {
 private:
 	string filePath;
+	string queryStringForQP;
 	PKB* pkb;
 	vector<string> answers;
 	vector<Query> queryVector;
+	list<string> answerForSingleQuery;
 
 public:
-	QE();
+	QE(PKB* p);
 	QE(string fileName, PKB* p);
 	
+	void getQSForQP(string queryString);
+	void evaluateSingleQuery(string queryString);
+	list<string> getAnswerForSingleQuery();
+	list<string> convertVectorToList(vector<string> answerVec);
 	vector<string> selectField(string select, string command, string one, string two, Query q);
 	bool isInt(string input);
 	vector<string> Choices(string choice, bool status);

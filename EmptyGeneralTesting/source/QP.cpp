@@ -15,6 +15,7 @@
 
 using namespace std;
 
+regex queryString_rgx("^\\s*((stmt|assign|while|variable|constant|prog_line)\\s+[a-zA-Z][a-zA-Z0-9#]*\\s*(,\\s*[a-zA-Z][a-zA-Z0-9#]*\\s*)*;\\s*)+\\sSelect\\s+[a-zA-Z][a-zA-Z0-9#]*(\\s+(((such that)\\s+(((Parent|Parent[*]|Follows|Follows[*])\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[)]\\s*)|((Modifies|Uses)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|\"[a-zA-Z][a-zA-Z0-9#]*\")\\s*[)]\\s*)))|((pattern)\\s+(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|(\"[a-zA-Z][a-zA-Z0-9#]*\"))\\s*,\\s*((_\\s*\"(([a-zA-Z][a-zA-Z0-9#]*)|([0-9]+))\"\\s*_)|_)\\s*[)]))){1,2}\\s*$");
 regex declaration_rgx("^((stmt|assign|while|variable|constant|prog_line)\\s+[a-zA-Z][a-zA-Z0-9#]*\\s*(,\\s*[a-zA-Z][a-zA-Z0-9#]*\\s*)*;\\s*)+$");
 regex query_rgx("^Select\\s+[a-zA-Z][a-zA-Z0-9#]*(\\s+(((such that)\\s+(((Parent|Parent[*]|Follows|Follows[*])\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[)]\\s*)|((Modifies|Uses)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*,\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|\"[a-zA-Z][a-zA-Z0-9#]*\")\\s*[)]\\s*)))|((pattern)\\s+(([a-zA-Z][a-zA-Z0-9#]*)|_|[0-9]+)\\s*[(]\\s*(([a-zA-Z][a-zA-Z0-9#]*)|_|(\"[a-zA-Z][a-zA-Z0-9#]*\"))\\s*,\\s*((_\\s*\"(([a-zA-Z][a-zA-Z0-9#]*)|([0-9]+))\"\\s*_)|_)\\s*[)]))){1,2}$");
 regex synonym_rgx("^[a-zA-Z][a-zA-Z0-9#]*$");
@@ -48,6 +49,9 @@ Validation will be conducted upon receiving query string, taking place in two se
 
 QP::QP(string fileName) {
 	inputFileName = fileName;
+}
+
+QP::QP() {
 }
 
 void QP::process() {
@@ -98,11 +102,56 @@ void QP::process() {
 	}
 	//do not include
 	/*for (int i = 0; i < queriesForQE.size(); ++i) {
-		queriesForQE.at(i).printQuery();
+	queriesForQE.at(i).printQuery();
 	}*/
 }
+
+void QP::processSingleQuery(string query) {
+	string declarations, queryString;
+	vector<string> separatedLine;
+	queryStr = query;
+	if (isQueryLegit(queryStr)) {
+		separatedLine = separateDQ(trim(queryStr, " "));
+		if (separatedLine.empty()) {
+			queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+		}
+		else {
+			declarations = trim(separatedLine.at(0), " ");
+			queryString = trim(separatedLine.at(1), " ");
+			if (validNoSTPattern(queryString)) { //checks if number of ST and Pattern -> 1 each at most
+				if (regex_match(declarations, declaration_rgx) && regex_match(queryString, query_rgx)) {
+					//HANDLING DECLARATIONS
+					valid = processingDeclarations(declarations);
+					if (!valid) {
+						queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					}
+					//HANDLING QUERY STRING
+					singleQueryStringHandler(queryString);
+					//GOING INTO QE
+					//passIntoQE();
+					//CLEAR EVERYTHING
+				}
+				else {
+					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				}
+			}
+			else {
+				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			}
+		}
+		clearMemory();
+	}
+	else {
+		queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+	}
+}
+//do not include
+/*for (int i = 0; i < queriesForQE.size(); ++i) {
+queriesForQE.at(i).printQuery();
+}*/
+
 bool QP::isQueryLegit(string rawQueryString) { //checks if the query string follows format: <declarationsstring><SINGLE SPACE><querystring>
-	if (rawQueryString.find("Select") == string::npos || rawQueryString.find(";") == string::npos) {
+	if (!regex_match(rawQueryString, queryString_rgx)) {
 		return false;
 	}
 	else {
@@ -587,6 +636,138 @@ void QP::queryStringHandler(string queryString) {
 	}
 }
 
+void QP::singleQueryStringHandler(string queryString) {
+	queryString.erase(remove_if(queryString.begin(), queryString.end(), isspace), queryString.end());
+	int indexOfST = queryString.find("such");
+	int indexOfPattern = queryString.find("pattern");
+	vector<string> query;
+	vector<string> suchthatVS;
+	vector<string> patternVS;
+	bool errorSyn;
+	string pattern;
+	string suchthat;
+	//4 cases here
+	//a. only have pattern
+	if (indexOfST == string::npos) {
+		querySyn = queryString.substr(6, indexOfPattern - 6);
+		if (!checkIfSynDontExist(querySyn)) {
+			pattern = extractPattern(queryString);
+			errorSyn = extractPatternSyns(pattern);
+			if (errorSyn) {
+				query = formattedSTQE(pattern, querySyn, "pattern");
+				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+				if (!checkValidQuery(currentQuery)) {
+					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				}
+				else {
+					queryForQE = currentQuery;
+				}
+			}
+			else {
+				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			}
+		}
+		else {
+			queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+		}
+	}
+	//b. only have such that
+	else if (indexOfPattern == string::npos) {
+		querySyn = queryString.substr(6, indexOfST - 6);
+		if (!checkIfSynDontExist(querySyn)) {
+			suchthat = extractST(queryString);
+			errorSyn = extractSTSyn(suchthat);
+			if (errorSyn) {
+				query = formattedSTQE(suchthat, querySyn, "suchthat");
+				Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+				if (!checkValidQuery(currentQuery)) {
+					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				}
+				else {
+					queryForQE = currentQuery;
+				}
+			}
+			else {
+				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			}
+		}
+		else {
+			queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+		}
+	}
+	//c. such that before pattern
+	else if (indexOfST < indexOfPattern) {
+		querySyn = queryString.substr(6, indexOfST - 6);
+		if (!checkIfSynDontExist(querySyn)) {
+			suchthat = extractST(queryString);
+			errorSyn = extractSTSyn(suchthat);
+			if (errorSyn) {
+				pattern = extractPattern(queryString);
+				errorSyn = extractPatternSyns(pattern);
+				if (errorSyn) {
+					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					Query st(stmtD, assignD, variableD, constantD, whileD, prog_lineD, suchthatVS);
+					patternVS = formattedSTQE(pattern, querySyn, "pattern");
+					Query p(stmtD, assignD, variableD, constantD, whileD, prog_lineD, patternVS);
+					if (!checkValidQuery(st) || !checkValidQuery(p)) {
+						queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					}
+					else {
+						query = combineVector(suchthatVS, patternVS);
+						Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+						queryForQE = currentQuery;
+					}
+				}
+				else {
+					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				}
+			}
+			else {
+				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			}
+		}
+		else {
+			queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			//cout << ">>>>ERROR: QUERY SYN NOT DECLARED" << endl;
+		}
+	}
+	//d. pattern before such that
+	else if (indexOfPattern < indexOfST) {
+		querySyn = queryString.substr(6, indexOfPattern - 6);
+		if (!checkIfSynDontExist(querySyn)) {
+			suchthat = extractST(queryString);
+			errorSyn = extractSTSyn(suchthat);
+			if (errorSyn) {
+				pattern = extractPattern(queryString);
+				errorSyn = extractPatternSyns(pattern);
+				if (errorSyn) {
+					suchthatVS = formattedSTQE(suchthat, querySyn, "suchthat");
+					Query st(stmtD, assignD, variableD, constantD, whileD, prog_lineD, suchthatVS);
+					patternVS = formattedSTQE(pattern, querySyn, "pattern");
+					Query p(stmtD, assignD, variableD, constantD, whileD, prog_lineD, patternVS);
+					if (!checkValidQuery(st) || !checkValidQuery(p)) {
+						queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+					}
+					query = combineVector(suchthatVS, patternVS);
+					Query currentQuery(stmtD, assignD, variableD, constantD, whileD, prog_lineD, query);
+					queryForQE = currentQuery;
+				}
+				else {
+					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+				}
+			}
+			else {
+				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+			}
+		}
+		else {
+			queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
+		}
+	}
+}
+
 vector<string> QP::combineVector(vector<string> first, vector<string> second) {
 	vector<string> temp;
 	for (auto i : first) {
@@ -808,4 +989,8 @@ bool QP::checkValidQuery(Query query) {
 			return true;
 		}
 	}
+}
+
+Query QP::getQuery() {
+	return queryForQE;
 }
