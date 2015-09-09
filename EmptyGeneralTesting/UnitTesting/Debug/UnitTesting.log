@@ -1,18 +1,27 @@
-﻿Build started 8/9/2015 8:22:43 PM.
-     1>Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" on node 2 (Build target(s)).
+﻿Build started 9/9/2015 10:32:16 AM.
+     1>Project "C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\include" /I"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\source" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\UnitTesting.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt TestQP.cpp
+         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /IC:\Users\kerine\Desktop\VC\UnitTest\include /IC:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"stdafx.h" /Fp"Debug\UnitTesting.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Users\kerine\Desktop\VC\bin\CL.exe /c /IC:\Users\kerine\Desktop\VC\UnitTest\include /IC:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\UnitTesting.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt TestParser.cpp TestLineTokenizer.cpp TestQE.cpp TestQP.cpp
          TestQP.cpp
-     1>c:\users\brendan\desktop\cs3201 and 02\cs3201\emptygeneraltesting\unittesting\testqp.cpp(34): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\unittesting\testqp.cpp(34): warning C4018: '<': signed/unsigned mismatch
+         TestQE.cpp
+         TestLineTokenizer.cpp
+         TestParser.cpp
+     1>c:\users\kerine\desktop\cs3201\emptygeneraltesting\unittesting\testparser.cpp(27): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\lib" "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\SPA.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\UnitTesting.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib" /MACHINE:X86 /DLL Debug\TestParser.obj
+         C:\Users\kerine\Desktop\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\kerine\Desktop\VC\UnitTest\lib C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\SPA.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib" /MACHINE:X86 /DLL Debug\TestParser.obj
          Debug\stdafx.obj
          Debug\TestLineTokenizer.obj
          Debug\TestQE.obj
          Debug\TestQP.obj
-         UnitTesting.vcxproj -> C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll
-     1>Done Building Project "C:\Users\Brendan\Desktop\CS3201 and 02\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" (Build target(s)).
+         LINK : C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.lib and object C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.exp
+         UnitTesting.vcxproj -> C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\Debug\UnitTesting.dll
+     1>Done Building Project "C:\Users\kerine\Desktop\cs3201\EmptyGeneralTesting\UnitTesting\UnitTesting.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.59
+Time Elapsed 00:00:15.70

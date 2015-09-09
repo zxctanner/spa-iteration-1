@@ -936,15 +936,17 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 			// make sure not _
 			if (two.compare("_") == 0) {
 
-				// we get a match so we move on instead of adding to our answer
+				// we didn't get a match so we move on instead of adding to our answer
 				if (type.compare(stmtTable[next].getType()) != 0) {
-					continue;
+					
+					string str = to_string(folTable[i].second);
+					ans.push_back(str);
 				}
+
 			}
 
-			string str = to_string(folTable[i].second);
-			ans.push_back(str);
 			current = folTable[i].second;
+
 		}
 	}
 
@@ -993,13 +995,16 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 
 				// we get a match so we move on instead of adding to our answer
 				if (type.compare(stmtTable[next].getType()) != 0) {
-					continue;
+					
+					string str = to_string(folTable[i].first);
+					ans.push_back(str);
 				}
+
 			}
 
-			string str = to_string(folTable[i].first);
-			ans.push_back(str);
+
 			current = folTable[i].first;
+
 		}
 	}
 
