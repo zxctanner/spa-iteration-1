@@ -100,12 +100,12 @@ Select a1 such that Follows*(a,a1) pattern a("y", _)
 5000
 21 - Uses + Pattern 1
 assign a;
-Select a such that Uses(a, "d") Pattern a(_, _)
+Select a such that Uses(a, "d") pattern a(_, _)
 5
 5000
 22 - Uses + Pattern 2
 assign a; variable v;
-Select v that Uses(a, v) pattern a("d", _)
+Select v such that Uses(a, v) pattern a("d", _)
 x, y, d, z
 5000
 23 - Modifies + Pattern 1
@@ -115,7 +115,7 @@ Select a such that Modifies(a, "d") pattern a(_,_"y"_)
 5000
 24 - Modifies + Pattern 2
 while w; assign a;
-Select w such that Modifes(w, "y") pattern a(_,_)
+Select w such that Modifies(w, "y") pattern a(_,_)
 7, 9
 5000
 25 - Invalid Query
