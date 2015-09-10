@@ -231,7 +231,7 @@ void Parser::populateStatementTable()
 	vector<LineToken>::iterator it;
 	unordered_map<int, LineToken> st;
 
-	for (it = tokens.begin(); it != tokens.end(); ++it) {
+	for (it = tokensCopy.begin(); it != tokensCopy.end(); ++it) {
 		st.insert({ it->getStmtNumber(), *it });
 	}
 	pkb->setStatementTable(new StatementTable(st));
@@ -276,7 +276,7 @@ void Parser::populateModUseTable() {
 	unordered_map<string, int> list;
 
 	int currentLevel = 0;
-	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+	for (auto it = tokensCopy.begin(); it != tokensCopy.end(); ++it) {
 		int thisLevel = it->getLevel();
 		// current level is initialized to 1 so that the following stmts will not be seen as nested in the procedure
 		// this will be modified after iteration 1, where procedure level is important.

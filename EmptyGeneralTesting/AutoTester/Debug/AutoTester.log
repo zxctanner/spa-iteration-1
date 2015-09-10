@@ -1,9 +1,15 @@
-﻿Build started 9/10/2015 1:04:29 AM.
+﻿Build started 9/10/2015 11:45:22 AM.
 Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" on node 2 (Build target(s)).
 Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe" /INCREMENTAL /NOLOGO "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\lib\AutoTester_debug.lib" "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\SPA.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.lib" /MACHINE:X86 Debug\TestWrapper.obj
+  LINK : C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe not found or not built by the last incremental link; performing full link
+AutoTester_debug.lib(AutoTester.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(AutoTester.obj)' or at 'C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
+AutoTester_debug.lib(Query.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(Query.obj)' or at 'C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
+AutoTester_debug.lib(QueryManager.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(QueryManager.obj)' or at 'C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
+AutoTester_debug.lib(Tokenizer.obj) : warning LNK4099: PDB 'AutoTester.pdb' was not found with 'AutoTester_debug.lib(Tokenizer.obj)' or at 'C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.pdb'; linking object as if no debug info
   AutoTester.vcxproj -> C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\Debug\AutoTester.exe
 Done Building Project "C:\Users\CAO LI\Documents\GitHub\cs3201\EmptyGeneralTesting\AutoTester\AutoTester.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.07
+Time Elapsed 00:00:03.36
