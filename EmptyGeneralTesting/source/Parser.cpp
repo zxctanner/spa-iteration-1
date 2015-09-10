@@ -171,7 +171,7 @@ void Parser::populateFollowTable()
 			// if same level means follow
 			if (nextNesting == currentNesting) {
 				//std::cout << (n + 1) << (m + 1) << "\n";
-				pair<int, int> entry(n, m);
+				pair<int, int> entry(n + 1, m + 1);
 				ft.push_back(entry);
 				break;
 			}
