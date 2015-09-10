@@ -1771,11 +1771,12 @@ vector<string> QE::Choices(string choice, bool status) {
 	vector<string> finAns;
 	if (status == true) {
 		if (choice == "ASSIGN" || choice == "WHILE") {
-			for (auto i = 0; i < stmtTable.size(); ++i)
+			for (auto i = 0; i < stmtTable.size(); ++i){
 				if (choice == stmtTable[i].getType()) {
 					// add it to final answer
 					finAns.push_back(to_string(i));
 				}
+			}
 			return finAns;
 		}
 
