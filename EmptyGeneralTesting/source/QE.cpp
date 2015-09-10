@@ -1786,7 +1786,7 @@ vector<string> QE::Choices(string choice, bool status) {
 		}
 
 		else if (choice == "STATEMENT") {
-			for (auto i = 1; i < stmtTable.size(); ++i) {
+			for (auto i = 1; i <= stmtTable.size(); ++i) {
 				finAns.push_back(to_string(i));
 			}
 			return finAns;
