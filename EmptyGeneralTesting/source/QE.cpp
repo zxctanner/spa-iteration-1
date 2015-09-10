@@ -1679,19 +1679,14 @@ vector<string> QE::getAllType(string type) {
 	}
 	else if (type == "CONSTANT") {
 		unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
-		set<string> constantSet;
 		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
 			vector<string> used = it->second.second;
 			for (int i = 0; i < used.size(); ++i) {
-				try {
-					int converted = stoi(used[i]);
-				}
-				catch (exception e) {
-					constantSet.insert(used[i]);
+				if (isInt(used[i])) {
+					all.push_back(used[i]);
 				}
 			}
 		}
-		all = vector<string>(constantSet.begin(), constantSet.end());
 	}
 	return all;
 }
@@ -1796,19 +1791,17 @@ vector<string> QE::Choices(string choice, bool status) {
 		}
 		else if (choice == "CONSTANT") {
 			unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
-			set<string> constantSet;
 			for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
 				vector<string> used = it->second.second;
 				for (int i = 0; i < used.size(); ++i) {
-					try {
-						int converted = stoi(used[i]);
+					if (isInt(used[i])) {
+						finAns.push_back(used[i]);
 					}
-					catch (exception e) {
-						constantSet.insert(used[i]);
+					else {
+						continue;
 					}
 				}
 			}
-			finAns = vector<string>(constantSet.begin(), constantSet.end());
 			return finAns;
 		}
 		else {
