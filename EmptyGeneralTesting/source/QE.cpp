@@ -564,7 +564,12 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 				if (find(variables.begin(), variables.end(), use[k]) != variables.end())
 					continue;
 				else {
-					variables.push_back(use[k]);
+					if (isInt(use[k])) {
+						continue;
+					}
+					else {
+						variables.push_back(use[k]);
+					}
 				}
 			}
 		}
@@ -624,7 +629,12 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 			if (q.checkSynType(two) == "VARIABLE") {
 				for (int j = 0; i < varList.size(); ++j) {
 					if (varList[j] == use[i]) {
-						ans.push_back(use[i]);
+						if (isInt(use[i])) {
+							continue;
+						}
+						else {
+							ans.push_back(use[i]);
+						}
 					}
 				}
 			}
@@ -657,10 +667,10 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 					break;
 				}
 			}
+			string choice = q.checkSynType(select);
+			ans = Choices(choice, status);
+			return ans;
 		}
-		string choice = q.checkSynType(select);
-		ans = Choices(choice, status);
-		return ans;
 	}
 }
 
