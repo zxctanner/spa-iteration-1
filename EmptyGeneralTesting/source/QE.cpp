@@ -1162,21 +1162,49 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 
+	/*
+	int current = folTable[0].first;
+
+	for (int i = 0; i < folTable.size(); ++i) {
+
+	//cout << folTable[i].first << "//" << folTable[i].second << "   ";
+
+	if (folTable[i].first == current) {
+
+	// check for a and w on the right
+	// ignore for _
+
+	int next = folTable[i].second;
+
+
+	// we didn't get a match so we move on instead of adding to our answer
+	if (next == two) {
+	status = true;
+	}
+
+	current = folTable[i].second;
+
+	}
+	}
+
+	*/
+
 	// e.g Select a Follows(w,a)
 	// follow same format as e,g 2,a
-	// double for looops
+	// double for loops
 	// outer loop to loop each possible left statement and skip those that are not the same type as type 1
 	// inner loop same as e.g 2,a
 
 
 	if (select.compare(two) == 0 || two.compare("_") == 0) {
+
 		for (int i = 0; i < folTable.size(); ++i) {
 
 			int current = folTable[i].first;
 
 
 			// only go ahead if same type	
-			if (type1.compare(stmtTable[current].getType()) == 0) {
+			if (type1.compare(stmtTable[current].getType()) == 0 || type1.compare("STATEMENT") == 0) {
 
 				for (int j = i; j < folTable.size(); ++j) {
 
@@ -1192,12 +1220,16 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 					if (two.compare("_") != 0) {
 
 						// we didn't get a match so we move on instead of adding to our answer
-						if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+						if ((type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) || type2.compare("STATEMENT") == 0) {
 
 							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
 							set.insert(folTable[j].second);
 
+							current = folTable[j].second;
+
+						}
+						else if (folTable[j].first == current) {
 							current = folTable[j].second;
 						}
 
@@ -1227,7 +1259,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 
 			// only go ahead if same type	
-			if (type2.compare(stmtTable[current].getType()) == 0) {
+			if (type2.compare(stmtTable[current].getType()) == 0 || type2.compare("STATEMENT") == 0) {
 
 				for (int j = i; j >= 0; --j) {
 
@@ -1243,13 +1275,18 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 					if (one.compare("_") != 0) {
 
 						// we didn't get a match so we move on instead of adding to our answer
-						if (type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) {
+						if ((type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) || type1.compare("STATEMENT") == 0) {
 
 							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
 							set.insert(folTable[j].first);
 
 							current = folTable[j].first;
+
+						}
+						else if (folTable[j].second == current) {
+							current = folTable[j].first;
+
 						}
 
 					}
@@ -1257,6 +1294,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 						set.insert(folTable[j].first);
 
 					}
+
 
 				}
 
@@ -1374,7 +1412,7 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 			if (two.compare("_") != 0) {
 
 				// we didn't get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) == 0) {
+				if (type.compare(stmtTable[next].getType()) == 0 || type.compare("STATEMENT") == 0) {
 
 					//ans.push_back(str);
 					set.insert(folTable[i].second);
@@ -1446,7 +1484,7 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 			if (one.compare("_") != 0) {
 
 				// we get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) == 0) {
+				if (type.compare(stmtTable[next].getType()) == 0 || type.compare("STATEMENT") == 0) {
 
 					//ans.push_back(str);
 					set.insert(folTable[i].first);
@@ -1524,8 +1562,6 @@ vector<string> QE::FollowsT(string select, int one, int two, Query q) { //return
 	return ans;
 
 }
-
-
 
 vector<string> QE::pattern(string select, string command, string one, string two, Query q) { //return the statement lines that has this pattern
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
