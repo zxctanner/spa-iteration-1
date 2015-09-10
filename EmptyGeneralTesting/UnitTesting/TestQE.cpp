@@ -254,18 +254,18 @@ namespace UnitTesting
 			populateAllTables(pkb);
 			Query q1 = Query(vector<string>{"s"}, vector<string>{}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"s", "Uses", "s", "\"1\""});
+				vector<string>{"s", "Uses", "s", "\"b\""});
 			Query q2 = Query(vector<string>{}, vector<string>{}, vector<string>{"v"},
 				vector<string>{}, vector<string>{}, vector<string>{},
 				vector<string>{"v", "Uses", "3", "v"});
-			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{"c"}, vector<string>{}, vector<string>{},
-				vector<string>{"c", "Uses", "a", "c"});
+			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{"v"},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"v", "Uses", "a", "v"});
 			vector<Query> vQ{ q1, q2, q3 };
 
-			string expected1 = "3, 5, 6, 7, 8";
-			string expected2 = "3";
-			string expected3 = "0, 5, 2, 1";
+			string expected1 = "3, 5";
+			string expected2 = "i, u, b, p, x";
+			string expected3 = "u, b, x, z";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			//int size = pkb->getFollowTable()->getTable().size();

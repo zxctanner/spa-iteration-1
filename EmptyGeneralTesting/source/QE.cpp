@@ -637,7 +637,7 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 	if (relate == 2) {
 		for (int i = 0; i < use.size(); ++i) {
 			if (q.checkSynType(two) == "VARIABLE") {
-				for (int j = 0; i < varList.size(); ++j) {
+				for (int j = 0; j < varList.size(); ++j) {
 					if (varList[j] == use[i]) {
 						ans.push_back(use[i]);
 					}
