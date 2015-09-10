@@ -27,10 +27,10 @@ namespace UnitTesting
 		void populateMUT(unordered_map<int, pair<vector<string>, vector<string>>> *mut) {
 			mut->insert({ 1,{ vector<string>{"x"}, vector<string>{"0"} } });
 			mut->insert({ 2,{ vector<string>{"i"}, vector<string>{"5"} } });
-			mut->insert({ 3,{ vector<string>{}, vector<string>{"i"} } });
+			mut->insert({ 3,{ vector<string>{"x", "i"}, vector<string>{"i", "u", "2", "b", "1", "p", "x"} } });
 			mut->insert({ 4,{ vector<string>{"x"}, vector<string>{"u", "2"} } });
 			mut->insert({ 5,{ vector<string>{"i"}, vector<string>{"b", "1"} } });
-			mut->insert({ 6,{ vector<string>{}, vector<string>{"p"} } });
+			mut->insert({ 6,{ vector<string>{"x"}, vector<string>{"p", "x", "1"} } });
 			mut->insert({ 7,{ vector<string>{"x"}, vector<string>{"x", "1"} } });
 			mut->insert({ 8,{ vector<string>{"z"}, vector<string>{"z", "1"} } });
 		}
@@ -92,11 +92,12 @@ namespace UnitTesting
 
 			string expected1 = "2";
 			string expected2 = "3";
-			string expected3 = "3 6";
+			string expected3 = "3, 6";
 			vector<string> expected{ expected1, expected2, expected3 };
-
+			
 			QE* qe;
-			qe = new QE(vQ, pkb);
+			qe = new QE(vQ, pkb); // error occurs here
+			
 			vector<string> Ans = qe->getAnswers();
 			for (int i = 0; i < vQ.size(); ++i) {
 				Assert::AreEqual(expected[i], Ans[i]);
@@ -118,13 +119,16 @@ namespace UnitTesting
 				vector<string>{"w", "Follows*", "1", "8"});
 			vector<Query> vQ{ q1, q2, q3 };
 
+			//int size = pkb->getFollowTable()->getTable().size();
+			//Assert::AreEqual(4, size);
+
 			string expected1 = "none";
-			string expected2 = "1 2 4";
-			string expected3 = "3 6";
+			string expected2 = "1, 2, 4";
+			string expected3 = "3, 6";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			QE* qe;
-			qe = new QE(vQ, pkb);
+			qe = new QE(vQ, pkb); //error occurs here
 			vector<string> Ans = qe->getAnswers();
 			for (int i = 0; i < vQ.size(); ++i) {
 				Assert::AreEqual(expected[i], Ans[i]);
@@ -135,11 +139,7 @@ namespace UnitTesting
 		{
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
-			/*vector<pair<int, int>> tb = pkb->getParentTable()->getTable();
-			int la = tb[0].first;
-			int lo = tb[0].second;
-			Assert::AreEqual(3, la);
-			Assert::AreEqual(2, lo);*/
+
 			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
 				vector<string>{"a", "Parent", "3", "a"});
@@ -151,9 +151,9 @@ namespace UnitTesting
 				vector<string>{"s", "Parent", "_", "s"});
 			vector<Query> vQ{ q1, q2, q3 };
 
-			string expected1 = "4 5";
+			string expected1 = "4, 5";
 			string expected2 = "3";
-			string expected3 = "4 5 6 7";
+			string expected3 = "4, 5, 6, 7";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			QE* qe;
@@ -180,8 +180,8 @@ namespace UnitTesting
 			vector<Query> vQ{ q1, q2, q3 };
 
 			string expected1 = "none";
-			string expected2 = "4 5 7";
-			string expected3 = "3 6";
+			string expected2 = "4, 5, 7";
+			string expected3 = "6, 3";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			QE* qe;
@@ -203,13 +203,13 @@ namespace UnitTesting
 				vector<string>{}, vector<string>{}, vector<string>{},
 				vector<string>{"b", "patternb", "\"x\"", "_"});
 			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{"w"}, vector<string>{}, vector<string>{},
+				vector<string>{}, vector<string>{"w"}, vector<string>{},
 				vector<string>{"w", "patterna", "_", "_"});
 			vector<Query> vQ{ q1, q2, q3 };
 
-			string expected1 = "5 7 8";
-			string expected2 = "1 4 7";
-			string expected3 = "3 6";
+			string expected1 = "5, 7, 8";
+			string expected2 = "1, 4, 7";
+			string expected3 = "3, 6";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			QE* qe;
@@ -231,13 +231,13 @@ namespace UnitTesting
 				vector<string>{}, vector<string>{"w"}, vector<string>{},
 				vector<string>{"v", "Modifies", "w", "v"});
 			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{"w"}, vector<string>{}, vector<string>{},
+				vector<string>{}, vector<string>{"w"}, vector<string>{},
 				vector<string>{"a", "Modifies", "a", "\"i\""});
 			vector<Query> vQ{ q1, q2, q3 };
 
-			string expected1 = "1 3 4 6 7";
-			string expected2 = "3 6";
-			string expected3 = "2 5";
+			string expected1 = "1, 3, 4, 6, 7";
+			string expected2 = "x, i";
+			string expected3 = "2, 5";
 			vector<string> expected{ expected1, expected2, expected3 };
 
 			QE* qe;
@@ -263,13 +263,17 @@ namespace UnitTesting
 				vector<string>{"c", "Uses", "a", "c"});
 			vector<Query> vQ{ q1, q2, q3 };
 
-			string expected1 = "3 5 6 7 8";
+			string expected1 = "3, 5, 6, 7, 8";
 			string expected2 = "3";
-			string expected3 = "0 5 2 1";
+			string expected3 = "0, 5, 2, 1";
 			vector<string> expected{ expected1, expected2, expected3 };
 
+			//int size = pkb->getFollowTable()->getTable().size();
+			//Assert::AreEqual(4, size);
+
 			QE* qe;
-			qe = new QE(vQ, pkb);
+
+			qe = new QE(vQ, pkb); //error occurs here
 			vector<string> Ans = qe->getAnswers();
 			for (int i = 0; i < vQ.size(); ++i) {
 				Assert::AreEqual(expected[i], Ans[i]);
