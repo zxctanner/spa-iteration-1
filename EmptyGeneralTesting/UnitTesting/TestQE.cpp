@@ -11,13 +11,12 @@ namespace UnitTesting
 	{
 	public:
 
-		vector<pair<int, int>> populateFT(vector<pair<int, int>> ft) {
-			ft.push_back({ 1,2 });
-			ft.push_back({ 2,3 });
-			ft.push_back({ 3,8 });
-			ft.push_back({ 4,5 });
-			ft.push_back({ 5,6 });
-			return ft;
+		void populateFT(vector<pair<int, int>> *ft) {
+			ft->push_back({ 1,2 });
+			ft->push_back({ 2,3 });
+			ft->push_back({ 3,8 });
+			ft->push_back({ 4,5 });
+			ft->push_back({ 5,6 });
 		}
 		void populatePT(vector<pair<int, int>> *pt) {
 			pt->push_back({ 3,4 });
@@ -60,11 +59,11 @@ namespace UnitTesting
 			unordered_map<int, pair<vector<string>, vector<string>>> mut;
 			unordered_map<int, LineToken> st;
 			unordered_map<string, int> vl;
-			ft = populateFT(ft);
-			//populatePT(&pt);
-			//populateST(&st);
-			//populateMUT(&mut);
-			//populateVL(&vl);
+			populateFT(&ft);
+			populatePT(&pt);
+			populateST(&st);
+			populateMUT(&mut);
+			populateVL(&vl);
 			pkb->setFollowTable(new FollowTable(ft));
 			pkb->setParentTable(new ParentTable(pt));
 			pkb->setStatementTable(new StatementTable(st));
@@ -77,25 +76,25 @@ namespace UnitTesting
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
 
+			//int size = pkb->getFollowTable()->getTable().size();
+			//Assert::AreEqual(4, size);
+
 			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
 				vector<string>{"a", "Follows", "1", "a"});
-			string q1e = "assign:a . Query fields:a Follows 1 a ";
-			Assert::AreEqual(q1.toString(), q1e);
 			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{"w"}, vector<string>{},
 				vector<string>{"w", "Follows", "w", "a"});
-			cout << q1.toString() << endl;
 			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
 				vector<string>{"w"}, vector<string>{}, vector<string>{},
 				vector<string>{"w", "Follows", "s1", "s2"});
-			cout << q1.toString() << endl;
 			vector<Query> vQ{ q1, q2, q3 };
 
 			string expected1 = "2";
 			string expected2 = "3";
 			string expected3 = "3 6";
 			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
 			vector<string> Ans = qe->getAnswers();
@@ -110,34 +109,59 @@ namespace UnitTesting
 			populateAllTables(pkb);
 			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
-			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
+				vector<string>{"a", "Follows*", "a", "1"});
+			Query q2 = Query(vector<string>{}, vector<string>{"a1","a2"}, vector<string>{},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"a1", "Follows*", "a1", "a2"});
 			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
 				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"w", "Follows*", "1", "8"});
 			vector<Query> vQ{ q1, q2, q3 };
+
+			string expected1 = "none";
+			string expected2 = "1 2 4";
+			string expected3 = "3 6";
+			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
 
 		TEST_METHOD(TestParent)
 		{
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
+			/*vector<pair<int, int>> tb = pkb->getParentTable()->getTable();
+			int la = tb[0].first;
+			int lo = tb[0].second;
+			Assert::AreEqual(3, la);
+			Assert::AreEqual(2, lo);*/
 			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
-			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
-			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
-				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"a", "Parent", "3", "a"});
+			Query q2 = Query(vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{}, vector<string>{"w1", "w2"}, vector<string>{},
+				vector<string>{"w1", "Parent", "w1", "w2"});
+			Query q3 = Query(vector<string>{"s"}, vector<string>{}, vector<string>{},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"s", "Parent", "_", "s"});
 			vector<Query> vQ{ q1, q2, q3 };
+
+			string expected1 = "4 5";
+			string expected2 = "3";
+			string expected3 = "4 5 6 7";
+			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
 
 		TEST_METHOD(TestParentT)
@@ -146,71 +170,110 @@ namespace UnitTesting
 			populateAllTables(pkb);
 			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
+				vector<string>{"a", "Parent*", "1", "a"});
 			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
-			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
-				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"a", "Parent*", "w", "a"});
+			Query q3 = Query(vector<string>{"s1"}, vector<string>{}, vector<string>{},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"s1", "Parent*", "s1", "7"});
 			vector<Query> vQ{ q1, q2, q3 };
-			QE* qe = new QE(vQ, pkb);
+
+			string expected1 = "none";
+			string expected2 = "4 5 7";
+			string expected3 = "3 6";
+			vector<string> expected{ expected1, expected2, expected3 };
+
+			QE* qe;
+			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
 
 		TEST_METHOD(TestPattern)
 		{
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
-			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
+			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{"v"},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
-			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
-			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
+				vector<string>{"a", "patterna", "v", "_\"1\"_"});
+			Query q2 = Query(vector<string>{}, vector<string>{"b"}, vector<string>{},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"b", "patternb", "\"x\"", "_"});
+			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"w", "patterna", "_", "_"});
 			vector<Query> vQ{ q1, q2, q3 };
+
+			string expected1 = "5 7 8";
+			string expected2 = "1 4 7";
+			string expected3 = "3 6";
+			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
 
 		TEST_METHOD(TestModifies)
 		{
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
-			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
+			Query q1 = Query(vector<string>{"s"}, vector<string>{}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
-			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
+				vector<string>{"s", "Modifies", "s", "\"x\""});
+			Query q2 = Query(vector<string>{}, vector<string>{}, vector<string>{"v"},
 				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
-			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
+				vector<string>{"v", "Modifies", "w", "v"});
+			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
 				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"a", "Modifies", "a", "\"i\""});
 			vector<Query> vQ{ q1, q2, q3 };
+
+			string expected1 = "1 3 4 6 7";
+			string expected2 = "3 6";
+			string expected3 = "2 5";
+			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
 
 		TEST_METHOD(TestUses)
 		{
 			PKB* pkb = new PKB();
 			populateAllTables(pkb);
-			Query q1 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
+			Query q1 = Query(vector<string>{"s"}, vector<string>{}, vector<string>{},
 				vector<string>{}, vector<string>{}, vector<string>{},
-				vector<string>{"a", "Follows", "a", "1"});
-			Query q2 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
-				vector<string>{}, vector<string>{"w"}, vector<string>{},
-				vector<string>{"w", "Follows", "w", "a"});
-			Query q3 = Query(vector<string>{"s1", "s2"}, vector<string>{}, vector<string>{},
-				vector<string>{"w"}, vector<string>{}, vector<string>{},
-				vector<string>{"w", "Follows", "s1", "s2"});
+				vector<string>{"s", "Uses", "s", "\"1\""});
+			Query q2 = Query(vector<string>{}, vector<string>{}, vector<string>{"v"},
+				vector<string>{}, vector<string>{}, vector<string>{},
+				vector<string>{"v", "Uses", "3", "v"});
+			Query q3 = Query(vector<string>{}, vector<string>{"a"}, vector<string>{},
+				vector<string>{"c"}, vector<string>{}, vector<string>{},
+				vector<string>{"c", "Uses", "a", "c"});
 			vector<Query> vQ{ q1, q2, q3 };
+
+			string expected1 = "3 5 6 7 8";
+			string expected2 = "3";
+			string expected3 = "0 5 2 1";
+			vector<string> expected{ expected1, expected2, expected3 };
+
 			QE* qe;
 			qe = new QE(vQ, pkb);
+			vector<string> Ans = qe->getAnswers();
+			for (int i = 0; i < vQ.size(); ++i) {
+				Assert::AreEqual(expected[i], Ans[i]);
+			}
 		}
-
 	};
-
 }
