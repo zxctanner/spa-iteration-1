@@ -564,11 +564,21 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 				if (find(variables.begin(), variables.end(), use[k]) != variables.end())
 					continue;
 				else {
-					if (isInt(use[k])) {
-						continue;
+					if (q.checkSynType(two) == "VARIABLE") {
+						if (isInt(use[k])) {
+							continue;
+						}
+						else {
+							variables.push_back(use[k]);
+						}
 					}
 					else {
-						variables.push_back(use[k]);
+						if (isInt(use[k])) {
+							variables.push_back(use[k]);
+						}
+						else {
+							continue;
+						}
 					}
 				}
 			}
@@ -629,12 +639,7 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 			if (q.checkSynType(two) == "VARIABLE") {
 				for (int j = 0; i < varList.size(); ++j) {
 					if (varList[j] == use[i]) {
-						if (isInt(use[i])) {
-							continue;
-						}
-						else {
-							ans.push_back(use[i]);
-						}
+						ans.push_back(use[i]);
 					}
 				}
 			}
@@ -1789,12 +1794,28 @@ vector<string> QE::Choices(string choice, bool status) {
 			finAns = pkb->getVarList()->getAllVar();
 			return finAns;
 		}
-	}
-	else {
-		return finAns;
+		else if (choice == "CONSTANT") {
+			unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+			set<string> constantSet;
+			for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+				vector<string> used = it->second.second;
+				for (int i = 0; i < used.size(); ++i) {
+					try {
+						int converted = stoi(used[i]);
+					}
+					catch (exception e) {
+						constantSet.insert(used[i]);
+					}
+				}
+			}
+			finAns = vector<string>(constantSet.begin(), constantSet.end());
+			return finAns;
+		}
+		else {
+			return finAns;
+		}
 	}
 }
-
 bool QE::checkAnswerSize(vector<string> answerVector) {
 	if (answerVector.size() == 0) {
 		return false;
