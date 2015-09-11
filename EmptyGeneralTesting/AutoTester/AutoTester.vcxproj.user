@@ -2,6 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>test1_source.txt query1.txt out.xml</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>test2_source.txt query2.txt out2.xml</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

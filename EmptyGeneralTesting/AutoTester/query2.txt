@@ -36,7 +36,7 @@ z
 8 - Modifies 2
 stmt s;
 Select s such that Modifies(s, "x")
-2, 4, 9
+1, 2, 4, 8, 9
 5000
 9 - Modifies 3 
 assign a, a1; while w;
@@ -48,13 +48,13 @@ stmt s;
 Select s such that Uses(s, "z")
 1, 2, 5, 7
 5000
-//11 - Uses 2 
+11 - Uses 2 
 assign a;
-Select a such that Uses(1, "i")
+Select a such that Uses(a, _)
 2, 3, 4, 5, 6, 7, 9, 11
 5000
 12 - Uses 3
-assign a constant c1;
+assign a; constant c1;
 Select a such that Uses(a,c1)
 2, 3, 4, 6, 9
 5000
