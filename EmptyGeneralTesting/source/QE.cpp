@@ -139,8 +139,35 @@ void QE::evaluateSingleQuery(string queryString) {
 					answerForSingleQuery = convertVectorToList(finalAns);
 				}
 			}
-			// invalid query, because of 2 common synonyms
 			else if (dependency.first == 3) {
+				string newSelect;
+				if (firstIsPattern) {
+					if (dependency.second == 1) {
+						newSelect = command.substr(7, command.size() - 7);
+					}
+					else {
+						newSelect = one;
+					}
+				}
+				else {
+					if (dependency.second == 1) {
+						newSelect = one;
+					}
+					else {
+						newSelect = two;
+					}
+				}
+				vector<string> boolAns = findCommonAnswer(selectField(newSelect, command, one, two, q), 
+					selectField(newSelect, command2, one2, two2, q));
+				if(checkAnswerSize(boolAns) == 0){
+					answerForSingleQuery = list<string>();
+				}
+				else {
+					answerForSingleQuery = convertVectorToList(selectField(select, command, one, two, q));
+				}
+			}
+			// invalid query, because of 2 common synonyms
+			else if (dependency.first == 4) {
 				answerForSingleQuery = list<string>();
 			}
 		}
@@ -299,8 +326,35 @@ QE::QE(string fileName, PKB * p)
 						answers.push_back(vectorSToString(finalAns));
 					}
 				}
-				// invalid query, because of 2 common synonyms
 				else if (dependency.first == 3) {
+					string newSelect;
+					if (firstIsPattern) {
+						if (dependency.second == 1) {
+							newSelect = command.substr(7, command.size() - 7);
+						}
+						else {
+							newSelect = one;
+						}
+					}
+					else {
+						if (dependency.second == 1) {
+							newSelect = one;
+						}
+						else {
+							newSelect = two;
+						}
+					}
+					vector<string> boolAns = findCommonAnswer(selectField(newSelect, command, one, two, q),
+						selectField(newSelect, command2, one2, two2, q));
+					if (checkAnswerSize(boolAns) == 0) {
+						answers.push_back("none");
+					}
+					else {
+						answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+					}
+				}
+				// invalid query, because of 2 common synonyms
+				else if (dependency.first == 4) {
 					answers.push_back("none");
 				}
 			}
@@ -452,8 +506,35 @@ QE::QE(vector<Query> qVector, PKB * p) {
 						answers.push_back(vectorSToString(finalAns));
 					}
 				}
-				// invalid query, because of 2 common synonyms
 				else if (dependency.first == 3) {
+					string newSelect;
+					if (firstIsPattern) {
+						if (dependency.second == 1) {
+							newSelect = command.substr(7, command.size() - 7);
+						}
+						else {
+							newSelect = one;
+						}
+					}
+					else {
+						if (dependency.second == 1) {
+							newSelect = one;
+						}
+						else {
+							newSelect = two;
+						}
+					}
+					vector<string> boolAns = findCommonAnswer(selectField(newSelect, command, one, two, q),
+						selectField(newSelect, command2, one2, two2, q));
+					if (checkAnswerSize(boolAns) == 0) {
+						answers.push_back("none");
+					}
+					else {
+						answers.push_back(vectorSToString(selectField(select, command, one, two, q)));
+					}
+				}
+				// invalid query, because of 2 common synonyms
+				else if (dependency.first == 4) {
 					answers.push_back("none");
 				}
 			}
@@ -903,19 +984,34 @@ vector<string> QE::UsesS(string select, string one, string two, Query q, pair<in
 	else {
 		vector<string> ans;
 		vector<string> dF = dFilter.second;
-		// Select v such that Uses(a, v) through a filter of a
+		// Select [v or c] such that Uses(a, [v or c]) through a filter of a
 		if (dFilter.first == 1) {
-			set<string> varBag;
-			for (int i = 0; i < dF.size(); ++i) {
-				int stmtNum = stoi(dF[i]);
-				vector<string> useEntry = modUseTable[stmtNum].second;
-				for (int i = 0; i<useEntry.size(); ++i) {
-					if (!isInt(useEntry[i])) {
-						varBag.insert(useEntry[i]);
-					}	
+			if (q.checkSynType(select) == "VARIABLE") {
+				set<string> varBag;
+				for (int i = 0; i < dF.size(); ++i) {
+					int stmtNum = stoi(dF[i]);
+					vector<string> useEntry = modUseTable[stmtNum].second;
+					for (int i = 0; i<useEntry.size(); ++i) {
+						if (!isInt(useEntry[i])) {
+							varBag.insert(useEntry[i]);
+						}
+					}
 				}
+				ans = vector<string>(varBag.begin(), varBag.end());
 			}
-			ans = vector<string>(varBag.begin(), varBag.end());
+			else if (q.checkSynType(select) == "CONSTANT") {
+				set<string> constBag;
+				for (int i = 0; i < dF.size(); ++i) {
+					int stmtNum = stoi(dF[i]);
+					vector<string> useEntry = modUseTable[stmtNum].second;
+					for (int i = 0; i<useEntry.size(); ++i) {
+						if (isInt(useEntry[i])) {
+							constBag.insert(useEntry[i]);
+						}
+					}
+				}
+				ans = vector<string>(constBag.begin(), constBag.end());
+			}
 		}
 		// Select <synonym> such that Uses(<synonym>, v), through a filter of v
 		else if (dFilter.first == 2) {
@@ -2268,7 +2364,47 @@ pair<int, int> QE::dependent(string select, string cond1One, string cond1Two, st
 	int cond1Relation = relation(select, cond1One, cond1Two);
 	int cond2Relation = relation(select, cond2One, cond2Two);
 
-	if (cond1Relation == 0 && cond2Relation != 0) {
+	//Case where both conditions are not related to select, but are to each other
+	if (cond1Relation == 0 && cond2Relation == 0) {
+		int var1Relation = relation(cond1One, cond2One, cond2Two);
+		int var2Relation = relation(cond1Two, cond2One, cond2Two);
+		//Corner case ".. Modifies(1, "y") pattern a("y", _)
+		bool is1Ident = cond1One.find("\"", 0) != string::npos;
+		bool is2Ident = cond1Two.find("\"", 0) != string::npos;
+		if (var1Relation == 0 && var2Relation == 0) {
+			return pair<int, int>{0, 0};
+		}
+		else if (var1Relation == 0 && var2Relation != 0) {
+			if (!is2Ident) {
+				return pair<int, int>{3, 2};
+			}
+			else {
+				return pair<int, int>{0, 0};
+			}
+
+		}
+		else if (var1Relation != 0 && var2Relation == 0) {
+			if (!is1Ident) {
+				return pair<int, int>{3, 1};
+			}
+			else {
+				return pair<int, int>{0, 0};
+			}
+		}
+		// final case where both conditions have 2 common synonym - not allowed in iter1
+		else {
+			if (is1Ident) {
+				return pair<int, int>{3, 2};
+			}
+			else if (is2Ident) {
+				return pair<int, int>{3, 1};
+			}
+			else {
+				return pair<int, int>{4, 0};
+			}
+		}
+	}
+	else if (cond1Relation == 0 && cond2Relation != 0) {
 		int var1Relation = relation(cond2One, cond1One, cond1Two);
 		int var2Relation = relation(cond2Two, cond1One, cond1Two);
 
@@ -2283,7 +2419,7 @@ pair<int, int> QE::dependent(string select, string cond1One, string cond1Two, st
 		}
 		// final case where both conditions have 2 common synonym - not allowed in iter1
 		else {
-			return pair<int, int>{3, 0};
+			return pair<int, int>{4, 0};
 		}
 	}
 	else if (cond1Relation != 0 && cond2Relation == 0) {
@@ -2301,7 +2437,7 @@ pair<int, int> QE::dependent(string select, string cond1One, string cond1Two, st
 		}
 		// final case where both conditions have 2 common synonym - not allowed in iter1
 		else {
-			return pair<int, int>{3, 0};
+			return pair<int, int>{4, 0};
 		}
 	}
 	else {
