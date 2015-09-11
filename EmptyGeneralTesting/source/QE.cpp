@@ -672,10 +672,10 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 					break;
 				}
 			}
-			string choice = q.checkSynType(select);
-			ans = Choices(choice, status);
-			return ans;
 		}
+		string choice = q.checkSynType(select);
+		ans = Choices(choice, status);
+		return ans;
 	}
 }
 
@@ -1102,10 +1102,10 @@ vector<string> QE::Follows(string select, int one, string two, Query q) { //retu
 		else {
 			status = false;
 		}
-		string choice = q.checkSynType(select);
-		ans = Choices(choice, status);
-		return ans;
 	}
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
+	return ans;
 }
 vector<string> QE::Follows(string select, string one, int two, Query q) { //return the statement line that is before statement line two
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
@@ -1130,10 +1130,10 @@ vector<string> QE::Follows(string select, string one, int two, Query q) { //retu
 		else {
 			status = false;
 		}
-		string choice = q.checkSynType(select);
-		ans = Choices(choice, status);
-		return ans;
 	}
+	string choice = q.checkSynType(select);
+	ans = Choices(choice, status);
+	return ans;
 }
 vector<string> QE::Follows(string select, int one, int two, Query q) { // select has no relation to field
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
