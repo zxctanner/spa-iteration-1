@@ -532,8 +532,34 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 			ans = filter(ans, one, q);
 			return ans;
 		}
+		else if (q.checkSynType(two) == "CONSTANT") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); i++) {
+				check = i->second.second;
+				for (int j = 0; j < check.size(); ++j) {
+					if (isInt(check[j])) {
+						string str = to_string(i->first);
+						ans.push_back(str);
+					}
+				}
+			}
+			ans = filter(ans, one, q);
+			return ans;
+		}
+		else if (q.checkSynType(two) == "VARIABLE") {
+			for (auto i = modUseTable.begin(); i != modUseTable.end(); i++) {
+				check = i->second.second;
+				for (int j = 0; j < check.size(); ++j) {
+					if (!isInt(check[j])) {
+						string str = to_string(i->first);
+						ans.push_back(str);
+					}
+				}
+			}
+			ans = filter(ans, one, q);
+			return ans;
+		}
 		else {
-			size_t found = two.find("\"");
+			size_t found = two.find('\"');
 			if (found != std::string::npos) {
 				two.erase(remove(two.begin(), two.end(), '\"'), two.end());
 				for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
@@ -587,7 +613,10 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 	}
 	else {
 		bool status;
-		if (two == "_" || q.checkSynType(two) == "VARIABLE") {
+		if (one == "_" && two == "_") {
+			status = true;
+		}
+		else if (two == "_" || q.checkSynType(two) == "VARIABLE") {
 			for (auto i = modUseTable.begin(); i != modUseTable.end(); ++i) {
 				string str = to_string(i->first);
 				ans.push_back(str);

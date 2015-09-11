@@ -1,0 +1,125 @@
+1 - Parent 1
+while w;
+Select w such that Parent(w, _)
+4, 7
+5000
+2 - Parent 2
+stmt s;
+Select s such that Parent(s, _)
+4, 7
+5000
+3 - Parent 3
+assign a;
+Select a such that Parent*(_, a)
+5, 6, 8, 9, 10, 11
+5000
+4 - Parent 4
+while w, w1;
+Select w such that Parent*(w1, w)
+7
+5000
+5 - Follows 1
+assign a;
+Select a such that Follows(7, a)
+10
+5000
+6 - Follows 2
+stmt s;
+Select s such that Follows(4, s)
+none
+5000
+7 - Follows 3
+stmt s; while w;
+Select s such that Follows*(s, w)
+1, 2, 3, 5, 6
+5000
+8 - Modifies 1
+assign a; variable v;
+Select v such that Modifies(a,v)
+x, z, i, y, a, b
+5000
+9 - Modifies 2
+assign a#;
+Select a# such that Modifies(a#, "x")
+1, 5
+5000
+10 - Modifies 3
+variable v;
+Select v such that Modifies(_, v)
+x, z, i, a, b, y
+5000
+11 - Uses 1
+constant c;
+Select c such that Uses(_,_)
+2, 3, 5, 1
+5000
+12 - Uses 2
+stmt s;
+Select s such that Uses(s, "x")
+5, 6, 8, 10, 4, 7
+5000
+13 - Uses 3
+while w; variable v;
+Select v such that Uses(w, v)
+i, z, a, x
+5000
+14 - Pattern 1
+assign a; stmt s;
+Select s pattern a(_, _)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+5000
+15 - Pattern 2
+assign a;
+Select a pattern a(_, _"1"_)
+5, 11
+5000
+16 - Pattern 3
+variable v; assign a;
+Select v pattern a(v, _)
+x, z, i, y, a, b
+5000
+17 - Pattern 4
+assign a;
+Select a pattern a("i", _"i"_)
+11
+5000
+18 - Parent + Pattern 1
+assign a; stmt s; variable v;
+Select a such that Parent(_, a) pattern a(v, _"1"_)
+5, 11
+5000
+19 - Parent + Pattern 2
+while w; assign a;
+Select w such that Parent*(w, 8) pattern a(_, _"10"_)
+none
+5000
+20 - Follows + Pattern 1
+assign a, a1;
+Select a such that Follows*(5, a) pattern a(_, _"x"_)
+6, 10
+5000
+21 - Modifies + Pattern 1
+assign a;
+Select a pattern a("x", _"x"_) such that Modifies(a, "x")
+5
+5000
+22 - Uses + Pattern 1
+variable v; assign a;
+Select v such that Uses(a, v) pattern a(_, _"z"_) 
+z, x, a, i
+5000
+23 - Uses + Pattern 2
+variable v; assign a;
+Select v such that Uses(a, v) pattern a(_, _"10"_)
+none
+5000
+24 - Invalid Query 1
+assign a; stmt 1s;
+Select a such that Modifies(1s, _)
+none
+5000
+25 - Invalid Query 2
+Assign a; variable v;
+Select a pattern a(_, _)
+none
+5000
