@@ -88,6 +88,13 @@
     <ClInclude Include="source\AbstractWrapper.h" />
     <ClInclude Include="source\TestWrapper.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="query1.txt" />
+    <Text Include="query2.txt" />
+    <Text Include="test1_source.txt" />
+    <Text Include="test2_source.txt" />
+    <Text Include="test3_source.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
