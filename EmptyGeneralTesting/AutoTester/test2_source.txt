@@ -1,4 +1,4 @@
-procedure p {
+procedure Test2 {
    while i {
     x = z + 3 + 2 + y;
     i = i + 1; 

@@ -1,4 +1,4 @@
-procedure Example {
+procedure Test3 {
   x = 2;
   z = 3;
   i = 5;
