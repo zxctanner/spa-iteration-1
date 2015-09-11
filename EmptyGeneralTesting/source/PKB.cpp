@@ -6,12 +6,7 @@
 
 using namespace std;
 
-/*
-void PKB::constructAllTables(vector<LineToken> tokens)
-{
-	parse.runParser(tokens, &parentTable, &modUseTable, &statementTable, &followTable);
-}
-*/
+
 
 PKB::PKB()
 {

@@ -27,9 +27,3 @@ void ModUseTable::setModUseTable(unordered_map<int, pair<vector<string>, vector<
 	modUseTable = mUTable;
 }
 
-/*
-void ModUseTable::insert(int stmtNum, string modified, vector<string> used) {
-	pair<string, vector<string>> assignment(modified, used);
-	table[stmtNum] = assignment;
-}
-*/

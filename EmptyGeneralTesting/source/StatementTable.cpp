@@ -28,17 +28,4 @@ void StatementTable::setTable(unordered_map<int, LineToken> sTable)
 	statementTable = sTable;
 }
 
-/*
-void StatementTable::insert(int stmtNum, LineToken lineToken) {
-	StatementTable::table[stmtNum] = &lineToken;
-}
 
-LineToken StatementTable::getStmt(int key) {
-	try {
-		return *StatementTable::table[key];
-	}
-	catch (exception e) {
-		return LineToken();
-	}
-}
-*/
