@@ -106,7 +106,7 @@ Select a such that Uses(a, "z") pattern a("z",_"x"_)
 22 - Uses + Pattern 2
 stmt s assign a; variable v;
 Select v such that Uses(s, v) pattern a("z", _)
-x, z
+z, y, i, x, a, b
 5000
 23 - Modifies + Pattern 1
 stmt s; assign a;
@@ -116,7 +116,7 @@ none
 24 - Modifies + Pattern 2
 while w; assign a;
 Select w such that Modifies(w, "y") pattern a(_,_)
-1, 8, 11
+1, 8, 10
 5000
 25 - Invalid Query
 assign a;
