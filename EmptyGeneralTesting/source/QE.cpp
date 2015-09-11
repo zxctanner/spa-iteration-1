@@ -126,14 +126,14 @@ QE::QE(string fileName, PKB * p)
 	vector<Query> query = qp.getVectorQuery();
 	vector<string> ansST;
 	vector<string> ansP;
-	for (int i = 0; i < query.size(); i++) {
+	for (int i = 0; i < query.size(); i++) { //No query
 		Query q = query[i];
 		vector<string> fields = q.getQueryFields();
 		int size = fields.size();
 		if (size == 0) {
 			answers.push_back("none");
 		}
-		else if (size == 4) {
+		else if (size == 4) { // 1 field
 			string select = fields[0];
 			string command = fields[1];
 			string one = fields[2];
@@ -145,7 +145,7 @@ QE::QE(string fileName, PKB * p)
 				answers.push_back("none");
 			}
 		}
-		else if (size == 8) {
+		else if (size == 8) { // 2 fields
 			string select = fields[0];
 			string command = fields[1];
 			string one = fields[2];
@@ -564,11 +564,21 @@ vector<string> QE::UsesS(string select, string one, string two, Query q) { //ret
 				if (find(variables.begin(), variables.end(), use[k]) != variables.end())
 					continue;
 				else {
-					if (isInt(use[k])) {
-						continue;
+					if (q.checkSynType(two) == "VARIABLE") {
+						if (isInt(use[k])) {
+							continue;
+						}
+						else {
+							variables.push_back(use[k]);
+						}
 					}
 					else {
-						variables.push_back(use[k]);
+						if (isInt(use[k])) {
+							variables.push_back(use[k]);
+						}
+						else {
+							continue;
+						}
 					}
 				}
 			}
@@ -627,14 +637,9 @@ vector<string> QE::UsesS(string select, int one, string two, Query q) { //return
 	if (relate == 2) {
 		for (int i = 0; i < use.size(); ++i) {
 			if (q.checkSynType(two) == "VARIABLE") {
-				for (int j = 0; i < varList.size(); ++j) {
+				for (int j = 0; j < varList.size(); ++j) {
 					if (varList[j] == use[i]) {
-						if (isInt(use[i])) {
-							continue;
-						}
-						else {
-							ans.push_back(use[i]);
-						}
+						ans.push_back(use[i]);
 					}
 				}
 			}
@@ -806,7 +811,7 @@ vector<string> QE::Parent(string select, string one, int two, Query q) { //retur
 	}
 }
 
-vector<string> QE::Parent(string select, int one, int two, Query q) {
+vector<string> QE::Parent(string select, int one, int two, Query q) { // select does not have any relation to fields
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
@@ -963,7 +968,7 @@ vector<string> QE::ParentT(string select, string one, int two, Query q) { //retu
 		return ans;
 	}
 }
-vector<string> QE::ParentT(string select, int one, int two, Query q) {
+vector<string> QE::ParentT(string select, int one, int two, Query q) { //select has no relation with field
 	vector<pair<int, int>> parTable = pkb->getParentTable()->getTable();
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 	vector<string> ans;
@@ -1130,7 +1135,7 @@ vector<string> QE::Follows(string select, string one, int two, Query q) { //retu
 		return ans;
 	}
 }
-vector<string> QE::Follows(string select, int one, int two, Query q) {
+vector<string> QE::Follows(string select, int one, int two, Query q) { // select has no relation to field
 	vector<pair<int, int>> folTable = pkb->getFollowTable()->getTable();
 	vector<string> ans;
 	bool status = false;
@@ -1150,6 +1155,7 @@ vector<string> QE::Follows(string select, int one, int two, Query q) {
 
 
 
+
 vector<string> QE::FollowsT(string select, string one, string two, Query q) { //return all the statement lines base on condition
 	int relate = relation(select, one, two);
 	set<int> set;
@@ -1162,21 +1168,50 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 	unordered_map<int, LineToken> stmtTable = pkb->getStatementTable()->getTable();
 
+
+	/*
+	int current = folTable[0].first;
+
+	for (int i = 0; i < folTable.size(); ++i) {
+
+	//cout << folTable[i].first << "//" << folTable[i].second << "   ";
+
+	if (folTable[i].first == current) {
+
+	// check for a and w on the right
+	// ignore for _
+
+	int next = folTable[i].second;
+
+
+	// we didn't get a match so we move on instead of adding to our answer
+	if (next == two) {
+	status = true;
+	}
+
+	current = folTable[i].second;
+
+	}
+	}
+
+	*/
+
 	// e.g Select a Follows(w,a)
 	// follow same format as e,g 2,a
-	// double for looops
+	// double for loops
 	// outer loop to loop each possible left statement and skip those that are not the same type as type 1
 	// inner loop same as e.g 2,a
 
 
-	if (select.compare(two) == 0 || two.compare("_") == 0) {
+	if (select.compare(two) == 0) {
+
 		for (int i = 0; i < folTable.size(); ++i) {
 
 			int current = folTable[i].first;
 
 
 			// only go ahead if same type	
-			if (type1.compare(stmtTable[current].getType()) == 0) {
+			if (type1.compare(stmtTable[current].getType()) == 0 || type1.compare("STATEMENT") == 0 || one.compare("_") == 0) {
 
 				for (int j = i; j < folTable.size(); ++j) {
 
@@ -1189,15 +1224,19 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 					int next = folTable[j].second;
 
 					// make sure not _
-					if (two.compare("_") != 0) {
+					if (one.compare("_") != 0) {
 
 						// we didn't get a match so we move on instead of adding to our answer
-						if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+						if ((type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) || type2.compare("STATEMENT") == 0) {
 
 							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
 							set.insert(folTable[j].second);
 
+							current = folTable[j].second;
+
+						}
+						else if (folTable[j].first == current) {
 							current = folTable[j].second;
 						}
 
@@ -1219,7 +1258,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 	// e.g a,6 same as select a such that a,w
 	// or _,w
-	if (select.compare(one) == 0 || one.compare("_") == 0) {
+	if (select.compare(one) == 0) {
 
 		for (int i = folTable.size() - 1; i >= 0; --i) {
 
@@ -1227,7 +1266,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 
 			// only go ahead if same type	
-			if (type2.compare(stmtTable[current].getType()) == 0) {
+			if (type2.compare(stmtTable[current].getType()) == 0 || type2.compare("STATEMENT") == 0 || two.compare("_") == 0) {
 
 				for (int j = i; j >= 0; --j) {
 
@@ -1240,16 +1279,16 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 					int next = folTable[j].first;
 
 					// make sure not _
-					if (one.compare("_") != 0) {
-
+					if (true) {
 						// we didn't get a match so we move on instead of adding to our answer
-						if (type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) {
+						if ((type1.compare(stmtTable[next].getType()) == 0 && folTable[j].second == current) || type1.compare("STATEMENT") == 0) {
 
 							//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
 							set.insert(folTable[j].first);
 
 							current = folTable[j].first;
+
 						}
 
 					}
@@ -1257,6 +1296,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 						set.insert(folTable[j].first);
 
 					}
+
 
 				}
 
@@ -1270,14 +1310,12 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 	cout << one << select << two;
 
-	if (one.compare("_") == 0 && two.compare("_") == 0) {
-
+	if ((one.compare("_") == 0 || q.checkSynType(one) == "STATEMENT") && (two.compare("_") == 0 || q.checkSynType(two) == "STATEMENT")) {
 		set.insert(1);
 	}
 	else {
 		if (select.compare(one) != 0 && select.compare(two) != 0) {
 
-			//cout << "HELLO";
 			for (int i = 0; i < folTable.size(); ++i) {
 
 				int current = folTable[i].first;
@@ -1285,7 +1323,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 				if (one.compare("_") != 0) {
 
 					// only go ahead if same type	
-					if (type1.compare(stmtTable[current].getType()) == 0) {
+					if (type1.compare(stmtTable[current].getType()) == 0 || type1.compare("STATEMENT") == 0) {
 
 						for (int j = i; j < folTable.size(); ++j) {
 
@@ -1301,7 +1339,7 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 							if (two.compare("_") != 0) {
 
 								// we didn't get a match so we move on instead of adding to our answer
-								if (type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) {
+								if ((type2.compare(stmtTable[next].getType()) == 0 && folTable[j].first == current) || type2.compare("STATEMENT") == 0) {
 
 									//cout << "//" << current << "   " << to_string(folTable[j].second) << " ";
 
@@ -1311,6 +1349,9 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 								}
 
 							}
+							else {
+								set.insert(folTable[j].second);
+							}
 
 						}
 
@@ -1318,6 +1359,12 @@ vector<string> QE::FollowsT(string select, string one, string two, Query q) { //
 
 
 				}
+				else {
+					set.insert(1);
+				}
+
+
+
 			}
 
 		}
@@ -1374,7 +1421,7 @@ vector<string> QE::FollowsT(string select, int one, string two, Query q) { //ret
 			if (two.compare("_") != 0) {
 
 				// we didn't get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) == 0) {
+				if (type.compare(stmtTable[next].getType()) == 0 || type.compare("STATEMENT") == 0) {
 
 					//ans.push_back(str);
 					set.insert(folTable[i].second);
@@ -1446,7 +1493,7 @@ vector<string> QE::FollowsT(string select, string one, int two, Query q) { //ret
 			if (one.compare("_") != 0) {
 
 				// we get a match so we move on instead of adding to our answer
-				if (type.compare(stmtTable[next].getType()) == 0) {
+				if (type.compare(stmtTable[next].getType()) == 0 || type.compare("STATEMENT") == 0) {
 
 					//ans.push_back(str);
 					set.insert(folTable[i].first);
@@ -1526,7 +1573,6 @@ vector<string> QE::FollowsT(string select, int one, int two, Query q) { //return
 }
 
 
-
 vector<string> QE::pattern(string select, string command, string one, string two, Query q) { //return the statement lines that has this pattern
 	unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
 	bool isUnderscore = false;
@@ -1568,7 +1614,7 @@ vector<string> QE::pattern(string select, string command, string one, string two
 	//if RHS is a subexpression and LHS was not "_"
 	else if ((two.find("_", 0) != string::npos) && (two.find("_", 1) != string::npos) && (!isUnderscore)) {
 		//take out the var in the middle, assuming it is surrounded by _" and "_
-		cout << "check" << endl;
+		//cout << "check" << endl;
 		string var = two.substr(2, two.size() - 4);
 		for (int i = 0; i < ans.size(); ++i) {
 			int stmtNum = stoi(ans[i]);
@@ -1638,19 +1684,14 @@ vector<string> QE::getAllType(string type) {
 	}
 	else if (type == "CONSTANT") {
 		unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
-		set<string> constantSet;
 		for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
 			vector<string> used = it->second.second;
 			for (int i = 0; i < used.size(); ++i) {
-				try {
-					int converted = stoi(used[i]);
-				}
-				catch (exception e) {
-					constantSet.insert(used[i]);
+				if (isInt(used[i])) {
+					all.push_back(used[i]);
 				}
 			}
 		}
-		all = vector<string>(constantSet.begin(), constantSet.end());
 	}
 	return all;
 }
@@ -1735,30 +1776,45 @@ vector<string> QE::Choices(string choice, bool status) {
 	vector<string> finAns;
 	if (status == true) {
 		if (choice == "ASSIGN" || choice == "WHILE") {
-			for (auto i = 0; i < stmtTable.size(); ++i)
+			for (auto i = 0; i < stmtTable.size(); ++i){
 				if (choice == stmtTable[i].getType()) {
 					// add it to final answer
 					finAns.push_back(to_string(i));
 				}
+			}
 			return finAns;
 		}
 
 		else if (choice == "STATEMENT") {
-			for (auto i = 1; i < stmtTable.size(); ++i) {
+			for (auto i = 1; i <= stmtTable.size(); ++i) {
 				finAns.push_back(to_string(i));
-				return finAns;
 			}
+			return finAns;
 		}
 		else if (choice == "VARIABLE") {
 			finAns = pkb->getVarList()->getAllVar();
 			return finAns;
 		}
-	}
-	else {
-		return finAns;
+		else if (choice == "CONSTANT") {
+			unordered_map<int, pair<vector<string>, vector<string>>> modUseTable = pkb->getmodUseTable()->getTable();
+			for (auto it = modUseTable.begin(); it != modUseTable.end(); ++it) {
+				vector<string> used = it->second.second;
+				for (int i = 0; i < used.size(); ++i) {
+					if (isInt(used[i])) {
+						finAns.push_back(used[i]);
+					}
+					else {
+						continue;
+					}
+				}
+			}
+			return finAns;
+		}
+		else {
+			return finAns;
+		}
 	}
 }
-
 bool QE::checkAnswerSize(vector<string> answerVector) {
 	if (answerVector.size() == 0) {
 		return false;

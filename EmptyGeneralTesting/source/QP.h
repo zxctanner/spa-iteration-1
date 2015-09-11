@@ -4,6 +4,7 @@
 #include "QE.h"
 #include "Query.h"
 #include "PKB.h"
+#include <ctype.h>
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -12,7 +13,7 @@
 #include <regex>
 #include <fstream>
 #include <string>
-#include <ctype.h>
+
 
 
 class QP {

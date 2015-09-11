@@ -1,6 +1,7 @@
 #pragma once
 
 #include "QP.h"
+#include <ctype.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,8 +11,23 @@
 #include <map>
 #include <regex>
 #include <string>
-#include <ctype.h>
 
+//General flow of events in parser:
+//1. Receive query string
+//2. Remove leading and trailing whitespaces from query string - DONE
+//3. Splitting of string into 2 parts: Declarations string & Actual query string - DONE
+//4. Syntatic Validation of:
+//a. Declarations string - DONE
+//b. Actual query string - DONE
+//5. Semantic Validation of Actual query string (i.e. does the query make sense?)
+//6. Storing of declared types into table (i.e. assign a, a1; variable v; => assign type: a, a1; variable type: v)
+//7. Extracting exact queries from actual query string
+//8. Formatting queries (remove any unneccessary whitespaces)
+//9. Storing of formatted queries (should be storing each query as a string, so vector<string> queries of maximum size 2)
+
+//Validation will be conducted upon receiving query string, taking place in two separate phases:
+//1. Syntatic Validation (i.e. does query match the grammar rules?)
+//2. Semantic Validation (i.e. are the synonyms repeated, etc.)
 
 using namespace std;
 
@@ -23,29 +39,6 @@ regex integer_rgx("^[0-9]+$");
 regex string_rgx("^\"[a-zA-Z][a-zA-Z0-9#]*\"$");
 regex factor_rgx("^[_]\"[a-zA-Z][a-zA-Z0-9]*\"[_]$");
 regex factorInt_rgx("^[_]\"[0-9]+\"[_]$");
-
-//Functions:
-
-/*
-General flow of events in parser:
-1. Receive query string
-2. Remove leading and trailing whitespaces from query string - DONE
-3. Splitting of string into 2 parts: Declarations string & Actual query string - DONE
-4. Syntatic Validation of:
-a. Declarations string - DONE
-b. Actual query string - DONE
-5. Semantic Validation of Actual query string (i.e. does the query make sense?)
-6. Storing of declared types into table (i.e. assign a, a1; variable v; => assign type: a, a1; variable type: v)
-7. Extracting exact queries from actual query string
-8. Formatting queries (remove any unneccessary whitespaces)
-9. Storing of formatted queries (should be storing each query as a string, so vector<string> queries of maximum size 2)
-
-
-Validation will be conducted upon receiving query string, taking place in two separate phases:
-1. Syntatic Validation (i.e. does query match the grammar rules?)
-2. Semantic Validation (i.e. are the synonyms repeated, etc.)
-*/
-
 
 QP::QP(string fileName) {
 	inputFileName = fileName;
@@ -71,17 +64,12 @@ void QP::process() {
 				queryString = trim(separatedLine.at(1), " ");
 				if (validNoSTPattern(queryString)) { //checks if number of ST and Pattern -> 1 each at most
 					if (regex_match(declarations, declaration_rgx) && regex_match(queryString, query_rgx)) {
-						//HANDLING DECLARATIONS
-						valid = processingDeclarations(declarations);
+						valid = processingDeclarations(declarations); //HANDLING DECLARATIONS
 						if (!valid) {
 							Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
 							queriesForQE.push_back(empty);
 						}
-						//HANDLING QUERY STRING
-						queryStringHandler(queryString);
-						//GOING INTO QE
-						//passIntoQE();
-						//CLEAR EVERYTHING
+						queryStringHandler(queryString); //HANDLING QUERY STRING
 					}
 					else {
 						Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
@@ -93,17 +81,13 @@ void QP::process() {
 					queriesForQE.push_back(empty);
 				}
 			}
-			clearMemory();
+			clearMemory(); //CLEAR MEMORY
 		}
 		else {
 			Query empty(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
 			queriesForQE.push_back(empty);
 		}
 	}
-	//do not include
-	/*for (int i = 0; i < queriesForQE.size(); ++i) {
-	queriesForQE.at(i).printQuery();
-	}*/
 }
 
 void QP::processSingleQuery(string query) {
@@ -120,16 +104,11 @@ void QP::processSingleQuery(string query) {
 			queryString = trim(separatedLine.at(1), " ");
 			if (validNoSTPattern(queryString)) { //checks if number of ST and Pattern -> 1 each at most
 				if (regex_match(declarations, declaration_rgx) && regex_match(queryString, query_rgx)) {
-					//HANDLING DECLARATIONS
-					valid = processingDeclarations(declarations);
+					valid = processingDeclarations(declarations); //HANDLING DECLARATIONS
 					if (!valid) {
 						queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
 					}
-					//HANDLING QUERY STRING
-					singleQueryStringHandler(queryString);
-					//GOING INTO QE
-					//passIntoQE();
-					//CLEAR EVERYTHING
+					singleQueryStringHandler(queryString); //HANDLING QUERY STRING
 				}
 				else {
 					queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
@@ -139,16 +118,12 @@ void QP::processSingleQuery(string query) {
 				queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
 			}
 		}
-		clearMemory();
+		clearMemory(); //CLEAR MEMORY
 	}
 	else {
 		queryForQE = Query(stmtD, assignD, variableD, constantD, whileD, prog_lineD, vector<string>());
 	}
 }
-//do not include
-/*for (int i = 0; i < queriesForQE.size(); ++i) {
-queriesForQE.at(i).printQuery();
-}*/
 
 bool QP::isQueryLegit(string rawQueryString) { //checks if the query string follows format: <declarationsstring><SINGLE SPACE><querystring>
 	if (!regex_match(rawQueryString, queryString_rgx)) {
