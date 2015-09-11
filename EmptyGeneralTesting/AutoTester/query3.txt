@@ -106,7 +106,7 @@ Select a pattern a("x", _"x"_) such that Modifies(a, "x")
 22 - Uses + Pattern 1
 variable v; assign a;
 Select v such that Uses(a, v) pattern a(_, _"z"_) 
-z, x, a, i
+z, x, i
 5000
 23 - Uses + Pattern 2
 variable v; assign a;

@@ -96,7 +96,7 @@ Select a such that Follows(a,w) pattern a("e" ,_)
 20 - Follows + Pattern 3 
 assign a, a1;
 Select a1 such that Follows*(a,a1) pattern a("y", _)
-4, 5, 6, 7, 11, 13
+4, 5, 6, 11, 13
 5000
 21 - Uses + Pattern 1
 assign a;
