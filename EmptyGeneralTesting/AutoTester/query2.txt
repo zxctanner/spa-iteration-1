@@ -70,7 +70,7 @@ Select a pattern a(_, _"1"_)
 5000
 15 - Pattern 3 Return all variables
 stmt s; assign a;
-Select s pattern a(_, "1")
+Select s pattern a(_, _"1"_)
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 5000
 16 - Parent + Pattern 1
@@ -95,7 +95,7 @@ Select a such that Follows(a,w) pattern a(_,_)
 5000
 20 - Follows + Pattern 3 
 assign a, a1;
-Select a1 such that Follows*(a,a1) pattern a(_, "z")
+Select a1 such that Follows*(a,a1) pattern a(_, _"z"_)
 3, 4, 5, 6, 7
 5000
 21 - Uses + Pattern 1
@@ -104,7 +104,7 @@ Select a such that Uses(a, "z") pattern a("z",_"x"_)
 5, 7
 5000
 22 - Uses + Pattern 2
-stmt s assign a; variable v;
+stmt s; assign a; variable v;
 Select v such that Uses(s, v) pattern a("z", _)
 z, y, i, x, a, b
 5000
